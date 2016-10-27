@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Router, Route, Link, IndexRoute, browserHistory, DefaultRoute, IndexLink } from 'react-router'
 
 import Container from './components/Container';
-import NotFound from './components/Notfound';
+import NotFound from './components/NotFound';
 import Accounts from './components/Accounts/Accounts';
 import AddAccount from './components/Accounts/AddAccount';
 import Home from './components/Home/Home';
