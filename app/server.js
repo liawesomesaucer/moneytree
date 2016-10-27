@@ -14,7 +14,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 // define the folder that will be used for static assets
-app.use(Express.static(path.join(__dirname, 'static')));
+app.use(Express.static('static'));
 
 // universal routing and rendering
 app.get('*', (req, res) => {
@@ -36,15 +36,17 @@ app.get('*', (req, res) => {
       let markup;
       if (renderProps) {
         // if the current route matched we have renderProps
+        console.log("Rendering");
         markup = renderToString(<RouterContext {...renderProps}/>);
       } else {
         // otherwise we can render a 404 page
+        console.log("Rendering not found page");
         markup = renderToString(<NotFound/>);
         res.status(404);
       }
 
       // render the index template with the embedded React markup
-      return res.sendfile(path.join(__dirname, 'index.html'), { markup });
+      return res.render('index', { markup });
     }
   );
 });
