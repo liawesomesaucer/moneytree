@@ -1,0 +1,11 @@
+@font-face {
+  font-family: GothamRounded;
+  src: url("/static/fonts/Gotham-Rounded.ttf");
+}
+@font-face {
+  font-family: GothamRoundedBold;
+  src: url("/static/fonts/Gotham-Rounded-Bold.ttf");
+}
+* {
+  font-family: GothamRounded, Roboto, Helvetica, sans-serif;
+}

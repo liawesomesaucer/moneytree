@@ -1,0 +1,27 @@
+.graph-wrapper {
+  height: 25vh;
+  width: 100%;
+}
+.list {
+  &--elem {
+    background-color: $white;
+    padding: 20px 8px 16px;
+    font-size: 18px;
+    border-bottom: 1px solid $light-gray;
+  }
+  &--header {
+    background-color: $light-gray;
+    font-weight: bold;
+  }
+  &--row-right {
+    float: right;
+  }
+  &--price {
+  }
+  &--price:before {
+    content: "$ ";
+  }
+  &--price:after {
+    content: "  >"
+  }
+}

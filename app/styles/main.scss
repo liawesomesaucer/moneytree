@@ -1,6 +1,9 @@
 // Do all your imports here
-// Do NOT write any css here
+// Do NOT write any css here other than imports
+@import './globals/_variables';
+@import './globals/_fonts';
 
-// Format: @import './base/_globals'; (omit the .scss)
 @import './layout/_layout';
 @import './layout/_nav';
+
+@import './components/list';

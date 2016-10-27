@@ -1,3 +1,18 @@
 body {
-  min-height: 100vh;
+  background-color: #eee; // TEMPORARY
+}
+.no-margin {
+  margin: 0;
+}
+.wrapper {
+  // Because of nav
+  margin-top: 50px;
+}
+.reset-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+.content-wrapper {
+  padding: 10px;
 }

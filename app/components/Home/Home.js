@@ -1,9 +1,14 @@
 import React from 'react';
 
+import Nav from '../Nav';
+
+import TransactionList from '../Transactions/TransactionList';
+
 export default function Home () {
   return (
     <div className="">
-      <h1>Home</h1>
+      <Nav pageName="Home"/>
+      <TransactionList />
     </div>
   )
 }
