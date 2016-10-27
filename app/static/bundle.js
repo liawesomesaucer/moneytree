@@ -21453,9 +21453,9 @@
 
 	var _Container2 = _interopRequireDefault(_Container);
 
-	var _Notfound = __webpack_require__(240);
+	var _NotFound = __webpack_require__(240);
 
-	var _Notfound2 = _interopRequireDefault(_Notfound);
+	var _NotFound2 = _interopRequireDefault(_NotFound);
 
 	var _Accounts = __webpack_require__(241);
 
@@ -21502,7 +21502,7 @@
 	    _react2.default.createElement(_reactRouter.Route, { path: 'login', component: _Login2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'settings', component: _Settings2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'transactions', component: _Transactions2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: '*', component: _Notfound2.default })
+	    _react2.default.createElement(_reactRouter.Route, { path: '*', component: _NotFound2.default })
 	  )
 	);
 

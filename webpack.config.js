@@ -9,6 +9,7 @@ module.exports = {
   devServer: {
     inline: true,
     contentBase: './app',
+    // historyApiFallback: true,
     port: 8080
   },
   module: {
@@ -20,7 +21,7 @@ module.exports = {
       },
       {
         test: /\.s?css$/,
-        loaders: ["style", "css", "sass"]
+        loader: "style-loader!css-loader!sass-loader"
       }
     ]
   },
