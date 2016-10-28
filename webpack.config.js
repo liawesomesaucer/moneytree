@@ -9,7 +9,7 @@ module.exports = {
   devServer: {
     inline: true,
     contentBase: './app',
-    // historyApiFallback: true,
+    historyApiFallback: true,
     port: 8080
   },
   module: {

@@ -1,14 +1,16 @@
 # MoneyTree
 
+## About
+This is an app for COGS120/CSE170.
+
 ## Setup
-To install files:
+To set up for dev
 ```
 npm install
+npm run dev
 ```
-For now (until I figure out a better way), run these two commands in separate terminals:
+
+To test with the actual express server
 ```
-# Terminal 1
-webpack-dev-server
-# Terminal 2
-webpack
+npm start
 ```
