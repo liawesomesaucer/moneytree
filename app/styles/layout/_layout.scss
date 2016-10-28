@@ -1,5 +1,5 @@
 body {
-  background-color: #eee; // TEMPORARY
+  background-color: $background-color;
 }
 .no-margin {
   margin: 0;
@@ -7,6 +7,7 @@ body {
 .wrapper {
   // Because of nav
   margin-top: 50px;
+  margin-bottom: 60px;
 }
 .reset-list {
   list-style-type: none;

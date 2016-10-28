@@ -10,10 +10,12 @@ export default class TransactionList extends React.Component {
     let transactions = [];
 
     transaction_data.forEach((val, index) => {
+      let cost = (val.price > 0) ? "$ " + val.price.toString() : val.price.toString().replace("-", "- $ ");
+
       transactions.push(
         <li className="list--elem" key={index}>
           <span className="list--row-left list--title">{val.name}</span>
-          <span className="list--row-right list--price">{val.price}</span>
+          <span className="list--row-right list--price">{cost}</span>
         </li>
       );
     });

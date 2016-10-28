@@ -1,11 +1,16 @@
 .graph-wrapper {
-  height: 25vh;
+  // height: 25vh;
+  margin-bottom: 10px;
   width: 100%;
+
+  img {
+    width: 100%;
+  }
 }
 .list {
   &--elem {
     background-color: $white;
-    padding: 20px 8px 16px;
+    padding: 20px 10px 16px;
     font-size: 18px;
     border-bottom: 1px solid $light-gray;
   }
@@ -13,15 +18,30 @@
     background-color: $light-gray;
     font-weight: bold;
   }
+  &--primary {
+    background-color: $primary-color;
+    color: white;
+  }
   &--row-right {
     float: right;
   }
   &--price {
   }
   &--price:before {
-    content: "$ ";
+    // content: "$ ";
   }
   &--price:after {
-    content: "  >"
+    // content: "  >"
+  }
+  &--account-elem {
+    padding-top: 16px;
+    padding-bottom: 12px;
+    border-width: 2px;
+  }
+  &--account-number {
+    font-size: 14px;
+  }
+  &--account-add {
+    margin-right: 10px;
   }
 }

@@ -12,6 +12,7 @@ export default class Transactions extends React.Component {
       <div className="">
         <Nav pageName="Transactions"/>
         <div className="graph-wrapper">
+          <img src={"/static/images/graph.png"} />
         </div>
         <TransactionList />
       </div>
