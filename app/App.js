@@ -11,6 +11,7 @@ import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Settings from './components/Settings/Settings';
 import Transactions from './components/Transactions/Transactions';
+import Plant from './components/Home/Plant';
 
 const routes = (
   <Router history={browserHistory}>
@@ -22,6 +23,7 @@ const routes = (
       <Route path='accounts/add/chase' component={AddChaseAccount} />
       <Route path='accounts/add/wells' component={AddWellsAccount} />
       <Route path='login' component={Login} />
+      <Route path='plant' component={Plant} />
       <Route path='settings' component={Settings} />
       <Route path='transactions' component={Transactions} />
       <Route path='*' component={NotFound} />

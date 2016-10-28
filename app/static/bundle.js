@@ -60,7 +60,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(253);
+	__webpack_require__(254);
 
 	_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('root'));
 
@@ -21489,6 +21489,10 @@
 
 	var _Transactions2 = _interopRequireDefault(_Transactions);
 
+	var _Plant = __webpack_require__(253);
+
+	var _Plant2 = _interopRequireDefault(_Plant);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21510,6 +21514,7 @@
 	    _react2.default.createElement(_reactRouter.Route, { path: 'accounts/add/chase', component: _AddChaseAccount2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'accounts/add/wells', component: _AddWellsAccount2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'login', component: _Login2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: 'plant', component: _Plant2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'settings', component: _Settings2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'transactions', component: _Transactions2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: '*', component: _NotFound2.default })
@@ -27795,6 +27800,8 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactRouter = __webpack_require__(173);
+
 	var _Nav = __webpack_require__(239);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
@@ -27820,7 +27827,12 @@
 	      ),
 	      _react2.default.createElement(
 	        'a',
-	        { className: 'btn btn-default' },
+	        {
+	          className: 'btn btn-default',
+	          onClick: function onClick() {
+	            return _reactRouter.browserHistory.push("/plant");
+	          }
+	        },
 	        'Plant a Seed'
 	      )
 	    ),
@@ -28073,13 +28085,51 @@
 /* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = Plant;
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(173);
+
+	var _Nav = __webpack_require__(239);
+
+	var _Nav2 = _interopRequireDefault(_Nav);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function Plant() {
+	  return _react2.default.createElement(
+	    'div',
+	    { className: '' },
+	    _react2.default.createElement(_Nav2.default, { pageName: 'Plant a Seed' }),
+	    _react2.default.createElement(
+	      'a',
+	      { onClick: function onClick() {
+	          return _reactRouter.browserHistory.push('/home');
+	        } },
+	      'Back'
+	    )
+	  );
+	}
+
+/***/ },
+/* 254 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(254);
+	var content = __webpack_require__(255);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(256)(content, {});
+	var update = __webpack_require__(257)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -28096,10 +28146,10 @@
 	}
 
 /***/ },
-/* 254 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(255)();
+	exports = module.exports = __webpack_require__(256)();
 	// imports
 
 
@@ -28110,7 +28160,7 @@
 
 
 /***/ },
-/* 255 */
+/* 256 */
 /***/ function(module, exports) {
 
 	/*
@@ -28166,7 +28216,7 @@
 
 
 /***/ },
-/* 256 */
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
