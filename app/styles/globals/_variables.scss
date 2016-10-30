@@ -2,3 +2,9 @@ $light-gray: #ddd;
 $primary-color: #479285;
 $white: #fff;
 $background-color: #eee; // Temporary
+
+%list-reset {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}

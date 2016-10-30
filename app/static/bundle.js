@@ -27686,25 +27686,33 @@
 	    null,
 	    _react2.default.createElement(_Nav2.default, { pageName: 'Add Account' }),
 	    _react2.default.createElement(
-	      'a',
-	      { onClick: function onClick() {
-	          return _reactRouter.browserHistory.push('/accounts');
-	        } },
-	      'Back'
-	    ),
-	    _react2.default.createElement(
-	      'a',
-	      { onClick: function onClick() {
-	          return _reactRouter.browserHistory.push('/accounts/add/chase');
-	        } },
-	      'Chase'
-	    ),
-	    _react2.default.createElement(
-	      'a',
-	      { onClick: function onClick() {
-	          return _reactRouter.browserHistory.push('/accounts/add/wells');
-	        } },
-	      'Wells Fargo'
+	      'div',
+	      { className: 'content-wrapper' },
+	      _react2.default.createElement(
+	        'a',
+	        { onClick: function onClick() {
+	            return _reactRouter.browserHistory.push('/accounts');
+	          } },
+	        'Back'
+	      ),
+	      _react2.default.createElement(
+	        'ul',
+	        { className: 'tile-list' },
+	        _react2.default.createElement(
+	          'a',
+	          { onClick: function onClick() {
+	              return _reactRouter.browserHistory.push('/accounts/add/chase');
+	            } },
+	          _react2.default.createElement('li', null)
+	        ),
+	        _react2.default.createElement(
+	          'a',
+	          { onClick: function onClick() {
+	              return _reactRouter.browserHistory.push('/accounts/add/wells');
+	            } },
+	          _react2.default.createElement('li', null)
+	        )
+	      )
 	    )
 	  );
 	}
@@ -28154,7 +28162,7 @@
 
 
 	// module
-	exports.push([module.id, "@font-face {\n  font-family: GothamRounded;\n  src: url(\"/static/fonts/Gotham-Rounded.ttf\"); }\n\n@font-face {\n  font-family: GothamRoundedBold;\n  src: url(\"/static/fonts/Gotham-Rounded-Bold.ttf\"); }\n\n* {\n  font-family: GothamRounded, Roboto, Helvetica, sans-serif; }\n\nbody {\n  background-color: #eee; }\n\n.no-margin {\n  margin: 0; }\n\n.wrapper {\n  margin-top: 50px;\n  margin-bottom: 60px; }\n\n.reset-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0; }\n\n.tree-wrapper {\n  padding: 20px 0;\n  text-align: center; }\n\n.btn {\n  padding: 12px 20px 8px;\n  background-color: #479285;\n  color: white;\n  font-size: 18px;\n  border: none;\n  border-radius: 10px; }\n\n.mobile-nav {\n  border-top: 1px solid #eee;\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  background-color: #fff; }\n\n.mobile-nav ul {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0;\n  color: #479285; }\n  .mobile-nav ul li {\n    display: inline-block;\n    padding: 10px 0 8px;\n    width: 25%;\n    text-align: center;\n    font-size: 12px; }\n    .mobile-nav ul li .fa {\n      font-size: 22px;\n      margin-bottom: 3px; }\n\n.top-nav {\n  width: 100%;\n  position: fixed;\n  height: 50px;\n  top: 0;\n  left: 0;\n  right: 0;\n  background-color: #479285;\n  color: white;\n  text-align: center;\n  font-size: 22px;\n  line-height: 50px; }\n\n.graph-wrapper {\n  margin-bottom: 10px;\n  width: 100%; }\n  .graph-wrapper img {\n    width: 100%; }\n\n.list--elem {\n  background-color: #fff;\n  padding: 20px 10px 16px;\n  font-size: 18px;\n  border-bottom: 1px solid #ddd; }\n\n.list--header {\n  background-color: #ddd;\n  font-weight: bold; }\n\n.list--primary {\n  background-color: #479285;\n  color: white; }\n\n.list--row-right {\n  float: right; }\n\n.list--account-elem {\n  padding-top: 16px;\n  padding-bottom: 12px;\n  border-width: 2px; }\n\n.list--account-number {\n  font-size: 14px; }\n\n.list--account-add {\n  margin-right: 10px; }\n", ""]);
+	exports.push([module.id, ".mobile-nav ul, .tile-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0; }\n\n@font-face {\n  font-family: GothamRounded;\n  src: url(\"/static/fonts/Gotham-Rounded.ttf\"); }\n\n@font-face {\n  font-family: GothamRoundedBold;\n  src: url(\"/static/fonts/Gotham-Rounded-Bold.ttf\"); }\n\n* {\n  font-family: GothamRounded, Roboto, Helvetica, sans-serif; }\n\nbody {\n  background-color: #eee; }\n\n.no-margin {\n  margin: 0; }\n\n.wrapper {\n  margin-top: 50px;\n  margin-bottom: 60px; }\n\n.reset-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0; }\n\n.tree-wrapper {\n  padding: 20px 0;\n  text-align: center; }\n\n.btn {\n  padding: 12px 20px 8px;\n  background-color: #479285;\n  color: white;\n  font-size: 18px;\n  border: none;\n  border-radius: 10px; }\n\n.btn-primary {\n  background-color: #479285; }\n\n.mobile-nav {\n  border-top: 1px solid #eee;\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  background-color: #fff; }\n\n.mobile-nav ul {\n  color: #479285; }\n  .mobile-nav ul li {\n    display: inline-block;\n    padding: 10px 0 8px;\n    width: 25%;\n    text-align: center;\n    font-size: 12px; }\n    .mobile-nav ul li .fa {\n      font-size: 22px;\n      margin-bottom: 3px; }\n\n.top-nav {\n  width: 100%;\n  position: fixed;\n  height: 50px;\n  top: 0;\n  left: 0;\n  right: 0;\n  background-color: #479285;\n  color: white;\n  text-align: center;\n  font-size: 22px;\n  line-height: 50px; }\n\n.graph-wrapper {\n  margin-bottom: 10px;\n  width: 100%; }\n  .graph-wrapper img {\n    width: 100%; }\n\n.list--elem {\n  background-color: #fff;\n  padding: 20px 10px 16px;\n  font-size: 18px;\n  border-bottom: 1px solid #ddd; }\n\n.list--header {\n  background-color: #ddd;\n  font-weight: bold; }\n\n.list--primary {\n  background-color: #479285;\n  color: white; }\n\n.list--row-right {\n  float: right; }\n\n.list--account-elem {\n  padding-top: 16px;\n  padding-bottom: 12px; }\n\n.list--account-number {\n  font-size: 14px; }\n\n.list--account-add {\n  margin-right: 10px; }\n\n.tile-list li {\n  background-color: #ddd;\n  width: 33%;\n  height: 0;\n  padding-bottom: 32%;\n  display: inline-block; }\n", ""]);
 
 	// exports
 

@@ -36,12 +36,22 @@
   &--account-elem {
     padding-top: 16px;
     padding-bottom: 12px;
-    border-width: 2px;
   }
   &--account-number {
     font-size: 14px;
   }
   &--account-add {
     margin-right: 10px;
+  }
+}
+.tile-list {
+  @extend %list-reset;
+
+  li {
+    background-color: $light-gray;
+    width: 33%;
+    height: 0;
+    padding-bottom: 32%;
+    display: inline-block;
   }
 }
