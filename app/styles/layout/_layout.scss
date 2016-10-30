@@ -8,6 +8,10 @@ body {
   // Because of nav
   margin-top: 50px;
   margin-bottom: 60px;
+
+  &--padded {
+    padding: 10px;
+  }
 }
 .reset-list {
   list-style-type: none;
