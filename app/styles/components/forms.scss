@@ -1,12 +1,47 @@
-.form {
+.settings--wrapper {
+  padding-top: 20px;
+}
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0;
+}
+option {
+  padding: 0;
+  white-space: normal;
+  color: $text-color;
+}
 
+.form {
+  &--section {
+    margin-bottom: 20px;
+    &>div,
+    &>input,
+    &>button,
+    &>select,
+    &>a {
+      border-bottom: 1px solid $background-color;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+  &--section-header {
+    text-transform: uppercase;
+    line-height: 30px;
+    margin-top: 10px;
+    padding-left: 10px;
+    border-bottom: none !important;
+  }
 }
 .field {
   outline: none;
   display: block;
   border: none;
   width: 100%;
-  margin-bottom: 10px;
+  // margin-bottom: 10px;
   height: 50px;
   line-height: 50px;
   padding: 0 10px;
@@ -17,5 +52,6 @@
     color: white;
   }
   &--secondary {
+    background-color: white;
   }
 }

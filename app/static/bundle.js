@@ -28044,6 +28044,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactFontawesome = __webpack_require__(238);
+
+	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
+
 	var _Nav = __webpack_require__(239);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
@@ -28053,7 +28057,7 @@
 	function Settings() {
 	  return _react2.default.createElement(
 	    'div',
-	    { className: 'wrapper--padded' },
+	    { className: 'wrapper' },
 	    _react2.default.createElement(_Nav2.default, { pageName: 'Settings' }),
 	    _react2.default.createElement(
 	      'div',
@@ -28062,30 +28066,94 @@
 	      _react2.default.createElement(
 	        'form',
 	        { className: 'form settings--form' },
-	        _react2.default.createElement('input', {
-	          type: 'text',
-	          name: 'email',
-	          placeholder: 'Email',
-	          className: 'field field--std'
-	        }),
-	        _react2.default.createElement('input', {
-	          type: 'text',
-	          name: 'password',
-	          placeholder: 'Password',
-	          className: 'field field--std'
-	        }),
-	        _react2.default.createElement('input', {
-	          type: 'submit',
-	          name: 'submit',
-	          value: 'Update',
-	          className: 'field field--submit field--primary'
-	        }),
-	        _react2.default.createElement('input', {
-	          type: 'submit',
-	          name: 'submit',
-	          value: 'Sign Out',
-	          className: 'field field--submit field--secondary'
-	        })
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'form--section' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'form--section-header' },
+	            'Security'
+	          ),
+	          _react2.default.createElement('input', {
+	            type: 'text',
+	            name: 'email',
+	            placeholder: 'Email',
+	            className: 'field field--std'
+	          }),
+	          _react2.default.createElement('input', {
+	            type: 'text',
+	            name: 'password',
+	            placeholder: 'Password',
+	            className: 'field field--std'
+	          })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'form--section' },
+	          _react2.default.createElement(
+	            'button',
+	            { className: 'btn btn-white btn--fullwidth' },
+	            'Sign Out',
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'list--row-right' },
+	              _react2.default.createElement(_reactFontawesome2.default, { name: 'chevron-right' })
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'form--section' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'form--section-header' },
+	            'Goals'
+	          ),
+	          _react2.default.createElement('input', {
+	            type: 'text',
+	            name: 'goal',
+	            placeholder: 'Goal Amount',
+	            className: 'field field--std'
+	          }),
+	          _react2.default.createElement(
+	            'select',
+	            {
+	              name: 'time-period',
+	              className: 'field field-std field--secondary'
+	            },
+	            _react2.default.createElement(
+	              'option',
+	              { value: 'Monthly' },
+	              'Monthly'
+	            ),
+	            _react2.default.createElement(
+	              'option',
+	              { value: 'Weekly' },
+	              'Weekly'
+	            ),
+	            _react2.default.createElement(
+	              'option',
+	              { value: 'Daily' },
+	              'Daily'
+	            )
+	          ),
+	          _react2.default.createElement('input', {
+	            type: 'text',
+	            name: 'income',
+	            placeholder: 'Monthly Income',
+	            className: 'field field--std'
+	          })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'form--section' },
+	          _react2.default.createElement('input', {
+	            type: 'submit',
+	            name: 'submit',
+	            value: 'Update',
+	            className: 'field field--submit field--primary'
+	          })
+	        )
 	      )
 	    )
 	  );
@@ -28227,7 +28295,7 @@
 
 
 	// module
-	exports.push([module.id, ".mobile-nav ul, .tile-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0; }\n\n@font-face {\n  font-family: GothamRounded;\n  src: url(\"/static/fonts/Gotham-Rounded.ttf\"); }\n\n@font-face {\n  font-family: GothamRoundedBold;\n  src: url(\"/static/fonts/Gotham-Rounded-Bold.ttf\"); }\n\n* {\n  font-family: GothamRounded, Roboto, Helvetica, sans-serif; }\n\nbody {\n  background-color: #eee; }\n\n.no-margin {\n  margin: 0; }\n\n.wrapper {\n  margin-top: 50px;\n  margin-bottom: 60px; }\n  .wrapper--padded {\n    padding: 10px; }\n\n.reset-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0; }\n\n.tree-wrapper {\n  padding: 20px 0;\n  text-align: center; }\n\n.btn {\n  padding: 12px 20px 8px;\n  background-color: #479285;\n  color: white;\n  font-size: 18px;\n  border: none;\n  border-radius: 10px; }\n\n.btn-primary {\n  background-color: #479285; }\n\n.mobile-nav {\n  border-top: 1px solid #eee;\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  background-color: #fff; }\n\n.mobile-nav ul {\n  color: #479285; }\n  .mobile-nav ul li {\n    display: inline-block;\n    padding: 10px 0 8px;\n    width: 25%;\n    text-align: center;\n    font-size: 12px; }\n    .mobile-nav ul li .fa {\n      font-size: 22px;\n      margin-bottom: 3px; }\n\n.top-nav {\n  width: 100%;\n  position: fixed;\n  height: 50px;\n  top: 0;\n  left: 0;\n  right: 0;\n  background-color: #479285;\n  color: white;\n  text-align: center;\n  font-size: 22px;\n  line-height: 50px; }\n\n.graph-wrapper {\n  margin-bottom: 10px;\n  width: 100%; }\n  .graph-wrapper img {\n    width: 100%; }\n\n.list--elem {\n  background-color: #fff;\n  padding: 20px 10px 16px;\n  font-size: 18px;\n  border-bottom: 1px solid #ddd; }\n\n.list--header {\n  background-color: #ddd;\n  font-weight: bold; }\n\n.list--primary {\n  background-color: #479285;\n  color: white; }\n\n.list--row-right {\n  float: right; }\n\n.list--account-elem {\n  padding-top: 16px;\n  padding-bottom: 12px; }\n\n.list--account-number {\n  font-size: 14px; }\n\n.list--account-add {\n  margin-right: 10px; }\n\n.tile-list li {\n  background-color: #ddd;\n  width: 33%;\n  height: 0;\n  padding-bottom: 32%;\n  display: inline-block; }\n\n.field {\n  outline: none;\n  display: block;\n  border: none;\n  width: 100%;\n  margin-bottom: 10px;\n  height: 50px;\n  line-height: 50px;\n  padding: 0 10px;\n  font-size: 18px; }\n  .field--primary {\n    background-color: #479285;\n    color: white; }\n", ""]);
+	exports.push([module.id, ".mobile-nav ul, .tile-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0; }\n\n@font-face {\n  font-family: GothamRounded;\n  src: url(\"/static/fonts/Gotham-Rounded.ttf\"); }\n\n@font-face {\n  font-family: GothamRoundedBold;\n  src: url(\"/static/fonts/Gotham-Rounded-Bold.ttf\"); }\n\n* {\n  font-family: GothamRounded, Roboto, Helvetica, sans-serif; }\n\nbody {\n  background-color: #eee; }\n\n.no-margin {\n  margin: 0; }\n\n.wrapper {\n  margin-top: 50px;\n  margin-bottom: 60px; }\n  .wrapper--padded {\n    padding: 10px; }\n\n.reset-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0; }\n\n.tree-wrapper {\n  padding: 20px 0;\n  text-align: center; }\n\n.btn {\n  padding: 12px 20px 8px;\n  background-color: #479285;\n  color: white;\n  font-size: 18px;\n  border: none;\n  border-radius: 10px; }\n  .btn--fullwidth {\n    width: 100%;\n    border-radius: 0;\n    padding: 0 10px;\n    line-height: 50px;\n    text-align: left; }\n\n.btn-primary {\n  background-color: #479285; }\n\n.btn-white {\n  background-color: #fff;\n  color: #666; }\n\n.mobile-nav {\n  border-top: 1px solid #eee;\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  background-color: #fff; }\n\n.mobile-nav ul {\n  color: #479285; }\n  .mobile-nav ul li {\n    display: inline-block;\n    padding: 10px 0 8px;\n    width: 25%;\n    text-align: center;\n    font-size: 12px; }\n    .mobile-nav ul li .fa {\n      font-size: 22px;\n      margin-bottom: 3px; }\n\n.top-nav {\n  width: 100%;\n  position: fixed;\n  height: 50px;\n  top: 0;\n  left: 0;\n  right: 0;\n  background-color: #479285;\n  color: white;\n  text-align: center;\n  font-size: 22px;\n  line-height: 50px; }\n\n.graph-wrapper {\n  margin-bottom: 10px;\n  width: 100%; }\n  .graph-wrapper img {\n    width: 100%; }\n\n.list--elem {\n  background-color: #fff;\n  padding: 20px 10px 16px;\n  font-size: 18px;\n  border-bottom: 1px solid #ddd; }\n\n.list--header {\n  background-color: #ddd;\n  font-weight: bold; }\n\n.list--primary {\n  background-color: #479285;\n  color: white; }\n\n.list--row-right {\n  float: right; }\n\n.list--account-elem {\n  padding-top: 16px;\n  padding-bottom: 12px; }\n\n.list--account-number {\n  font-size: 14px; }\n\n.list--account-add {\n  margin-right: 10px; }\n\n.tile-list li {\n  background-color: #ddd;\n  width: 33%;\n  height: 0;\n  padding-bottom: 32%;\n  display: inline-block; }\n\n.settings--wrapper {\n  padding-top: 20px; }\n\nselect {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0; }\n\noption {\n  padding: 0;\n  white-space: normal;\n  color: #666; }\n\n.form--section {\n  margin-bottom: 20px; }\n  .form--section > div,\n  .form--section > input,\n  .form--section > button,\n  .form--section > select,\n  .form--section > a {\n    border-bottom: 1px solid #eee; }\n    .form--section > div:last-child,\n    .form--section > input:last-child,\n    .form--section > button:last-child,\n    .form--section > select:last-child,\n    .form--section > a:last-child {\n      border-bottom: none; }\n\n.form--section-header {\n  text-transform: uppercase;\n  line-height: 30px;\n  margin-top: 10px;\n  padding-left: 10px;\n  border-bottom: none !important; }\n\n.field {\n  outline: none;\n  display: block;\n  border: none;\n  width: 100%;\n  height: 50px;\n  line-height: 50px;\n  padding: 0 10px;\n  font-size: 18px; }\n  .field--primary {\n    background-color: #479285;\n    color: white; }\n  .field--secondary {\n    background-color: white; }\n", ""]);
 
 	// exports
 
