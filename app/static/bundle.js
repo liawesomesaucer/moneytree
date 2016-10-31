@@ -60,7 +60,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(310);
+	__webpack_require__(311);
 
 	_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('root'));
 
@@ -28716,42 +28716,22 @@
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-	var _TransactionData = __webpack_require__(291);
+	var _transactionsReducer = __webpack_require__(315);
+
+	var _settingsReducer = __webpack_require__(316);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-	// TODO: move to separate file
-	var settings_data = {};
-
-	// TODO: move to separate file
-	var transactionsReducer = function transactionsReducer() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _TransactionData.transaction_data;
-	  var action = arguments[1];
-
-	  switch (action.type) {
-	    case "ADD_TRANSACTION":
-	      {
-	        return [].concat(_toConsumableArray(state), [action.payload]);
-	      }
-	  }
-	  return state;
-	};
-
-	// TODO: move to separate file
-	var settingsReducer = function settingsReducer() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : settings_data;
-	  var action = arguments[1];
-
-	  return state;
-	};
-
 	var reducers = (0, _redux.combineReducers)({
-	  settings: settingsReducer,
-	  transactions: transactionsReducer
+	  settings: _settingsReducer.settingsReducer,
+	  transactions: _transactionsReducer.transactionsReducer
 	});
 
+	/*
+	 * React middleware works on the middle of the flow of a dispatched event and can
+	 * modify, read, or even cancel it. Logger is helpful for debugging purposes, and
+	 * redux-thunk allows returning actions as functions for asynchronous actions
+	 */
 	var middleware = (0, _redux.applyMiddleware)(_reduxThunk2.default, (0, _reduxLogger2.default)());
 
 	var store = (0, _redux.createStore)(reducers, middleware);
@@ -28761,7 +28741,7 @@
 	});
 
 	// store.dispatch
-	store.dispatch({ type: "ADD_TRANSACTION", payload: { name: "New Transaction", date: "Date", price: -124 } });
+	// store.dispatch({type: "ADD_TRANSACTION", payload: {name: "New Transaction", date: "Date", price: -124}});
 
 	exports.store = store;
 
@@ -32012,6 +31992,8 @@
 
 	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
 
+	var _reactRouter = __webpack_require__(197);
+
 	var _Nav = __webpack_require__(295);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
@@ -32074,7 +32056,13 @@
 	          { className: 'form--section' },
 	          _react2.default.createElement(
 	            'button',
-	            { className: 'btn btn-white btn--fullwidth' },
+	            {
+	              type: 'button',
+	              className: 'btn btn-white btn--fullwidth',
+	              onClick: function onClick() {
+	                return _reactRouter.browserHistory.push('/login');
+	              }
+	            },
 	            'Sign Out',
 	            _react2.default.createElement(
 	              'span',
@@ -32295,7 +32283,7 @@
 
 	var _TransactionList2 = _interopRequireDefault(_TransactionList);
 
-	var _transactionActions = __webpack_require__(314);
+	var _transactionActions = __webpack_require__(310);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -32450,15 +32438,36 @@
 
 /***/ },
 /* 310 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.addTransaction = addTransaction;
+	function addTransaction(name, date, price) {
+	  return {
+	    type: "ADD_TRANSACTION",
+	    payload: {
+	      name: name,
+	      date: date,
+	      price: price
+	    }
+	  };
+	}
+
+/***/ },
+/* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(311);
+	var content = __webpack_require__(312);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(313)(content, {});
+	var update = __webpack_require__(314)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -32475,21 +32484,21 @@
 	}
 
 /***/ },
-/* 311 */
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(312)();
+	exports = module.exports = __webpack_require__(313)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".mobile-nav ul, .tile-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0; }\n\n@font-face {\n  font-family: GothamRounded;\n  src: url(\"/static/fonts/Gotham-Rounded.ttf\"); }\n\n@font-face {\n  font-family: GothamRoundedBold;\n  src: url(\"/static/fonts/Gotham-Rounded-Bold.ttf\"); }\n\n* {\n  font-family: GothamRounded, Roboto, Helvetica, sans-serif; }\n\nbody {\n  background-color: #eee; }\n\n.no-margin {\n  margin: 0; }\n\n.wrapper {\n  margin-top: 50px;\n  margin-bottom: 60px; }\n  .wrapper--padded {\n    padding: 10px; }\n\n.reset-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0; }\n\n.tree-wrapper {\n  padding: 20px 0;\n  text-align: center; }\n\n.btn {\n  padding: 12px 20px 8px;\n  background-color: #479285;\n  color: white;\n  font-size: 18px;\n  border: none;\n  border-radius: 10px; }\n  .btn--fullwidth {\n    width: 100%;\n    border-radius: 0;\n    padding: 0 10px;\n    line-height: 50px;\n    text-align: left; }\n\n.btn-primary {\n  background-color: #479285; }\n\n.btn-white {\n  background-color: #fff;\n  color: #666; }\n\n.mobile-nav {\n  border-top: 1px solid #eee;\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  background-color: #fff; }\n\n.mobile-nav ul {\n  color: #479285; }\n  .mobile-nav ul li {\n    display: inline-block;\n    padding: 10px 0 8px;\n    width: 25%;\n    text-align: center;\n    font-size: 12px; }\n    .mobile-nav ul li .fa {\n      font-size: 22px;\n      margin-bottom: 3px; }\n\n.top-nav {\n  width: 100%;\n  position: fixed;\n  height: 50px;\n  top: 0;\n  left: 0;\n  right: 0;\n  background-color: #479285;\n  color: white;\n  text-align: center;\n  font-size: 22px;\n  line-height: 50px; }\n\n.graph-wrapper {\n  margin-bottom: 10px;\n  width: 100%; }\n  .graph-wrapper img {\n    width: 100%; }\n\n.list--elem {\n  background-color: #fff;\n  padding: 20px 10px 16px;\n  font-size: 18px;\n  border-bottom: 1px solid #ddd; }\n\n.list--header {\n  background-color: #ddd;\n  font-weight: bold; }\n\n.list--primary {\n  background-color: #479285;\n  color: white; }\n\n.list--row-right {\n  float: right; }\n\n.list--account-elem {\n  padding-top: 16px;\n  padding-bottom: 12px; }\n\n.list--account-number {\n  font-size: 14px; }\n\n.list--account-add {\n  margin-right: 10px; }\n\n.tile-list li {\n  background-color: #ddd;\n  width: 33%;\n  height: 0;\n  padding-bottom: 32%;\n  display: inline-block; }\n\n.wrapper-pad-top {\n  padding-top: 20px; }\n\ninput[type=\"submit\"] {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\nselect {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\noption {\n  padding: 0;\n  white-space: normal;\n  color: #666; }\n\nlabel {\n  margin-bottom: 0; }\n\n.form--section {\n  margin-bottom: 20px; }\n  .form--section > div,\n  .form--section > input,\n  .form--section > button,\n  .form--section > select,\n  .form--section > .form-group,\n  .form--section > a {\n    border-bottom: 1px solid #eee; }\n    .form--section > div:last-child,\n    .form--section > input:last-child,\n    .form--section > button:last-child,\n    .form--section > select:last-child,\n    .form--section > .form-group:last-child,\n    .form--section > a:last-child {\n      border-bottom: none; }\n\n.form--section-header {\n  text-transform: uppercase;\n  line-height: 30px;\n  margin-top: 10px;\n  padding-left: 10px;\n  border-bottom: none !important; }\n\n.form--group {\n  position: relative; }\n  .form--group input {\n    border: none; }\n  .form--group label,\n  .form--group .field {\n    display: inline-block;\n    height: 50px;\n    line-height: 50px;\n    padding: 0 10px;\n    font-size: 18px;\n    background-color: white;\n    font-weight: 300;\n    color: #666; }\n  .form--group label {\n    width: 35%; }\n  .form--group .field {\n    outline: none;\n    width: 65%;\n    position: relative; }\n    .form--group .field--std {\n      background-color: white; }\n    .form--group .field--primary {\n      background-color: #479285;\n      color: white; }\n    .form--group .field--text-right {\n      text-align: right; }\n    .form--group .field--full-width {\n      width: 100%; }\n  .form--group-money label {\n    position: relative; }\n  .form--group-money label:after {\n    position: absolute;\n    content: \"$ \";\n    right: -22px;\n    top: 0;\n    z-index: 2; }\n  .form--group-money input.field {\n    padding-left: 30px; }\n\n.form--separated {\n  margin-bottom: 10px; }\n\n.row-right-overlay {\n  position: absolute;\n  right: 10px;\n  line-height: 50px; }\n", ""]);
+	exports.push([module.id, ".mobile-nav ul, .tile-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0;\n  margin-top: 0; }\n\n@font-face {\n  font-family: GothamRounded;\n  src: url(\"/static/fonts/Gotham-Rounded.ttf\"); }\n\n@font-face {\n  font-family: GothamRoundedBold;\n  src: url(\"/static/fonts/Gotham-Rounded-Bold.ttf\"); }\n\n* {\n  font-family: GothamRounded, Roboto, Helvetica, sans-serif; }\n\nbody {\n  background-color: #eee;\n  margin: 0; }\n\n.no-margin {\n  margin: 0; }\n\n.wrapper {\n  margin-top: 50px;\n  margin-bottom: 60px; }\n  .wrapper--padded {\n    padding: 10px; }\n\n.reset-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0; }\n\n.tree-wrapper {\n  padding: 20px 0;\n  text-align: center; }\n\n.btn {\n  padding: 12px 20px 8px;\n  background-color: #479285;\n  color: white;\n  font-size: 18px;\n  border: none;\n  border-radius: 10px; }\n  .btn--fullwidth {\n    width: 100%;\n    border-radius: 0;\n    padding: 0 10px;\n    line-height: 50px;\n    text-align: left; }\n\n.btn-primary {\n  background-color: #479285; }\n\n.btn-white {\n  background-color: #fff;\n  color: #666; }\n\n.mobile-nav {\n  border-top: 1px solid #eee;\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  background-color: #fff; }\n\n.mobile-nav ul {\n  color: #479285; }\n  .mobile-nav ul li {\n    display: inline-block;\n    padding: 10px 0 8px;\n    width: 25%;\n    text-align: center;\n    font-size: 12px; }\n    .mobile-nav ul li .fa {\n      font-size: 22px;\n      margin-bottom: 3px; }\n\n.top-nav {\n  width: 100%;\n  position: fixed;\n  height: 50px;\n  top: 0;\n  left: 0;\n  right: 0;\n  background-color: #479285;\n  color: white;\n  text-align: center;\n  font-size: 22px;\n  line-height: 50px;\n  z-index: 5; }\n\n.graph-wrapper {\n  margin-bottom: 10px;\n  width: 100%; }\n  .graph-wrapper img {\n    width: 100%; }\n\n.list--elem {\n  background-color: #fff;\n  padding: 20px 10px 16px;\n  font-size: 18px;\n  border-bottom: 1px solid #ddd; }\n\n.list--header {\n  background-color: #ddd;\n  font-weight: bold; }\n\n.list--primary {\n  background-color: #479285;\n  color: white; }\n\n.list--row-right {\n  float: right; }\n\n.list--account-elem {\n  padding-top: 16px;\n  padding-bottom: 12px; }\n\n.list--account-number {\n  font-size: 14px; }\n\n.list--account-add {\n  margin-right: 10px; }\n\n.tile-list li {\n  background-color: #ddd;\n  width: 33%;\n  height: 0;\n  padding-bottom: 32%;\n  display: inline-block; }\n\n.wrapper-pad-top {\n  padding-top: 20px; }\n\ninput[type=\"submit\"] {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\nselect {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\noption {\n  padding: 0;\n  white-space: normal;\n  color: #666; }\n\nlabel {\n  margin-bottom: 0; }\n\n.form--section {\n  margin-bottom: 20px; }\n  .form--section > div,\n  .form--section > input,\n  .form--section > button,\n  .form--section > select,\n  .form--section > .form-group,\n  .form--section > a {\n    border-bottom: 1px solid #eee; }\n    .form--section > div:last-child,\n    .form--section > input:last-child,\n    .form--section > button:last-child,\n    .form--section > select:last-child,\n    .form--section > .form-group:last-child,\n    .form--section > a:last-child {\n      border-bottom: none; }\n\n.form--section-header {\n  text-transform: uppercase;\n  line-height: 30px;\n  margin-top: 10px;\n  padding-left: 10px;\n  border-bottom: none !important; }\n\n.form--group {\n  position: relative; }\n  .form--group input {\n    border: none; }\n  .form--group label,\n  .form--group .field {\n    display: inline-block;\n    height: 50px;\n    line-height: 50px;\n    padding: 0 10px;\n    font-size: 18px;\n    background-color: white;\n    font-weight: 300;\n    color: #666; }\n  .form--group label {\n    width: 35%; }\n  .form--group .field {\n    outline: none;\n    width: 65%;\n    position: relative; }\n    .form--group .field--std {\n      background-color: white; }\n    .form--group .field--primary {\n      background-color: #479285;\n      color: white; }\n    .form--group .field--text-right {\n      text-align: right; }\n    .form--group .field--full-width {\n      width: 100%; }\n  .form--group-money label {\n    position: relative; }\n  .form--group-money label:after {\n    position: absolute;\n    content: \"$ \";\n    right: -22px;\n    top: 0;\n    z-index: 2; }\n  .form--group-money input.field {\n    padding-left: 30px; }\n\n.form--separated {\n  margin-bottom: 10px; }\n\n.row-right-overlay {\n  position: absolute;\n  right: 10px;\n  line-height: 50px; }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 312 */
+/* 313 */
 /***/ function(module, exports) {
 
 	/*
@@ -32545,7 +32554,7 @@
 
 
 /***/ },
-/* 313 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -32797,7 +32806,37 @@
 
 
 /***/ },
-/* 314 */
+/* 315 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.transactionsReducer = undefined;
+
+	var _TransactionData = __webpack_require__(291);
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+	var transactionsReducer = function transactionsReducer() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _TransactionData.transaction_data;
+	  var action = arguments[1];
+
+	  switch (action.type) {
+	    case "ADD_TRANSACTION":
+	      {
+	        return [].concat(_toConsumableArray(state), [action.payload]);
+	      }
+	  }
+	  return state;
+	};
+
+	exports.transactionsReducer = transactionsReducer;
+
+/***/ },
+/* 316 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -32805,17 +32844,16 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.addTransaction = addTransaction;
-	function addTransaction(name, date, price) {
-	  return {
-	    type: "ADD_TRANSACTION",
-	    payload: {
-	      name: name,
-	      date: date,
-	      price: price
-	    }
-	  };
-	}
+	var settings_data = {};
+
+	var settingsReducer = function settingsReducer() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : settings_data;
+	  var action = arguments[1];
+
+	  return state;
+	};
+
+	exports.settingsReducer = settingsReducer;
 
 /***/ }
 /******/ ]);

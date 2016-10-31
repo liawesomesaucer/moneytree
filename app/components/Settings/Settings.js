@@ -1,5 +1,6 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
+import { browserHistory } from 'react-router';
 
 import Nav from '../Nav';
 
@@ -35,7 +36,11 @@ export default function Settings () {
             </div>
         </div>
         <div className="form--section">
-          <button className="btn btn-white btn--fullwidth" >
+          <button 
+            type="button"
+            className="btn btn-white btn--fullwidth" 
+            onClick={() => browserHistory.push('/login')}
+          >
             Sign Out
             <span className="row-right-overlay">
               <FontAwesome name="chevron-right" />
@@ -80,7 +85,6 @@ export default function Settings () {
               <FontAwesome name="chevron-down" />
             </span>
           </div>
-
         </div>
         </form>
       </div>
