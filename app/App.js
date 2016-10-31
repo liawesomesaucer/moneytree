@@ -36,14 +36,6 @@ const routes = (
   </Router>
 )
 
-
-// store.subscribe(() => {
-//   console.log("store changed", store.getState());
-// })
-
-// store.dispatch({type: "ADD_TRANSACTION", payload: {name: "New Transaction", date: "Date", price: -124}});
-console.log(store);
-
 class App extends Component {
   render () {
     return (
