@@ -11,30 +11,38 @@ export default function Login () {
         </div>
 
         <form className="form login--form">
-          <input 
-            type="text"
-            name="email"
-            placeholder="Email"
-            className="field field--std"
-          />
-          <input
-            type="text"
-            name="password"
-            placeholder="Password"
-            className="field field--std"
-          />
-          <input
-            type="submit"
-            name="submit"
-            value="Login"
-            className="field field--submit field--primary"
-          />
-          <input
-            type="submit"
-            name="submit"
-            value="Register"
-            className="field field--submit field--secondary"
-          />
+          <div className="form--group form--separated">
+            <input 
+              type="text"
+              name="email"
+              placeholder="Email"
+              className="field field--std field--full-width"
+            />
+          </div>
+          <div className="form--group form--separated">
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              className="field field--std field--full-width"
+            />
+          </div>
+          <div className="form--group form--separated">
+            <input
+              type="submit"
+              name="submit"
+              value="Login"
+              className="field field--full-width field--primary"
+            />
+          </div>
+          <div className="form--group form--separated">
+            <input
+              type="submit"
+              name="submit"
+              value="Register"
+              className="field field--full-width field--secondary"
+            />
+          </div>
         </form>
       </div>
     </div>

@@ -7,7 +7,7 @@ export default function Settings () {
   return (
     <div className="wrapper">
       <Nav pageName="Settings"/>
-      <div className="settings--wrapper">
+      <div className="settings">
         <div className="settings--logo">
         </div>
         <form className="form settings--form">
@@ -15,23 +15,29 @@ export default function Settings () {
             <div className="form--section-header">
               Security
             </div>
-            <input 
-              type="text"
-              name="email"
-              placeholder="Email"
-              className="field field--std"
-            />
-            <input
-              type="text"
-              name="password"
-              placeholder="Password"
-              className="field field--std"
-            />
+            <div className="form--group">
+              <label htmlFor="email">Email</label>
+              <input 
+                type="text"
+                id="email"
+                name="email"
+                className="field field--std"
+              />
+            </div>
+            <div className="form--group">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                className="field field--std"
+              />
+            </div>
         </div>
         <div className="form--section">
           <button className="btn btn-white btn--fullwidth" >
             Sign Out
-            <span className="list--row-right">
+            <span className="row-right-overlay">
               <FontAwesome name="chevron-right" />
             </span>
           </button>
@@ -41,35 +47,40 @@ export default function Settings () {
           <div className="form--section-header">
             Goals
           </div>
-          <input 
-            type="text"
-            name="goal"
-            placeholder="Goal Amount"
-            className="field field--std"
-          />
-          <select
-            name="time-period"
-            className="field field-std field--secondary"
-          >
-            <option value="Monthly">Monthly</option>
-            <option value="Weekly">Weekly</option>
-            <option value="Daily">Daily</option>
-          </select>
-          <input 
-            type="text"
-            name="income"
-            placeholder="Monthly Income"
-            className="field field--std"
-          />
-        </div>
+          <div className="form--group form--group-money">
+            <label htmlFor="goal">Goal</label>
+            <input 
+              type="text"
+              name="goal"
+              id="goal"
+              className="field field--std"
+            />
+          </div>
+          <div className="form--group form--group-money">
+            <label htmlFor="income">Income</label>
+            <input 
+              type="text"
+              name="income"
+              id="income"
+              className="field field--std field--money"
+            />
+          </div>
+          <div className="form--group">
+            <label htmlFor="time-period">Time Period</label>
+            <select
+              id="time-period"
+              name="time-period"
+              className="field field-std"
+            >
+              <option value="Monthly">Monthly</option>
+              <option value="Weekly">Weekly</option>
+              <option value="Daily">Daily</option>
+            </select>
+            <span className="row-right-overlay">
+              <FontAwesome name="chevron-down" />
+            </span>
+          </div>
 
-        <div className="form--section">
-          <input
-            type="submit"
-            name="submit"
-            value="Update"
-            className="field field--submit field--primary"
-          />
         </div>
         </form>
       </div>

@@ -1,16 +1,27 @@
-.settings--wrapper {
+.settings {
   padding-top: 20px;
+}
+input[type="submit"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0;
+  border: none;
 }
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   border-radius: 0;
+  border: none;
 }
 option {
   padding: 0;
   white-space: normal;
   color: $text-color;
+}
+label {
+  margin-bottom: 0;
 }
 
 .form {
@@ -20,6 +31,7 @@ option {
     &>input,
     &>button,
     &>select,
+    &>.form-group,
     &>a {
       border-bottom: 1px solid $background-color;
 
@@ -36,22 +48,66 @@ option {
     border-bottom: none !important;
   }
 }
-.field {
-  outline: none;
-  display: block;
-  border: none;
-  width: 100%;
-  // margin-bottom: 10px;
-  height: 50px;
-  line-height: 50px;
-  padding: 0 10px;
-  font-size: 18px;
+.form--group {
+  position: relative;
 
-  &--primary {
-    background-color: $primary-color;
-    color: white;
+  input {
+    border: none;
   }
-  &--secondary {
+  label,
+  .field {
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 10px;
+    font-size: 18px;
     background-color: white;
+    font-weight: 300;
+    color: $text-color;
   }
+  label {
+    width: 35%;
+  }
+  .field {
+    outline: none;
+    width: 65%;
+    position: relative;
+
+    &--std {
+      background-color: white;
+    }
+    &--primary {
+      background-color: $primary-color;
+      color: white;
+    }
+    &--text-right {
+      text-align: right;
+    }
+    &--full-width {
+      width: 100%;
+    }
+  }
+  &-money {
+    label {
+      position: relative;
+    }
+    label:after {
+      position: absolute;
+      content: "$ ";
+      right: -22px;
+      top: 0;
+      z-index: 2;
+    }
+    input.field {
+      padding-left: 30px;
+    }
+  }
+}
+.form--separated {
+  margin-bottom: 10px;
+}
+.row-right-overlay {
+  position: absolute;
+  right: 10px;
+  line-height: 50px;
 }

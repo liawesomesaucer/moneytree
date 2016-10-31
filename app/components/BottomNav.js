@@ -10,9 +10,15 @@ export default function BottomNav (props) {
           <FontAwesome name="home" />
           <p className="no-margin">Home</p>
         </li>
+        {/*
         <li onClick={() => browserHistory.push('/accounts')}>
           <FontAwesome name="address-book" />
           <p className="no-margin">Accounts</p>
+        </li>
+      */}
+        <li onClick={() => browserHistory.push('/add')}>
+          <FontAwesome name="plus-square-o" />
+          <p className="no-margin">New Sale</p>
         </li>
         <li onClick={() => browserHistory.push('/transactions')}>
           <FontAwesome name="credit-card" />
