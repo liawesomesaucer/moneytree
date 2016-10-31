@@ -1,4 +1,5 @@
 import React from 'react';
+import { browserHistory } from 'react-router';
 
 import Nav from '../Nav';
 
@@ -28,20 +29,22 @@ export default function Login () {
             />
           </div>
           <div className="form--group form--separated">
-            <input
-              type="submit"
-              name="submit"
-              value="Login"
+            <button
+              type="button"
               className="field field--full-width field--primary"
-            />
+              onClick={() => browserHistory.push('/')}
+            >
+              Login
+            </button>
           </div>
           <div className="form--group form--separated">
-            <input
-              type="submit"
-              name="submit"
-              value="Register"
+            <button
+              type="button"
               className="field field--full-width field--secondary"
-            />
+              onClick={() => browserHistory.push('/')}
+            >
+              Register
+            </button>
           </div>
         </form>
       </div>
