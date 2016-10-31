@@ -31257,7 +31257,7 @@
 	        _react2.default.createElement(
 	          'p',
 	          { className: 'no-margin' },
-	          'New Sale'
+	          'Transaction'
 	        )
 	      ),
 	      _react2.default.createElement(
@@ -31269,7 +31269,7 @@
 	        _react2.default.createElement(
 	          'p',
 	          { className: 'no-margin' },
-	          'Transactions'
+	          'History'
 	        )
 	      ),
 	      _react2.default.createElement(
@@ -32025,7 +32025,7 @@
 	    _react2.default.createElement(_Nav2.default, { pageName: 'Settings' }),
 	    _react2.default.createElement(
 	      'div',
-	      { className: 'settings' },
+	      { className: 'settings wrapper-pad-top' },
 	      _react2.default.createElement('div', { className: 'settings--logo' }),
 	      _react2.default.createElement(
 	        'form',
@@ -32279,6 +32279,8 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+	var _dec, _class;
+
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -32293,6 +32295,8 @@
 
 	var _TransactionList2 = _interopRequireDefault(_TransactionList);
 
+	var _transactionActions = __webpack_require__(314);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -32301,29 +32305,147 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var AddTransaction = function (_React$Component) {
+	var AddTransaction = (_dec = (0, _reactRedux.connect)(function (store) {
+	  return {};
+	}), _dec(_class = function (_React$Component) {
 	  _inherits(AddTransaction, _React$Component);
 
 	  function AddTransaction(props) {
 	    _classCallCheck(this, AddTransaction);
 
-	    return _possibleConstructorReturn(this, (AddTransaction.__proto__ || Object.getPrototypeOf(AddTransaction)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (AddTransaction.__proto__ || Object.getPrototypeOf(AddTransaction)).call(this, props));
+
+	    _this.todaysDate = _this.todaysDate.bind(_this);
+	    _this.state = {
+	      name: "",
+	      price: 0,
+	      date: _this.todaysDate()
+	    };
+	    _this.handleNameChange = _this.handleNameChange.bind(_this);
+	    _this.handlePriceChange = _this.handlePriceChange.bind(_this);
+	    _this.handleDateChange = _this.handleDateChange.bind(_this);
+	    return _this;
 	  }
 
 	  _createClass(AddTransaction, [{
+	    key: 'todaysDate',
+	    value: function todaysDate() {
+	      return new Date().toISOString().slice(0, 10);
+	    }
+	  }, {
+	    key: 'addTransaction',
+	    value: function addTransaction() {
+	      this.props.dispatch((0, _transactionActions.addTransaction)(this.state.name, this.state.date, this.state.price));
+	    }
+	  }, {
+	    key: 'handleNameChange',
+	    value: function handleNameChange(e) {
+	      this.setState({ name: e.target.value });
+	    }
+	  }, {
+	    key: 'handleDateChange',
+	    value: function handleDateChange(e) {
+	      this.setState({ date: e.target.value });
+	    }
+	  }, {
+	    key: 'handlePriceChange',
+	    value: function handlePriceChange(e) {
+	      if (parseInt(e.target.value)) this.setState({ price: parseInt(e.target.value) });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: '' },
-	        _react2.default.createElement(_Nav2.default, { pageName: 'New Transaction' })
+	        { className: 'wrapper' },
+	        _react2.default.createElement(_Nav2.default, { pageName: 'New Transaction' }),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'wrapper-pad-top' },
+	          _react2.default.createElement(
+	            'form',
+	            {
+	              className: 'form'
+	            },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'form--section' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'form--section-header' },
+	                'Basic Info'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'form--group' },
+	                _react2.default.createElement(
+	                  'label',
+	                  { htmlFor: 'name' },
+	                  'Name'
+	                ),
+	                _react2.default.createElement('input', {
+	                  type: 'text',
+	                  name: 'name',
+	                  id: 'name',
+	                  className: 'field field--std',
+	                  onChange: this.handleNameChange
+	                })
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'form--group form--group-money' },
+	                _react2.default.createElement(
+	                  'label',
+	                  { htmlFor: 'price' },
+	                  'Price'
+	                ),
+	                _react2.default.createElement('input', {
+	                  type: 'text',
+	                  name: 'price',
+	                  id: 'price',
+	                  className: 'field field--std field--money',
+	                  onChange: this.handlePriceChange
+	                })
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'form--group form--separated' },
+	                _react2.default.createElement(
+	                  'label',
+	                  { htmlFor: 'date' },
+	                  'Date'
+	                ),
+	                _react2.default.createElement('input', {
+	                  type: 'date',
+	                  id: 'date',
+	                  name: 'date',
+	                  className: 'field field--std',
+	                  onChange: this.handleDateChange,
+	                  value: this.state.date
+	                })
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'form--group form--separated' },
+	                _react2.default.createElement(
+	                  'button',
+	                  {
+	                    className: 'btn btn-std',
+	                    type: 'button',
+	                    onClick: this.addTransaction.bind(this)
+	                  },
+	                  'Add'
+	                )
+	              )
+	            )
+	          )
+	        )
 	      );
 	    }
 	  }]);
 
 	  return AddTransaction;
-	}(_react2.default.Component);
-
+	}(_react2.default.Component)) || _class);
 	exports.default = AddTransaction;
 
 /***/ },
@@ -32361,7 +32483,7 @@
 
 
 	// module
-	exports.push([module.id, ".mobile-nav ul, .tile-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0; }\n\n@font-face {\n  font-family: GothamRounded;\n  src: url(\"/static/fonts/Gotham-Rounded.ttf\"); }\n\n@font-face {\n  font-family: GothamRoundedBold;\n  src: url(\"/static/fonts/Gotham-Rounded-Bold.ttf\"); }\n\n* {\n  font-family: GothamRounded, Roboto, Helvetica, sans-serif; }\n\nbody {\n  background-color: #eee; }\n\n.no-margin {\n  margin: 0; }\n\n.wrapper {\n  margin-top: 50px;\n  margin-bottom: 60px; }\n  .wrapper--padded {\n    padding: 10px; }\n\n.reset-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0; }\n\n.tree-wrapper {\n  padding: 20px 0;\n  text-align: center; }\n\n.btn {\n  padding: 12px 20px 8px;\n  background-color: #479285;\n  color: white;\n  font-size: 18px;\n  border: none;\n  border-radius: 10px; }\n  .btn--fullwidth {\n    width: 100%;\n    border-radius: 0;\n    padding: 0 10px;\n    line-height: 50px;\n    text-align: left; }\n\n.btn-primary {\n  background-color: #479285; }\n\n.btn-white {\n  background-color: #fff;\n  color: #666; }\n\n.mobile-nav {\n  border-top: 1px solid #eee;\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  background-color: #fff; }\n\n.mobile-nav ul {\n  color: #479285; }\n  .mobile-nav ul li {\n    display: inline-block;\n    padding: 10px 0 8px;\n    width: 25%;\n    text-align: center;\n    font-size: 12px; }\n    .mobile-nav ul li .fa {\n      font-size: 22px;\n      margin-bottom: 3px; }\n\n.top-nav {\n  width: 100%;\n  position: fixed;\n  height: 50px;\n  top: 0;\n  left: 0;\n  right: 0;\n  background-color: #479285;\n  color: white;\n  text-align: center;\n  font-size: 22px;\n  line-height: 50px; }\n\n.graph-wrapper {\n  margin-bottom: 10px;\n  width: 100%; }\n  .graph-wrapper img {\n    width: 100%; }\n\n.list--elem {\n  background-color: #fff;\n  padding: 20px 10px 16px;\n  font-size: 18px;\n  border-bottom: 1px solid #ddd; }\n\n.list--header {\n  background-color: #ddd;\n  font-weight: bold; }\n\n.list--primary {\n  background-color: #479285;\n  color: white; }\n\n.list--row-right {\n  float: right; }\n\n.list--account-elem {\n  padding-top: 16px;\n  padding-bottom: 12px; }\n\n.list--account-number {\n  font-size: 14px; }\n\n.list--account-add {\n  margin-right: 10px; }\n\n.tile-list li {\n  background-color: #ddd;\n  width: 33%;\n  height: 0;\n  padding-bottom: 32%;\n  display: inline-block; }\n\n.settings {\n  padding-top: 20px; }\n\ninput[type=\"submit\"] {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\nselect {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\noption {\n  padding: 0;\n  white-space: normal;\n  color: #666; }\n\nlabel {\n  margin-bottom: 0; }\n\n.form--section {\n  margin-bottom: 20px; }\n  .form--section > div,\n  .form--section > input,\n  .form--section > button,\n  .form--section > select,\n  .form--section > .form-group,\n  .form--section > a {\n    border-bottom: 1px solid #eee; }\n    .form--section > div:last-child,\n    .form--section > input:last-child,\n    .form--section > button:last-child,\n    .form--section > select:last-child,\n    .form--section > .form-group:last-child,\n    .form--section > a:last-child {\n      border-bottom: none; }\n\n.form--section-header {\n  text-transform: uppercase;\n  line-height: 30px;\n  margin-top: 10px;\n  padding-left: 10px;\n  border-bottom: none !important; }\n\n.form--group {\n  position: relative; }\n  .form--group input {\n    border: none; }\n  .form--group label,\n  .form--group .field {\n    display: inline-block;\n    height: 50px;\n    line-height: 50px;\n    padding: 0 10px;\n    font-size: 18px;\n    background-color: white;\n    font-weight: 300;\n    color: #666; }\n  .form--group label {\n    width: 35%; }\n  .form--group .field {\n    outline: none;\n    width: 65%;\n    position: relative; }\n    .form--group .field--std {\n      background-color: white; }\n    .form--group .field--primary {\n      background-color: #479285;\n      color: white; }\n    .form--group .field--text-right {\n      text-align: right; }\n    .form--group .field--full-width {\n      width: 100%; }\n  .form--group-money label {\n    position: relative; }\n  .form--group-money label:after {\n    position: absolute;\n    content: \"$ \";\n    right: -22px;\n    top: 0;\n    z-index: 2; }\n  .form--group-money input.field {\n    padding-left: 30px; }\n\n.form--separated {\n  margin-bottom: 10px; }\n\n.row-right-overlay {\n  position: absolute;\n  right: 10px;\n  line-height: 50px; }\n", ""]);
+	exports.push([module.id, ".mobile-nav ul, .tile-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0; }\n\n@font-face {\n  font-family: GothamRounded;\n  src: url(\"/static/fonts/Gotham-Rounded.ttf\"); }\n\n@font-face {\n  font-family: GothamRoundedBold;\n  src: url(\"/static/fonts/Gotham-Rounded-Bold.ttf\"); }\n\n* {\n  font-family: GothamRounded, Roboto, Helvetica, sans-serif; }\n\nbody {\n  background-color: #eee; }\n\n.no-margin {\n  margin: 0; }\n\n.wrapper {\n  margin-top: 50px;\n  margin-bottom: 60px; }\n  .wrapper--padded {\n    padding: 10px; }\n\n.reset-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0; }\n\n.tree-wrapper {\n  padding: 20px 0;\n  text-align: center; }\n\n.btn {\n  padding: 12px 20px 8px;\n  background-color: #479285;\n  color: white;\n  font-size: 18px;\n  border: none;\n  border-radius: 10px; }\n  .btn--fullwidth {\n    width: 100%;\n    border-radius: 0;\n    padding: 0 10px;\n    line-height: 50px;\n    text-align: left; }\n\n.btn-primary {\n  background-color: #479285; }\n\n.btn-white {\n  background-color: #fff;\n  color: #666; }\n\n.mobile-nav {\n  border-top: 1px solid #eee;\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  background-color: #fff; }\n\n.mobile-nav ul {\n  color: #479285; }\n  .mobile-nav ul li {\n    display: inline-block;\n    padding: 10px 0 8px;\n    width: 25%;\n    text-align: center;\n    font-size: 12px; }\n    .mobile-nav ul li .fa {\n      font-size: 22px;\n      margin-bottom: 3px; }\n\n.top-nav {\n  width: 100%;\n  position: fixed;\n  height: 50px;\n  top: 0;\n  left: 0;\n  right: 0;\n  background-color: #479285;\n  color: white;\n  text-align: center;\n  font-size: 22px;\n  line-height: 50px; }\n\n.graph-wrapper {\n  margin-bottom: 10px;\n  width: 100%; }\n  .graph-wrapper img {\n    width: 100%; }\n\n.list--elem {\n  background-color: #fff;\n  padding: 20px 10px 16px;\n  font-size: 18px;\n  border-bottom: 1px solid #ddd; }\n\n.list--header {\n  background-color: #ddd;\n  font-weight: bold; }\n\n.list--primary {\n  background-color: #479285;\n  color: white; }\n\n.list--row-right {\n  float: right; }\n\n.list--account-elem {\n  padding-top: 16px;\n  padding-bottom: 12px; }\n\n.list--account-number {\n  font-size: 14px; }\n\n.list--account-add {\n  margin-right: 10px; }\n\n.tile-list li {\n  background-color: #ddd;\n  width: 33%;\n  height: 0;\n  padding-bottom: 32%;\n  display: inline-block; }\n\n.wrapper-pad-top {\n  padding-top: 20px; }\n\ninput[type=\"submit\"] {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\nselect {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\noption {\n  padding: 0;\n  white-space: normal;\n  color: #666; }\n\nlabel {\n  margin-bottom: 0; }\n\n.form--section {\n  margin-bottom: 20px; }\n  .form--section > div,\n  .form--section > input,\n  .form--section > button,\n  .form--section > select,\n  .form--section > .form-group,\n  .form--section > a {\n    border-bottom: 1px solid #eee; }\n    .form--section > div:last-child,\n    .form--section > input:last-child,\n    .form--section > button:last-child,\n    .form--section > select:last-child,\n    .form--section > .form-group:last-child,\n    .form--section > a:last-child {\n      border-bottom: none; }\n\n.form--section-header {\n  text-transform: uppercase;\n  line-height: 30px;\n  margin-top: 10px;\n  padding-left: 10px;\n  border-bottom: none !important; }\n\n.form--group {\n  position: relative; }\n  .form--group input {\n    border: none; }\n  .form--group label,\n  .form--group .field {\n    display: inline-block;\n    height: 50px;\n    line-height: 50px;\n    padding: 0 10px;\n    font-size: 18px;\n    background-color: white;\n    font-weight: 300;\n    color: #666; }\n  .form--group label {\n    width: 35%; }\n  .form--group .field {\n    outline: none;\n    width: 65%;\n    position: relative; }\n    .form--group .field--std {\n      background-color: white; }\n    .form--group .field--primary {\n      background-color: #479285;\n      color: white; }\n    .form--group .field--text-right {\n      text-align: right; }\n    .form--group .field--full-width {\n      width: 100%; }\n  .form--group-money label {\n    position: relative; }\n  .form--group-money label:after {\n    position: absolute;\n    content: \"$ \";\n    right: -22px;\n    top: 0;\n    z-index: 2; }\n  .form--group-money input.field {\n    padding-left: 30px; }\n\n.form--separated {\n  margin-bottom: 10px; }\n\n.row-right-overlay {\n  position: absolute;\n  right: 10px;\n  line-height: 50px; }\n", ""]);
 
 	// exports
 
@@ -32673,6 +32795,27 @@
 			URL.revokeObjectURL(oldSrc);
 	}
 
+
+/***/ },
+/* 314 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.addTransaction = addTransaction;
+	function addTransaction(name, date, price) {
+	  return {
+	    type: "ADD_TRANSACTION",
+	    payload: {
+	      name: name,
+	      date: date,
+	      price: price
+	    }
+	  };
+	}
 
 /***/ }
 /******/ ]);

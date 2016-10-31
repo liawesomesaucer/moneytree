@@ -7,7 +7,7 @@ export default function Settings () {
   return (
     <div className="wrapper">
       <Nav pageName="Settings"/>
-      <div className="settings">
+      <div className="settings wrapper-pad-top">
         <div className="settings--logo">
         </div>
         <form className="form settings--form">
