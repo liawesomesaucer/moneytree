@@ -41,6 +41,20 @@ body {
     text-align: left;
   }
 }
+#plaid-link {
+  display: inline;
+}
+#plaid-link-button {
+  padding: 10px;
+  background-color: $white;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-radius: 0;
+}
 .btn-default {
 
 }

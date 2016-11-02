@@ -60,7 +60,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(311);
+	__webpack_require__(313);
 
 	_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('root'));
 
@@ -21453,51 +21453,51 @@
 
 	var _initialization = __webpack_require__(258);
 
-	var _Container = __webpack_require__(292);
+	var _Container = __webpack_require__(294);
 
 	var _Container2 = _interopRequireDefault(_Container);
 
-	var _NotFound = __webpack_require__(296);
+	var _NotFound = __webpack_require__(298);
 
 	var _NotFound2 = _interopRequireDefault(_NotFound);
 
-	var _Accounts = __webpack_require__(297);
+	var _Accounts = __webpack_require__(299);
 
 	var _Accounts2 = _interopRequireDefault(_Accounts);
 
-	var _AddAccount = __webpack_require__(300);
+	var _AddAccount = __webpack_require__(302);
 
 	var _AddAccount2 = _interopRequireDefault(_AddAccount);
 
-	var _AddChaseAccount = __webpack_require__(301);
+	var _AddChaseAccount = __webpack_require__(303);
 
 	var _AddChaseAccount2 = _interopRequireDefault(_AddChaseAccount);
 
-	var _AddWellsAccount = __webpack_require__(302);
+	var _AddWellsAccount = __webpack_require__(304);
 
 	var _AddWellsAccount2 = _interopRequireDefault(_AddWellsAccount);
 
-	var _Home = __webpack_require__(303);
+	var _Home = __webpack_require__(305);
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _Login = __webpack_require__(305);
+	var _Login = __webpack_require__(307);
 
 	var _Login2 = _interopRequireDefault(_Login);
 
-	var _Settings = __webpack_require__(306);
+	var _Settings = __webpack_require__(308);
 
 	var _Settings2 = _interopRequireDefault(_Settings);
 
-	var _Transactions = __webpack_require__(307);
+	var _Transactions = __webpack_require__(309);
 
 	var _Transactions2 = _interopRequireDefault(_Transactions);
 
-	var _Plant = __webpack_require__(308);
+	var _Plant = __webpack_require__(310);
 
 	var _Plant2 = _interopRequireDefault(_Plant);
 
-	var _AddTransaction = __webpack_require__(309);
+	var _AddTransaction = __webpack_require__(311);
 
 	var _AddTransaction2 = _interopRequireDefault(_AddTransaction);
 
@@ -28716,9 +28716,9 @@
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-	var _transactionsReducer = __webpack_require__(315);
+	var _transactionsReducer = __webpack_require__(291);
 
-	var _settingsReducer = __webpack_require__(316);
+	var _settingsReducer = __webpack_require__(293);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31115,6 +31115,36 @@
 
 /***/ },
 /* 291 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.transactionsReducer = undefined;
+
+	var _TransactionData = __webpack_require__(292);
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+	var transactionsReducer = function transactionsReducer() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _TransactionData.transaction_data;
+	  var action = arguments[1];
+
+	  switch (action.type) {
+	    case "ADD_TRANSACTION":
+	      {
+	        return [].concat(_toConsumableArray(state), [action.payload]);
+	      }
+	  }
+	  return state;
+	};
+
+	exports.transactionsReducer = transactionsReducer;
+
+/***/ },
+/* 292 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -31149,7 +31179,27 @@
 	}];
 
 /***/ },
-/* 292 */
+/* 293 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var settings_data = {};
+
+	var settingsReducer = function settingsReducer() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : settings_data;
+	  var action = arguments[1];
+
+	  return state;
+	};
+
+	exports.settingsReducer = settingsReducer;
+
+/***/ },
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31163,11 +31213,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _BottomNav = __webpack_require__(293);
+	var _BottomNav = __webpack_require__(295);
 
 	var _BottomNav2 = _interopRequireDefault(_BottomNav);
 
-	var _Nav = __webpack_require__(295);
+	var _Nav = __webpack_require__(297);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -31187,7 +31237,7 @@
 	}
 
 /***/ },
-/* 293 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31201,7 +31251,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactFontawesome = __webpack_require__(294);
+	var _reactFontawesome = __webpack_require__(296);
 
 	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
 
@@ -31269,7 +31319,7 @@
 	}
 
 /***/ },
-/* 294 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31382,7 +31432,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 295 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31396,7 +31446,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactFontawesome = __webpack_require__(294);
+	var _reactFontawesome = __webpack_require__(296);
 
 	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
 
@@ -31415,7 +31465,7 @@
 	}
 
 /***/ },
-/* 296 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31429,7 +31479,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Nav = __webpack_require__(295);
+	var _Nav = __webpack_require__(297);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -31449,7 +31499,7 @@
 	}
 
 /***/ },
-/* 297 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31463,11 +31513,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Nav = __webpack_require__(295);
+	var _Nav = __webpack_require__(297);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
-	var _AccountsList = __webpack_require__(298);
+	var _AccountsList = __webpack_require__(300);
 
 	var _AccountsList2 = _interopRequireDefault(_AccountsList);
 
@@ -31483,7 +31533,7 @@
 	}
 
 /***/ },
-/* 298 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31499,13 +31549,13 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactFontawesome = __webpack_require__(294);
+	var _reactFontawesome = __webpack_require__(296);
 
 	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
 
 	var _reactRouter = __webpack_require__(197);
 
-	var _AccountsData = __webpack_require__(299);
+	var _AccountsData = __webpack_require__(301);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31593,7 +31643,7 @@
 	exports.default = AccountsList;
 
 /***/ },
-/* 299 */
+/* 301 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -31613,7 +31663,7 @@
 	}];
 
 /***/ },
-/* 300 */
+/* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31629,7 +31679,7 @@
 
 	var _reactRouter = __webpack_require__(197);
 
-	var _Nav = __webpack_require__(295);
+	var _Nav = __webpack_require__(297);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -31673,7 +31723,7 @@
 	}
 
 /***/ },
-/* 301 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31689,7 +31739,7 @@
 
 	var _reactRouter = __webpack_require__(197);
 
-	var _Nav = __webpack_require__(295);
+	var _Nav = __webpack_require__(297);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -31711,7 +31761,7 @@
 	}
 
 /***/ },
-/* 302 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31727,7 +31777,7 @@
 
 	var _reactRouter = __webpack_require__(197);
 
-	var _Nav = __webpack_require__(295);
+	var _Nav = __webpack_require__(297);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -31749,7 +31799,7 @@
 	}
 
 /***/ },
-/* 303 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31765,11 +31815,11 @@
 
 	var _reactRouter = __webpack_require__(197);
 
-	var _Nav = __webpack_require__(295);
+	var _Nav = __webpack_require__(297);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
-	var _TransactionList = __webpack_require__(304);
+	var _TransactionList = __webpack_require__(306);
 
 	var _TransactionList2 = _interopRequireDefault(_TransactionList);
 
@@ -31804,7 +31854,7 @@
 	}
 
 /***/ },
-/* 304 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31824,7 +31874,7 @@
 
 	var _reactRedux = __webpack_require__(173);
 
-	var _TransactionData = __webpack_require__(291);
+	var _TransactionData = __webpack_require__(292);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31896,7 +31946,7 @@
 	exports.default = TransactionList;
 
 /***/ },
-/* 305 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31912,7 +31962,7 @@
 
 	var _reactRouter = __webpack_require__(197);
 
-	var _Nav = __webpack_require__(295);
+	var _Nav = __webpack_require__(297);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -31986,186 +32036,7 @@
 	}
 
 /***/ },
-/* 306 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = Settings;
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactFontawesome = __webpack_require__(294);
-
-	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
-
-	var _reactRouter = __webpack_require__(197);
-
-	var _Nav = __webpack_require__(295);
-
-	var _Nav2 = _interopRequireDefault(_Nav);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function Settings() {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'wrapper' },
-	    _react2.default.createElement(_Nav2.default, { pageName: 'Settings' }),
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'settings wrapper-pad-top' },
-	      _react2.default.createElement('div', { className: 'settings--logo' }),
-	      _react2.default.createElement(
-	        'form',
-	        { className: 'form settings--form' },
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'form--section' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'form--section-header' },
-	            'Security'
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'form--group' },
-	            _react2.default.createElement(
-	              'label',
-	              { htmlFor: 'email' },
-	              'Email'
-	            ),
-	            _react2.default.createElement('input', {
-	              type: 'text',
-	              id: 'email',
-	              name: 'email',
-	              className: 'field field--std'
-	            })
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'form--group' },
-	            _react2.default.createElement(
-	              'label',
-	              { htmlFor: 'password' },
-	              'Password'
-	            ),
-	            _react2.default.createElement('input', {
-	              type: 'password',
-	              id: 'password',
-	              name: 'password',
-	              className: 'field field--std'
-	            })
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'form--section' },
-	          _react2.default.createElement(
-	            'button',
-	            {
-	              type: 'button',
-	              className: 'btn btn-white btn--fullwidth',
-	              onClick: function onClick() {
-	                return _reactRouter.browserHistory.push('/login');
-	              }
-	            },
-	            'Sign Out',
-	            _react2.default.createElement(
-	              'span',
-	              { className: 'row-right-overlay' },
-	              _react2.default.createElement(_reactFontawesome2.default, { name: 'chevron-right' })
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'form--section' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'form--section-header' },
-	            'Goals'
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'form--group form--group-money' },
-	            _react2.default.createElement(
-	              'label',
-	              { htmlFor: 'goal' },
-	              'Goal'
-	            ),
-	            _react2.default.createElement('input', {
-	              type: 'text',
-	              name: 'goal',
-	              id: 'goal',
-	              className: 'field field--std'
-	            })
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'form--group form--group-money' },
-	            _react2.default.createElement(
-	              'label',
-	              { htmlFor: 'income' },
-	              'Income'
-	            ),
-	            _react2.default.createElement('input', {
-	              type: 'text',
-	              name: 'income',
-	              id: 'income',
-	              className: 'field field--std field--money'
-	            })
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'form--group' },
-	            _react2.default.createElement(
-	              'label',
-	              { htmlFor: 'time-period' },
-	              'Time Period'
-	            ),
-	            _react2.default.createElement(
-	              'select',
-	              {
-	                id: 'time-period',
-	                name: 'time-period',
-	                className: 'field field-std'
-	              },
-	              _react2.default.createElement(
-	                'option',
-	                { value: 'Monthly' },
-	                'Monthly'
-	              ),
-	              _react2.default.createElement(
-	                'option',
-	                { value: 'Weekly' },
-	                'Weekly'
-	              ),
-	              _react2.default.createElement(
-	                'option',
-	                { value: 'Daily' },
-	                'Daily'
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'span',
-	              { className: 'row-right-overlay' },
-	              _react2.default.createElement(_reactFontawesome2.default, { name: 'chevron-down' })
-	            )
-	          )
-	        )
-	      )
-	    )
-	  );
-	}
-
-/***/ },
-/* 307 */
+/* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32181,11 +32052,243 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Nav = __webpack_require__(295);
+	var _reactFontawesome = __webpack_require__(296);
+
+	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
+
+	var _reactRouter = __webpack_require__(197);
+
+	var _Nav = __webpack_require__(297);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
-	var _TransactionList = __webpack_require__(304);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Settings = function (_React$Component) {
+	  _inherits(Settings, _React$Component);
+
+	  function Settings() {
+	    _classCallCheck(this, Settings);
+
+	    return _possibleConstructorReturn(this, (Settings.__proto__ || Object.getPrototypeOf(Settings)).apply(this, arguments));
+	  }
+
+	  _createClass(Settings, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      var script = document.createElement("script");
+
+	      script.src = "https://cdn.plaid.com/link/stable/link-initialize.js";
+	      script["data-client-name"] = "Client Name";
+	      script["data-form-id"] = "plaid-link";
+	      script["data-key"] = "test_key";
+	      script["data-product"] = "auth";
+	      script["data-env"] = "tartan";
+
+	      document.body.appendChild(script);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'wrapper' },
+	        _react2.default.createElement(_Nav2.default, { pageName: 'Settings' }),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'settings wrapper-pad-top' },
+	          _react2.default.createElement('div', { className: 'settings--logo' }),
+	          _react2.default.createElement(
+	            'form',
+	            { className: 'form settings--form' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'form--section' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'form--section-header' },
+	                'Security'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'form--group' },
+	                _react2.default.createElement(
+	                  'label',
+	                  { htmlFor: 'email' },
+	                  'Email'
+	                ),
+	                _react2.default.createElement('input', {
+	                  type: 'text',
+	                  id: 'email',
+	                  name: 'email',
+	                  className: 'field field--std'
+	                })
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'form--group' },
+	                _react2.default.createElement(
+	                  'label',
+	                  { htmlFor: 'password' },
+	                  'Password'
+	                ),
+	                _react2.default.createElement('input', {
+	                  type: 'password',
+	                  id: 'password',
+	                  name: 'password',
+	                  className: 'field field--std'
+	                })
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'form--section' },
+	              _react2.default.createElement(
+	                'button',
+	                {
+	                  type: 'button',
+	                  className: 'btn btn-white btn--fullwidth',
+	                  onClick: function onClick() {
+	                    return _reactRouter.browserHistory.push('/login');
+	                  }
+	                },
+	                'Sign Out',
+	                _react2.default.createElement(
+	                  'span',
+	                  { className: 'row-right-overlay' },
+	                  _react2.default.createElement(_reactFontawesome2.default, { name: 'chevron-right' })
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'form--section' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'form--section-header' },
+	                'Goals'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'form--group form--group-money' },
+	                _react2.default.createElement(
+	                  'label',
+	                  { htmlFor: 'goal' },
+	                  'Goal'
+	                ),
+	                _react2.default.createElement('input', {
+	                  type: 'text',
+	                  name: 'goal',
+	                  id: 'goal',
+	                  className: 'field field--std'
+	                })
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'form--group form--group-money' },
+	                _react2.default.createElement(
+	                  'label',
+	                  { htmlFor: 'income' },
+	                  'Income'
+	                ),
+	                _react2.default.createElement('input', {
+	                  type: 'text',
+	                  name: 'income',
+	                  id: 'income',
+	                  className: 'field field--std field--money'
+	                })
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'form--group' },
+	                _react2.default.createElement(
+	                  'label',
+	                  { htmlFor: 'time-period' },
+	                  'Time Period'
+	                ),
+	                _react2.default.createElement(
+	                  'select',
+	                  {
+	                    id: 'time-period',
+	                    name: 'time-period',
+	                    className: 'field field-std'
+	                  },
+	                  _react2.default.createElement(
+	                    'option',
+	                    { value: 'Monthly' },
+	                    'Monthly'
+	                  ),
+	                  _react2.default.createElement(
+	                    'option',
+	                    { value: 'Weekly' },
+	                    'Weekly'
+	                  ),
+	                  _react2.default.createElement(
+	                    'option',
+	                    { value: 'Daily' },
+	                    'Daily'
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'span',
+	                  { className: 'row-right-overlay' },
+	                  _react2.default.createElement(_reactFontawesome2.default, { name: 'chevron-down' })
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'form--group' },
+	            _react2.default.createElement('form', {
+	              id: 'plaid-link',
+	              method: 'POST',
+	              action: '/api/authenticate'
+	            }),
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'row-right-overlay' },
+	              _react2.default.createElement('span', { className: 'fa fa-chevron-right' })
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Settings;
+	}(_react2.default.Component);
+
+	exports.default = Settings;
+
+/***/ },
+/* 309 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Nav = __webpack_require__(297);
+
+	var _Nav2 = _interopRequireDefault(_Nav);
+
+	var _TransactionList = __webpack_require__(306);
 
 	var _TransactionList2 = _interopRequireDefault(_TransactionList);
 
@@ -32229,7 +32332,7 @@
 	exports.default = Transactions;
 
 /***/ },
-/* 308 */
+/* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32245,7 +32348,7 @@
 
 	var _reactRouter = __webpack_require__(197);
 
-	var _Nav = __webpack_require__(295);
+	var _Nav = __webpack_require__(297);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -32267,7 +32370,7 @@
 	}
 
 /***/ },
-/* 309 */
+/* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32287,15 +32390,15 @@
 
 	var _reactRedux = __webpack_require__(173);
 
-	var _Nav = __webpack_require__(295);
+	var _Nav = __webpack_require__(297);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
-	var _TransactionList = __webpack_require__(304);
+	var _TransactionList = __webpack_require__(306);
 
 	var _TransactionList2 = _interopRequireDefault(_TransactionList);
 
-	var _transactionActions = __webpack_require__(310);
+	var _transactionActions = __webpack_require__(312);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -32449,7 +32552,7 @@
 	exports.default = AddTransaction;
 
 /***/ },
-/* 310 */
+/* 312 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -32470,16 +32573,16 @@
 	}
 
 /***/ },
-/* 311 */
+/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(312);
+	var content = __webpack_require__(314);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(314)(content, {});
+	var update = __webpack_require__(316)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -32496,21 +32599,21 @@
 	}
 
 /***/ },
-/* 312 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(313)();
+	exports = module.exports = __webpack_require__(315)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".mobile-nav ul, .tile-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0;\n  margin-top: 0; }\n\n@font-face {\n  font-family: GothamRounded;\n  src: url(\"/static/fonts/Gotham-Rounded.ttf\"); }\n\n@font-face {\n  font-family: GothamRoundedBold;\n  src: url(\"/static/fonts/Gotham-Rounded-Bold.ttf\"); }\n\n* {\n  font-family: GothamRounded, Roboto, Helvetica, sans-serif; }\n\nbody {\n  background-color: #eee;\n  margin: 0; }\n\n.no-margin {\n  margin: 0; }\n\n.wrapper {\n  margin-top: 50px;\n  margin-bottom: 60px; }\n  .wrapper--padded {\n    padding: 10px; }\n\n.reset-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0; }\n\n.tree-wrapper {\n  padding: 20px 0;\n  text-align: center; }\n\n.btn {\n  padding: 12px 20px 8px;\n  background-color: #479285;\n  color: white;\n  font-size: 18px;\n  border: none;\n  border-radius: 10px; }\n  .btn--fullwidth {\n    width: 100%;\n    border-radius: 0;\n    padding: 0 10px;\n    line-height: 50px;\n    text-align: left; }\n\n.btn-primary {\n  background-color: #479285; }\n\n.btn-white {\n  background-color: #fff;\n  color: #666; }\n\n.mobile-nav {\n  border-top: 1px solid #eee;\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  background-color: #fff; }\n\n.mobile-nav ul {\n  color: #479285; }\n  .mobile-nav ul li {\n    display: inline-block;\n    padding: 10px 0 8px;\n    width: 25%;\n    text-align: center;\n    font-size: 12px; }\n    .mobile-nav ul li .fa {\n      font-size: 22px;\n      margin-bottom: 3px; }\n\n.top-nav {\n  width: 100%;\n  position: fixed;\n  height: 50px;\n  top: 0;\n  left: 0;\n  right: 0;\n  background-color: #479285;\n  color: white;\n  text-align: center;\n  font-size: 22px;\n  line-height: 50px;\n  z-index: 5; }\n\n.graph-wrapper {\n  margin-bottom: 10px;\n  width: 100%; }\n  .graph-wrapper img {\n    width: 100%; }\n\n.list--elem {\n  background-color: #fff;\n  padding: 20px 10px 16px;\n  font-size: 18px;\n  border-bottom: 1px solid #eee; }\n\n.list--header {\n  background-color: #ddd;\n  font-weight: bold;\n  border-bottom: none; }\n\n.list--primary {\n  background-color: #479285;\n  color: white; }\n\n.list--row-right {\n  float: right; }\n\n.list--account-elem {\n  padding-top: 16px;\n  padding-bottom: 12px; }\n\n.list--account-number {\n  font-size: 14px; }\n\n.list--account-add {\n  margin-right: 10px; }\n\n.tile-list li {\n  background-color: #ddd;\n  width: 33%;\n  height: 0;\n  padding-bottom: 32%;\n  display: inline-block; }\n\n.wrapper-pad-top {\n  padding-top: 20px; }\n\ninput[type=\"submit\"] {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\nselect {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\noption {\n  padding: 0;\n  white-space: normal;\n  color: #666; }\n\nlabel {\n  margin-bottom: 0; }\n\n.form--section {\n  margin-bottom: 20px; }\n  .form--section > div,\n  .form--section > input,\n  .form--section > button,\n  .form--section > select,\n  .form--section > .form-group,\n  .form--section > a {\n    border-bottom: 1px solid #eee; }\n    .form--section > div:last-child,\n    .form--section > input:last-child,\n    .form--section > button:last-child,\n    .form--section > select:last-child,\n    .form--section > .form-group:last-child,\n    .form--section > a:last-child {\n      border-bottom: none; }\n\n.form--section-header {\n  text-transform: uppercase;\n  line-height: 30px;\n  margin-top: 10px;\n  padding-left: 10px;\n  border-bottom: none !important; }\n\n.form--group {\n  position: relative; }\n  .form--group input {\n    border: none; }\n  .form--group label,\n  .form--group .field {\n    display: inline-block;\n    height: 50px;\n    line-height: 50px;\n    padding: 0 10px;\n    font-size: 18px;\n    background-color: white;\n    font-weight: 300;\n    color: #666; }\n  .form--group label {\n    width: 35%; }\n  .form--group .field {\n    border: none;\n    outline: none;\n    width: 65%;\n    position: relative; }\n    .form--group .field--std {\n      background-color: white; }\n    .form--group .field--primary {\n      background-color: #479285;\n      color: white; }\n    .form--group .field--text-right {\n      text-align: right; }\n    .form--group .field--full-width {\n      width: 100%; }\n  .form--group-money label {\n    position: relative; }\n  .form--group-money label:after {\n    position: absolute;\n    content: \"$ \";\n    right: -22px;\n    top: 0;\n    z-index: 2; }\n  .form--group-money input.field {\n    padding-left: 30px; }\n\n.form--separated {\n  margin-bottom: 10px; }\n\n.row-right-overlay {\n  position: absolute;\n  right: 10px;\n  line-height: 50px; }\n", ""]);
+	exports.push([module.id, ".mobile-nav ul, .tile-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0;\n  margin-top: 0; }\n\n@font-face {\n  font-family: GothamRounded;\n  src: url(\"/static/fonts/Gotham-Rounded.ttf\"); }\n\n@font-face {\n  font-family: GothamRoundedBold;\n  src: url(\"/static/fonts/Gotham-Rounded-Bold.ttf\"); }\n\n* {\n  font-family: GothamRounded, Roboto, Helvetica, sans-serif; }\n\nbody {\n  background-color: #eee;\n  margin: 0; }\n\n.no-margin {\n  margin: 0; }\n\n.wrapper {\n  margin-top: 50px;\n  margin-bottom: 60px; }\n  .wrapper--padded {\n    padding: 10px; }\n\n.reset-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0; }\n\n.tree-wrapper {\n  padding: 20px 0;\n  text-align: center; }\n\n.btn {\n  padding: 12px 20px 8px;\n  background-color: #666;\n  color: white;\n  font-size: 18px;\n  border: none;\n  border-radius: 10px; }\n  .btn--fullwidth {\n    width: 100%;\n    border-radius: 0;\n    padding: 0 10px;\n    line-height: 50px;\n    text-align: left; }\n\n#plaid-link {\n  display: inline; }\n\n#plaid-link-button {\n  padding: 10px;\n  background-color: #fff;\n  font-size: 18px;\n  border: none;\n  border-radius: 10px;\n  width: 100%;\n  text-align: left;\n  border: none;\n  border-radius: 0; }\n\n.btn-primary {\n  background-color: #666; }\n\n.btn-white {\n  background-color: #fff;\n  color: #666; }\n\n.mobile-nav {\n  border-top: 1px solid #eee;\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  background-color: #fff; }\n\n.mobile-nav ul {\n  color: #666; }\n  .mobile-nav ul li {\n    display: inline-block;\n    padding: 10px 0 8px;\n    width: 25%;\n    text-align: center;\n    font-size: 12px; }\n    .mobile-nav ul li .fa {\n      font-size: 22px;\n      margin-bottom: 3px; }\n\n.top-nav {\n  width: 100%;\n  position: fixed;\n  height: 50px;\n  top: 0;\n  left: 0;\n  right: 0;\n  background-color: #666;\n  color: white;\n  text-align: center;\n  font-size: 22px;\n  line-height: 50px;\n  z-index: 5; }\n\n.graph-wrapper {\n  margin-bottom: 10px;\n  width: 100%; }\n  .graph-wrapper img {\n    width: 100%; }\n\n.list--elem {\n  background-color: #fff;\n  padding: 20px 10px 16px;\n  font-size: 18px;\n  border-bottom: 1px solid #eee; }\n\n.list--header {\n  background-color: #ddd;\n  font-weight: bold;\n  border-bottom: none; }\n\n.list--primary {\n  background-color: #666;\n  color: white; }\n\n.list--row-right {\n  float: right; }\n\n.list--account-elem {\n  padding-top: 16px;\n  padding-bottom: 12px; }\n\n.list--account-number {\n  font-size: 14px; }\n\n.list--account-add {\n  margin-right: 10px; }\n\n.tile-list li {\n  background-color: #ddd;\n  width: 33%;\n  height: 0;\n  padding-bottom: 32%;\n  display: inline-block; }\n\n.wrapper-pad-top {\n  padding-top: 20px; }\n\ninput[type=\"submit\"] {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\nselect {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\noption {\n  padding: 0;\n  white-space: normal;\n  color: #666; }\n\nlabel {\n  margin-bottom: 0; }\n\n.form--section {\n  margin-bottom: 20px; }\n  .form--section > div,\n  .form--section > input,\n  .form--section > button,\n  .form--section > select,\n  .form--section > .form-group,\n  .form--section > a {\n    border-bottom: 1px solid #eee; }\n    .form--section > div:last-child,\n    .form--section > input:last-child,\n    .form--section > button:last-child,\n    .form--section > select:last-child,\n    .form--section > .form-group:last-child,\n    .form--section > a:last-child {\n      border-bottom: none; }\n\n.form--section-header {\n  text-transform: uppercase;\n  line-height: 30px;\n  margin-top: 10px;\n  padding-left: 10px;\n  border-bottom: none !important; }\n\n.form--group {\n  position: relative; }\n  .form--group input {\n    border: none; }\n  .form--group label,\n  .form--group .field {\n    display: inline-block;\n    height: 50px;\n    line-height: 50px;\n    padding: 0 10px;\n    font-size: 18px;\n    background-color: white;\n    font-weight: 300;\n    color: #666; }\n  .form--group label {\n    width: 35%; }\n  .form--group .field {\n    border: none;\n    outline: none;\n    width: 65%;\n    position: relative; }\n    .form--group .field--std {\n      background-color: white; }\n    .form--group .field--primary {\n      background-color: #666;\n      color: white; }\n    .form--group .field--text-right {\n      text-align: right; }\n    .form--group .field--full-width {\n      width: 100%; }\n  .form--group-money label {\n    position: relative; }\n  .form--group-money label:after {\n    position: absolute;\n    content: \"$ \";\n    right: -22px;\n    top: 0;\n    z-index: 2; }\n  .form--group-money input.field {\n    padding-left: 30px; }\n\n.form--separated {\n  margin-bottom: 10px; }\n\n.row-right-overlay {\n  position: absolute;\n  right: 10px;\n  line-height: 50px; }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 313 */
+/* 315 */
 /***/ function(module, exports) {
 
 	/*
@@ -32566,7 +32669,7 @@
 
 
 /***/ },
-/* 314 */
+/* 316 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -32816,56 +32919,6 @@
 			URL.revokeObjectURL(oldSrc);
 	}
 
-
-/***/ },
-/* 315 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.transactionsReducer = undefined;
-
-	var _TransactionData = __webpack_require__(291);
-
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-	var transactionsReducer = function transactionsReducer() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _TransactionData.transaction_data;
-	  var action = arguments[1];
-
-	  switch (action.type) {
-	    case "ADD_TRANSACTION":
-	      {
-	        return [].concat(_toConsumableArray(state), [action.payload]);
-	      }
-	  }
-	  return state;
-	};
-
-	exports.transactionsReducer = transactionsReducer;
-
-/***/ },
-/* 316 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var settings_data = {};
-
-	var settingsReducer = function settingsReducer() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : settings_data;
-	  var action = arguments[1];
-
-	  return state;
-	};
-
-	exports.settingsReducer = settingsReducer;
 
 /***/ }
 /******/ ]);
