@@ -1,7 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import { transaction_data } from './TransactionData';
 
+@connect((store) => {
+  return {
+    transactions: store.transactions
+  };
+})
 export default class TransactionList extends React.Component {
   constructor(props) {
     super(props);
@@ -9,8 +15,8 @@ export default class TransactionList extends React.Component {
   render () {
     let transactions = [];
 
-    transaction_data.forEach((val, index) => {
-      let cost = (val.price > 0) ? "$ " + val.price.toString() : val.price.toString().replace("-", "- $ ");
+    this.props.transactions.forEach((val, index) => {
+      let cost = (val.amount <= 0) ? "$ " + val.amount.toString() : val.amount.toString().replace("-", "- $ ");
 
       transactions.push(
         <li className="list--elem" key={index}>
@@ -22,8 +28,8 @@ export default class TransactionList extends React.Component {
     return (
       <div className="list-wrapper">
         <ul className="reset-list list">
-          <li className="list--elem list--header">
-            <span>Recent Transactions</span>
+          <li className="form--section-header">
+            Recent Transactions
           </li>
           {transactions}
         </ul>

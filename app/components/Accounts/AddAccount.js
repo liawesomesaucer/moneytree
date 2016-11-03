@@ -7,9 +7,19 @@ export default function AddAccount () {
   return (
     <div>
       <Nav pageName="Add Account"/>
-      <a onClick={() => browserHistory.push('/accounts')}>Back</a>
-      <a onClick={() => browserHistory.push('/accounts/add/chase')}>Chase</a>
-      <a onClick={() => browserHistory.push('/accounts/add/wells')}>Wells Fargo</a>
+      <div className="content-wrapper">
+        <a onClick={() => browserHistory.push('/accounts')}>Back</a>
+        <ul className="tile-list">
+          <a onClick={() => browserHistory.push('/accounts/add/chase')}>
+            <li>
+            </li>
+          </a>
+          <a onClick={() => browserHistory.push('/accounts/add/wells')}>
+            <li>
+            </li>
+          </a>
+        </ul>
+      </div>
     </div>
   )
 }

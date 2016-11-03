@@ -1,13 +1,21 @@
 body {
   background-color: $background-color;
+  margin: 0;
+  margin-top: 50px;
+  margin-bottom: 60px;
 }
 .no-margin {
   margin: 0;
 }
 .wrapper {
   // Because of nav
-  margin-top: 50px;
-  margin-bottom: 60px;
+
+  &--padded {
+    padding: 10px;
+  }
+}
+button:focus {
+  outline: none;
 }
 .reset-list {
   list-style-type: none;
@@ -27,4 +35,61 @@ body {
   font-size: 18px;
   border: none;
   border-radius: 10px;
+
+  &--fullwidth {
+    width: 100%;
+    border-radius: 0;
+    padding: 0 10px;
+    line-height: 50px;
+    text-align: left;
+  }
+}
+.btn:focus {
+  background-color: $primary-color;
+}
+#plaid-link {
+  display: inline;
+}
+.plaid-link-button {
+  padding: 0 10px;
+  font-size: 18px;
+  line-height: 50px;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-radius: 0;
+}
+.btn-default {
+
+}
+.btn-back {
+  position: absolute;
+  color: white;
+  line-height: 50px;
+  top: 0;
+  left: 10px;
+  z-index: 6;
+}
+.btn-back:before {
+  content: "< ";
+  margin-right: 4px;
+}
+.btn-primary,
+.btn-primary:focus {
+  background-color: $primary-color;
+}
+.btn-white {
+  background-color: $white;
+  color: $text-color;
+}
+.tree-wrapper img {
+  width: 58%;
+  max-width: 300px;
+  padding: 10px;
+  margin: auto;
+}
+.center-text {
+  text-align: center;
 }
