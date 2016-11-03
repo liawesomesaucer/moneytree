@@ -1,4 +1,4 @@
-export function addTransaction (data) {
+export function addAccount (data) {
   return {
     type: "ADD_ACCOUNT",
     payload: data

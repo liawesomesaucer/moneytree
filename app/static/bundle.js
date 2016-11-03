@@ -60,7 +60,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(313);
+	__webpack_require__(314);
 
 	_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('root'));
 
@@ -21453,51 +21453,51 @@
 
 	var _initialization = __webpack_require__(258);
 
-	var _Container = __webpack_require__(294);
+	var _Container = __webpack_require__(295);
 
 	var _Container2 = _interopRequireDefault(_Container);
 
-	var _NotFound = __webpack_require__(298);
+	var _NotFound = __webpack_require__(299);
 
 	var _NotFound2 = _interopRequireDefault(_NotFound);
 
-	var _Accounts = __webpack_require__(299);
+	var _Accounts = __webpack_require__(300);
 
 	var _Accounts2 = _interopRequireDefault(_Accounts);
 
-	var _AddAccount = __webpack_require__(302);
+	var _AddAccount = __webpack_require__(303);
 
 	var _AddAccount2 = _interopRequireDefault(_AddAccount);
 
-	var _AddChaseAccount = __webpack_require__(303);
+	var _AddChaseAccount = __webpack_require__(304);
 
 	var _AddChaseAccount2 = _interopRequireDefault(_AddChaseAccount);
 
-	var _AddWellsAccount = __webpack_require__(304);
+	var _AddWellsAccount = __webpack_require__(305);
 
 	var _AddWellsAccount2 = _interopRequireDefault(_AddWellsAccount);
 
-	var _Home = __webpack_require__(305);
+	var _Home = __webpack_require__(306);
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _Login = __webpack_require__(307);
+	var _Login = __webpack_require__(308);
 
 	var _Login2 = _interopRequireDefault(_Login);
 
-	var _Settings = __webpack_require__(308);
+	var _Settings = __webpack_require__(309);
 
 	var _Settings2 = _interopRequireDefault(_Settings);
 
-	var _Transactions = __webpack_require__(309);
+	var _Transactions = __webpack_require__(310);
 
 	var _Transactions2 = _interopRequireDefault(_Transactions);
 
-	var _Plant = __webpack_require__(310);
+	var _Plant = __webpack_require__(311);
 
 	var _Plant2 = _interopRequireDefault(_Plant);
 
-	var _AddTransaction = __webpack_require__(311);
+	var _AddTransaction = __webpack_require__(312);
 
 	var _AddTransaction2 = _interopRequireDefault(_AddTransaction);
 
@@ -28720,7 +28720,7 @@
 
 	var _settingsReducer = __webpack_require__(293);
 
-	var _accountsReducer = __webpack_require__(318);
+	var _accountsReducer = __webpack_require__(294);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31203,6 +31203,35 @@
 
 /***/ },
 /* 294 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+	var accounts_data = [];
+
+	var accountsReducer = function accountsReducer() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : accounts_data;
+	  var action = arguments[1];
+
+	  switch (action.type) {
+	    case "ADD_ACCOUNT":
+	      {
+	        return [].concat(_toConsumableArray(state), [action.payload]);
+	      }
+	  }
+	  return state;
+	};
+
+	exports.accountsReducer = accountsReducer;
+
+/***/ },
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31216,11 +31245,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _BottomNav = __webpack_require__(295);
+	var _BottomNav = __webpack_require__(296);
 
 	var _BottomNav2 = _interopRequireDefault(_BottomNav);
 
-	var _Nav = __webpack_require__(297);
+	var _Nav = __webpack_require__(298);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -31240,7 +31269,7 @@
 	}
 
 /***/ },
-/* 295 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31254,7 +31283,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactFontawesome = __webpack_require__(296);
+	var _reactFontawesome = __webpack_require__(297);
 
 	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
 
@@ -31284,13 +31313,13 @@
 	      _react2.default.createElement(
 	        'li',
 	        { onClick: function onClick() {
-	            return _reactRouter.browserHistory.push('/add');
+	            return _reactRouter.browserHistory.push('/accounts');
 	          } },
-	        _react2.default.createElement(_reactFontawesome2.default, { name: 'plus-square-o' }),
+	        _react2.default.createElement(_reactFontawesome2.default, { name: 'address-book' }),
 	        _react2.default.createElement(
 	          'p',
 	          { className: 'no-margin' },
-	          'Transaction'
+	          'Accounts'
 	        )
 	      ),
 	      _react2.default.createElement(
@@ -31302,7 +31331,7 @@
 	        _react2.default.createElement(
 	          'p',
 	          { className: 'no-margin' },
-	          'History'
+	          'Transactions'
 	        )
 	      ),
 	      _react2.default.createElement(
@@ -31322,7 +31351,7 @@
 	}
 
 /***/ },
-/* 296 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31435,7 +31464,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 297 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31449,7 +31478,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactFontawesome = __webpack_require__(296);
+	var _reactFontawesome = __webpack_require__(297);
 
 	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
 
@@ -31468,7 +31497,7 @@
 	}
 
 /***/ },
-/* 298 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31482,7 +31511,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Nav = __webpack_require__(297);
+	var _Nav = __webpack_require__(298);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -31502,7 +31531,7 @@
 	}
 
 /***/ },
-/* 299 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31516,11 +31545,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Nav = __webpack_require__(297);
+	var _Nav = __webpack_require__(298);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
-	var _AccountsList = __webpack_require__(300);
+	var _AccountsList = __webpack_require__(301);
 
 	var _AccountsList2 = _interopRequireDefault(_AccountsList);
 
@@ -31536,7 +31565,7 @@
 	}
 
 /***/ },
-/* 300 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31548,17 +31577,21 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+	var _dec, _class;
+
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactFontawesome = __webpack_require__(296);
+	var _reactFontawesome = __webpack_require__(297);
 
 	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
 
 	var _reactRouter = __webpack_require__(197);
 
-	var _AccountsData = __webpack_require__(301);
+	var _reactRedux = __webpack_require__(173);
+
+	var _accountsActions = __webpack_require__(302);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31568,7 +31601,11 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var AccountsList = function (_React$Component) {
+	var AccountsList = (_dec = (0, _reactRedux.connect)(function (store) {
+	  return {
+	    accounts: store.accounts
+	  };
+	}), _dec(_class = function (_React$Component) {
 	  _inherits(AccountsList, _React$Component);
 
 	  function AccountsList(props) {
@@ -31578,27 +31615,79 @@
 	  }
 
 	  _createClass(AccountsList, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var reactElem = this;
+	      // Attach the plaid api
+	      var sandboxHandler = Plaid.create({
+	        clientName: 'MoneyTree',
+	        env: 'tartan',
+	        product: 'auth',
+	        key: 'test_key',
+	        onSuccess: function onSuccess(token, metadata) {
+	          console.log('account_id is', metadata.account_id);
+	          $.get("/api/accounts?public_token=" + token, function (data) {
+	            console.log("wow");
+	            console.log(data);
+	            reactElem.props.dispatch((0, _accountsActions.addAccount)(data.accounts));
+	            _reactRouter.browserHistory.push('/accounts');
+	          });
+	        }
+	      });
+	      document.getElementById('plaid-link').onclick = function () {
+	        sandboxHandler.open();
+	      };
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var accounts = [];
+	      var accounts_data = [];
+	      for (var i = 0; i < this.props.accounts.length; i++) {
+	        accounts_data = accounts_data.concat(this.props.accounts[i]);
+	      }
 
-	      _AccountsData.accounts_data.forEach(function (val, index) {
+	      if (accounts_data.length === 0) {
 	        accounts.push(_react2.default.createElement(
 	          'li',
-	          { className: 'list--elem list--account-elem', key: index },
+	          { className: 'list--elem list--account-elem', key: 1 },
 	          _react2.default.createElement(
 	            'span',
 	            { className: 'list--account-name' },
-	            val.name
+	            'No Accounts Yet!'
 	          ),
 	          _react2.default.createElement('br', null),
 	          _react2.default.createElement(
 	            'span',
 	            { className: 'list--account-number' },
-	            val.numbers.join("-")
+	            'Connect an account to begin'
 	          )
 	        ));
-	      });
+	      } else {
+	        accounts_data.forEach(function (val, index) {
+	          accounts.push(_react2.default.createElement(
+	            'li',
+	            { className: 'list--elem list--account-elem', key: index },
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'list--account-name' },
+	              val.meta.name
+	            ),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'list--row-right' },
+	              '$ ',
+	              val.meta.number
+	            ),
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'list--account-number' },
+	              val.subtype
+	            )
+	          ));
+	        });
+	      }
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'list-wrapper' },
@@ -31616,24 +31705,17 @@
 	          ),
 	          accounts,
 	          _react2.default.createElement(
-	            'a',
-	            { onClick: function onClick() {
-	                _reactRouter.browserHistory.push('accounts/add');
-	              } },
-	            _react2.default.createElement(
-	              'li',
-	              { className: 'list--elem list--primary' },
-	              _react2.default.createElement(
-	                'span',
-	                null,
-	                'Add Account'
-	              ),
-	              _react2.default.createElement(
-	                'span',
-	                { className: 'list--row-right list--account-add' },
-	                _react2.default.createElement(_reactFontawesome2.default, { name: 'plus' })
-	              )
-	            )
+	            'button',
+	            {
+	              id: 'plaid-link',
+	              className: 'btn-primary plaid-link-button'
+	            },
+	            'Link a bank'
+	          ),
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'row-right-overlay btn-primary' },
+	            _react2.default.createElement('span', { className: 'fa fa-chevron-right' })
 	          )
 	        )
 	      );
@@ -31641,12 +31723,11 @@
 	  }]);
 
 	  return AccountsList;
-	}(_react2.default.Component);
-
+	}(_react2.default.Component)) || _class);
 	exports.default = AccountsList;
 
 /***/ },
-/* 301 */
+/* 302 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -31654,19 +31735,16 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var accounts_data = exports.accounts_data = [{
-	  name: "Wells Fargo",
-	  numbers: ["XXXX", "XXXX", "XXXX", "XXXX"]
-	}, {
-	  name: "Chase",
-	  numbers: ["XXXX", "XXXX", "XXXX", "XXXX"]
-	}, {
-	  name: "Bank of America",
-	  numbers: ["XXXX", "XXXX", "XXXX", "XXXX"]
-	}];
+	exports.addAccount = addAccount;
+	function addAccount(data) {
+	  return {
+	    type: "ADD_ACCOUNT",
+	    payload: data
+	  };
+	}
 
 /***/ },
-/* 302 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31682,7 +31760,7 @@
 
 	var _reactRouter = __webpack_require__(197);
 
-	var _Nav = __webpack_require__(297);
+	var _Nav = __webpack_require__(298);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -31726,7 +31804,7 @@
 	}
 
 /***/ },
-/* 303 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31742,7 +31820,7 @@
 
 	var _reactRouter = __webpack_require__(197);
 
-	var _Nav = __webpack_require__(297);
+	var _Nav = __webpack_require__(298);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -31764,7 +31842,7 @@
 	}
 
 /***/ },
-/* 304 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31780,7 +31858,7 @@
 
 	var _reactRouter = __webpack_require__(197);
 
-	var _Nav = __webpack_require__(297);
+	var _Nav = __webpack_require__(298);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -31802,7 +31880,7 @@
 	}
 
 /***/ },
-/* 305 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31818,11 +31896,11 @@
 
 	var _reactRouter = __webpack_require__(197);
 
-	var _Nav = __webpack_require__(297);
+	var _Nav = __webpack_require__(298);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
-	var _TransactionList = __webpack_require__(306);
+	var _TransactionList = __webpack_require__(307);
 
 	var _TransactionList2 = _interopRequireDefault(_TransactionList);
 
@@ -31857,7 +31935,7 @@
 	}
 
 /***/ },
-/* 306 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31949,7 +32027,7 @@
 	exports.default = TransactionList;
 
 /***/ },
-/* 307 */
+/* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31965,7 +32043,7 @@
 
 	var _reactRouter = __webpack_require__(197);
 
-	var _Nav = __webpack_require__(297);
+	var _Nav = __webpack_require__(298);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -32039,7 +32117,7 @@
 	}
 
 /***/ },
-/* 308 */
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32051,19 +32129,23 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+	var _dec, _class;
+
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactFontawesome = __webpack_require__(296);
+	var _reactRedux = __webpack_require__(173);
+
+	var _reactFontawesome = __webpack_require__(297);
 
 	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
 
 	var _reactRouter = __webpack_require__(197);
 
-	var _accountsActions = __webpack_require__(317);
+	var _accountsActions = __webpack_require__(302);
 
-	var _Nav = __webpack_require__(297);
+	var _Nav = __webpack_require__(298);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -32075,7 +32157,9 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Settings = function (_React$Component) {
+	var Settings = (_dec = (0, _reactRedux.connect)(function (store) {
+	  return {};
+	}), _dec(_class = function (_React$Component) {
 	  _inherits(Settings, _React$Component);
 
 	  function Settings(props) {
@@ -32085,27 +32169,6 @@
 	  }
 
 	  _createClass(Settings, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      // Attach the plaid api
-	      var sandboxHandler = Plaid.create({
-	        clientName: 'MoneyTree',
-	        env: 'tartan',
-	        product: 'auth',
-	        key: 'test_key',
-	        onSuccess: function onSuccess(token, metadata) {
-	          console.log('account_id is', metadata.account_id);
-	          $.get("/api/accounts?public_token=" + token, function (data) {
-	            console.log(data);
-	            _reactRouter.browserHistory.push('/accounts');
-	          });
-	        }
-	      });
-	      document.getElementById('plaid-link').onclick = function () {
-	        sandboxHandler.open();
-	      };
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -32254,19 +32317,6 @@
 	                )
 	              )
 	            )
-	          ),
-	          _react2.default.createElement(
-	            'button',
-	            {
-	              id: 'plaid-link',
-	              className: 'plaid-link-button'
-	            },
-	            'Link your bank account'
-	          ),
-	          _react2.default.createElement(
-	            'span',
-	            { className: 'row-right-overlay' },
-	            _react2.default.createElement('span', { className: 'fa fa-chevron-right' })
 	          )
 	        )
 	      );
@@ -32274,12 +32324,11 @@
 	  }]);
 
 	  return Settings;
-	}(_react2.default.Component);
-
+	}(_react2.default.Component)) || _class);
 	exports.default = Settings;
 
 /***/ },
-/* 309 */
+/* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32295,11 +32344,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Nav = __webpack_require__(297);
+	var _Nav = __webpack_require__(298);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
-	var _TransactionList = __webpack_require__(306);
+	var _TransactionList = __webpack_require__(307);
 
 	var _TransactionList2 = _interopRequireDefault(_TransactionList);
 
@@ -32343,7 +32392,7 @@
 	exports.default = Transactions;
 
 /***/ },
-/* 310 */
+/* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32359,7 +32408,7 @@
 
 	var _reactRouter = __webpack_require__(197);
 
-	var _Nav = __webpack_require__(297);
+	var _Nav = __webpack_require__(298);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -32381,7 +32430,7 @@
 	}
 
 /***/ },
-/* 311 */
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32401,15 +32450,15 @@
 
 	var _reactRedux = __webpack_require__(173);
 
-	var _Nav = __webpack_require__(297);
+	var _Nav = __webpack_require__(298);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
-	var _TransactionList = __webpack_require__(306);
+	var _TransactionList = __webpack_require__(307);
 
 	var _TransactionList2 = _interopRequireDefault(_TransactionList);
 
-	var _transactionActions = __webpack_require__(312);
+	var _transactionActions = __webpack_require__(313);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -32563,7 +32612,7 @@
 	exports.default = AddTransaction;
 
 /***/ },
-/* 312 */
+/* 313 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -32584,16 +32633,16 @@
 	}
 
 /***/ },
-/* 313 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(314);
+	var content = __webpack_require__(315);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(316)(content, {});
+	var update = __webpack_require__(317)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -32610,21 +32659,21 @@
 	}
 
 /***/ },
-/* 314 */
+/* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(315)();
+	exports = module.exports = __webpack_require__(316)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".mobile-nav ul, .tile-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0;\n  margin-top: 0; }\n\n@font-face {\n  font-family: GothamRounded;\n  src: url(\"/static/fonts/Gotham-Rounded.ttf\"); }\n\n@font-face {\n  font-family: GothamRoundedBold;\n  src: url(\"/static/fonts/Gotham-Rounded-Bold.ttf\"); }\n\n* {\n  font-family: GothamRounded, Roboto, Helvetica, sans-serif; }\n\nbody {\n  background-color: #c8e2ec;\n  margin: 0;\n  margin-top: 50px;\n  margin-bottom: 60px; }\n\n.no-margin {\n  margin: 0; }\n\n.wrapper--padded {\n  padding: 10px; }\n\nbutton:focus {\n  outline: none; }\n\n.reset-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0; }\n\n.tree-wrapper {\n  padding: 20px 0;\n  text-align: center; }\n\n.btn {\n  padding: 12px 20px 8px;\n  background-color: #12324D;\n  color: white;\n  font-size: 18px;\n  border: none;\n  border-radius: 10px; }\n  .btn--fullwidth {\n    width: 100%;\n    border-radius: 0;\n    padding: 0 10px;\n    line-height: 50px;\n    text-align: left; }\n\n#plaid-link {\n  display: inline; }\n\n.plaid-link-button {\n  padding: 10px;\n  background-color: rgba(255, 255, 255, 0.8);\n  font-size: 18px;\n  border: none;\n  border-radius: 10px;\n  width: 100%;\n  text-align: left;\n  border: none;\n  border-radius: 0; }\n\n.btn-primary {\n  background-color: #12324D; }\n\n.btn-white {\n  background-color: rgba(255, 255, 255, 0.8);\n  color: #666; }\n\n.mobile-nav {\n  border-top: 1px solid #c8e2ec;\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  background-color: #fff; }\n\n.mobile-nav ul {\n  color: #12324D; }\n  .mobile-nav ul li {\n    display: inline-block;\n    padding: 10px 0 8px;\n    width: 25%;\n    text-align: center;\n    font-size: 12px; }\n    .mobile-nav ul li .fa {\n      font-size: 22px;\n      margin-bottom: 3px; }\n\n.top-nav {\n  width: 100%;\n  position: fixed;\n  height: 50px;\n  top: 0;\n  left: 0;\n  right: 0;\n  background-color: #12324D;\n  color: white;\n  text-align: center;\n  font-size: 22px;\n  line-height: 50px;\n  z-index: 5; }\n\n.graph-wrapper {\n  margin-bottom: 10px;\n  width: 100%; }\n  .graph-wrapper img {\n    width: 100%; }\n\n.list--elem {\n  background-color: rgba(255, 255, 255, 0.8);\n  padding: 20px 10px 16px;\n  font-size: 18px;\n  border-bottom: 1px solid #c8e2ec; }\n\n.list--header {\n  background-color: rgba(255, 255, 255, 0.4);\n  font-weight: bold;\n  border-bottom: none; }\n\n.list--primary {\n  background-color: #12324D;\n  color: white; }\n\n.list--row-right {\n  float: right; }\n\n.list--account-elem {\n  padding-top: 16px;\n  padding-bottom: 12px; }\n\n.list--account-number {\n  font-size: 14px; }\n\n.list--account-add {\n  margin-right: 10px; }\n\n.tile-list li {\n  background-color: rgba(255, 255, 255, 0.4);\n  width: 33%;\n  height: 0;\n  padding-bottom: 32%;\n  display: inline-block; }\n\n.wrapper-pad-top {\n  padding-top: 20px; }\n\ninput[type=\"submit\"] {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\nselect {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\noption {\n  padding: 0;\n  white-space: normal;\n  color: #666; }\n\nlabel {\n  margin-bottom: 0; }\n\n.form--section {\n  margin-bottom: 20px; }\n  .form--section > div,\n  .form--section > input,\n  .form--section > button,\n  .form--section > select,\n  .form--section > .form-group,\n  .form--section > a {\n    border-bottom: 1px solid #c8e2ec; }\n    .form--section > div:last-child,\n    .form--section > input:last-child,\n    .form--section > button:last-child,\n    .form--section > select:last-child,\n    .form--section > .form-group:last-child,\n    .form--section > a:last-child {\n      border-bottom: none; }\n\n.form--section-header {\n  text-transform: uppercase;\n  line-height: 30px;\n  margin-top: 10px;\n  padding-left: 10px;\n  border-bottom: none !important; }\n\n.form--group {\n  position: relative; }\n  .form--group input {\n    border: none; }\n  .form--group label,\n  .form--group .field {\n    display: inline-block;\n    height: 50px;\n    line-height: 50px;\n    padding: 0 10px;\n    font-size: 18px;\n    background-color: rgba(255, 255, 255, 0.8);\n    font-weight: 300;\n    color: #666; }\n  .form--group label {\n    width: 35%; }\n  .form--group .field {\n    border: none;\n    outline: none;\n    width: 65%;\n    position: relative; }\n    .form--group .field--std {\n      background-color: rgba(255, 255, 255, 0.8); }\n    .form--group .field--primary {\n      background-color: #12324D;\n      color: white; }\n    .form--group .field--text-right {\n      text-align: right; }\n    .form--group .field--full-width {\n      width: 100%; }\n  .form--group-money label {\n    position: relative; }\n  .form--group-money label:after {\n    position: absolute;\n    content: \"$ \";\n    right: -22px;\n    top: 0;\n    z-index: 2; }\n  .form--group-money input.field {\n    padding-left: 30px; }\n\n.form--separated {\n  margin-bottom: 10px; }\n\n.row-right-overlay {\n  position: absolute;\n  right: 10px;\n  line-height: 50px; }\n", ""]);
+	exports.push([module.id, ".mobile-nav ul, .tile-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0;\n  margin-top: 0; }\n\n@font-face {\n  font-family: GothamRounded;\n  src: url(\"/static/fonts/Gotham-Rounded.ttf\"); }\n\n@font-face {\n  font-family: GothamRoundedBold;\n  src: url(\"/static/fonts/Gotham-Rounded-Bold.ttf\"); }\n\n* {\n  font-family: GothamRounded, Roboto, Helvetica, sans-serif; }\n\nbody {\n  background-color: #c8e2ec;\n  margin: 0;\n  margin-top: 50px;\n  margin-bottom: 60px; }\n\n.no-margin {\n  margin: 0; }\n\n.wrapper--padded {\n  padding: 10px; }\n\nbutton:focus {\n  outline: none; }\n\n.reset-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0; }\n\n.tree-wrapper {\n  padding: 20px 0;\n  text-align: center; }\n\n.btn {\n  padding: 12px 20px 8px;\n  background-color: #12324D;\n  color: white;\n  font-size: 18px;\n  border: none;\n  border-radius: 10px; }\n  .btn--fullwidth {\n    width: 100%;\n    border-radius: 0;\n    padding: 0 10px;\n    line-height: 50px;\n    text-align: left; }\n\n#plaid-link {\n  display: inline; }\n\n.plaid-link-button {\n  padding: 0 10px;\n  background-color: rgba(255, 255, 255, 0.8);\n  font-size: 18px;\n  line-height: 50px;\n  border: none;\n  border-radius: 10px;\n  width: 100%;\n  text-align: left;\n  border: none;\n  border-radius: 0; }\n\n.btn-primary {\n  background-color: #12324D; }\n\n.btn-white {\n  background-color: rgba(255, 255, 255, 0.8);\n  color: #666; }\n\n.mobile-nav {\n  border-top: 1px solid #c8e2ec;\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  background-color: #fff; }\n\n.mobile-nav ul {\n  color: #12324D; }\n  .mobile-nav ul li {\n    display: inline-block;\n    padding: 10px 0 8px;\n    width: 25%;\n    text-align: center;\n    font-size: 12px; }\n    .mobile-nav ul li .fa {\n      font-size: 22px;\n      margin-bottom: 3px; }\n\n.top-nav {\n  width: 100%;\n  position: fixed;\n  height: 50px;\n  top: 0;\n  left: 0;\n  right: 0;\n  background-color: #12324D;\n  color: white;\n  text-align: center;\n  font-size: 22px;\n  line-height: 50px;\n  z-index: 5; }\n\n.graph-wrapper {\n  margin-bottom: 10px;\n  width: 100%; }\n  .graph-wrapper img {\n    width: 100%; }\n\n.list--elem {\n  background-color: rgba(255, 255, 255, 0.8);\n  padding: 20px 10px 16px;\n  font-size: 18px;\n  border-bottom: 1px solid #c8e2ec; }\n\n.list--header {\n  background-color: rgba(255, 255, 255, 0.4);\n  font-weight: bold;\n  border-bottom: none; }\n\n.list--primary {\n  background-color: #12324D;\n  color: white; }\n\n.list--row-right {\n  float: right; }\n\n.list--account-elem {\n  padding-top: 16px;\n  padding-bottom: 12px;\n  min-height: 70px; }\n\n.list--account-number {\n  font-size: 14px; }\n\n.list--account-add {\n  margin-right: 10px; }\n\n.tile-list li {\n  background-color: rgba(255, 255, 255, 0.4);\n  width: 33%;\n  height: 0;\n  padding-bottom: 32%;\n  display: inline-block; }\n\n.wrapper-pad-top {\n  padding-top: 20px; }\n\ninput[type=\"submit\"] {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\nselect {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\noption {\n  padding: 0;\n  white-space: normal;\n  color: #666; }\n\nlabel {\n  margin-bottom: 0; }\n\n.form--section {\n  margin-bottom: 20px; }\n  .form--section > div,\n  .form--section > input,\n  .form--section > button,\n  .form--section > select,\n  .form--section > .form-group,\n  .form--section > a {\n    border-bottom: 1px solid #c8e2ec; }\n    .form--section > div:last-child,\n    .form--section > input:last-child,\n    .form--section > button:last-child,\n    .form--section > select:last-child,\n    .form--section > .form-group:last-child,\n    .form--section > a:last-child {\n      border-bottom: none; }\n\n.form--section-header {\n  text-transform: uppercase;\n  line-height: 30px;\n  margin-top: 10px;\n  padding-left: 10px;\n  border-bottom: none !important; }\n\n.form--group {\n  position: relative; }\n  .form--group input {\n    border: none; }\n  .form--group label,\n  .form--group .field {\n    display: inline-block;\n    height: 50px;\n    line-height: 50px;\n    padding: 0 10px;\n    font-size: 18px;\n    background-color: rgba(255, 255, 255, 0.8);\n    font-weight: 300;\n    color: #666; }\n  .form--group label {\n    width: 35%; }\n  .form--group .field {\n    border: none;\n    outline: none;\n    width: 65%;\n    position: relative; }\n    .form--group .field--std {\n      background-color: rgba(255, 255, 255, 0.8); }\n    .form--group .field--primary {\n      background-color: #12324D;\n      color: white; }\n    .form--group .field--text-right {\n      text-align: right; }\n    .form--group .field--full-width {\n      width: 100%; }\n  .form--group-money label {\n    position: relative; }\n  .form--group-money label:after {\n    position: absolute;\n    content: \"$ \";\n    right: -22px;\n    top: 0;\n    z-index: 2; }\n  .form--group-money input.field {\n    padding-left: 30px; }\n\n.form--separated {\n  margin-bottom: 10px; }\n\n.row-right-overlay {\n  position: absolute;\n  right: 10px;\n  line-height: 50px; }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 315 */
+/* 316 */
 /***/ function(module, exports) {
 
 	/*
@@ -32680,7 +32729,7 @@
 
 
 /***/ },
-/* 316 */
+/* 317 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -32930,52 +32979,6 @@
 			URL.revokeObjectURL(oldSrc);
 	}
 
-
-/***/ },
-/* 317 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.addTransaction = addTransaction;
-	function addTransaction(data) {
-	  return {
-	    type: "ADD_ACCOUNT",
-	    payload: data
-	  };
-	}
-
-/***/ },
-/* 318 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-	var accounts_data = [];
-
-	var accountsReducer = function accountsReducer() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : accounts_data;
-	  var action = arguments[1];
-
-	  switch (action.type) {
-	    case "ADD_ACCOUNT":
-	      {
-	        return [].concat(_toConsumableArray(state), [action.payload]);
-	      }
-	  }
-	  return state;
-	};
-
-	exports.accountsReducer = accountsReducer;
 
 /***/ }
 /******/ ]);

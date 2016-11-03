@@ -47,11 +47,22 @@ apiRouter.get('/accounts', function(req, res) {
         } else {
           // Return a JSON body containing the user's accounts, which
           // includes names, balances, and account and routing numbers.
-          res.json({accounts: authResponse.accounts});
+          res.json({
+            accounts: authResponse.accounts,
+            transactions: authResponse.transactions,
+          });
         }
       });
     }
   });
+});
+
+/* CURRENTLY - Transaction data not showing up because of api I think - tried 
+  different commands and they didn't work.
+*/
+
+apiRouter.get('/transactions', function(req, res) {
+
 });
 
 router.get('*', function(req, res) {
