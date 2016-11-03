@@ -17,14 +17,20 @@ export default class Home extends React.Component {
     super(props);
     this.diffMoney = this.diffMoney.bind(this);
   }
-  diffMoney(startDate, endDate) {
+  diffMoney(startTime, endTime) {
     let diff = 0;
     this.props.transactions.forEach(function(value) {
       let valDate = new Date(value.date);
-      if (valDate >= startDate && valDate <= endDate) {
+      // console.log(value);
+      // console.log(valDate);
+      // console.log(startTime);
+      // console.log(endTime);
+      if (valDate >= startTime && valDate <= endTime) {
+        console.log("yes")
         diff = diff - value.amount;
       }
     });
+    console.log("Diff returned is: " + diff.toString())
     return diff;
   }
   render() {
@@ -35,12 +41,7 @@ export default class Home extends React.Component {
           <h4 className="plant-message">
             You have not planted any seeds yet
           </h4>
-          <a 
-            className="btn btn-default"
-            onClick={() => browserHistory.push("/plant")}
-          >
-            Plant a Seed
-          </a>
+
         </div>
       )
     } else {
@@ -52,17 +53,18 @@ export default class Home extends React.Component {
     }
     let seeds = []
     this.props.seeds.forEach((val, i) => {
+      console.log(val);
       seeds.push(
         <li
           className="list--elem list--elem-seed"
           key={i}
-
         >
           <span 
             className="seed--status-bar"
-            style={{width: this.diffMoney(val.starDate, val.endDate).toString() + "%"}}
+            style={{width: this.diffMoney(val.startTime, val.endTime).toString() + "%"}}
           ></span>
-          {val.name}
+          <span className="list--account-name">{val.name}</span><br/>
+          <span className="list--account-number">Save {val.goal} in a {val.time}</span>
         </li>
       )
     })
@@ -71,6 +73,17 @@ export default class Home extends React.Component {
       <div className="">
         <Nav pageName="Home"/>
         {tree}
+        <div className="center-text">
+          <a 
+            className="btn btn-default"
+            onClick={() => browserHistory.push("/plant")}
+          >
+            Plant a Seed
+          </a>
+        </div>
+        <div className="form--section-header">
+          Current Seeds
+        </div>
         <ul className="reset-list list seed-list">
           {seeds}
         </ul>

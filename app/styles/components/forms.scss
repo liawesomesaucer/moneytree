@@ -26,7 +26,6 @@ label {
 
 .form {
   &--section {
-    margin-bottom: 20px;
     &>div,
     &>input,
     &>button,
@@ -43,7 +42,7 @@ label {
   &--section-header {
     text-transform: uppercase;
     line-height: 30px;
-    margin-top: 10px;
+    padding-top: 20px;
     padding-left: 10px;
     border-bottom: none !important;
   }

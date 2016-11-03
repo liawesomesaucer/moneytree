@@ -28,8 +28,8 @@ export default class TransactionList extends React.Component {
     return (
       <div className="list-wrapper">
         <ul className="reset-list list">
-          <li className="list--elem list--header">
-            <span>Recent Transactions</span>
+          <li className="form--section-header">
+            Recent Transactions
           </li>
           {transactions}
         </ul>

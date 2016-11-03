@@ -23,6 +23,7 @@
     "body-parser": "^1.15.2",
     "css": "^2.2.1",
     "css-loader": "^0.25.0",
+    "d3": "^3.5.0",
     "dotenv": "^2.0.0",
     "envvar": "^1.1.0",
     "extract-text-webpack-plugin": "^1.0.1",

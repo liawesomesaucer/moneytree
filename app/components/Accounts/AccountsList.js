@@ -73,7 +73,7 @@ export default class AccountsList extends React.Component {
     return (
       <div className="list-wrapper">
         <ul className="reset-list list">
-          <li className="list--elem list--header">
+          <li className="form--section-header">
             <span>Accounts</span>
           </li>
           {accounts}
