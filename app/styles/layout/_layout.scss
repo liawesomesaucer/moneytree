@@ -13,9 +13,9 @@ body {
   &--padded {
     padding: 10px;
   }
-  &>div>div {
-    position: relative;
-  }
+  // &>div>div {
+  //   position: relative;
+  // }
 }
 button:focus {
   outline: none;
