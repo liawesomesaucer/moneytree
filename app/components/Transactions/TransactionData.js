@@ -6,7 +6,7 @@ export const transaction_data = [
   },
   {
     name: "UCSD Paycheck",
-    amount: -180,
+    amount: -2000,
     date: "2016-11-14"
   },
   {

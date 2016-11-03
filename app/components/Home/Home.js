@@ -53,18 +53,30 @@ export default class Home extends React.Component {
     }
     let seeds = []
     this.props.seeds.forEach((val, i) => {
+      let diff = this.diffMoney(val.startTime, val.endTime);
+      let percentCompleted = (diff / val.goal).toString();
       console.log(val);
       seeds.push(
         <li
           className="list--elem list--elem-seed"
           key={i}
         >
-          <span 
-            className="seed--status-bar"
-            style={{width: this.diffMoney(val.startTime, val.endTime).toString() + "%"}}
-          ></span>
-          <span className="list--account-name">{val.name}</span><br/>
-          <span className="list--account-number">Save {val.goal} in a {val.time}</span>
+          <span className="seed--status-bar-wrapper">
+            <span 
+              className="seed--status-bar"
+              style={{width: percentCompleted + "%"}}
+            >
+            </span>
+            {percentCompleted}% Complete
+          </span>
+          <span className="list--row-left">
+            <div className="list--account-name">{val.name}</div>
+            <div className="list--account-number">Save {val.goal} in a {val.time}</div>
+          </span>
+          <span className="list--row-right list--account-right"><br/>
+           {/* <span className="small-text">Complete</span>*/}
+          </span>
+
         </li>
       )
     })

@@ -31175,7 +31175,7 @@
 	  date: "2016-11-30"
 	}, {
 	  name: "UCSD Paycheck",
-	  amount: -180,
+	  amount: -2000,
 	  date: "2016-11-14"
 	}, {
 	  name: "iPhone 7",
@@ -32158,6 +32158,8 @@
 	      }
 	      var seeds = [];
 	      this.props.seeds.forEach(function (val, i) {
+	        var diff = _this2.diffMoney(val.startTime, val.endTime);
+	        var percentCompleted = (diff / val.goal).toString();
 	        console.log(val);
 	        seeds.push(_react2.default.createElement(
 	          'li',
@@ -32165,23 +32167,37 @@
 	            className: 'list--elem list--elem-seed',
 	            key: i
 	          },
-	          _react2.default.createElement('span', {
-	            className: 'seed--status-bar',
-	            style: { width: _this2.diffMoney(val.startTime, val.endTime).toString() + "%" }
-	          }),
 	          _react2.default.createElement(
 	            'span',
-	            { className: 'list--account-name' },
-	            val.name
+	            { className: 'seed--status-bar-wrapper' },
+	            _react2.default.createElement('span', {
+	              className: 'seed--status-bar',
+	              style: { width: percentCompleted + "%" }
+	            }),
+	            percentCompleted,
+	            '% Complete'
 	          ),
-	          _react2.default.createElement('br', null),
 	          _react2.default.createElement(
 	            'span',
-	            { className: 'list--account-number' },
-	            'Save ',
-	            val.goal,
-	            ' in a ',
-	            val.time
+	            { className: 'list--row-left' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'list--account-name' },
+	              val.name
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'list--account-number' },
+	              'Save ',
+	              val.goal,
+	              ' in a ',
+	              val.time
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'list--row-right list--account-right' },
+	            _react2.default.createElement('br', null)
 	          )
 	        ));
 	      });
@@ -32612,82 +32628,6 @@
 	                  'span',
 	                  { className: 'row-right-overlay' },
 	                  _react2.default.createElement(_reactFontawesome2.default, { name: 'chevron-right' })
-	                )
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'form--section' },
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'form--section-header' },
-	                'Goals'
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'form--group form--group-money' },
-	                _react2.default.createElement(
-	                  'label',
-	                  { htmlFor: 'goal' },
-	                  'Goal'
-	                ),
-	                _react2.default.createElement('input', {
-	                  type: 'text',
-	                  name: 'goal',
-	                  id: 'goal',
-	                  className: 'field field--std'
-	                })
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'form--group form--group-money' },
-	                _react2.default.createElement(
-	                  'label',
-	                  { htmlFor: 'income' },
-	                  'Income'
-	                ),
-	                _react2.default.createElement('input', {
-	                  type: 'text',
-	                  name: 'income',
-	                  id: 'income',
-	                  className: 'field field--std field--money'
-	                })
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'form--group' },
-	                _react2.default.createElement(
-	                  'label',
-	                  { htmlFor: 'time-period' },
-	                  'Time Period'
-	                ),
-	                _react2.default.createElement(
-	                  'select',
-	                  {
-	                    id: 'time-period',
-	                    name: 'time-period',
-	                    className: 'field field-std'
-	                  },
-	                  _react2.default.createElement(
-	                    'option',
-	                    { value: 'Monthly' },
-	                    'Monthly'
-	                  ),
-	                  _react2.default.createElement(
-	                    'option',
-	                    { value: 'Weekly' },
-	                    'Weekly'
-	                  ),
-	                  _react2.default.createElement(
-	                    'option',
-	                    { value: 'Daily' },
-	                    'Daily'
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  'span',
-	                  { className: 'row-right-overlay' },
-	                  _react2.default.createElement(_reactFontawesome2.default, { name: 'chevron-down' })
 	                )
 	              )
 	            )
@@ -46999,7 +46939,7 @@
 
 
 	// module
-	exports.push([module.id, ".mobile-nav ul, .tile-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0;\n  margin-top: 0; }\n\n@font-face {\n  font-family: GothamRounded;\n  src: url(\"/static/fonts/Gotham-Rounded.ttf\"); }\n\n@font-face {\n  font-family: GothamRoundedBold;\n  src: url(\"/static/fonts/Gotham-Rounded-Bold.ttf\"); }\n\n* {\n  font-family: GothamRounded, Roboto, Helvetica, sans-serif; }\n\n.header {\n  color: #12324D;\n  text-align: center; }\n\nbody {\n  background-color: #c8e2ec;\n  margin: 0;\n  margin-top: 50px;\n  margin-bottom: 60px; }\n\n.no-margin {\n  margin: 0; }\n\n.wrapper--padded {\n  padding: 10px; }\n\nbutton:focus {\n  outline: none; }\n\n.reset-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0; }\n\n.content-wrapper {\n  padding: 10px; }\n\n.tree-wrapper {\n  padding: 20px 0;\n  text-align: center; }\n\n.btn {\n  padding: 12px 20px 8px;\n  background-color: #12324D;\n  color: white;\n  font-size: 18px;\n  border: none;\n  border-radius: 10px; }\n  .btn--fullwidth {\n    width: 100%;\n    border-radius: 0;\n    padding: 0 10px;\n    line-height: 50px;\n    text-align: left; }\n\n.btn:focus {\n  background-color: #12324D; }\n\n#plaid-link {\n  display: inline; }\n\n.plaid-link-button {\n  padding: 0 10px;\n  font-size: 18px;\n  line-height: 50px;\n  border: none;\n  border-radius: 10px;\n  width: 100%;\n  text-align: left;\n  border: none;\n  border-radius: 0; }\n\n.btn-back {\n  position: absolute;\n  color: white;\n  line-height: 50px;\n  top: 0;\n  left: 10px;\n  z-index: 6; }\n\n.btn-back:before {\n  content: \"< \";\n  margin-right: 4px; }\n\n.btn-primary,\n.btn-primary:focus {\n  background-color: #12324D; }\n\n.btn-white {\n  background-color: rgba(255, 255, 255, 0.8);\n  color: #666; }\n\n.tree-wrapper img {\n  width: 58%;\n  max-width: 300px;\n  padding: 10px;\n  margin: auto; }\n\n.center-text {\n  text-align: center; }\n\n.mobile-nav {\n  border-top: 1px solid #c8e2ec;\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  background-color: #fff; }\n\n.mobile-nav ul {\n  color: #12324D; }\n  .mobile-nav ul li {\n    display: inline-block;\n    padding: 10px 0 8px;\n    width: 25%;\n    text-align: center;\n    font-size: 12px; }\n    .mobile-nav ul li .fa {\n      font-size: 22px;\n      margin-bottom: 3px; }\n\n.top-nav {\n  width: 100%;\n  position: fixed;\n  height: 50px;\n  top: 0;\n  left: 0;\n  right: 0;\n  background-color: #12324D;\n  color: white;\n  text-align: center;\n  font-size: 22px;\n  line-height: 50px;\n  z-index: 5; }\n\n.graph-wrapper {\n  margin-bottom: 10px;\n  width: 100%;\n  text-align: center; }\n  .graph-wrapper img {\n    width: 100%; }\n\n.list--elem {\n  background-color: rgba(255, 255, 255, 0.8);\n  padding: 20px 10px 16px;\n  font-size: 18px;\n  border-bottom: 1px solid #c8e2ec; }\n\n.list--elem-seed {\n  background-color: transparent;\n  position: relative; }\n\n.list--header {\n  background-color: rgba(255, 255, 255, 0.4);\n  font-weight: bold;\n  border-bottom: none; }\n\n.list--primary {\n  background-color: #12324D;\n  color: white; }\n\n.list--row-right {\n  float: right; }\n\n.list--account-elem {\n  padding-top: 16px;\n  padding-bottom: 12px;\n  min-height: 70px; }\n\n.list--account-number {\n  font-size: 14px; }\n\n.list--account-add {\n  margin-right: 10px; }\n\n.tile-list li {\n  background-color: rgba(255, 255, 255, 0.4);\n  width: 33%;\n  height: 0;\n  padding-bottom: 32%;\n  display: inline-block; }\n\n.seed--status-bar {\n  width: 30%;\n  background-color: green;\n  display: inline-block;\n  position: absolute; }\n\n.seed-list {\n  background-color: rgba(255, 255, 255, 0.8); }\n\n.wrapper-pad-top {\n  padding-top: 20px; }\n\ninput[type=\"submit\"] {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\nselect {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\noption {\n  padding: 0;\n  white-space: normal;\n  color: #666; }\n\nlabel {\n  margin-bottom: 0; }\n\n.form--section > div,\n.form--section > input,\n.form--section > button,\n.form--section > select,\n.form--section > .form-group,\n.form--section > a {\n  border-bottom: 1px solid #c8e2ec; }\n  .form--section > div:last-child,\n  .form--section > input:last-child,\n  .form--section > button:last-child,\n  .form--section > select:last-child,\n  .form--section > .form-group:last-child,\n  .form--section > a:last-child {\n    border-bottom: none; }\n\n.form--section-header {\n  text-transform: uppercase;\n  line-height: 30px;\n  padding-top: 20px;\n  padding-left: 10px;\n  border-bottom: none !important; }\n\n.form--group {\n  position: relative; }\n  .form--group input {\n    border: none; }\n  .form--group label,\n  .form--group .field {\n    display: inline-block;\n    height: 50px;\n    line-height: 50px;\n    padding: 0 10px;\n    font-size: 18px;\n    background-color: rgba(255, 255, 255, 0.8);\n    font-weight: 300;\n    color: #666; }\n  .form--group label {\n    width: 35%; }\n  .form--group .field {\n    border: none;\n    outline: none;\n    width: 65%;\n    position: relative; }\n    .form--group .field--std {\n      background-color: rgba(255, 255, 255, 0.8); }\n    .form--group .field--primary {\n      background-color: #12324D;\n      color: white; }\n    .form--group .field--text-right {\n      text-align: right; }\n    .form--group .field--full-width {\n      width: 100%; }\n  .form--group-money label {\n    position: relative; }\n  .form--group-money label:after {\n    position: absolute;\n    content: \"$ \";\n    right: -22px;\n    top: 0;\n    z-index: 2; }\n  .form--group-money input.field {\n    padding-left: 30px; }\n\n.form--separated {\n  margin-bottom: 10px; }\n\n.row-right-overlay {\n  position: absolute;\n  right: 10px;\n  line-height: 50px; }\n", ""]);
+	exports.push([module.id, ".mobile-nav ul, .tile-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0;\n  margin-top: 0; }\n\n@font-face {\n  font-family: GothamRounded;\n  src: url(\"/static/fonts/Gotham-Rounded.ttf\"); }\n\n@font-face {\n  font-family: GothamRoundedBold;\n  src: url(\"/static/fonts/Gotham-Rounded-Bold.ttf\"); }\n\n* {\n  font-family: GothamRounded, Roboto, Helvetica, sans-serif; }\n\n.header {\n  color: #12324D;\n  text-align: center; }\n\nbody {\n  background-color: #c8e2ec;\n  margin: 0;\n  margin-top: 50px;\n  margin-bottom: 60px; }\n\n.no-margin {\n  margin: 0; }\n\n.wrapper--padded {\n  padding: 10px; }\n\nbutton:focus {\n  outline: none; }\n\n.reset-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0; }\n\n.tree-wrapper {\n  padding: 20px 0;\n  text-align: center; }\n\n.btn {\n  padding: 12px 20px 8px;\n  background-color: #12324D;\n  color: white;\n  font-size: 18px;\n  border: none;\n  border-radius: 10px; }\n  .btn--fullwidth {\n    width: 100%;\n    border-radius: 0;\n    padding: 0 10px;\n    line-height: 50px;\n    text-align: left; }\n\n.btn:focus {\n  background-color: #12324D; }\n\n#plaid-link {\n  display: inline; }\n\n.plaid-link-button {\n  padding: 0 10px;\n  font-size: 18px;\n  line-height: 50px;\n  border: none;\n  border-radius: 10px;\n  width: 100%;\n  text-align: left;\n  border: none;\n  border-radius: 0; }\n\n.btn-back {\n  position: absolute;\n  color: white;\n  line-height: 50px;\n  top: 0;\n  left: 10px;\n  z-index: 6; }\n\n.btn-back:before {\n  content: \"< \";\n  margin-right: 4px; }\n\n.btn-primary,\n.btn-primary:focus {\n  background-color: #12324D; }\n\n.btn-white {\n  background-color: rgba(255, 255, 255, 0.8);\n  color: #666; }\n\n.tree-wrapper img {\n  width: 58%;\n  max-width: 300px;\n  padding: 10px;\n  margin: auto; }\n\n.center-text {\n  text-align: center; }\n\n.small-text {\n  font-size: 14px; }\n\n.mobile-nav {\n  border-top: 1px solid #c8e2ec;\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  background-color: #fff; }\n\n.mobile-nav ul {\n  color: #12324D; }\n  .mobile-nav ul li {\n    display: inline-block;\n    padding: 10px 0 8px;\n    width: 25%;\n    text-align: center;\n    font-size: 12px; }\n    .mobile-nav ul li .fa {\n      font-size: 22px;\n      margin-bottom: 3px; }\n\n.top-nav {\n  width: 100%;\n  position: fixed;\n  height: 50px;\n  top: 0;\n  left: 0;\n  right: 0;\n  background-color: #12324D;\n  color: white;\n  text-align: center;\n  font-size: 22px;\n  line-height: 50px;\n  z-index: 5; }\n\n.graph-wrapper {\n  margin-bottom: 10px;\n  width: 100%;\n  text-align: center; }\n  .graph-wrapper img {\n    width: 100%; }\n\n.list--elem {\n  background-color: rgba(255, 255, 255, 0.8);\n  padding: 20px 10px 16px;\n  font-size: 18px;\n  border-bottom: 1px solid #c8e2ec; }\n\n.list--elem-seed {\n  background-color: transparent;\n  position: relative;\n  padding-bottom: 35px; }\n\n.list--header {\n  background-color: rgba(255, 255, 255, 0.4);\n  font-weight: bold;\n  border-bottom: none; }\n\n.list--primary {\n  background-color: #12324D;\n  color: white; }\n\n.list--row-right {\n  float: right; }\n\n.list--account-elem {\n  padding-top: 16px;\n  padding-bottom: 12px;\n  min-height: 70px; }\n\n.list--account-number {\n  font-size: 14px; }\n\n.list--account-add {\n  margin-right: 10px; }\n\n.list--account-right {\n  position: absolute;\n  right: 10px;\n  top: 20px;\n  text-align: right; }\n\n.tile-list li {\n  background-color: rgba(255, 255, 255, 0.4);\n  width: 33%;\n  height: 0;\n  padding-bottom: 32%;\n  display: inline-block; }\n\n.seed--status-bar-wrapper {\n  width: 100%;\n  position: absolute;\n  height: 25px;\n  line-height: 25px;\n  left: 0;\n  bottom: 0;\n  font-size: 14px;\n  background-color: #eee;\n  text-align: center; }\n\n.seed--status-bar {\n  width: 30%;\n  background-color: #92C85A;\n  height: 25px;\n  position: absolute;\n  left: 0; }\n\n.seed-list {\n  background-color: rgba(255, 255, 255, 0.8); }\n\n.wrapper-pad-top {\n  padding-top: 20px; }\n\ninput[type=\"submit\"] {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\nselect {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\noption {\n  padding: 0;\n  white-space: normal;\n  color: #666; }\n\nlabel {\n  margin-bottom: 0; }\n\n.form--section > div,\n.form--section > input,\n.form--section > button,\n.form--section > select,\n.form--section > .form-group,\n.form--section > a {\n  border-bottom: 1px solid #c8e2ec; }\n  .form--section > div:last-child,\n  .form--section > input:last-child,\n  .form--section > button:last-child,\n  .form--section > select:last-child,\n  .form--section > .form-group:last-child,\n  .form--section > a:last-child {\n    border-bottom: none; }\n\n.form--section-header {\n  text-transform: uppercase;\n  line-height: 30px;\n  padding-top: 20px;\n  padding-left: 10px;\n  border-bottom: none !important; }\n\n.form--group {\n  position: relative; }\n  .form--group input {\n    border: none; }\n  .form--group label,\n  .form--group .field {\n    display: inline-block;\n    height: 50px;\n    line-height: 50px;\n    padding: 0 10px;\n    font-size: 18px;\n    background-color: rgba(255, 255, 255, 0.8);\n    font-weight: 300;\n    color: #666; }\n  .form--group label {\n    width: 35%; }\n  .form--group .field {\n    border: none;\n    outline: none;\n    width: 65%;\n    position: relative; }\n    .form--group .field--std {\n      background-color: rgba(255, 255, 255, 0.8); }\n    .form--group .field--primary {\n      background-color: #12324D;\n      color: white; }\n    .form--group .field--text-right {\n      text-align: right; }\n    .form--group .field--full-width {\n      width: 100%; }\n  .form--group-money label {\n    position: relative; }\n  .form--group-money label:after {\n    position: absolute;\n    content: \"$ \";\n    right: -22px;\n    top: 0;\n    z-index: 2; }\n  .form--group-money input.field {\n    padding-left: 30px; }\n\n.form--separated {\n  margin-bottom: 10px; }\n\n.row-right-overlay {\n  position: absolute;\n  right: 10px;\n  line-height: 50px; }\n", ""]);
 
 	// exports
 
