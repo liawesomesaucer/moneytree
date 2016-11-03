@@ -26,11 +26,11 @@ export default class Home extends React.Component {
       // console.log(startTime);
       // console.log(endTime);
       if (valDate >= startTime && valDate <= endTime) {
-        console.log("yes")
+        // console.log("yes")
         diff = diff - value.amount;
       }
     });
-    console.log("Diff returned is: " + diff.toString())
+    // console.log("Diff returned is: " + diff.toString())
     return diff;
   }
   render() {
@@ -39,9 +39,8 @@ export default class Home extends React.Component {
       tree = (
         <div className="tree-wrapper">
           <h4 className="plant-message">
-            You have not planted any seeds yet
+            Get started by setting a budget
           </h4>
-
         </div>
       )
     } else {
@@ -52,11 +51,29 @@ export default class Home extends React.Component {
       )
     }
     let seeds = []
+    if (this.props.seeds.length === 0) {
+      seeds.push(
+        <li
+          className="list--elem"
+          key={1}
+        >
+          <div className="list--elem-seed-info">
+            <span className="list--row-left">
+              <div className="list--account-name">No seed goals set yet.</div>
+              <div className="list--account-number">Start by planting a seed!</div>
+            </span>
+            <span className="list--row-right list--account-right"><br/>
+             {/* <span className="small-text">Complete</span>*/}
+            </span>
+          </div>
+        </li>
+      )
+    }
     this.props.seeds.forEach((val, i) => {
       let diff = this.diffMoney(val.startTime, val.endTime);
       let percentCompleted = Math.max(0, Math.min((diff / val.goal * 100), 100)).toString().split(".")[0];
-      console.log("wow")
-      console.log(percentCompleted);
+      // console.log("wow")
+      // console.log(percentCompleted);
       seeds.push(
         <li
           className="list--elem list--elem-seed"

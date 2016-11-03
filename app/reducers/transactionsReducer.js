@@ -1,4 +1,4 @@
-import { transaction_data } from '../components/Transactions/TransactionData';
+const transaction_data = []
 
 const transactionsReducer = (state=transaction_data, action) => {
   switch (action.type) {

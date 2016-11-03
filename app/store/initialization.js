@@ -33,8 +33,20 @@ store.subscribe(() => {
 // store.dispatch
 // store.dispatch({type: "ADD_TRANSACTION", payload: {name: "New Transaction", date: "Date", price: -124}});
 
-// TEMPORARY DISPATCHES FOR DEVELOPMENT
-store.dispatch({type: "LOGIN"});
-store.dispatch({type: "CREATE_SEED", payload:{name: "Save Money for Car", goal: 200, time: "Month"}})
+import { transaction_data, seed_data } from './data';
+
+/* Adding the data.json data, Redux style */
+transaction_data.forEach(function(val, i) {
+  store.dispatch({type: "ADD_TRANSACTION", payload: val});
+})
+
+// Comment this out if you want to start with login
+// store.dispatch({type: "LOGIN"});
+
+// Disabled for the purposes of this demo
+// seed_data.forEach(function(val, i) {
+//   store.dispatch({type: "CREATE_SEED", payload: val})
+// })
+
 
 export { store };

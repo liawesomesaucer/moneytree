@@ -13,6 +13,9 @@ body {
   &--padded {
     padding: 10px;
   }
+  &>div>div {
+    position: relative;
+  }
 }
 button:focus {
   outline: none;
@@ -24,6 +27,12 @@ button:focus {
 }
 .content-wrapper {
   // padding: 10px;
+  max-width: 800px;
+  margin: auto;
+}
+.login--wrapper {
+  max-width: 400px;
+  margin: auto;
 }
 .tree-wrapper {
   padding: 20px 0;

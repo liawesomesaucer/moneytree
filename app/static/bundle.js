@@ -60,7 +60,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(378);
+	__webpack_require__(377);
 
 	_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('root'));
 
@@ -21453,51 +21453,51 @@
 
 	var _initialization = __webpack_require__(258);
 
-	var _Container = __webpack_require__(297);
+	var _Container = __webpack_require__(296);
 
 	var _Container2 = _interopRequireDefault(_Container);
 
-	var _NotFound = __webpack_require__(301);
+	var _NotFound = __webpack_require__(300);
 
 	var _NotFound2 = _interopRequireDefault(_NotFound);
 
-	var _Accounts = __webpack_require__(302);
+	var _Accounts = __webpack_require__(301);
 
 	var _Accounts2 = _interopRequireDefault(_Accounts);
 
-	var _AddAccount = __webpack_require__(306);
+	var _AddAccount = __webpack_require__(305);
 
 	var _AddAccount2 = _interopRequireDefault(_AddAccount);
 
-	var _AddChaseAccount = __webpack_require__(307);
+	var _AddChaseAccount = __webpack_require__(306);
 
 	var _AddChaseAccount2 = _interopRequireDefault(_AddChaseAccount);
 
-	var _AddWellsAccount = __webpack_require__(308);
+	var _AddWellsAccount = __webpack_require__(307);
 
 	var _AddWellsAccount2 = _interopRequireDefault(_AddWellsAccount);
 
-	var _Home = __webpack_require__(309);
+	var _Home = __webpack_require__(308);
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _Login = __webpack_require__(311);
+	var _Login = __webpack_require__(310);
 
 	var _Login2 = _interopRequireDefault(_Login);
 
-	var _Settings = __webpack_require__(313);
+	var _Settings = __webpack_require__(312);
 
 	var _Settings2 = _interopRequireDefault(_Settings);
 
-	var _Transactions = __webpack_require__(314);
+	var _Transactions = __webpack_require__(313);
 
 	var _Transactions2 = _interopRequireDefault(_Transactions);
 
-	var _Plant = __webpack_require__(375);
+	var _Plant = __webpack_require__(374);
 
 	var _Plant2 = _interopRequireDefault(_Plant);
 
-	var _AddTransaction = __webpack_require__(377);
+	var _AddTransaction = __webpack_require__(376);
 
 	var _AddTransaction2 = _interopRequireDefault(_AddTransaction);
 
@@ -28718,13 +28718,15 @@
 
 	var _transactionsReducer = __webpack_require__(291);
 
-	var _settingsReducer = __webpack_require__(293);
+	var _settingsReducer = __webpack_require__(292);
 
-	var _accountsReducer = __webpack_require__(294);
+	var _accountsReducer = __webpack_require__(293);
 
-	var _authReducer = __webpack_require__(295);
+	var _authReducer = __webpack_require__(294);
 
-	var _seedReducer = __webpack_require__(296);
+	var _seedReducer = __webpack_require__(295);
+
+	var _data = __webpack_require__(381);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28752,9 +28754,19 @@
 	// store.dispatch
 	// store.dispatch({type: "ADD_TRANSACTION", payload: {name: "New Transaction", date: "Date", price: -124}});
 
-	// TEMPORARY DISPATCHES FOR DEVELOPMENT
-	store.dispatch({ type: "LOGIN" });
-	store.dispatch({ type: "CREATE_SEED", payload: { name: "Save Money for Car", goal: 200, time: "Month" } });
+	/* Adding the data.json data, Redux style */
+	_data.transaction_data.forEach(function (val, i) {
+	  store.dispatch({ type: "ADD_TRANSACTION", payload: val });
+	});
+
+	// Comment this out if you want to start with login
+	// store.dispatch({type: "LOGIN"});
+
+	// Disabled for the purposes of this demo
+	// seed_data.forEach(function(val, i) {
+	//   store.dispatch({type: "CREATE_SEED", payload: val})
+	// })
+
 
 	exports.store = store;
 
@@ -31128,21 +31140,20 @@
 
 /***/ },
 /* 291 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.transactionsReducer = undefined;
-
-	var _TransactionData = __webpack_require__(292);
 
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
+	var transaction_data = [];
+
 	var transactionsReducer = function transactionsReducer() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _TransactionData.transaction_data;
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : transaction_data;
 	  var action = arguments[1];
 
 	  switch (action.type) {
@@ -31169,65 +31180,6 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var transaction_data = exports.transaction_data = [{
-	  name: "Pho La Jolla",
-	  amount: 12.5,
-	  date: "2016-11-30"
-	}, {
-	  name: "UCSD Paycheck",
-	  amount: -2000,
-	  date: "2016-11-14"
-	}, {
-	  name: "iPhone 7",
-	  amount: 599,
-	  date: "2016-11-20"
-	}, {
-	  name: "Samsung Refund",
-	  amount: -529,
-	  date: "2016-11-21"
-	}, {
-	  name: "Samsung Galaxy Note 7",
-	  amount: 529,
-	  date: "2016-11-23"
-	}, {
-	  name: "Brain Cell Plush",
-	  amount: 8.5,
-	  date: "2016-11-01"
-	}, {
-	  name: "Stomach Virus Plush",
-	  amount: 8.5,
-	  date: "2016-11-11"
-	}, {
-	  name: "Scissors",
-	  amount: 6.24,
-	  date: "2016-12-01"
-	}, {
-	  name: "Pay Rent",
-	  amount: 500,
-	  date: "2016-11-9"
-	}, {
-	  name: "UCSD Paycheck",
-	  amount: -200,
-	  date: "2016-11-9"
-	}, {
-	  name: "Buy Slippers",
-	  amount: 12.23,
-	  date: "2016-11-8"
-	}, {
-	  name: "UCSD Paycheck",
-	  amount: -2000,
-	  date: "2016-11-20"
-	}];
-
-/***/ },
-/* 293 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
 	var settings_data = {};
 
 	var settingsReducer = function settingsReducer() {
@@ -31240,7 +31192,7 @@
 	exports.settingsReducer = settingsReducer;
 
 /***/ },
-/* 294 */
+/* 293 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -31269,7 +31221,7 @@
 	exports.accountsReducer = accountsReducer;
 
 /***/ },
-/* 295 */
+/* 294 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -31308,7 +31260,7 @@
 	exports.authReducer = authReducer;
 
 /***/ },
-/* 296 */
+/* 295 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -31358,7 +31310,7 @@
 	exports.seedReducer = seedReducer;
 
 /***/ },
-/* 297 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31372,11 +31324,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _BottomNav = __webpack_require__(298);
+	var _BottomNav = __webpack_require__(297);
 
 	var _BottomNav2 = _interopRequireDefault(_BottomNav);
 
-	var _Nav = __webpack_require__(300);
+	var _Nav = __webpack_require__(299);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -31396,7 +31348,7 @@
 	}
 
 /***/ },
-/* 298 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31416,7 +31368,7 @@
 
 	var _reactRedux = __webpack_require__(173);
 
-	var _reactFontawesome = __webpack_require__(299);
+	var _reactFontawesome = __webpack_require__(298);
 
 	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
 
@@ -31513,7 +31465,7 @@
 	exports.default = BottomNav;
 
 /***/ },
-/* 299 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31626,7 +31578,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 300 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31640,7 +31592,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactFontawesome = __webpack_require__(299);
+	var _reactFontawesome = __webpack_require__(298);
 
 	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
 
@@ -31659,7 +31611,7 @@
 	}
 
 /***/ },
-/* 301 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31673,7 +31625,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Nav = __webpack_require__(300);
+	var _Nav = __webpack_require__(299);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -31693,7 +31645,7 @@
 	}
 
 /***/ },
-/* 302 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31707,11 +31659,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Nav = __webpack_require__(300);
+	var _Nav = __webpack_require__(299);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
-	var _AccountsList = __webpack_require__(303);
+	var _AccountsList = __webpack_require__(302);
 
 	var _AccountsList2 = _interopRequireDefault(_AccountsList);
 
@@ -31727,7 +31679,7 @@
 	}
 
 /***/ },
-/* 303 */
+/* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31745,7 +31697,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactFontawesome = __webpack_require__(299);
+	var _reactFontawesome = __webpack_require__(298);
 
 	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
 
@@ -31753,9 +31705,9 @@
 
 	var _reactRedux = __webpack_require__(173);
 
-	var _accountsActions = __webpack_require__(304);
+	var _accountsActions = __webpack_require__(303);
 
-	var _transactionActions = __webpack_require__(305);
+	var _transactionActions = __webpack_require__(304);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31895,7 +31847,7 @@
 	exports.default = AccountsList;
 
 /***/ },
-/* 304 */
+/* 303 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -31912,7 +31864,7 @@
 	}
 
 /***/ },
-/* 305 */
+/* 304 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -31940,7 +31892,7 @@
 	}
 
 /***/ },
-/* 306 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31956,7 +31908,7 @@
 
 	var _reactRouter = __webpack_require__(197);
 
-	var _Nav = __webpack_require__(300);
+	var _Nav = __webpack_require__(299);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -32000,7 +31952,7 @@
 	}
 
 /***/ },
-/* 307 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32016,7 +31968,7 @@
 
 	var _reactRouter = __webpack_require__(197);
 
-	var _Nav = __webpack_require__(300);
+	var _Nav = __webpack_require__(299);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -32038,7 +31990,7 @@
 	}
 
 /***/ },
-/* 308 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32054,7 +32006,7 @@
 
 	var _reactRouter = __webpack_require__(197);
 
-	var _Nav = __webpack_require__(300);
+	var _Nav = __webpack_require__(299);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -32076,7 +32028,7 @@
 	}
 
 /***/ },
-/* 309 */
+/* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32098,11 +32050,11 @@
 
 	var _reactRedux = __webpack_require__(173);
 
-	var _Nav = __webpack_require__(300);
+	var _Nav = __webpack_require__(299);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
-	var _TransactionList = __webpack_require__(310);
+	var _TransactionList = __webpack_require__(309);
 
 	var _TransactionList2 = _interopRequireDefault(_TransactionList);
 
@@ -32142,11 +32094,11 @@
 	        // console.log(startTime);
 	        // console.log(endTime);
 	        if (valDate >= startTime && valDate <= endTime) {
-	          console.log("yes");
+	          // console.log("yes")
 	          diff = diff - value.amount;
 	        }
 	      });
-	      console.log("Diff returned is: " + diff.toString());
+	      // console.log("Diff returned is: " + diff.toString())
 	      return diff;
 	    }
 	  }, {
@@ -32162,7 +32114,7 @@
 	          _react2.default.createElement(
 	            'h4',
 	            { className: 'plant-message' },
-	            'You have not planted any seeds yet'
+	            'Get started by setting a budget'
 	          )
 	        );
 	      } else {
@@ -32173,11 +32125,43 @@
 	        );
 	      }
 	      var seeds = [];
+	      if (this.props.seeds.length === 0) {
+	        seeds.push(_react2.default.createElement(
+	          'li',
+	          {
+	            className: 'list--elem',
+	            key: 1
+	          },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'list--elem-seed-info' },
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'list--row-left' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'list--account-name' },
+	                'No seed goals set yet.'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'list--account-number' },
+	                'Start by planting a seed!'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'list--row-right list--account-right' },
+	              _react2.default.createElement('br', null)
+	            )
+	          )
+	        ));
+	      }
 	      this.props.seeds.forEach(function (val, i) {
 	        var diff = _this2.diffMoney(val.startTime, val.endTime);
 	        var percentCompleted = Math.max(0, Math.min(diff / val.goal * 100, 100)).toString().split(".")[0];
-	        console.log("wow");
-	        console.log(percentCompleted);
+	        // console.log("wow")
+	        // console.log(percentCompleted);
 	        seeds.push(_react2.default.createElement(
 	          'li',
 	          {
@@ -32286,7 +32270,7 @@
 	exports.default = Home;
 
 /***/ },
-/* 310 */
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32305,8 +32289,6 @@
 	var _react2 = _interopRequireDefault(_react);
 
 	var _reactRedux = __webpack_require__(173);
-
-	var _TransactionData = __webpack_require__(292);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -32335,7 +32317,7 @@
 	      var transactions = [];
 
 	      this.props.transactions.forEach(function (val, index) {
-	        var cost = val.amount <= 0 ? "$ " + val.amount.toString() : val.amount.toString().replace("-", "- $ ");
+	        var cost = val.amount > 0 ? "$ " + val.amount.toString() : val.amount.toString().replace("-", "- $ ");
 
 	        transactions.push(_react2.default.createElement(
 	          'li',
@@ -32374,7 +32356,7 @@
 	exports.default = TransactionList;
 
 /***/ },
-/* 311 */
+/* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32396,9 +32378,9 @@
 
 	var _reactRedux = __webpack_require__(173);
 
-	var _authActions = __webpack_require__(312);
+	var _authActions = __webpack_require__(311);
 
-	var _Nav = __webpack_require__(300);
+	var _Nav = __webpack_require__(299);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -32516,7 +32498,7 @@
 	exports.default = Login;
 
 /***/ },
-/* 312 */
+/* 311 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -32538,7 +32520,7 @@
 	}
 
 /***/ },
-/* 313 */
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32558,17 +32540,17 @@
 
 	var _reactRedux = __webpack_require__(173);
 
-	var _reactFontawesome = __webpack_require__(299);
+	var _reactFontawesome = __webpack_require__(298);
 
 	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
 
 	var _reactRouter = __webpack_require__(197);
 
-	var _accountsActions = __webpack_require__(304);
+	var _accountsActions = __webpack_require__(303);
 
-	var _authActions = __webpack_require__(312);
+	var _authActions = __webpack_require__(311);
 
-	var _Nav = __webpack_require__(300);
+	var _Nav = __webpack_require__(299);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -32687,7 +32669,7 @@
 	exports.default = Settings;
 
 /***/ },
-/* 314 */
+/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32703,15 +32685,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _rd = __webpack_require__(315);
+	var _rd = __webpack_require__(314);
 
 	var _rd2 = _interopRequireDefault(_rd);
 
-	var _Nav = __webpack_require__(300);
+	var _Nav = __webpack_require__(299);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
-	var _TransactionList = __webpack_require__(310);
+	var _TransactionList = __webpack_require__(309);
 
 	var _TransactionList2 = _interopRequireDefault(_TransactionList);
 
@@ -32765,18 +32747,26 @@
 	exports.default = Transactions;
 
 /***/ },
+/* 314 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.BarChart = __webpack_require__(315).BarChart;
+	exports.LineChart = __webpack_require__(342).LineChart;
+	exports.PieChart = __webpack_require__(348).PieChart;
+	exports.AreaChart = __webpack_require__(353).AreaChart;
+	exports.Treemap = __webpack_require__(358).Treemap;
+	exports.ScatterChart = __webpack_require__(363).ScatterChart;
+	exports.CandlestickChart = __webpack_require__(368).CandlestickChart;
+
+/***/ },
 /* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.BarChart = __webpack_require__(316).BarChart;
-	exports.LineChart = __webpack_require__(343).LineChart;
-	exports.PieChart = __webpack_require__(349).PieChart;
-	exports.AreaChart = __webpack_require__(354).AreaChart;
-	exports.Treemap = __webpack_require__(359).Treemap;
-	exports.ScatterChart = __webpack_require__(364).ScatterChart;
-	exports.CandlestickChart = __webpack_require__(369).CandlestickChart;
+	exports.BarChart = __webpack_require__(316);
 
 /***/ },
 /* 316 */
@@ -32784,26 +32774,18 @@
 
 	'use strict';
 
-	exports.BarChart = __webpack_require__(317);
-
-/***/ },
-/* 317 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(318);
-	var DataSeries = __webpack_require__(319);
+	var d3 = __webpack_require__(317);
+	var DataSeries = __webpack_require__(318);
 
-	var _require = __webpack_require__(323);
+	var _require = __webpack_require__(322);
 
 	var Chart = _require.Chart;
 	var XAxis = _require.XAxis;
 	var YAxis = _require.YAxis;
 	var Tooltip = _require.Tooltip;
 
-	var _require2 = __webpack_require__(338);
+	var _require2 = __webpack_require__(337);
 
 	var CartesianChartPropsMixin = _require2.CartesianChartPropsMixin;
 	var DefaultAccessorsMixin = _require2.DefaultAccessorsMixin;
@@ -33023,7 +33005,7 @@
 	});
 
 /***/ },
-/* 318 */
+/* 317 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;!function() {
@@ -42454,13 +42436,13 @@
 	}();
 
 /***/ },
-/* 319 */
+/* 318 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var BarContainer = __webpack_require__(320);
+	var BarContainer = __webpack_require__(319);
 
 	module.exports = React.createClass({
 
@@ -42537,7 +42519,7 @@
 	});
 
 /***/ },
-/* 320 */
+/* 319 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42550,8 +42532,8 @@
 
 	var findDOMNode = _require.findDOMNode;
 
-	var Bar = __webpack_require__(321);
-	var shade = __webpack_require__(322).shade;
+	var Bar = __webpack_require__(320);
+	var shade = __webpack_require__(321).shade;
 
 	module.exports = React.createClass({
 	  displayName: 'exports',
@@ -42601,7 +42583,7 @@
 	});
 
 /***/ },
-/* 321 */
+/* 320 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42643,14 +42625,14 @@
 	});
 
 /***/ },
-/* 322 */
+/* 321 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
-	var d3 = __webpack_require__(318);
+	var d3 = __webpack_require__(317);
 
 	exports.calculateScales = function (width, height, xValues, yValues) {
 	  var xDomain = arguments.length <= 4 || arguments[4] === undefined ? [] : arguments[4];
@@ -42806,18 +42788,27 @@
 	};
 
 /***/ },
+/* 322 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.XAxis = __webpack_require__(323).XAxis;
+	exports.YAxis = __webpack_require__(323).YAxis;
+	exports.Chart = __webpack_require__(329).Chart;
+	exports.LegendChart = __webpack_require__(329).LegendChart;
+	exports.Legend = __webpack_require__(333);
+	exports.Tooltip = __webpack_require__(334);
+	exports.Voronoi = __webpack_require__(335);
+
+/***/ },
 /* 323 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.XAxis = __webpack_require__(324).XAxis;
-	exports.YAxis = __webpack_require__(324).YAxis;
-	exports.Chart = __webpack_require__(330).Chart;
-	exports.LegendChart = __webpack_require__(330).LegendChart;
-	exports.Legend = __webpack_require__(334);
-	exports.Tooltip = __webpack_require__(335);
-	exports.Voronoi = __webpack_require__(336);
+	exports.XAxis = __webpack_require__(324);
+	exports.YAxis = __webpack_require__(328);
 
 /***/ },
 /* 324 */
@@ -42825,22 +42816,13 @@
 
 	'use strict';
 
-	exports.XAxis = __webpack_require__(325);
-	exports.YAxis = __webpack_require__(329);
-
-/***/ },
-/* 325 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(318);
-	var AxisTicks = __webpack_require__(326);
-	var AxisLine = __webpack_require__(327);
-	var Label = __webpack_require__(328);
+	var d3 = __webpack_require__(317);
+	var AxisTicks = __webpack_require__(325);
+	var AxisLine = __webpack_require__(326);
+	var Label = __webpack_require__(327);
 
 	module.exports = React.createClass({
 
@@ -42939,7 +42921,7 @@
 	});
 
 /***/ },
-/* 326 */
+/* 325 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43187,7 +43169,7 @@
 	});
 
 /***/ },
-/* 327 */
+/* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43252,7 +43234,7 @@
 	});
 
 /***/ },
-/* 328 */
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43326,7 +43308,7 @@
 	});
 
 /***/ },
-/* 329 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43334,10 +43316,10 @@
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(318);
-	var AxisTicks = __webpack_require__(326);
-	var AxisLine = __webpack_require__(327);
-	var Label = __webpack_require__(328);
+	var d3 = __webpack_require__(317);
+	var AxisTicks = __webpack_require__(325);
+	var AxisLine = __webpack_require__(326);
+	var Label = __webpack_require__(327);
 
 	module.exports = React.createClass({
 
@@ -43440,17 +43422,17 @@
 	});
 
 /***/ },
-/* 330 */
+/* 329 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.BasicChart = __webpack_require__(331);
-	exports.Chart = __webpack_require__(332);
-	exports.LegendChart = __webpack_require__(333);
+	exports.BasicChart = __webpack_require__(330);
+	exports.Chart = __webpack_require__(331);
+	exports.LegendChart = __webpack_require__(332);
 
 /***/ },
-/* 331 */
+/* 330 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43522,7 +43504,7 @@
 	});
 
 /***/ },
-/* 332 */
+/* 331 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43530,8 +43512,8 @@
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var React = __webpack_require__(1);
-	var LegendChart = __webpack_require__(333);
-	var BasicChart = __webpack_require__(331);
+	var LegendChart = __webpack_require__(332);
+	var BasicChart = __webpack_require__(330);
 
 	module.exports = React.createClass({
 
@@ -43572,14 +43554,14 @@
 	});
 
 /***/ },
-/* 333 */
+/* 332 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var Legend = __webpack_require__(334);
-	var d3 = __webpack_require__(318);
+	var Legend = __webpack_require__(333);
+	var d3 = __webpack_require__(317);
 
 	module.exports = React.createClass({
 
@@ -43692,13 +43674,13 @@
 	});
 
 /***/ },
-/* 334 */
+/* 333 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(318);
+	var d3 = __webpack_require__(317);
 
 	module.exports = React.createClass({
 
@@ -43784,7 +43766,7 @@
 	});
 
 /***/ },
-/* 335 */
+/* 334 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43838,14 +43820,14 @@
 	});
 
 /***/ },
-/* 336 */
+/* 335 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(318);
-	var Polygon = __webpack_require__(337);
+	var d3 = __webpack_require__(317);
+	var Polygon = __webpack_require__(336);
 
 	module.exports = React.createClass({
 
@@ -43886,7 +43868,7 @@
 	});
 
 /***/ },
-/* 337 */
+/* 336 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43934,24 +43916,24 @@
 	});
 
 /***/ },
+/* 337 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.CartesianChartPropsMixin = __webpack_require__(338);
+	exports.DefaultAccessorsMixin = __webpack_require__(339);
+	exports.ViewBoxMixin = __webpack_require__(340);
+	exports.TooltipMixin = __webpack_require__(341);
+
+/***/ },
 /* 338 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.CartesianChartPropsMixin = __webpack_require__(339);
-	exports.DefaultAccessorsMixin = __webpack_require__(340);
-	exports.ViewBoxMixin = __webpack_require__(341);
-	exports.TooltipMixin = __webpack_require__(342);
-
-/***/ },
-/* 339 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(318);
+	var d3 = __webpack_require__(317);
 
 	module.exports = {
 
@@ -44041,7 +44023,7 @@
 	};
 
 /***/ },
-/* 340 */
+/* 339 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44067,7 +44049,7 @@
 	};
 
 /***/ },
-/* 341 */
+/* 340 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -44149,7 +44131,7 @@
 	};
 
 /***/ },
-/* 342 */
+/* 341 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44218,32 +44200,32 @@
 	};
 
 /***/ },
-/* 343 */
+/* 342 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.LineChart = __webpack_require__(344);
+	exports.LineChart = __webpack_require__(343);
 
 /***/ },
-/* 344 */
+/* 343 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
 
-	var _require = __webpack_require__(323);
+	var _require = __webpack_require__(322);
 
 	var Chart = _require.Chart;
 	var XAxis = _require.XAxis;
 	var YAxis = _require.YAxis;
 	var Tooltip = _require.Tooltip;
 
-	var DataSeries = __webpack_require__(345);
-	var utils = __webpack_require__(322);
+	var DataSeries = __webpack_require__(344);
+	var utils = __webpack_require__(321);
 
-	var _require2 = __webpack_require__(338);
+	var _require2 = __webpack_require__(337);
 
 	var CartesianChartPropsMixin = _require2.CartesianChartPropsMixin;
 	var DefaultAccessorsMixin = _require2.DefaultAccessorsMixin;
@@ -44403,15 +44385,15 @@
 	});
 
 /***/ },
-/* 345 */
+/* 344 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(318);
-	var VoronoiCircleContainer = __webpack_require__(346);
-	var Line = __webpack_require__(348);
+	var d3 = __webpack_require__(317);
+	var VoronoiCircleContainer = __webpack_require__(345);
+	var Line = __webpack_require__(347);
 
 	module.exports = React.createClass({
 
@@ -44525,7 +44507,7 @@
 	});
 
 /***/ },
-/* 346 */
+/* 345 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44536,8 +44518,8 @@
 
 	var findDOMNode = _require.findDOMNode;
 
-	var shade = __webpack_require__(322).shade;
-	var VoronoiCircle = __webpack_require__(347);
+	var shade = __webpack_require__(321).shade;
+	var VoronoiCircle = __webpack_require__(346);
 
 	module.exports = React.createClass({
 
@@ -44613,7 +44595,7 @@
 	});
 
 /***/ },
-/* 347 */
+/* 346 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44665,7 +44647,7 @@
 	});
 
 /***/ },
-/* 348 */
+/* 347 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44706,29 +44688,29 @@
 	});
 
 /***/ },
+/* 348 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.PieChart = __webpack_require__(349);
+
+/***/ },
 /* 349 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.PieChart = __webpack_require__(350);
-
-/***/ },
-/* 350 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var d3 = __webpack_require__(318);
+	var d3 = __webpack_require__(317);
 	var React = __webpack_require__(1);
-	var DataSeries = __webpack_require__(351);
+	var DataSeries = __webpack_require__(350);
 
-	var _require = __webpack_require__(323);
+	var _require = __webpack_require__(322);
 
 	var Chart = _require.Chart;
 	var Tooltip = _require.Tooltip;
 
-	var TooltipMixin = __webpack_require__(338).TooltipMixin;
+	var TooltipMixin = __webpack_require__(337).TooltipMixin;
 
 	module.exports = React.createClass({
 
@@ -44825,14 +44807,14 @@
 	});
 
 /***/ },
-/* 351 */
+/* 350 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(318);
-	var ArcContainer = __webpack_require__(352);
+	var d3 = __webpack_require__(317);
+	var ArcContainer = __webpack_require__(351);
 
 	module.exports = React.createClass({
 
@@ -44901,7 +44883,7 @@
 	});
 
 /***/ },
-/* 352 */
+/* 351 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44914,8 +44896,8 @@
 
 	var findDOMNode = _require.findDOMNode;
 
-	var shade = __webpack_require__(322).shade;
-	var Arc = __webpack_require__(353);
+	var shade = __webpack_require__(321).shade;
+	var Arc = __webpack_require__(352);
 
 	module.exports = React.createClass({
 
@@ -44960,13 +44942,13 @@
 	});
 
 /***/ },
-/* 353 */
+/* 352 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(318);
+	var d3 = __webpack_require__(317);
 
 	module.exports = React.createClass({
 
@@ -45074,30 +45056,30 @@
 	});
 
 /***/ },
+/* 353 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.AreaChart = __webpack_require__(354);
+
+/***/ },
 /* 354 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.AreaChart = __webpack_require__(355);
-
-/***/ },
-/* 355 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(318);
-	var DataSeries = __webpack_require__(356);
+	var d3 = __webpack_require__(317);
+	var DataSeries = __webpack_require__(355);
 
-	var _require = __webpack_require__(323);
+	var _require = __webpack_require__(322);
 
 	var Chart = _require.Chart;
 	var XAxis = _require.XAxis;
 	var YAxis = _require.YAxis;
 
-	var _require2 = __webpack_require__(338);
+	var _require2 = __webpack_require__(337);
 
 	var CartesianChartPropsMixin = _require2.CartesianChartPropsMixin;
 	var DefaultAccessorsMixin = _require2.DefaultAccessorsMixin;
@@ -45277,14 +45259,14 @@
 	});
 
 /***/ },
-/* 356 */
+/* 355 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(318);
-	var AreaContainer = __webpack_require__(357);
+	var d3 = __webpack_require__(317);
+	var AreaContainer = __webpack_require__(356);
 
 	module.exports = React.createClass({
 
@@ -45322,7 +45304,7 @@
 	});
 
 /***/ },
-/* 357 */
+/* 356 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45330,8 +45312,8 @@
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var React = __webpack_require__(1);
-	var shade = __webpack_require__(322).shade;
-	var Area = __webpack_require__(358);
+	var shade = __webpack_require__(321).shade;
+	var Area = __webpack_require__(357);
 
 	module.exports = React.createClass({
 
@@ -45384,7 +45366,7 @@
 	});
 
 /***/ },
-/* 358 */
+/* 357 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45419,23 +45401,23 @@
 	});
 
 /***/ },
+/* 358 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.Treemap = __webpack_require__(359);
+
+/***/ },
 /* 359 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.Treemap = __webpack_require__(360);
-
-/***/ },
-/* 360 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var d3 = __webpack_require__(318);
+	var d3 = __webpack_require__(317);
 	var React = __webpack_require__(1);
-	var Chart = __webpack_require__(323).Chart;
-	var DataSeries = __webpack_require__(361);
+	var Chart = __webpack_require__(322).Chart;
+	var DataSeries = __webpack_require__(360);
 
 	module.exports = React.createClass({
 
@@ -45501,14 +45483,14 @@
 	});
 
 /***/ },
-/* 361 */
+/* 360 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(318);
-	var CellContainer = __webpack_require__(362);
+	var d3 = __webpack_require__(317);
+	var CellContainer = __webpack_require__(361);
 
 	module.exports = React.createClass({
 
@@ -45568,7 +45550,7 @@
 	});
 
 /***/ },
-/* 362 */
+/* 361 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45576,8 +45558,8 @@
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var React = __webpack_require__(1);
-	var shade = __webpack_require__(322).shade;
-	var Cell = __webpack_require__(363);
+	var shade = __webpack_require__(321).shade;
+	var Cell = __webpack_require__(362);
 
 	module.exports = React.createClass({
 
@@ -45616,7 +45598,7 @@
 	});
 
 /***/ },
-/* 363 */
+/* 362 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45672,32 +45654,32 @@
 	});
 
 /***/ },
-/* 364 */
+/* 363 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.ScatterChart = __webpack_require__(365);
+	exports.ScatterChart = __webpack_require__(364);
 
 /***/ },
-/* 365 */
+/* 364 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
 
-	var _require = __webpack_require__(323);
+	var _require = __webpack_require__(322);
 
 	var Chart = _require.Chart;
 	var XAxis = _require.XAxis;
 	var YAxis = _require.YAxis;
 	var Tooltip = _require.Tooltip;
 
-	var DataSeries = __webpack_require__(366);
-	var utils = __webpack_require__(322);
+	var DataSeries = __webpack_require__(365);
+	var utils = __webpack_require__(321);
 
-	var _require2 = __webpack_require__(338);
+	var _require2 = __webpack_require__(337);
 
 	var CartesianChartPropsMixin = _require2.CartesianChartPropsMixin;
 	var DefaultAccessorsMixin = _require2.DefaultAccessorsMixin;
@@ -45867,14 +45849,14 @@
 	});
 
 /***/ },
-/* 366 */
+/* 365 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(318);
-	var VoronoiCircleContainer = __webpack_require__(367);
+	var d3 = __webpack_require__(317);
+	var VoronoiCircleContainer = __webpack_require__(366);
 
 	module.exports = React.createClass({
 
@@ -45957,7 +45939,7 @@
 	});
 
 /***/ },
-/* 367 */
+/* 366 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45968,8 +45950,8 @@
 
 	var findDOMNode = _require.findDOMNode;
 
-	var shade = __webpack_require__(322).shade;
-	var VoronoiCircle = __webpack_require__(368);
+	var shade = __webpack_require__(321).shade;
+	var VoronoiCircle = __webpack_require__(367);
 
 	module.exports = React.createClass({
 
@@ -46053,7 +46035,7 @@
 	});
 
 /***/ },
-/* 368 */
+/* 367 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46108,31 +46090,31 @@
 	});
 
 /***/ },
+/* 368 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.CandlestickChart = __webpack_require__(369);
+
+/***/ },
 /* 369 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.CandlestickChart = __webpack_require__(370);
-
-/***/ },
-/* 370 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(318);
-	var utils = __webpack_require__(322);
-	var DataSeries = __webpack_require__(371);
+	var d3 = __webpack_require__(317);
+	var utils = __webpack_require__(321);
+	var DataSeries = __webpack_require__(370);
 
-	var _require = __webpack_require__(323);
+	var _require = __webpack_require__(322);
 
 	var Chart = _require.Chart;
 	var XAxis = _require.XAxis;
 	var YAxis = _require.YAxis;
 
-	var _require2 = __webpack_require__(338);
+	var _require2 = __webpack_require__(337);
 
 	var ViewBoxMixin = _require2.ViewBoxMixin;
 	var CartesianChartPropsMixin = _require2.CartesianChartPropsMixin;
@@ -46289,13 +46271,13 @@
 	});
 
 /***/ },
-/* 371 */
+/* 370 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var CandlestickContainer = __webpack_require__(372);
+	var CandlestickContainer = __webpack_require__(371);
 
 	module.exports = React.createClass({
 
@@ -46351,15 +46333,15 @@
 	});
 
 /***/ },
-/* 372 */
+/* 371 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var utils = __webpack_require__(322);
-	var Candle = __webpack_require__(373);
-	var Wick = __webpack_require__(374);
+	var utils = __webpack_require__(321);
+	var Candle = __webpack_require__(372);
+	var Wick = __webpack_require__(373);
 
 	module.exports = React.createClass({
 
@@ -46439,7 +46421,7 @@
 	});
 
 /***/ },
-/* 373 */
+/* 372 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46485,7 +46467,7 @@
 	});
 
 /***/ },
-/* 374 */
+/* 373 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46527,7 +46509,7 @@
 	});
 
 /***/ },
-/* 375 */
+/* 374 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46549,13 +46531,13 @@
 
 	var _reactRouter = __webpack_require__(197);
 
-	var _reactFontawesome = __webpack_require__(299);
+	var _reactFontawesome = __webpack_require__(298);
 
 	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
 
-	var _seedActions = __webpack_require__(376);
+	var _seedActions = __webpack_require__(375);
 
-	var _Nav = __webpack_require__(300);
+	var _Nav = __webpack_require__(299);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -46737,7 +46719,7 @@
 	exports.default = Plant;
 
 /***/ },
-/* 376 */
+/* 375 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -46769,7 +46751,7 @@
 	}
 
 /***/ },
-/* 377 */
+/* 376 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46789,15 +46771,15 @@
 
 	var _reactRedux = __webpack_require__(173);
 
-	var _Nav = __webpack_require__(300);
+	var _Nav = __webpack_require__(299);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
-	var _TransactionList = __webpack_require__(310);
+	var _TransactionList = __webpack_require__(309);
 
 	var _TransactionList2 = _interopRequireDefault(_TransactionList);
 
-	var _transactionActions = __webpack_require__(305);
+	var _transactionActions = __webpack_require__(304);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -46951,16 +46933,16 @@
 	exports.default = AddTransaction;
 
 /***/ },
-/* 378 */
+/* 377 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(379);
+	var content = __webpack_require__(378);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(381)(content, {});
+	var update = __webpack_require__(380)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -46977,21 +46959,21 @@
 	}
 
 /***/ },
-/* 379 */
+/* 378 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(380)();
+	exports = module.exports = __webpack_require__(379)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".mobile-nav ul, .tile-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0;\n  margin-top: 0; }\n\n@font-face {\n  font-family: GothamRounded;\n  src: url(\"/static/fonts/Gotham-Rounded.ttf\"); }\n\n@font-face {\n  font-family: GothamRoundedBold;\n  src: url(\"/static/fonts/Gotham-Rounded-Bold.ttf\"); }\n\n* {\n  font-family: GothamRounded, Roboto, Helvetica, sans-serif; }\n\n.header {\n  color: #12324D;\n  text-align: center; }\n\nbody {\n  background-color: #c8e2ec;\n  margin: 0;\n  margin-top: 50px;\n  margin-bottom: 60px; }\n\n.no-margin {\n  margin: 0; }\n\n.wrapper--padded {\n  padding: 10px; }\n\nbutton:focus {\n  outline: none; }\n\n.reset-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0; }\n\n.tree-wrapper {\n  padding: 20px 0;\n  text-align: center; }\n\n.btn {\n  padding: 12px 20px 8px;\n  background-color: #12324D;\n  color: white;\n  font-size: 18px;\n  border: none;\n  border-radius: 10px; }\n  .btn--fullwidth {\n    width: 100%;\n    border-radius: 0;\n    padding: 0 10px;\n    line-height: 50px;\n    text-align: left; }\n\n.btn:focus {\n  background-color: #12324D; }\n\n#plaid-link {\n  display: inline; }\n\n.plaid-link-button {\n  padding: 0 10px;\n  font-size: 18px;\n  line-height: 50px;\n  border: none;\n  border-radius: 10px;\n  width: 100%;\n  text-align: left;\n  border: none;\n  border-radius: 0; }\n\n.btn-back {\n  position: absolute;\n  color: white;\n  line-height: 50px;\n  top: 0;\n  left: 10px;\n  z-index: 6; }\n\n.btn-back:before {\n  content: \"< \";\n  margin-right: 4px; }\n\n.btn-primary,\n.btn-primary:focus {\n  background-color: #12324D; }\n\n.btn-white {\n  background-color: rgba(255, 255, 255, 0.8);\n  color: #666; }\n\n.tree-wrapper img {\n  width: 58%;\n  max-width: 300px;\n  padding: 10px;\n  margin: auto; }\n\n.center-text {\n  text-align: center; }\n\n.small-text {\n  font-size: 14px; }\n\n.hidden {\n  display: none; }\n\n.z10 {\n  z-index: 10; }\n\n.mobile-nav {\n  border-top: 1px solid #c8e2ec;\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  background-color: #fff; }\n\n.mobile-nav ul {\n  color: #12324D; }\n  .mobile-nav ul li {\n    display: inline-block;\n    padding: 10px 0 8px;\n    width: 25%;\n    text-align: center;\n    font-size: 12px; }\n    .mobile-nav ul li .fa {\n      font-size: 22px;\n      margin-bottom: 3px; }\n\n.top-nav {\n  width: 100%;\n  position: fixed;\n  height: 50px;\n  top: 0;\n  left: 0;\n  right: 0;\n  background-color: #12324D;\n  color: white;\n  text-align: center;\n  font-size: 22px;\n  line-height: 50px;\n  z-index: 5; }\n\n.graph-wrapper {\n  margin-bottom: 10px;\n  width: 100%;\n  text-align: center; }\n  .graph-wrapper img {\n    width: 100%; }\n\n.list--elem {\n  background-color: rgba(255, 255, 255, 0.8);\n  padding: 20px 10px 16px;\n  font-size: 18px;\n  border-bottom: 1px solid #c8e2ec; }\n\n.list--elem-seed {\n  position: relative;\n  padding-bottom: 10px;\n  margin-bottom: 35px; }\n\n.list--header {\n  background-color: rgba(255, 255, 255, 0.4);\n  font-weight: bold;\n  border-bottom: none; }\n\n.list--primary {\n  background-color: #12324D;\n  color: white; }\n\n.list--row-right {\n  float: right; }\n\n.list--account-elem {\n  padding-top: 16px;\n  padding-bottom: 12px;\n  min-height: 70px; }\n\n.list--account-number {\n  font-size: 14px; }\n\n.list--account-add {\n  margin-right: 10px; }\n\n.list--account-right {\n  position: absolute;\n  right: 10px;\n  top: 20px;\n  text-align: right; }\n\n.tile-list li {\n  background-color: rgba(255, 255, 255, 0.4);\n  width: 33%;\n  height: 0;\n  padding-bottom: 32%;\n  display: inline-block; }\n\n.seed--status-bar-wrapper {\n  width: 100%;\n  position: absolute;\n  height: 25px;\n  line-height: 25px;\n  left: 0;\n  bottom: -25px;\n  font-size: 14px;\n  background-color: #eee;\n  text-align: center;\n  z-index: -2; }\n\n.seed--status-bar {\n  width: 30%;\n  background-color: #92C85A;\n  height: 25px;\n  position: absolute;\n  left: 0;\n  z-index: -1; }\n\n.list--elem-seed {\n  background-color: rgba(255, 255, 255, 0.8); }\n\n.wrapper-pad-top {\n  padding-top: 20px; }\n\ninput[type=\"submit\"] {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\nselect {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\noption {\n  padding: 0;\n  white-space: normal;\n  color: #666; }\n\nlabel {\n  margin-bottom: 0; }\n\n.form--section > div,\n.form--section > input,\n.form--section > button,\n.form--section > select,\n.form--section > .form-group,\n.form--section > a {\n  border-bottom: 1px solid #c8e2ec; }\n  .form--section > div:last-child,\n  .form--section > input:last-child,\n  .form--section > button:last-child,\n  .form--section > select:last-child,\n  .form--section > .form-group:last-child,\n  .form--section > a:last-child {\n    border-bottom: none; }\n\n.form--section-header {\n  text-transform: uppercase;\n  line-height: 30px;\n  padding-top: 20px;\n  padding-left: 10px;\n  border-bottom: none !important; }\n\n.form--group {\n  position: relative; }\n  .form--group input {\n    border: none; }\n  .form--group label,\n  .form--group .field {\n    display: inline-block;\n    height: 50px;\n    line-height: 50px;\n    padding: 0 10px;\n    font-size: 18px;\n    background-color: rgba(255, 255, 255, 0.8);\n    font-weight: 300;\n    color: #666; }\n  .form--group label {\n    width: 35%; }\n  .form--group .field {\n    border: none;\n    outline: none;\n    width: 65%;\n    position: relative; }\n    .form--group .field--std {\n      background-color: rgba(255, 255, 255, 0.8); }\n    .form--group .field--primary {\n      background-color: #12324D;\n      color: white; }\n    .form--group .field--text-right {\n      text-align: right; }\n    .form--group .field--full-width {\n      width: 100%; }\n  .form--group-money label {\n    position: relative; }\n  .form--group-money label:after {\n    position: absolute;\n    content: \"$ \";\n    right: -22px;\n    top: 0;\n    z-index: 2; }\n  .form--group-money input.field {\n    padding-left: 30px; }\n\n.form--separated {\n  margin-bottom: 10px; }\n\n.row-right-overlay {\n  position: absolute;\n  right: 10px;\n  line-height: 50px; }\n", ""]);
+	exports.push([module.id, ".mobile-nav ul, .tile-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0;\n  margin-top: 0; }\n\n@font-face {\n  font-family: GothamRounded;\n  src: url(\"/static/fonts/Gotham-Rounded.ttf\"); }\n\n@font-face {\n  font-family: GothamRoundedBold;\n  src: url(\"/static/fonts/Gotham-Rounded-Bold.ttf\"); }\n\n* {\n  font-family: GothamRounded, Roboto, Helvetica, sans-serif; }\n\n.header {\n  color: #12324D;\n  text-align: center; }\n\nbody {\n  background-color: #c8e2ec;\n  margin: 0;\n  margin-top: 50px;\n  margin-bottom: 60px; }\n\n.no-margin {\n  margin: 0; }\n\n.wrapper--padded {\n  padding: 10px; }\n\n.wrapper > div > div {\n  position: relative; }\n\nbutton:focus {\n  outline: none; }\n\n.reset-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0; }\n\n.content-wrapper {\n  max-width: 800px;\n  margin: auto; }\n\n.login--wrapper {\n  max-width: 400px;\n  margin: auto; }\n\n.tree-wrapper {\n  padding: 20px 0;\n  text-align: center; }\n\n.btn {\n  padding: 12px 20px 8px;\n  background-color: #12324D;\n  color: white;\n  font-size: 18px;\n  border: none;\n  border-radius: 10px; }\n  .btn--fullwidth {\n    width: 100%;\n    border-radius: 0;\n    padding: 0 10px;\n    line-height: 50px;\n    text-align: left; }\n\n.btn:focus {\n  background-color: #12324D; }\n\n#plaid-link {\n  display: inline; }\n\n.plaid-link-button {\n  padding: 0 10px;\n  font-size: 18px;\n  line-height: 50px;\n  border: none;\n  border-radius: 10px;\n  width: 100%;\n  text-align: left;\n  border: none;\n  border-radius: 0; }\n\n.btn-back {\n  position: absolute;\n  color: white;\n  line-height: 50px;\n  top: 0;\n  left: 10px;\n  z-index: 6; }\n\n.btn-back:before {\n  content: \"< \";\n  margin-right: 4px; }\n\n.btn-primary,\n.btn-primary:focus {\n  background-color: #12324D; }\n\n.btn-white {\n  background-color: rgba(255, 255, 255, 0.8);\n  color: #666; }\n\n.tree-wrapper img {\n  width: 58%;\n  max-width: 300px;\n  padding: 10px;\n  margin: auto; }\n\n.center-text {\n  text-align: center; }\n\n.small-text {\n  font-size: 14px; }\n\n.hidden {\n  display: none; }\n\n.z10 {\n  z-index: 10; }\n\n.mobile-nav {\n  border-top: 1px solid #c8e2ec;\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  background-color: #fff; }\n\n.mobile-nav ul {\n  color: #12324D; }\n  .mobile-nav ul li {\n    display: inline-block;\n    padding: 10px 0 8px;\n    width: 25%;\n    text-align: center;\n    font-size: 12px; }\n    .mobile-nav ul li .fa {\n      font-size: 22px;\n      margin-bottom: 3px; }\n\n.top-nav {\n  width: 100%;\n  position: fixed;\n  height: 50px;\n  top: 0;\n  left: 0;\n  right: 0;\n  background-color: #12324D;\n  color: white;\n  text-align: center;\n  font-size: 22px;\n  line-height: 50px;\n  z-index: 5; }\n\n.graph-wrapper {\n  margin-bottom: 10px;\n  width: 100%;\n  text-align: center; }\n  .graph-wrapper img {\n    width: 100%; }\n\n.list--elem {\n  background-color: rgba(255, 255, 255, 0.8);\n  padding: 20px 10px 16px;\n  font-size: 18px;\n  border-bottom: 1px solid #c8e2ec; }\n\n.list--elem-seed {\n  position: relative;\n  padding-bottom: 10px;\n  margin-bottom: 35px; }\n\n.list--header {\n  background-color: rgba(255, 255, 255, 0.4);\n  font-weight: bold;\n  border-bottom: none; }\n\n.list--primary {\n  background-color: #12324D;\n  color: white; }\n\n.list--row-right {\n  float: right; }\n\n.list--account-elem {\n  padding-top: 16px;\n  padding-bottom: 12px;\n  min-height: 70px; }\n\n.list--account-number {\n  font-size: 14px; }\n\n.list--account-add {\n  margin-right: 10px; }\n\n.list--account-right {\n  position: absolute;\n  right: 10px;\n  top: 20px;\n  text-align: right; }\n\n.tile-list li {\n  background-color: rgba(255, 255, 255, 0.4);\n  width: 33%;\n  height: 0;\n  padding-bottom: 32%;\n  display: inline-block; }\n\n.seed--status-bar-wrapper {\n  width: 100%;\n  position: absolute;\n  height: 25px;\n  line-height: 25px;\n  left: 0;\n  bottom: -25px;\n  font-size: 14px;\n  background-color: #eee;\n  text-align: center;\n  z-index: -2; }\n\n.seed--status-bar {\n  width: 30%;\n  background-color: #92C85A;\n  height: 25px;\n  position: absolute;\n  left: 0;\n  z-index: -1; }\n\n.list--elem-seed {\n  background-color: rgba(255, 255, 255, 0.8); }\n\n.wrapper-pad-top {\n  padding-top: 20px; }\n\ninput[type=\"submit\"] {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\nselect {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\noption {\n  padding: 0;\n  white-space: normal;\n  color: #666; }\n\nlabel {\n  margin-bottom: 0; }\n\n.form--section > div,\n.form--section > input,\n.form--section > button,\n.form--section > select,\n.form--section > .form-group,\n.form--section > a {\n  border-bottom: 1px solid #c8e2ec; }\n  .form--section > div:last-child,\n  .form--section > input:last-child,\n  .form--section > button:last-child,\n  .form--section > select:last-child,\n  .form--section > .form-group:last-child,\n  .form--section > a:last-child {\n    border-bottom: none; }\n\n.form--section-header {\n  text-transform: uppercase;\n  line-height: 30px;\n  padding-top: 20px;\n  padding-left: 10px;\n  border-bottom: none !important; }\n\n.form--group {\n  position: relative; }\n  .form--group input {\n    border: none; }\n  .form--group label,\n  .form--group .field {\n    display: inline-block;\n    height: 50px;\n    line-height: 50px;\n    padding: 0 10px;\n    font-size: 18px;\n    background-color: rgba(255, 255, 255, 0.8);\n    font-weight: 300;\n    color: #666; }\n  .form--group label {\n    width: 35%; }\n  .form--group .field {\n    border: none;\n    outline: none;\n    width: 65%;\n    position: relative; }\n    .form--group .field--std {\n      background-color: rgba(255, 255, 255, 0.8); }\n    .form--group .field--primary {\n      background-color: #12324D;\n      color: white; }\n    .form--group .field--text-right {\n      text-align: right; }\n    .form--group .field--full-width {\n      width: 100%; }\n  .form--group-money label {\n    position: relative; }\n  .form--group-money label:after {\n    position: absolute;\n    content: \"$ \";\n    right: -22px;\n    top: 0;\n    z-index: 2; }\n  .form--group-money input.field {\n    padding-left: 30px; }\n\n.form--separated {\n  margin-bottom: 10px; }\n\n.row-right-overlay {\n  position: absolute;\n  right: 10px;\n  line-height: 50px; }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 380 */
+/* 379 */
 /***/ function(module, exports) {
 
 	/*
@@ -47047,7 +47029,7 @@
 
 
 /***/ },
-/* 381 */
+/* 380 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -47297,6 +47279,122 @@
 			URL.revokeObjectURL(oldSrc);
 	}
 
+
+/***/ },
+/* 381 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _TransactionData = __webpack_require__(382);
+
+	Object.defineProperty(exports, 'transaction_data', {
+	  enumerable: true,
+	  get: function get() {
+	    return _TransactionData.transaction_data;
+	  }
+	});
+
+	var _AccountsData = __webpack_require__(383);
+
+	Object.defineProperty(exports, 'account_data', {
+	  enumerable: true,
+	  get: function get() {
+	    return _AccountsData.account_data;
+	  }
+	});
+
+
+	var seed_data = [{
+	  name: "Save Money for Cute Shiba Inu",
+	  goal: 200,
+	  time: "Month"
+	}];
+
+	exports.seed_data = seed_data;
+
+/***/ },
+/* 382 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var transaction_data = exports.transaction_data = [{
+	  name: "Pho La Jolla",
+	  amount: 12.5,
+	  date: "2016-11-30"
+	}, {
+	  name: "UCSD Paycheck",
+	  amount: -2000,
+	  date: "2016-11-14"
+	}, {
+	  name: "iPhone 7",
+	  amount: 599,
+	  date: "2016-11-20"
+	}, {
+	  name: "Samsung Refund",
+	  amount: -529,
+	  date: "2016-11-21"
+	}, {
+	  name: "Samsung Galaxy Note 7",
+	  amount: 529,
+	  date: "2016-11-23"
+	}, {
+	  name: "Brain Cell Plush",
+	  amount: 8.5,
+	  date: "2016-11-01"
+	}, {
+	  name: "Stomach Virus Plush",
+	  amount: 8.5,
+	  date: "2016-11-11"
+	}, {
+	  name: "Scissors",
+	  amount: 6.24,
+	  date: "2016-12-01"
+	}, {
+	  name: "Pay Rent",
+	  amount: 500,
+	  date: "2016-11-9"
+	}, {
+	  name: "UCSD Paycheck",
+	  amount: -200,
+	  date: "2016-11-9"
+	}, {
+	  name: "Buy Slippers",
+	  amount: 12.23,
+	  date: "2016-11-8"
+	}, {
+	  name: "UCSD Paycheck",
+	  amount: -2000,
+	  date: "2016-11-20"
+	}];
+
+/***/ },
+/* 383 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var accounts_data = exports.accounts_data = [{
+	  name: "Wells Fargo",
+	  numbers: ["XXXX", "XXXX", "XXXX", "XXXX"]
+	}, {
+	  name: "Chase",
+	  numbers: ["XXXX", "XXXX", "XXXX", "XXXX"]
+	}, {
+	  name: "Bank of America",
+	  numbers: ["XXXX", "XXXX", "XXXX", "XXXX"]
+	}];
 
 /***/ }
 /******/ ]);
