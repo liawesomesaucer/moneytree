@@ -33,6 +33,7 @@ export default class Plant extends React.Component {
   }
   handleSubmit(e) {
     this.props.dispatch(createSeed(this.state.name, this.state.goal, this.state.time));
+    browserHistory.push('/');
   }
   render () {
     return (

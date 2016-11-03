@@ -35,6 +35,6 @@ store.subscribe(() => {
 
 // TEMPORARY DISPATCHES FOR DEVELOPMENT
 store.dispatch({type: "LOGIN"});
-store.dispatch({type: "CREATE_SEED", payload:{name: "Test Seed", goal: 100, time: "Month"}})
+store.dispatch({type: "CREATE_SEED", payload:{name: "Save Money for Car", goal: 200, time: "Month"}})
 
 export { store };

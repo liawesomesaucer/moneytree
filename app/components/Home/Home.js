@@ -54,29 +54,38 @@ export default class Home extends React.Component {
     let seeds = []
     this.props.seeds.forEach((val, i) => {
       let diff = this.diffMoney(val.startTime, val.endTime);
-      let percentCompleted = (diff / val.goal).toString();
-      console.log(val);
+      let percentCompleted = Math.max(0, Math.min((diff / val.goal * 100), 100)).toString().split(".")[0];
+      console.log("wow")
+      console.log(percentCompleted);
       seeds.push(
         <li
           className="list--elem list--elem-seed"
           key={i}
         >
-          <span className="seed--status-bar-wrapper">
-            <span 
-              className="seed--status-bar"
-              style={{width: percentCompleted + "%"}}
-            >
+          <div className="list--elem-seed-info">
+            <span className="seed--status-bar-wrapper">
+              <span className="z10">{percentCompleted}% Complete</span>
+              <span 
+                className="seed--status-bar"
+                style={{width: percentCompleted + "%"}}
+              >
+              </span>
             </span>
-            {percentCompleted}% Complete
-          </span>
-          <span className="list--row-left">
-            <div className="list--account-name">{val.name}</div>
-            <div className="list--account-number">Save {val.goal} in a {val.time}</div>
-          </span>
-          <span className="list--row-right list--account-right"><br/>
-           {/* <span className="small-text">Complete</span>*/}
-          </span>
-
+            <span className="list--row-left">
+              <div className="list--account-name">{val.name}</div>
+              <div className="list--account-number">Save ${val.goal} in a {val.time}</div>
+            </span>
+            <span className="list--row-right list--account-right"><br/>
+             {/* <span className="small-text">Complete</span>*/}
+            </span>
+          </div>
+          <div className="list--elem-seed-dropdown">
+            <span className="list--row-left">
+              <div className="list--account-number">Current progress: ${diff.toString().split(".")[0]}</div>
+              <div className="list--account-number"></div>
+            </span>
+            <span className="list--row-right list--account-right"><br/></span>
+          </div>
         </li>
       )
     })
