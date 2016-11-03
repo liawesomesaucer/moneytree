@@ -1,34 +1,42 @@
 export const transaction_data = [
   {
     name: "Pho La Jolla",
-    price: -12.5
+    amount: 12.5,
+    date: "2016-10-30"
   },
   {
     name: "UCSD Paycheck",
-    price: 180
+    amount: -180,
+    date: "2016-10-14"
   },
   {
     name: "iPhone 7",
-    price: -599
+    amount: 599,
+    date: "2016-10-20"
   },
   {
     name: "Samsung Refund",
-    price: 529
+    amount: -529,
+    date: "2016-10-21"
   },
   {
     name: "Samsung Galaxy Note 7",
-    price: -529
+    amount: 529,
+    date: "2016-10-23"
   },
   {
     name: "Brain Cell Plush",
-    price: -8.5
+    amount: 8.5,
+    date: "2016-10-01"
   },
   {
     name: "Stomach Virus Plush",
-    price: -8.5
+    amount: 8.5,
+    date: "2016-10-10"
   },
   {
     name: "Scissors",
-    price: -6.24
+    amount: 6.24,
+    date: "2016-11-01"
   },
 ];

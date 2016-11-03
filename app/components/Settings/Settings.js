@@ -4,6 +4,7 @@ import FontAwesome from 'react-fontawesome';
 import { browserHistory } from 'react-router';
 
 import { addAccount } from '../../actions/accountsActions';
+import { logoutUser } from '../../actions/authActions';
 
 import Nav from '../Nav';
 
@@ -13,6 +14,11 @@ import Nav from '../Nav';
 export default class Settings extends React.Component {
   constructor(props) {
     super(props);
+    this.handleLogout.bind(this);
+  }
+  handleLogout() {
+    this.props.dispatch(logoutUser());
+    browserHistory.push('/login');
   }
   render () {
     return (
@@ -49,7 +55,7 @@ export default class Settings extends React.Component {
             <button 
               type="button"
               className="btn btn-white btn--fullwidth" 
-              onClick={() => browserHistory.push('/login')}
+              onClick={() => this.handleLogout()}
             >
               Sign Out
               <span className="row-right-overlay">

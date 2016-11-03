@@ -28722,12 +28722,18 @@
 
 	var _accountsReducer = __webpack_require__(294);
 
+	var _authReducer = __webpack_require__(318);
+
+	var _seedReducer = __webpack_require__(321);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var reducers = (0, _redux.combineReducers)({
 	  settings: _settingsReducer.settingsReducer,
 	  transactions: _transactionsReducer.transactionsReducer,
-	  accounts: _accountsReducer.accountsReducer
+	  accounts: _accountsReducer.accountsReducer,
+	  auth: _authReducer.authReducer,
+	  seeds: _seedReducer.seedReducer
 	});
 
 	/*
@@ -31140,6 +31146,10 @@
 	      {
 	        return [].concat(_toConsumableArray(state), [action.payload]);
 	      }
+	    case "ADD_TRANSACTIONS":
+	      {
+	        return [].concat(_toConsumableArray(state)).concat(action.payload);
+	      }
 	  }
 	  return state;
 	};
@@ -31157,28 +31167,36 @@
 	});
 	var transaction_data = exports.transaction_data = [{
 	  name: "Pho La Jolla",
-	  price: -12.5
+	  amount: 12.5,
+	  date: "2016-10-30"
 	}, {
 	  name: "UCSD Paycheck",
-	  price: 180
+	  amount: -180,
+	  date: "2016-10-14"
 	}, {
 	  name: "iPhone 7",
-	  price: -599
+	  amount: 599,
+	  date: "2016-10-20"
 	}, {
 	  name: "Samsung Refund",
-	  price: 529
+	  amount: -529,
+	  date: "2016-10-21"
 	}, {
 	  name: "Samsung Galaxy Note 7",
-	  price: -529
+	  amount: 529,
+	  date: "2016-10-23"
 	}, {
 	  name: "Brain Cell Plush",
-	  price: -8.5
+	  amount: 8.5,
+	  date: "2016-10-01"
 	}, {
 	  name: "Stomach Virus Plush",
-	  price: -8.5
+	  amount: 8.5,
+	  date: "2016-10-10"
 	}, {
 	  name: "Scissors",
-	  price: -6.24
+	  amount: 6.24,
+	  date: "2016-11-01"
 	}];
 
 /***/ },
@@ -31277,11 +31295,17 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.default = BottomNav;
+	exports.default = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _dec, _class;
 
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(173);
 
 	var _reactFontawesome = __webpack_require__(297);
 
@@ -31291,64 +31315,93 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function BottomNav(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'mobile-nav reset-list' },
-	    _react2.default.createElement(
-	      'ul',
-	      null,
-	      _react2.default.createElement(
-	        'li',
-	        { onClick: function onClick() {
-	            return _reactRouter.browserHistory.push('/');
-	          } },
-	        _react2.default.createElement(_reactFontawesome2.default, { name: 'home' }),
-	        _react2.default.createElement(
-	          'p',
-	          { className: 'no-margin' },
-	          'Home'
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'li',
-	        { onClick: function onClick() {
-	            return _reactRouter.browserHistory.push('/accounts');
-	          } },
-	        _react2.default.createElement(_reactFontawesome2.default, { name: 'address-book' }),
-	        _react2.default.createElement(
-	          'p',
-	          { className: 'no-margin' },
-	          'Accounts'
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'li',
-	        { onClick: function onClick() {
-	            return _reactRouter.browserHistory.push('/transactions');
-	          } },
-	        _react2.default.createElement(_reactFontawesome2.default, { name: 'credit-card' }),
-	        _react2.default.createElement(
-	          'p',
-	          { className: 'no-margin' },
-	          'Transactions'
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'li',
-	        { onClick: function onClick() {
-	            return _reactRouter.browserHistory.push('/settings');
-	          } },
-	        _react2.default.createElement(_reactFontawesome2.default, { name: 'cog' }),
-	        _react2.default.createElement(
-	          'p',
-	          { className: 'no-margin' },
-	          'Settings'
-	        )
-	      )
-	    )
-	  );
-	}
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var BottomNav = (_dec = (0, _reactRedux.connect)(function (store) {
+	  return {
+	    auth: store.auth
+	  };
+	}), _dec(_class = function (_React$Component) {
+	  _inherits(BottomNav, _React$Component);
+
+	  function BottomNav() {
+	    _classCallCheck(this, BottomNav);
+
+	    return _possibleConstructorReturn(this, (BottomNav.__proto__ || Object.getPrototypeOf(BottomNav)).apply(this, arguments));
+	  }
+
+	  _createClass(BottomNav, [{
+	    key: 'render',
+	    value: function render() {
+	      if (this.props.auth.logged_in) {
+	        return _react2.default.createElement(
+	          'div',
+	          { className: 'mobile-nav reset-list' },
+	          _react2.default.createElement(
+	            'ul',
+	            null,
+	            _react2.default.createElement(
+	              'li',
+	              { onClick: function onClick() {
+	                  return _reactRouter.browserHistory.push('/');
+	                } },
+	              _react2.default.createElement(_reactFontawesome2.default, { name: 'home' }),
+	              _react2.default.createElement(
+	                'p',
+	                { className: 'no-margin' },
+	                'Home'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              { onClick: function onClick() {
+	                  return _reactRouter.browserHistory.push('/accounts');
+	                } },
+	              _react2.default.createElement(_reactFontawesome2.default, { name: 'address-book' }),
+	              _react2.default.createElement(
+	                'p',
+	                { className: 'no-margin' },
+	                'Accounts'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              { onClick: function onClick() {
+	                  return _reactRouter.browserHistory.push('/transactions');
+	                } },
+	              _react2.default.createElement(_reactFontawesome2.default, { name: 'credit-card' }),
+	              _react2.default.createElement(
+	                'p',
+	                { className: 'no-margin' },
+	                'Transactions'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              { onClick: function onClick() {
+	                  return _reactRouter.browserHistory.push('/settings');
+	                } },
+	              _react2.default.createElement(_reactFontawesome2.default, { name: 'cog' }),
+	              _react2.default.createElement(
+	                'p',
+	                { className: 'no-margin' },
+	                'Settings'
+	              )
+	            )
+	          )
+	        );
+	      }
+	      return null;
+	    }
+	  }]);
+
+	  return BottomNav;
+	}(_react2.default.Component)) || _class);
+	exports.default = BottomNav;
 
 /***/ },
 /* 297 */
@@ -31593,6 +31646,8 @@
 
 	var _accountsActions = __webpack_require__(302);
 
+	var _transactionActions = __webpack_require__(313);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -31603,7 +31658,8 @@
 
 	var AccountsList = (_dec = (0, _reactRedux.connect)(function (store) {
 	  return {
-	    accounts: store.accounts
+	    accounts: store.accounts,
+	    transactions: store.transactions
 	  };
 	}), _dec(_class = function (_React$Component) {
 	  _inherits(AccountsList, _React$Component);
@@ -31629,6 +31685,7 @@
 	          $.get("/api/accounts?public_token=" + token, function (data) {
 	            console.log("wow");
 	            console.log(data);
+	            reactElem.props.dispatch((0, _transactionActions.addTransactions)(data.transactions));
 	            reactElem.props.dispatch((0, _accountsActions.addAccount)(data.accounts));
 	            _reactRouter.browserHistory.push('/accounts');
 	          });
@@ -31646,6 +31703,8 @@
 	      for (var i = 0; i < this.props.accounts.length; i++) {
 	        accounts_data = accounts_data.concat(this.props.accounts[i]);
 	      }
+
+	      console.log(this.props.accounts);
 
 	      if (accounts_data.length === 0) {
 	        accounts.push(_react2.default.createElement(
@@ -31888,13 +31947,19 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.default = Home;
+	exports.default = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _dec, _class;
 
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
 	var _reactRouter = __webpack_require__(197);
+
+	var _reactRedux = __webpack_require__(173);
 
 	var _Nav = __webpack_require__(298);
 
@@ -31906,33 +31971,109 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function Home() {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: '' },
-	    _react2.default.createElement(_Nav2.default, { pageName: 'Home' }),
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'tree-wrapper' },
-	      _react2.default.createElement(
-	        'h4',
-	        { className: 'plant-message' },
-	        'You have not planted any seeds yet'
-	      ),
-	      _react2.default.createElement(
-	        'a',
-	        {
-	          className: 'btn btn-default',
-	          onClick: function onClick() {
-	            return _reactRouter.browserHistory.push("/plant");
-	          }
-	        },
-	        'Plant a Seed'
-	      )
-	    ),
-	    _react2.default.createElement(_TransactionList2.default, null)
-	  );
-	}
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Home = (_dec = (0, _reactRedux.connect)(function (store) {
+	  return {
+	    seeds: store.seeds,
+	    transactions: store.transactions
+	  };
+	}), _dec(_class = function (_React$Component) {
+	  _inherits(Home, _React$Component);
+
+	  function Home(props) {
+	    _classCallCheck(this, Home);
+
+	    var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this, props));
+
+	    _this.diffMoney = _this.diffMoney.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(Home, [{
+	    key: 'diffMoney',
+	    value: function diffMoney(startDate, endDate) {
+	      var diff = 0;
+	      this.props.transactions.forEach(function (value) {
+	        var valDate = new Date(value.date);
+	        if (valDate >= startDate && valDate <= endDate) {
+	          diff = diff - value.amount;
+	        }
+	      });
+	      return diff;
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      var tree = [];
+	      if (this.props.seeds.length === 0) {
+	        tree = _react2.default.createElement(
+	          'div',
+	          { className: 'tree-wrapper' },
+	          _react2.default.createElement(
+	            'h4',
+	            { className: 'plant-message' },
+	            'You have not planted any seeds yet'
+	          ),
+	          _react2.default.createElement(
+	            'a',
+	            {
+	              className: 'btn btn-default',
+	              onClick: function onClick() {
+	                return _reactRouter.browserHistory.push("/plant");
+	              }
+	            },
+	            'Plant a Seed'
+	          )
+	        );
+	      } else {
+	        tree = _react2.default.createElement(
+	          'div',
+	          { className: 'tree-wrapper' },
+	          _react2.default.createElement('img', { src: 'static/images/Tree.png' })
+	        );
+	      }
+	      var seeds = [];
+	      this.props.seeds.forEach(function (val, i) {
+	        seeds.push(_react2.default.createElement(
+	          'li',
+	          {
+	            className: 'list--elem list--elem-seed',
+	            key: i
+
+	          },
+	          _react2.default.createElement('span', {
+	            className: 'seed--status-bar',
+	            style: { width: _this2.diffMoney(val.starDate, val.endDate).toString() + "%" }
+	          }),
+	          val.name
+	        ));
+	      });
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: '' },
+	        _react2.default.createElement(_Nav2.default, { pageName: 'Home' }),
+	        tree,
+	        _react2.default.createElement(
+	          'ul',
+	          { className: 'reset-list list seed-list' },
+	          seeds
+	        ),
+	        _react2.default.createElement(_TransactionList2.default, null)
+	      );
+	    }
+	  }]);
+
+	  return Home;
+	}(_react2.default.Component)) || _class);
+	exports.default = Home;
 
 /***/ },
 /* 307 */
@@ -31984,7 +32125,7 @@
 	      var transactions = [];
 
 	      this.props.transactions.forEach(function (val, index) {
-	        var cost = val.price > 0 ? "$ " + val.price.toString() : val.price.toString().replace("-", "- $ ");
+	        var cost = val.amount <= 0 ? "$ " + val.amount.toString() : val.amount.toString().replace("-", "- $ ");
 
 	        transactions.push(_react2.default.createElement(
 	          'li',
@@ -32035,7 +32176,11 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.default = Login;
+	exports.default = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _dec, _class;
 
 	var _react = __webpack_require__(1);
 
@@ -32043,78 +32188,126 @@
 
 	var _reactRouter = __webpack_require__(197);
 
+	var _reactRedux = __webpack_require__(173);
+
+	var _authActions = __webpack_require__(319);
+
 	var _Nav = __webpack_require__(298);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function Login() {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'wrapper--padded' },
-	    _react2.default.createElement(_Nav2.default, { pageName: 'Log In' }),
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'login--wrapper' },
-	      _react2.default.createElement('div', { className: 'login--logo' }),
-	      _react2.default.createElement(
-	        'form',
-	        { className: 'form login--form' },
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Login = (_dec = (0, _reactRedux.connect)(function (store) {
+	  return {};
+	}), _dec(_class = function (_React$Component) {
+	  _inherits(Login, _React$Component);
+
+	  function Login(props) {
+	    _classCallCheck(this, Login);
+
+	    var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+
+	    _this.handleLogin.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(Login, [{
+	    key: 'handleLogin',
+	    value: function handleLogin() {
+	      this.props.dispatch((0, _authActions.loginUser)());
+	      _reactRouter.browserHistory.push('/');
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'wrapper--padded' },
+	        _react2.default.createElement(_Nav2.default, { pageName: 'Log In' }),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'form--group form--separated' },
-	          _react2.default.createElement('input', {
-	            type: 'text',
-	            name: 'email',
-	            placeholder: 'Email',
-	            className: 'field field--std field--full-width'
-	          })
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'form--group form--separated' },
-	          _react2.default.createElement('input', {
-	            type: 'password',
-	            name: 'password',
-	            placeholder: 'Password',
-	            className: 'field field--std field--full-width'
-	          })
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'form--group form--separated' },
+	          { className: 'login--wrapper' },
 	          _react2.default.createElement(
-	            'button',
-	            {
-	              type: 'button',
-	              className: 'field field--full-width field--primary',
-	              onClick: function onClick() {
-	                return _reactRouter.browserHistory.push('/');
-	              }
-	            },
-	            'Login'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'form--group form--separated' },
+	            'div',
+	            { className: 'login--logo tree-wrapper' },
+	            _react2.default.createElement('img', { src: '/static/images/Tree.png' }),
+	            _react2.default.createElement(
+	              'h1',
+	              null,
+	              'MoneyTree'
+	            )
+	          ),
 	          _react2.default.createElement(
-	            'button',
-	            {
-	              type: 'button',
-	              className: 'field field--full-width field--secondary',
-	              onClick: function onClick() {
-	                return _reactRouter.browserHistory.push('/');
-	              }
-	            },
-	            'Register'
+	            'form',
+	            { className: 'form login--form' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'form--group form--separated' },
+	              _react2.default.createElement('input', {
+	                type: 'text',
+	                name: 'email',
+	                placeholder: 'Email',
+	                className: 'field field--std field--full-width'
+	              })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'form--group form--separated' },
+	              _react2.default.createElement('input', {
+	                type: 'password',
+	                name: 'password',
+	                placeholder: 'Password',
+	                className: 'field field--std field--full-width'
+	              })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'form--group form--separated' },
+	              _react2.default.createElement(
+	                'button',
+	                {
+	                  type: 'button',
+	                  className: 'field field--full-width field--primary',
+	                  onClick: function onClick() {
+	                    return _this2.handleLogin();
+	                  }
+	                },
+	                'Login'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'form--group form--separated' },
+	              _react2.default.createElement(
+	                'button',
+	                {
+	                  type: 'button',
+	                  className: 'field field--full-width field--secondary',
+	                  onClick: function onClick() {
+	                    return _this2.handleLogin();
+	                  }
+	                },
+	                'Register'
+	              )
+	            )
 	          )
 	        )
-	      )
-	    )
-	  );
-	}
+	      );
+	    }
+	  }]);
+
+	  return Login;
+	}(_react2.default.Component)) || _class);
+	exports.default = Login;
 
 /***/ },
 /* 309 */
@@ -32145,6 +32338,8 @@
 
 	var _accountsActions = __webpack_require__(302);
 
+	var _authActions = __webpack_require__(319);
+
 	var _Nav = __webpack_require__(298);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
@@ -32165,12 +32360,23 @@
 	  function Settings(props) {
 	    _classCallCheck(this, Settings);
 
-	    return _possibleConstructorReturn(this, (Settings.__proto__ || Object.getPrototypeOf(Settings)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (Settings.__proto__ || Object.getPrototypeOf(Settings)).call(this, props));
+
+	    _this.handleLogout.bind(_this);
+	    return _this;
 	  }
 
 	  _createClass(Settings, [{
+	    key: 'handleLogout',
+	    value: function handleLogout() {
+	      this.props.dispatch((0, _authActions.logoutUser)());
+	      _reactRouter.browserHistory.push('/login');
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'wrapper' },
@@ -32230,7 +32436,7 @@
 	                  type: 'button',
 	                  className: 'btn btn-white btn--fullwidth',
 	                  onClick: function onClick() {
-	                    return _reactRouter.browserHistory.push('/login');
+	                    return _this2.handleLogout();
 	                  }
 	                },
 	                'Sign Out',
@@ -32400,13 +32606,25 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.default = Plant;
+	exports.default = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _dec, _class;
 
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactRedux = __webpack_require__(173);
+
 	var _reactRouter = __webpack_require__(197);
+
+	var _reactFontawesome = __webpack_require__(297);
+
+	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
+
+	var _seedActions = __webpack_require__(320);
 
 	var _Nav = __webpack_require__(298);
 
@@ -32414,20 +32632,179 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function Plant() {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: '' },
-	    _react2.default.createElement(_Nav2.default, { pageName: 'Plant a Seed' }),
-	    _react2.default.createElement(
-	      'a',
-	      { onClick: function onClick() {
-	          return _reactRouter.browserHistory.push('/home');
-	        } },
-	      'Back'
-	    )
-	  );
-	}
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Plant = (_dec = (0, _reactRedux.connect)(function (store) {
+	  return {};
+	}), _dec(_class = function (_React$Component) {
+	  _inherits(Plant, _React$Component);
+
+	  function Plant(props) {
+	    _classCallCheck(this, Plant);
+
+	    var _this = _possibleConstructorReturn(this, (Plant.__proto__ || Object.getPrototypeOf(Plant)).call(this, props));
+
+	    _this.state = {
+	      goal: 0,
+	      time: "Week"
+	    };
+	    _this.handleUpdateGoal = _this.handleUpdateGoal.bind(_this);
+	    _this.handleUpdateTime = _this.handleUpdateTime.bind(_this);
+	    _this.handleUpdateName = _this.handleUpdateName.bind(_this);
+	    _this.handleSubmit = _this.handleSubmit.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(Plant, [{
+	    key: 'handleUpdateName',
+	    value: function handleUpdateName(e) {
+	      this.setState({ name: e.target.value });
+	    }
+	  }, {
+	    key: 'handleUpdateGoal',
+	    value: function handleUpdateGoal(e) {
+	      this.setState({ goal: e.target.value });
+	    }
+	  }, {
+	    key: 'handleUpdateTime',
+	    value: function handleUpdateTime(e) {
+	      this.setState({ time: e.target.value });
+	    }
+	  }, {
+	    key: 'handleSubmit',
+	    value: function handleSubmit(e) {
+	      this.props.dispatch((0, _seedActions.createSeed)(this.state.name, this.state.goal, this.state.time));
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'wrapper' },
+	        _react2.default.createElement(_Nav2.default, { pageName: 'Plant a Seed' }),
+	        _react2.default.createElement(
+	          'a',
+	          { className: 'btn-back', onClick: function onClick() {
+	              return _reactRouter.browserHistory.push('/home');
+	            } },
+	          'Back'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'plant wrapper-pad-top form--separated' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'header' },
+	            _react2.default.createElement(
+	              'h1',
+	              null,
+	              _react2.default.createElement(_reactFontawesome2.default, { name: 'leaf' })
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'form--section-header' },
+	            'Seed Traits'
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'form--group' },
+	            _react2.default.createElement(
+	              'label',
+	              { htmlFor: 'goal' },
+	              'Name'
+	            ),
+	            _react2.default.createElement('input', {
+	              type: 'text',
+	              name: 'name',
+	              id: 'name',
+	              className: 'field field--std',
+	              onChange: this.handleUpdateName
+	            })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'form--group form--group-money' },
+	            _react2.default.createElement(
+	              'label',
+	              { htmlFor: 'goal' },
+	              'Goal'
+	            ),
+	            _react2.default.createElement('input', {
+	              type: 'text',
+	              name: 'goal',
+	              id: 'goal',
+	              className: 'field field--std',
+	              onChange: this.handleUpdateGoal
+	            })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'form--group' },
+	            _react2.default.createElement(
+	              'label',
+	              { htmlFor: 'time-period' },
+	              'Time Period'
+	            ),
+	            _react2.default.createElement(
+	              'select',
+	              {
+	                id: 'time-period',
+	                name: 'time-period',
+	                className: 'field field-std',
+	                onChange: this.handleUpdateTime
+	              },
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'Week' },
+	                'Week'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'Month' },
+	                'Month'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'Year' },
+	                'Year'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'row-right-overlay' },
+	              _react2.default.createElement(_reactFontawesome2.default, { name: 'chevron-down' })
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'form--group form--separated' },
+	          _react2.default.createElement(
+	            'button',
+	            {
+	              type: 'button',
+	              className: 'field field--full-width field--primary',
+	              onClick: function onClick() {
+	                return _this2.handleSubmit();
+	              }
+	            },
+	            'Plant Seed'
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Plant;
+	}(_react2.default.Component)) || _class);
+	exports.default = Plant;
 
 /***/ },
 /* 312 */
@@ -32621,6 +32998,7 @@
 	  value: true
 	});
 	exports.addTransaction = addTransaction;
+	exports.addTransactions = addTransactions;
 	function addTransaction(name, date, price) {
 	  return {
 	    type: "ADD_TRANSACTION",
@@ -32629,6 +33007,12 @@
 	      date: date,
 	      price: price
 	    }
+	  };
+	}
+	function addTransactions(transactionList) {
+	  return {
+	    type: "ADD_TRANSACTIONS",
+	    payload: transactionList
 	  };
 	}
 
@@ -32667,7 +33051,7 @@
 
 
 	// module
-	exports.push([module.id, ".mobile-nav ul, .tile-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0;\n  margin-top: 0; }\n\n@font-face {\n  font-family: GothamRounded;\n  src: url(\"/static/fonts/Gotham-Rounded.ttf\"); }\n\n@font-face {\n  font-family: GothamRoundedBold;\n  src: url(\"/static/fonts/Gotham-Rounded-Bold.ttf\"); }\n\n* {\n  font-family: GothamRounded, Roboto, Helvetica, sans-serif; }\n\nbody {\n  background-color: #c8e2ec;\n  margin: 0;\n  margin-top: 50px;\n  margin-bottom: 60px; }\n\n.no-margin {\n  margin: 0; }\n\n.wrapper--padded {\n  padding: 10px; }\n\nbutton:focus {\n  outline: none; }\n\n.reset-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0; }\n\n.tree-wrapper {\n  padding: 20px 0;\n  text-align: center; }\n\n.btn {\n  padding: 12px 20px 8px;\n  background-color: #12324D;\n  color: white;\n  font-size: 18px;\n  border: none;\n  border-radius: 10px; }\n  .btn--fullwidth {\n    width: 100%;\n    border-radius: 0;\n    padding: 0 10px;\n    line-height: 50px;\n    text-align: left; }\n\n#plaid-link {\n  display: inline; }\n\n.plaid-link-button {\n  padding: 0 10px;\n  background-color: rgba(255, 255, 255, 0.8);\n  font-size: 18px;\n  line-height: 50px;\n  border: none;\n  border-radius: 10px;\n  width: 100%;\n  text-align: left;\n  border: none;\n  border-radius: 0; }\n\n.btn-primary {\n  background-color: #12324D; }\n\n.btn-white {\n  background-color: rgba(255, 255, 255, 0.8);\n  color: #666; }\n\n.mobile-nav {\n  border-top: 1px solid #c8e2ec;\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  background-color: #fff; }\n\n.mobile-nav ul {\n  color: #12324D; }\n  .mobile-nav ul li {\n    display: inline-block;\n    padding: 10px 0 8px;\n    width: 25%;\n    text-align: center;\n    font-size: 12px; }\n    .mobile-nav ul li .fa {\n      font-size: 22px;\n      margin-bottom: 3px; }\n\n.top-nav {\n  width: 100%;\n  position: fixed;\n  height: 50px;\n  top: 0;\n  left: 0;\n  right: 0;\n  background-color: #12324D;\n  color: white;\n  text-align: center;\n  font-size: 22px;\n  line-height: 50px;\n  z-index: 5; }\n\n.graph-wrapper {\n  margin-bottom: 10px;\n  width: 100%; }\n  .graph-wrapper img {\n    width: 100%; }\n\n.list--elem {\n  background-color: rgba(255, 255, 255, 0.8);\n  padding: 20px 10px 16px;\n  font-size: 18px;\n  border-bottom: 1px solid #c8e2ec; }\n\n.list--header {\n  background-color: rgba(255, 255, 255, 0.4);\n  font-weight: bold;\n  border-bottom: none; }\n\n.list--primary {\n  background-color: #12324D;\n  color: white; }\n\n.list--row-right {\n  float: right; }\n\n.list--account-elem {\n  padding-top: 16px;\n  padding-bottom: 12px;\n  min-height: 70px; }\n\n.list--account-number {\n  font-size: 14px; }\n\n.list--account-add {\n  margin-right: 10px; }\n\n.tile-list li {\n  background-color: rgba(255, 255, 255, 0.4);\n  width: 33%;\n  height: 0;\n  padding-bottom: 32%;\n  display: inline-block; }\n\n.wrapper-pad-top {\n  padding-top: 20px; }\n\ninput[type=\"submit\"] {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\nselect {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\noption {\n  padding: 0;\n  white-space: normal;\n  color: #666; }\n\nlabel {\n  margin-bottom: 0; }\n\n.form--section {\n  margin-bottom: 20px; }\n  .form--section > div,\n  .form--section > input,\n  .form--section > button,\n  .form--section > select,\n  .form--section > .form-group,\n  .form--section > a {\n    border-bottom: 1px solid #c8e2ec; }\n    .form--section > div:last-child,\n    .form--section > input:last-child,\n    .form--section > button:last-child,\n    .form--section > select:last-child,\n    .form--section > .form-group:last-child,\n    .form--section > a:last-child {\n      border-bottom: none; }\n\n.form--section-header {\n  text-transform: uppercase;\n  line-height: 30px;\n  margin-top: 10px;\n  padding-left: 10px;\n  border-bottom: none !important; }\n\n.form--group {\n  position: relative; }\n  .form--group input {\n    border: none; }\n  .form--group label,\n  .form--group .field {\n    display: inline-block;\n    height: 50px;\n    line-height: 50px;\n    padding: 0 10px;\n    font-size: 18px;\n    background-color: rgba(255, 255, 255, 0.8);\n    font-weight: 300;\n    color: #666; }\n  .form--group label {\n    width: 35%; }\n  .form--group .field {\n    border: none;\n    outline: none;\n    width: 65%;\n    position: relative; }\n    .form--group .field--std {\n      background-color: rgba(255, 255, 255, 0.8); }\n    .form--group .field--primary {\n      background-color: #12324D;\n      color: white; }\n    .form--group .field--text-right {\n      text-align: right; }\n    .form--group .field--full-width {\n      width: 100%; }\n  .form--group-money label {\n    position: relative; }\n  .form--group-money label:after {\n    position: absolute;\n    content: \"$ \";\n    right: -22px;\n    top: 0;\n    z-index: 2; }\n  .form--group-money input.field {\n    padding-left: 30px; }\n\n.form--separated {\n  margin-bottom: 10px; }\n\n.row-right-overlay {\n  position: absolute;\n  right: 10px;\n  line-height: 50px; }\n", ""]);
+	exports.push([module.id, ".mobile-nav ul, .tile-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0;\n  margin-top: 0; }\n\n@font-face {\n  font-family: GothamRounded;\n  src: url(\"/static/fonts/Gotham-Rounded.ttf\"); }\n\n@font-face {\n  font-family: GothamRoundedBold;\n  src: url(\"/static/fonts/Gotham-Rounded-Bold.ttf\"); }\n\n* {\n  font-family: GothamRounded, Roboto, Helvetica, sans-serif; }\n\n.header {\n  color: #12324D;\n  text-align: center; }\n\nbody {\n  background-color: #c8e2ec;\n  margin: 0;\n  margin-top: 50px;\n  margin-bottom: 60px; }\n\n.no-margin {\n  margin: 0; }\n\n.wrapper--padded {\n  padding: 10px; }\n\nbutton:focus {\n  outline: none; }\n\n.reset-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0; }\n\n.tree-wrapper {\n  padding: 20px 0;\n  text-align: center; }\n\n.btn {\n  padding: 12px 20px 8px;\n  background-color: #12324D;\n  color: white;\n  font-size: 18px;\n  border: none;\n  border-radius: 10px; }\n  .btn--fullwidth {\n    width: 100%;\n    border-radius: 0;\n    padding: 0 10px;\n    line-height: 50px;\n    text-align: left; }\n\n#plaid-link {\n  display: inline; }\n\n.plaid-link-button {\n  padding: 0 10px;\n  background-color: rgba(255, 255, 255, 0.8);\n  font-size: 18px;\n  line-height: 50px;\n  border: none;\n  border-radius: 10px;\n  width: 100%;\n  text-align: left;\n  border: none;\n  border-radius: 0; }\n\n.btn-back {\n  position: absolute;\n  color: white;\n  line-height: 50px;\n  top: 0;\n  left: 10px;\n  z-index: 6; }\n\n.btn-back:before {\n  content: \"< \";\n  margin-right: 4px; }\n\n.btn-primary {\n  background-color: #12324D; }\n\n.btn-white {\n  background-color: rgba(255, 255, 255, 0.8);\n  color: #666; }\n\n.tree-wrapper img {\n  width: 58%;\n  max-width: 300px;\n  padding: 10px;\n  margin: auto; }\n\n.mobile-nav {\n  border-top: 1px solid #c8e2ec;\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  background-color: #fff; }\n\n.mobile-nav ul {\n  color: #12324D; }\n  .mobile-nav ul li {\n    display: inline-block;\n    padding: 10px 0 8px;\n    width: 25%;\n    text-align: center;\n    font-size: 12px; }\n    .mobile-nav ul li .fa {\n      font-size: 22px;\n      margin-bottom: 3px; }\n\n.top-nav {\n  width: 100%;\n  position: fixed;\n  height: 50px;\n  top: 0;\n  left: 0;\n  right: 0;\n  background-color: #12324D;\n  color: white;\n  text-align: center;\n  font-size: 22px;\n  line-height: 50px;\n  z-index: 5; }\n\n.graph-wrapper {\n  margin-bottom: 10px;\n  width: 100%; }\n  .graph-wrapper img {\n    width: 100%; }\n\n.list--elem {\n  background-color: rgba(255, 255, 255, 0.8);\n  padding: 20px 10px 16px;\n  font-size: 18px;\n  border-bottom: 1px solid #c8e2ec; }\n\n.list--elem-seed {\n  background-color: transparent;\n  position: relative; }\n\n.list--header {\n  background-color: rgba(255, 255, 255, 0.4);\n  font-weight: bold;\n  border-bottom: none; }\n\n.list--primary {\n  background-color: #12324D;\n  color: white; }\n\n.list--row-right {\n  float: right; }\n\n.list--account-elem {\n  padding-top: 16px;\n  padding-bottom: 12px;\n  min-height: 70px; }\n\n.list--account-number {\n  font-size: 14px; }\n\n.list--account-add {\n  margin-right: 10px; }\n\n.tile-list li {\n  background-color: rgba(255, 255, 255, 0.4);\n  width: 33%;\n  height: 0;\n  padding-bottom: 32%;\n  display: inline-block; }\n\n.seed--status-bar {\n  width: 30%;\n  background-color: green;\n  display: inline-block;\n  position: absolute; }\n\n.seed-list {\n  background-color: rgba(255, 255, 255, 0.8); }\n\n.wrapper-pad-top {\n  padding-top: 20px; }\n\ninput[type=\"submit\"] {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\nselect {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\noption {\n  padding: 0;\n  white-space: normal;\n  color: #666; }\n\nlabel {\n  margin-bottom: 0; }\n\n.form--section {\n  margin-bottom: 20px; }\n  .form--section > div,\n  .form--section > input,\n  .form--section > button,\n  .form--section > select,\n  .form--section > .form-group,\n  .form--section > a {\n    border-bottom: 1px solid #c8e2ec; }\n    .form--section > div:last-child,\n    .form--section > input:last-child,\n    .form--section > button:last-child,\n    .form--section > select:last-child,\n    .form--section > .form-group:last-child,\n    .form--section > a:last-child {\n      border-bottom: none; }\n\n.form--section-header {\n  text-transform: uppercase;\n  line-height: 30px;\n  margin-top: 10px;\n  padding-left: 10px;\n  border-bottom: none !important; }\n\n.form--group {\n  position: relative; }\n  .form--group input {\n    border: none; }\n  .form--group label,\n  .form--group .field {\n    display: inline-block;\n    height: 50px;\n    line-height: 50px;\n    padding: 0 10px;\n    font-size: 18px;\n    background-color: rgba(255, 255, 255, 0.8);\n    font-weight: 300;\n    color: #666; }\n  .form--group label {\n    width: 35%; }\n  .form--group .field {\n    border: none;\n    outline: none;\n    width: 65%;\n    position: relative; }\n    .form--group .field--std {\n      background-color: rgba(255, 255, 255, 0.8); }\n    .form--group .field--primary {\n      background-color: #12324D;\n      color: white; }\n    .form--group .field--text-right {\n      text-align: right; }\n    .form--group .field--full-width {\n      width: 100%; }\n  .form--group-money label {\n    position: relative; }\n  .form--group-money label:after {\n    position: absolute;\n    content: \"$ \";\n    right: -22px;\n    top: 0;\n    z-index: 2; }\n  .form--group-money input.field {\n    padding-left: 30px; }\n\n.form--separated {\n  margin-bottom: 10px; }\n\n.row-right-overlay {\n  position: absolute;\n  right: 10px;\n  line-height: 50px; }\n", ""]);
 
 	// exports
 
@@ -32979,6 +33363,149 @@
 			URL.revokeObjectURL(oldSrc);
 	}
 
+
+/***/ },
+/* 318 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var auth_data = {
+	  logged_in: false
+	};
+
+	var authReducer = function authReducer() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : auth_data;
+	  var action = arguments[1];
+
+	  switch (action.type) {
+	    case "LOGIN":
+	      {
+	        return _extends({}, state, {
+	          logged_in: true
+	        });
+	      }
+	    case "LOGOUT":
+	      {
+	        return _extends({}, state, {
+	          logged_in: false
+	        });
+	      }
+	  }
+	  return state;
+	};
+
+	exports.authReducer = authReducer;
+
+/***/ },
+/* 319 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.loginUser = loginUser;
+	exports.logoutUser = logoutUser;
+	function loginUser() {
+	  return {
+	    type: "LOGIN"
+	  };
+	}
+	function logoutUser() {
+	  return {
+	    type: "LOGOUT"
+	  };
+	}
+
+/***/ },
+/* 320 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.createSeed = createSeed;
+	exports.editSeed = editSeed;
+	function createSeed(name, goal, time) {
+	  return {
+	    type: "CREATE_SEED",
+	    payload: {
+	      name: name,
+	      goal: goal,
+	      time: time
+	    }
+	  };
+	}
+	function editSeed(name, goal, time) {
+	  return {
+	    type: "EDIT_SEED",
+	    payload: {
+	      name: name,
+	      goal: goal,
+	      time: time
+	    }
+	  };
+	}
+
+/***/ },
+/* 321 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+	var seed_data = [];
+	var time_map = {
+	  "Month": 30,
+	  "Week": 7,
+	  "Year": 365
+	};
+
+	var seedReducer = function seedReducer() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : seed_data;
+	  var action = arguments[1];
+
+	  switch (action.type) {
+	    case "CREATE_SEED":
+	      {
+	        var newSeed = action.payload;
+	        newSeed.startTime = new Date();
+	        if (newSeed.time === "Month") {
+	          newSeed.endTime = new Date(new Date().setMonth(newSeed.startTime.getMonth() + 1));
+	        } else if (newSeed.time === "Week") {
+	          newSeed.endTime = new Date(new Date().setDate(newSeed.startTime.getDate() + 7));
+	        } else {
+	          newSeed.endTime = new Date(new Date().setYear(newSeed.startTime.getYear() + 1));
+	        }
+	        return [].concat(_toConsumableArray(state), [newSeed]);
+	      }
+	    case "EDIT_SEED":
+	      {
+	        console.log("Edit seed not implemented yet");
+	        return _extends({}, state);
+	      }
+	  }
+	  return state;
+	};
+
+	exports.seedReducer = seedReducer;
 
 /***/ }
 /******/ ]);

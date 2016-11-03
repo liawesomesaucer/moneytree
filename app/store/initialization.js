@@ -6,11 +6,15 @@ import thunk from "redux-thunk";
 import { transactionsReducer } from '../reducers/transactionsReducer';
 import { settingsReducer } from '../reducers/settingsReducer';
 import { accountsReducer } from '../reducers/accountsReducer';
+import { authReducer } from '../reducers/authReducer';
+import { seedReducer } from '../reducers/seedReducer';
 
 const reducers = combineReducers({
   settings: settingsReducer,
   transactions: transactionsReducer,
   accounts: accountsReducer,
+  auth: authReducer,
+  seeds: seedReducer
 })
 
 /*

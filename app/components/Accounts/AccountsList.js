@@ -4,10 +4,12 @@ import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 
 import { addAccount } from '../../actions/accountsActions';
+import { addTransactions } from '../../actions/transactionActions';
 
 @connect((store) => {
   return {
-    accounts: store.accounts
+    accounts: store.accounts,
+    transactions: store.transactions
   };
 })
 export default class AccountsList extends React.Component {
@@ -29,6 +31,7 @@ export default class AccountsList extends React.Component {
           function(data) {
             console.log("wow");
             console.log(data);
+            reactElem.props.dispatch(addTransactions(data.transactions));
             reactElem.props.dispatch(addAccount(data.accounts));
             browserHistory.push('/accounts');
           }
@@ -45,6 +48,8 @@ export default class AccountsList extends React.Component {
     for(var i = 0; i < this.props.accounts.length; i++) {
         accounts_data = accounts_data.concat(this.props.accounts[i]);
     }
+
+    console.log(this.props.accounts);
 
     if (accounts_data.length === 0) {
       accounts.push(

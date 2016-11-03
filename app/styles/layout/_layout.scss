@@ -62,10 +62,28 @@ button:focus {
 .btn-default {
 
 }
+.btn-back {
+  position: absolute;
+  color: white;
+  line-height: 50px;
+  top: 0;
+  left: 10px;
+  z-index: 6;
+}
+.btn-back:before {
+  content: "< ";
+  margin-right: 4px;
+}
 .btn-primary {
   background-color: $primary-color;
 }
 .btn-white {
   background-color: $white;
   color: $text-color;
+}
+.tree-wrapper img {
+  width: 58%;
+  max-width: 300px;
+  padding: 10px;
+  margin: auto;
 }

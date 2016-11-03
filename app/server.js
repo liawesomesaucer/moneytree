@@ -25,7 +25,7 @@ const PLAID_CLIENT_ID = envvar.string('PLAID_CLIENT_ID');
 const PLAID_SECRET = envvar.string('PLAID_SECRET');
 
 var plaidClient =
-  new plaid.Client(PLAID_CLIENT_ID, PLAID_SECRET, plaid.environments.tartan);
+new plaid.Client(PLAID_CLIENT_ID, PLAID_SECRET, plaid.environments.tartan);
 
 var router = express.Router();
 var apiRouter = express.Router();
@@ -41,17 +41,42 @@ apiRouter.get('/accounts', function(req, res) {
       // safely pull account and routing numbers or transaction data for the
       // user from the Plaid API using your private client_id and secret.
       var access_token = tokenResponse.access_token;
-      plaidClient.getAuthUser(access_token, function(err, authResponse) {
-        if (err != null) {
-          res.json({error: 'Unable to pull accounts from the Plaid API'});
-        } else {
-          // Return a JSON body containing the user's accounts, which
-          // includes names, balances, and account and routing numbers.
-          res.json({
-            accounts: authResponse.accounts,
-            transactions: authResponse.transactions,
+      // plaidClient.getAuthUser(access_token, function(err, authResponse) {
+      //   if (err != null) {
+      //     res.json({error: 'Unable to pull accounts from the Plaid API'});
+      //   } else {
+      //     // Return a JSON body containing the user's accounts, which
+      //     // includes names, balances, and account and routing numbers.
+      //     console.log(authResponse);
+      //     res.json({
+      //       accounts: authResponse.accounts,
+      //       transactions: authResponse.transactions,
+      //     });
+      //   }
+      // });
+
+      plaidClient.addConnectUser('chase', {
+        username: 'plaid_test',
+        password: 'plaid_good',
+      }, {
+        list: true,
+      }, function(err, mfaRes, response) {
+        // mfaRes.mfa is a list of send_methods
+        plaidClient.stepConnectUser(mfaRes.access_token, null, {
+          send_method: mfaRes.mfa[0],
+        }, function(err, mfaRes, response) {
+          // code was sent to the device we specified
+          plaidClient.stepConnectUser(mfaRes.access_token, '1234', function(err, mfaRes, connectUserRes) {
+            // We now have accounts and transactions
+            console.log('# transactions: ' + connectUserRes.transactions.length);
+            console.log('access token: ' + connectUserRes.access_token);
+            console.log(connectUserRes);
+            res.json({
+              accounts: connectUserRes.accounts,
+              transactions: connectUserRes.transactions
+            });
           });
-        }
+        });
       });
     }
   });
@@ -59,15 +84,15 @@ apiRouter.get('/accounts', function(req, res) {
 
 /* CURRENTLY - Transaction data not showing up because of api I think - tried 
   different commands and they didn't work.
-*/
+  */
 
-apiRouter.get('/transactions', function(req, res) {
+  apiRouter.get('/transactions', function(req, res) {
 
-});
+  });
 
-router.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, '/index.html'));
-});
+  router.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, '/index.html'));
+  });
 
 // define the folder that will be used for static assets
 app.use('/static', express.static(path.join(__dirname, 'static')));

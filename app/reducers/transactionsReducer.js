@@ -8,6 +8,11 @@ const transactionsReducer = (state=transaction_data, action) => {
         action.payload
       ];
     }
+    case "ADD_TRANSACTIONS": {
+      return [
+        ...state
+      ].concat(action.payload);
+    }
   }
   return state;
 }

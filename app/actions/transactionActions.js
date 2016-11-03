@@ -8,3 +8,9 @@ export function addTransaction (name, date, price) {
     }
   }
 }
+export function addTransactions (transactionList) {
+  return {
+    type: "ADD_TRANSACTIONS",
+    payload: transactionList
+  }
+}
