@@ -44,12 +44,14 @@ button:focus {
     text-align: left;
   }
 }
+.btn:focus {
+  background-color: $primary-color;
+}
 #plaid-link {
   display: inline;
 }
 .plaid-link-button {
   padding: 0 10px;
-  background-color: $white;
   font-size: 18px;
   line-height: 50px;
   border: none;
@@ -74,7 +76,8 @@ button:focus {
   content: "< ";
   margin-right: 4px;
 }
-.btn-primary {
+.btn-primary,
+.btn-primary:focus {
   background-color: $primary-color;
 }
 .btn-white {

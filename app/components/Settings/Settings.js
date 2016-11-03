@@ -51,6 +51,7 @@ export default class Settings extends React.Component {
                 />
               </div>
           </div>
+          <br/>
           <div className="form--section">
             <button 
               type="button"
