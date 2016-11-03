@@ -5,10 +5,12 @@ import thunk from "redux-thunk";
 
 import { transactionsReducer } from '../reducers/transactionsReducer';
 import { settingsReducer } from '../reducers/settingsReducer';
+import { accountsReducer } from '../reducers/accountsReducer';
 
 const reducers = combineReducers({
   settings: settingsReducer,
   transactions: transactionsReducer,
+  accounts: accountsReducer,
 })
 
 /*

@@ -1,4 +1,5 @@
 import path from 'path';
+import util from 'util';
 import { Server } from 'http';
 import express from 'express';
 import envvar from 'envvar';
@@ -29,8 +30,7 @@ var plaidClient =
 var router = express.Router();
 var apiRouter = express.Router();
 
-apiRouter.get('/', function(req, res) {
-  console.log("WOWOWO");
+apiRouter.get('/accounts', function(req, res) {
   var public_token = req.query.public_token;
 
   plaidClient.exchangeToken(public_token, function(err, tokenResponse) {
@@ -53,8 +53,6 @@ apiRouter.get('/', function(req, res) {
     }
   });
 });
-
-apiRouter.get('/')
 
 router.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, '/index.html'));

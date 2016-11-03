@@ -2,20 +2,35 @@ import React, { Component } from 'react';
 import FontAwesome from 'react-fontawesome';
 import { browserHistory } from 'react-router';
 
+import { addAccount } from '../../actions/accountsActions';
+
 import Nav from '../Nav';
 
 export default class Settings extends React.Component {
-  componentWillMount() {
-    const script = document.createElement("script");
-
-    script.src = "https://cdn.plaid.com/link/stable/link-initialize.js";
-    script["data-client-name"]="Client Name"
-    script["data-form-id"]="plaid-link"
-    script["data-key"]="test_key"
-    script["data-product"]="auth"
-    script["data-env"]="tartan"
-
-    document.body.appendChild(script);
+  constructor(props) {
+    super(props);
+  }
+  componentDidMount() {
+    // Attach the plaid api
+    var sandboxHandler = Plaid.create({
+      clientName: 'MoneyTree',
+      env: 'tartan',
+      product: 'auth',
+      key: 'test_key',
+      onSuccess: function(token, metadata) {
+        console.log('account_id is', metadata.account_id);
+        $.get(
+          "/api/accounts?public_token=" + token,
+          function(data) {
+            console.log(data);
+            browserHistory.push('/accounts');
+          }
+        );
+      },
+    });
+    document.getElementById('plaid-link').onclick = function() {
+      sandboxHandler.open();
+    };
   }
   render () {
     return (
@@ -100,18 +115,16 @@ export default class Settings extends React.Component {
             </div>
           </div>
           </form>
-          <div className="form--group">
-            <form 
-              id="plaid-link" 
-              method="POST" 
-              action="/api/authenticate"
-            >
-            </form>
+            <button 
+              id="plaid-link"
+              className="plaid-link-button" 
+              >
+              Link your bank account
+            </button>
             <span className="row-right-overlay">
               <span className="fa fa-chevron-right">
               </span>
             </span>
-          </div>
         </div>
       </div>
     )

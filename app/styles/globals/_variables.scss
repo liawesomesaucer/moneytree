@@ -1,9 +1,11 @@
-$light-gray: #ddd;
+$light-gray: rgba(255, 255, 255, 0.4);
 // $primary-color: #479285;
-$primary-color: #666;
-$white: #fff;
-$background-color: #eee; // Temporary
+// $primary-color: #666;
+$primary-color: #12324D;
+$white: rgba(255, 255, 255, 0.8);
+$background-color: lighten(#AAD2E1, 8); // Temporary
 $text-color: #666;
+$bottom-nav-bgcolor: #fff;
 
 %list-reset {
   list-style-type: none;
