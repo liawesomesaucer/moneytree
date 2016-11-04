@@ -90,6 +90,11 @@ apiRouter.get('/transactions', function(req, res) {
 
 });
 
+// const data = require('./data.json');
+// apiRouter.get('/staticdata', function(req, res) {
+//   res.json(data);
+// });
+
 router.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, '/index.html'));
 });

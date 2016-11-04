@@ -60,7 +60,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(380);
+	__webpack_require__(379);
 
 	_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('root'));
 
@@ -21453,51 +21453,51 @@
 
 	var _initialization = __webpack_require__(258);
 
-	var _Container = __webpack_require__(299);
+	var _Container = __webpack_require__(298);
 
 	var _Container2 = _interopRequireDefault(_Container);
 
-	var _NotFound = __webpack_require__(303);
+	var _NotFound = __webpack_require__(302);
 
 	var _NotFound2 = _interopRequireDefault(_NotFound);
 
-	var _Accounts = __webpack_require__(304);
+	var _Accounts = __webpack_require__(303);
 
 	var _Accounts2 = _interopRequireDefault(_Accounts);
 
-	var _AddAccount = __webpack_require__(308);
+	var _AddAccount = __webpack_require__(307);
 
 	var _AddAccount2 = _interopRequireDefault(_AddAccount);
 
-	var _AddChaseAccount = __webpack_require__(309);
+	var _AddChaseAccount = __webpack_require__(308);
 
 	var _AddChaseAccount2 = _interopRequireDefault(_AddChaseAccount);
 
-	var _AddWellsAccount = __webpack_require__(310);
+	var _AddWellsAccount = __webpack_require__(309);
 
 	var _AddWellsAccount2 = _interopRequireDefault(_AddWellsAccount);
 
-	var _Home = __webpack_require__(311);
+	var _Home = __webpack_require__(310);
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _Login = __webpack_require__(313);
+	var _Login = __webpack_require__(312);
 
 	var _Login2 = _interopRequireDefault(_Login);
 
-	var _Settings = __webpack_require__(315);
+	var _Settings = __webpack_require__(314);
 
 	var _Settings2 = _interopRequireDefault(_Settings);
 
-	var _Transactions = __webpack_require__(316);
+	var _Transactions = __webpack_require__(315);
 
 	var _Transactions2 = _interopRequireDefault(_Transactions);
 
-	var _Plant = __webpack_require__(377);
+	var _Plant = __webpack_require__(376);
 
 	var _Plant2 = _interopRequireDefault(_Plant);
 
-	var _AddTransaction = __webpack_require__(379);
+	var _AddTransaction = __webpack_require__(378);
 
 	var _AddTransaction2 = _interopRequireDefault(_AddTransaction);
 
@@ -31313,30 +31313,26 @@
 /* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 
-	var _TransactionData = __webpack_require__(297);
+	var _TransactionData = __webpack_require__(383);
 
-	Object.defineProperty(exports, 'transaction_data', {
+	Object.defineProperty(exports, "transaction_data", {
 	  enumerable: true,
 	  get: function get() {
 	    return _TransactionData.transaction_data;
 	  }
 	});
 
-	var _AccountsData = __webpack_require__(298);
 
-	Object.defineProperty(exports, 'account_data', {
-	  enumerable: true,
-	  get: function get() {
-	    return _AccountsData.account_data;
-	  }
-	});
-
+	/* Seeded Accounts Data. Note this is disconnected for now
+	 * Though you can play around with '/accounts' and link an account
+	 */
+	// export { account_data } from '../components/Accounts/AccountsData';
 
 	var seed_data = [{
 	  name: "Save Money for Cute Shiba Inu",
@@ -31347,86 +31343,8 @@
 	exports.seed_data = seed_data;
 
 /***/ },
-/* 297 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var transaction_data = exports.transaction_data = [{
-	  name: "Pho La Jolla",
-	  amount: 12.5,
-	  date: "2016-11-30"
-	}, {
-	  name: "UCSD Paycheck",
-	  amount: -2000,
-	  date: "2016-11-14"
-	}, {
-	  name: "iPhone 7",
-	  amount: 599,
-	  date: "2016-11-20"
-	}, {
-	  name: "Samsung Refund",
-	  amount: -529,
-	  date: "2016-11-21"
-	}, {
-	  name: "Samsung Galaxy Note 7",
-	  amount: 529,
-	  date: "2016-11-23"
-	}, {
-	  name: "Brain Cell Plush",
-	  amount: 8.5,
-	  date: "2016-11-01"
-	}, {
-	  name: "Stomach Virus Plush",
-	  amount: 8.5,
-	  date: "2016-11-11"
-	}, {
-	  name: "Scissors",
-	  amount: 6.24,
-	  date: "2016-12-01"
-	}, {
-	  name: "Pay Rent",
-	  amount: 500,
-	  date: "2016-11-9"
-	}, {
-	  name: "UCSD Paycheck",
-	  amount: -200,
-	  date: "2016-11-9"
-	}, {
-	  name: "Buy Slippers",
-	  amount: 12.23,
-	  date: "2016-11-8"
-	}, {
-	  name: "UCSD Paycheck",
-	  amount: -2000,
-	  date: "2016-11-20"
-	}];
-
-/***/ },
+/* 297 */,
 /* 298 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var accounts_data = exports.accounts_data = [{
-	  name: "Wells Fargo",
-	  numbers: ["XXXX", "XXXX", "XXXX", "XXXX"]
-	}, {
-	  name: "Chase",
-	  numbers: ["XXXX", "XXXX", "XXXX", "XXXX"]
-	}, {
-	  name: "Bank of America",
-	  numbers: ["XXXX", "XXXX", "XXXX", "XXXX"]
-	}];
-
-/***/ },
-/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31440,11 +31358,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _BottomNav = __webpack_require__(300);
+	var _BottomNav = __webpack_require__(299);
 
 	var _BottomNav2 = _interopRequireDefault(_BottomNav);
 
-	var _Nav = __webpack_require__(302);
+	var _Nav = __webpack_require__(301);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -31464,7 +31382,7 @@
 	}
 
 /***/ },
-/* 300 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31484,7 +31402,7 @@
 
 	var _reactRedux = __webpack_require__(173);
 
-	var _reactFontawesome = __webpack_require__(301);
+	var _reactFontawesome = __webpack_require__(300);
 
 	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
 
@@ -31581,7 +31499,7 @@
 	exports.default = BottomNav;
 
 /***/ },
-/* 301 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31694,7 +31612,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 302 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31708,7 +31626,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactFontawesome = __webpack_require__(301);
+	var _reactFontawesome = __webpack_require__(300);
 
 	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
 
@@ -31727,7 +31645,7 @@
 	}
 
 /***/ },
-/* 303 */
+/* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31741,7 +31659,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Nav = __webpack_require__(302);
+	var _Nav = __webpack_require__(301);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -31761,7 +31679,7 @@
 	}
 
 /***/ },
-/* 304 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31775,11 +31693,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Nav = __webpack_require__(302);
+	var _Nav = __webpack_require__(301);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
-	var _AccountsList = __webpack_require__(305);
+	var _AccountsList = __webpack_require__(304);
 
 	var _AccountsList2 = _interopRequireDefault(_AccountsList);
 
@@ -31795,7 +31713,7 @@
 	}
 
 /***/ },
-/* 305 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31813,7 +31731,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactFontawesome = __webpack_require__(301);
+	var _reactFontawesome = __webpack_require__(300);
 
 	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
 
@@ -31821,9 +31739,9 @@
 
 	var _reactRedux = __webpack_require__(173);
 
-	var _accountsActions = __webpack_require__(306);
+	var _accountsActions = __webpack_require__(305);
 
-	var _transactionActions = __webpack_require__(307);
+	var _transactionActions = __webpack_require__(306);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31963,7 +31881,7 @@
 	exports.default = AccountsList;
 
 /***/ },
-/* 306 */
+/* 305 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -31980,7 +31898,7 @@
 	}
 
 /***/ },
-/* 307 */
+/* 306 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -32008,7 +31926,7 @@
 	}
 
 /***/ },
-/* 308 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32024,7 +31942,7 @@
 
 	var _reactRouter = __webpack_require__(197);
 
-	var _Nav = __webpack_require__(302);
+	var _Nav = __webpack_require__(301);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -32068,7 +31986,7 @@
 	}
 
 /***/ },
-/* 309 */
+/* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32084,7 +32002,7 @@
 
 	var _reactRouter = __webpack_require__(197);
 
-	var _Nav = __webpack_require__(302);
+	var _Nav = __webpack_require__(301);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -32106,7 +32024,7 @@
 	}
 
 /***/ },
-/* 310 */
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32122,7 +32040,7 @@
 
 	var _reactRouter = __webpack_require__(197);
 
-	var _Nav = __webpack_require__(302);
+	var _Nav = __webpack_require__(301);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -32144,7 +32062,7 @@
 	}
 
 /***/ },
-/* 311 */
+/* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32166,11 +32084,11 @@
 
 	var _reactRedux = __webpack_require__(173);
 
-	var _Nav = __webpack_require__(302);
+	var _Nav = __webpack_require__(301);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
-	var _TransactionList = __webpack_require__(312);
+	var _TransactionList = __webpack_require__(311);
 
 	var _TransactionList2 = _interopRequireDefault(_TransactionList);
 
@@ -32386,7 +32304,7 @@
 	exports.default = Home;
 
 /***/ },
-/* 312 */
+/* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32472,7 +32390,7 @@
 	exports.default = TransactionList;
 
 /***/ },
-/* 313 */
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32494,9 +32412,9 @@
 
 	var _reactRedux = __webpack_require__(173);
 
-	var _authActions = __webpack_require__(314);
+	var _authActions = __webpack_require__(313);
 
-	var _Nav = __webpack_require__(302);
+	var _Nav = __webpack_require__(301);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -32614,7 +32532,7 @@
 	exports.default = Login;
 
 /***/ },
-/* 314 */
+/* 313 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -32636,7 +32554,7 @@
 	}
 
 /***/ },
-/* 315 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32656,17 +32574,17 @@
 
 	var _reactRedux = __webpack_require__(173);
 
-	var _reactFontawesome = __webpack_require__(301);
+	var _reactFontawesome = __webpack_require__(300);
 
 	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
 
 	var _reactRouter = __webpack_require__(197);
 
-	var _accountsActions = __webpack_require__(306);
+	var _accountsActions = __webpack_require__(305);
 
-	var _authActions = __webpack_require__(314);
+	var _authActions = __webpack_require__(313);
 
-	var _Nav = __webpack_require__(302);
+	var _Nav = __webpack_require__(301);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -32785,7 +32703,7 @@
 	exports.default = Settings;
 
 /***/ },
-/* 316 */
+/* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32801,15 +32719,17 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _rd = __webpack_require__(317);
+	var _rd = __webpack_require__(316);
 
 	var _rd2 = _interopRequireDefault(_rd);
 
-	var _Nav = __webpack_require__(302);
+	var _reactRouter = __webpack_require__(197);
+
+	var _Nav = __webpack_require__(301);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
-	var _TransactionList = __webpack_require__(312);
+	var _TransactionList = __webpack_require__(311);
 
 	var _TransactionList2 = _interopRequireDefault(_TransactionList);
 
@@ -32852,6 +32772,20 @@
 	            sectorBorderColor: 'white'
 	          })
 	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'center-text' },
+	          _react2.default.createElement(
+	            'a',
+	            {
+	              className: 'btn btn-default',
+	              onClick: function onClick() {
+	                return _reactRouter.browserHistory.push("/add");
+	              }
+	            },
+	            'Add a Transaction'
+	          )
+	        ),
 	        _react2.default.createElement(_TransactionList2.default, null)
 	      );
 	    }
@@ -32863,18 +32797,26 @@
 	exports.default = Transactions;
 
 /***/ },
+/* 316 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.BarChart = __webpack_require__(317).BarChart;
+	exports.LineChart = __webpack_require__(344).LineChart;
+	exports.PieChart = __webpack_require__(350).PieChart;
+	exports.AreaChart = __webpack_require__(355).AreaChart;
+	exports.Treemap = __webpack_require__(360).Treemap;
+	exports.ScatterChart = __webpack_require__(365).ScatterChart;
+	exports.CandlestickChart = __webpack_require__(370).CandlestickChart;
+
+/***/ },
 /* 317 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.BarChart = __webpack_require__(318).BarChart;
-	exports.LineChart = __webpack_require__(345).LineChart;
-	exports.PieChart = __webpack_require__(351).PieChart;
-	exports.AreaChart = __webpack_require__(356).AreaChart;
-	exports.Treemap = __webpack_require__(361).Treemap;
-	exports.ScatterChart = __webpack_require__(366).ScatterChart;
-	exports.CandlestickChart = __webpack_require__(371).CandlestickChart;
+	exports.BarChart = __webpack_require__(318);
 
 /***/ },
 /* 318 */
@@ -32882,26 +32824,18 @@
 
 	'use strict';
 
-	exports.BarChart = __webpack_require__(319);
-
-/***/ },
-/* 319 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(320);
-	var DataSeries = __webpack_require__(321);
+	var d3 = __webpack_require__(319);
+	var DataSeries = __webpack_require__(320);
 
-	var _require = __webpack_require__(325);
+	var _require = __webpack_require__(324);
 
 	var Chart = _require.Chart;
 	var XAxis = _require.XAxis;
 	var YAxis = _require.YAxis;
 	var Tooltip = _require.Tooltip;
 
-	var _require2 = __webpack_require__(340);
+	var _require2 = __webpack_require__(339);
 
 	var CartesianChartPropsMixin = _require2.CartesianChartPropsMixin;
 	var DefaultAccessorsMixin = _require2.DefaultAccessorsMixin;
@@ -33121,7 +33055,7 @@
 	});
 
 /***/ },
-/* 320 */
+/* 319 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;!function() {
@@ -42552,13 +42486,13 @@
 	}();
 
 /***/ },
-/* 321 */
+/* 320 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var BarContainer = __webpack_require__(322);
+	var BarContainer = __webpack_require__(321);
 
 	module.exports = React.createClass({
 
@@ -42635,7 +42569,7 @@
 	});
 
 /***/ },
-/* 322 */
+/* 321 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42648,8 +42582,8 @@
 
 	var findDOMNode = _require.findDOMNode;
 
-	var Bar = __webpack_require__(323);
-	var shade = __webpack_require__(324).shade;
+	var Bar = __webpack_require__(322);
+	var shade = __webpack_require__(323).shade;
 
 	module.exports = React.createClass({
 	  displayName: 'exports',
@@ -42699,7 +42633,7 @@
 	});
 
 /***/ },
-/* 323 */
+/* 322 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42741,14 +42675,14 @@
 	});
 
 /***/ },
-/* 324 */
+/* 323 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
-	var d3 = __webpack_require__(320);
+	var d3 = __webpack_require__(319);
 
 	exports.calculateScales = function (width, height, xValues, yValues) {
 	  var xDomain = arguments.length <= 4 || arguments[4] === undefined ? [] : arguments[4];
@@ -42904,18 +42838,27 @@
 	};
 
 /***/ },
+/* 324 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.XAxis = __webpack_require__(325).XAxis;
+	exports.YAxis = __webpack_require__(325).YAxis;
+	exports.Chart = __webpack_require__(331).Chart;
+	exports.LegendChart = __webpack_require__(331).LegendChart;
+	exports.Legend = __webpack_require__(335);
+	exports.Tooltip = __webpack_require__(336);
+	exports.Voronoi = __webpack_require__(337);
+
+/***/ },
 /* 325 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.XAxis = __webpack_require__(326).XAxis;
-	exports.YAxis = __webpack_require__(326).YAxis;
-	exports.Chart = __webpack_require__(332).Chart;
-	exports.LegendChart = __webpack_require__(332).LegendChart;
-	exports.Legend = __webpack_require__(336);
-	exports.Tooltip = __webpack_require__(337);
-	exports.Voronoi = __webpack_require__(338);
+	exports.XAxis = __webpack_require__(326);
+	exports.YAxis = __webpack_require__(330);
 
 /***/ },
 /* 326 */
@@ -42923,22 +42866,13 @@
 
 	'use strict';
 
-	exports.XAxis = __webpack_require__(327);
-	exports.YAxis = __webpack_require__(331);
-
-/***/ },
-/* 327 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(320);
-	var AxisTicks = __webpack_require__(328);
-	var AxisLine = __webpack_require__(329);
-	var Label = __webpack_require__(330);
+	var d3 = __webpack_require__(319);
+	var AxisTicks = __webpack_require__(327);
+	var AxisLine = __webpack_require__(328);
+	var Label = __webpack_require__(329);
 
 	module.exports = React.createClass({
 
@@ -43037,7 +42971,7 @@
 	});
 
 /***/ },
-/* 328 */
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43285,7 +43219,7 @@
 	});
 
 /***/ },
-/* 329 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43350,7 +43284,7 @@
 	});
 
 /***/ },
-/* 330 */
+/* 329 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43424,7 +43358,7 @@
 	});
 
 /***/ },
-/* 331 */
+/* 330 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43432,10 +43366,10 @@
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(320);
-	var AxisTicks = __webpack_require__(328);
-	var AxisLine = __webpack_require__(329);
-	var Label = __webpack_require__(330);
+	var d3 = __webpack_require__(319);
+	var AxisTicks = __webpack_require__(327);
+	var AxisLine = __webpack_require__(328);
+	var Label = __webpack_require__(329);
 
 	module.exports = React.createClass({
 
@@ -43538,17 +43472,17 @@
 	});
 
 /***/ },
-/* 332 */
+/* 331 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.BasicChart = __webpack_require__(333);
-	exports.Chart = __webpack_require__(334);
-	exports.LegendChart = __webpack_require__(335);
+	exports.BasicChart = __webpack_require__(332);
+	exports.Chart = __webpack_require__(333);
+	exports.LegendChart = __webpack_require__(334);
 
 /***/ },
-/* 333 */
+/* 332 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43620,7 +43554,7 @@
 	});
 
 /***/ },
-/* 334 */
+/* 333 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43628,8 +43562,8 @@
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var React = __webpack_require__(1);
-	var LegendChart = __webpack_require__(335);
-	var BasicChart = __webpack_require__(333);
+	var LegendChart = __webpack_require__(334);
+	var BasicChart = __webpack_require__(332);
 
 	module.exports = React.createClass({
 
@@ -43670,14 +43604,14 @@
 	});
 
 /***/ },
-/* 335 */
+/* 334 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var Legend = __webpack_require__(336);
-	var d3 = __webpack_require__(320);
+	var Legend = __webpack_require__(335);
+	var d3 = __webpack_require__(319);
 
 	module.exports = React.createClass({
 
@@ -43790,13 +43724,13 @@
 	});
 
 /***/ },
-/* 336 */
+/* 335 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(320);
+	var d3 = __webpack_require__(319);
 
 	module.exports = React.createClass({
 
@@ -43882,7 +43816,7 @@
 	});
 
 /***/ },
-/* 337 */
+/* 336 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43936,14 +43870,14 @@
 	});
 
 /***/ },
-/* 338 */
+/* 337 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(320);
-	var Polygon = __webpack_require__(339);
+	var d3 = __webpack_require__(319);
+	var Polygon = __webpack_require__(338);
 
 	module.exports = React.createClass({
 
@@ -43984,7 +43918,7 @@
 	});
 
 /***/ },
-/* 339 */
+/* 338 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44032,24 +43966,24 @@
 	});
 
 /***/ },
+/* 339 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.CartesianChartPropsMixin = __webpack_require__(340);
+	exports.DefaultAccessorsMixin = __webpack_require__(341);
+	exports.ViewBoxMixin = __webpack_require__(342);
+	exports.TooltipMixin = __webpack_require__(343);
+
+/***/ },
 /* 340 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.CartesianChartPropsMixin = __webpack_require__(341);
-	exports.DefaultAccessorsMixin = __webpack_require__(342);
-	exports.ViewBoxMixin = __webpack_require__(343);
-	exports.TooltipMixin = __webpack_require__(344);
-
-/***/ },
-/* 341 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(320);
+	var d3 = __webpack_require__(319);
 
 	module.exports = {
 
@@ -44139,7 +44073,7 @@
 	};
 
 /***/ },
-/* 342 */
+/* 341 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44165,7 +44099,7 @@
 	};
 
 /***/ },
-/* 343 */
+/* 342 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -44247,7 +44181,7 @@
 	};
 
 /***/ },
-/* 344 */
+/* 343 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44316,32 +44250,32 @@
 	};
 
 /***/ },
-/* 345 */
+/* 344 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.LineChart = __webpack_require__(346);
+	exports.LineChart = __webpack_require__(345);
 
 /***/ },
-/* 346 */
+/* 345 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
 
-	var _require = __webpack_require__(325);
+	var _require = __webpack_require__(324);
 
 	var Chart = _require.Chart;
 	var XAxis = _require.XAxis;
 	var YAxis = _require.YAxis;
 	var Tooltip = _require.Tooltip;
 
-	var DataSeries = __webpack_require__(347);
-	var utils = __webpack_require__(324);
+	var DataSeries = __webpack_require__(346);
+	var utils = __webpack_require__(323);
 
-	var _require2 = __webpack_require__(340);
+	var _require2 = __webpack_require__(339);
 
 	var CartesianChartPropsMixin = _require2.CartesianChartPropsMixin;
 	var DefaultAccessorsMixin = _require2.DefaultAccessorsMixin;
@@ -44501,15 +44435,15 @@
 	});
 
 /***/ },
-/* 347 */
+/* 346 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(320);
-	var VoronoiCircleContainer = __webpack_require__(348);
-	var Line = __webpack_require__(350);
+	var d3 = __webpack_require__(319);
+	var VoronoiCircleContainer = __webpack_require__(347);
+	var Line = __webpack_require__(349);
 
 	module.exports = React.createClass({
 
@@ -44623,7 +44557,7 @@
 	});
 
 /***/ },
-/* 348 */
+/* 347 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44634,8 +44568,8 @@
 
 	var findDOMNode = _require.findDOMNode;
 
-	var shade = __webpack_require__(324).shade;
-	var VoronoiCircle = __webpack_require__(349);
+	var shade = __webpack_require__(323).shade;
+	var VoronoiCircle = __webpack_require__(348);
 
 	module.exports = React.createClass({
 
@@ -44711,7 +44645,7 @@
 	});
 
 /***/ },
-/* 349 */
+/* 348 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44763,7 +44697,7 @@
 	});
 
 /***/ },
-/* 350 */
+/* 349 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44804,29 +44738,29 @@
 	});
 
 /***/ },
+/* 350 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.PieChart = __webpack_require__(351);
+
+/***/ },
 /* 351 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.PieChart = __webpack_require__(352);
-
-/***/ },
-/* 352 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var d3 = __webpack_require__(320);
+	var d3 = __webpack_require__(319);
 	var React = __webpack_require__(1);
-	var DataSeries = __webpack_require__(353);
+	var DataSeries = __webpack_require__(352);
 
-	var _require = __webpack_require__(325);
+	var _require = __webpack_require__(324);
 
 	var Chart = _require.Chart;
 	var Tooltip = _require.Tooltip;
 
-	var TooltipMixin = __webpack_require__(340).TooltipMixin;
+	var TooltipMixin = __webpack_require__(339).TooltipMixin;
 
 	module.exports = React.createClass({
 
@@ -44923,14 +44857,14 @@
 	});
 
 /***/ },
-/* 353 */
+/* 352 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(320);
-	var ArcContainer = __webpack_require__(354);
+	var d3 = __webpack_require__(319);
+	var ArcContainer = __webpack_require__(353);
 
 	module.exports = React.createClass({
 
@@ -44999,7 +44933,7 @@
 	});
 
 /***/ },
-/* 354 */
+/* 353 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45012,8 +44946,8 @@
 
 	var findDOMNode = _require.findDOMNode;
 
-	var shade = __webpack_require__(324).shade;
-	var Arc = __webpack_require__(355);
+	var shade = __webpack_require__(323).shade;
+	var Arc = __webpack_require__(354);
 
 	module.exports = React.createClass({
 
@@ -45058,13 +44992,13 @@
 	});
 
 /***/ },
-/* 355 */
+/* 354 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(320);
+	var d3 = __webpack_require__(319);
 
 	module.exports = React.createClass({
 
@@ -45172,30 +45106,30 @@
 	});
 
 /***/ },
+/* 355 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.AreaChart = __webpack_require__(356);
+
+/***/ },
 /* 356 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.AreaChart = __webpack_require__(357);
-
-/***/ },
-/* 357 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(320);
-	var DataSeries = __webpack_require__(358);
+	var d3 = __webpack_require__(319);
+	var DataSeries = __webpack_require__(357);
 
-	var _require = __webpack_require__(325);
+	var _require = __webpack_require__(324);
 
 	var Chart = _require.Chart;
 	var XAxis = _require.XAxis;
 	var YAxis = _require.YAxis;
 
-	var _require2 = __webpack_require__(340);
+	var _require2 = __webpack_require__(339);
 
 	var CartesianChartPropsMixin = _require2.CartesianChartPropsMixin;
 	var DefaultAccessorsMixin = _require2.DefaultAccessorsMixin;
@@ -45375,14 +45309,14 @@
 	});
 
 /***/ },
-/* 358 */
+/* 357 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(320);
-	var AreaContainer = __webpack_require__(359);
+	var d3 = __webpack_require__(319);
+	var AreaContainer = __webpack_require__(358);
 
 	module.exports = React.createClass({
 
@@ -45420,7 +45354,7 @@
 	});
 
 /***/ },
-/* 359 */
+/* 358 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45428,8 +45362,8 @@
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var React = __webpack_require__(1);
-	var shade = __webpack_require__(324).shade;
-	var Area = __webpack_require__(360);
+	var shade = __webpack_require__(323).shade;
+	var Area = __webpack_require__(359);
 
 	module.exports = React.createClass({
 
@@ -45482,7 +45416,7 @@
 	});
 
 /***/ },
-/* 360 */
+/* 359 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45517,23 +45451,23 @@
 	});
 
 /***/ },
+/* 360 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.Treemap = __webpack_require__(361);
+
+/***/ },
 /* 361 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.Treemap = __webpack_require__(362);
-
-/***/ },
-/* 362 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var d3 = __webpack_require__(320);
+	var d3 = __webpack_require__(319);
 	var React = __webpack_require__(1);
-	var Chart = __webpack_require__(325).Chart;
-	var DataSeries = __webpack_require__(363);
+	var Chart = __webpack_require__(324).Chart;
+	var DataSeries = __webpack_require__(362);
 
 	module.exports = React.createClass({
 
@@ -45599,14 +45533,14 @@
 	});
 
 /***/ },
-/* 363 */
+/* 362 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(320);
-	var CellContainer = __webpack_require__(364);
+	var d3 = __webpack_require__(319);
+	var CellContainer = __webpack_require__(363);
 
 	module.exports = React.createClass({
 
@@ -45666,7 +45600,7 @@
 	});
 
 /***/ },
-/* 364 */
+/* 363 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45674,8 +45608,8 @@
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var React = __webpack_require__(1);
-	var shade = __webpack_require__(324).shade;
-	var Cell = __webpack_require__(365);
+	var shade = __webpack_require__(323).shade;
+	var Cell = __webpack_require__(364);
 
 	module.exports = React.createClass({
 
@@ -45714,7 +45648,7 @@
 	});
 
 /***/ },
-/* 365 */
+/* 364 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45770,32 +45704,32 @@
 	});
 
 /***/ },
-/* 366 */
+/* 365 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.ScatterChart = __webpack_require__(367);
+	exports.ScatterChart = __webpack_require__(366);
 
 /***/ },
-/* 367 */
+/* 366 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
 
-	var _require = __webpack_require__(325);
+	var _require = __webpack_require__(324);
 
 	var Chart = _require.Chart;
 	var XAxis = _require.XAxis;
 	var YAxis = _require.YAxis;
 	var Tooltip = _require.Tooltip;
 
-	var DataSeries = __webpack_require__(368);
-	var utils = __webpack_require__(324);
+	var DataSeries = __webpack_require__(367);
+	var utils = __webpack_require__(323);
 
-	var _require2 = __webpack_require__(340);
+	var _require2 = __webpack_require__(339);
 
 	var CartesianChartPropsMixin = _require2.CartesianChartPropsMixin;
 	var DefaultAccessorsMixin = _require2.DefaultAccessorsMixin;
@@ -45965,14 +45899,14 @@
 	});
 
 /***/ },
-/* 368 */
+/* 367 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(320);
-	var VoronoiCircleContainer = __webpack_require__(369);
+	var d3 = __webpack_require__(319);
+	var VoronoiCircleContainer = __webpack_require__(368);
 
 	module.exports = React.createClass({
 
@@ -46055,7 +45989,7 @@
 	});
 
 /***/ },
-/* 369 */
+/* 368 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46066,8 +46000,8 @@
 
 	var findDOMNode = _require.findDOMNode;
 
-	var shade = __webpack_require__(324).shade;
-	var VoronoiCircle = __webpack_require__(370);
+	var shade = __webpack_require__(323).shade;
+	var VoronoiCircle = __webpack_require__(369);
 
 	module.exports = React.createClass({
 
@@ -46151,7 +46085,7 @@
 	});
 
 /***/ },
-/* 370 */
+/* 369 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46206,31 +46140,31 @@
 	});
 
 /***/ },
+/* 370 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.CandlestickChart = __webpack_require__(371);
+
+/***/ },
 /* 371 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.CandlestickChart = __webpack_require__(372);
-
-/***/ },
-/* 372 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
 	var React = __webpack_require__(1);
-	var d3 = __webpack_require__(320);
-	var utils = __webpack_require__(324);
-	var DataSeries = __webpack_require__(373);
+	var d3 = __webpack_require__(319);
+	var utils = __webpack_require__(323);
+	var DataSeries = __webpack_require__(372);
 
-	var _require = __webpack_require__(325);
+	var _require = __webpack_require__(324);
 
 	var Chart = _require.Chart;
 	var XAxis = _require.XAxis;
 	var YAxis = _require.YAxis;
 
-	var _require2 = __webpack_require__(340);
+	var _require2 = __webpack_require__(339);
 
 	var ViewBoxMixin = _require2.ViewBoxMixin;
 	var CartesianChartPropsMixin = _require2.CartesianChartPropsMixin;
@@ -46387,13 +46321,13 @@
 	});
 
 /***/ },
-/* 373 */
+/* 372 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var CandlestickContainer = __webpack_require__(374);
+	var CandlestickContainer = __webpack_require__(373);
 
 	module.exports = React.createClass({
 
@@ -46449,15 +46383,15 @@
 	});
 
 /***/ },
-/* 374 */
+/* 373 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var utils = __webpack_require__(324);
-	var Candle = __webpack_require__(375);
-	var Wick = __webpack_require__(376);
+	var utils = __webpack_require__(323);
+	var Candle = __webpack_require__(374);
+	var Wick = __webpack_require__(375);
 
 	module.exports = React.createClass({
 
@@ -46537,7 +46471,7 @@
 	});
 
 /***/ },
-/* 375 */
+/* 374 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46583,7 +46517,7 @@
 	});
 
 /***/ },
-/* 376 */
+/* 375 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46625,7 +46559,7 @@
 	});
 
 /***/ },
-/* 377 */
+/* 376 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46647,13 +46581,13 @@
 
 	var _reactRouter = __webpack_require__(197);
 
-	var _reactFontawesome = __webpack_require__(301);
+	var _reactFontawesome = __webpack_require__(300);
 
 	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
 
-	var _seedActions = __webpack_require__(378);
+	var _seedActions = __webpack_require__(377);
 
-	var _Nav = __webpack_require__(302);
+	var _Nav = __webpack_require__(301);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -46835,7 +46769,7 @@
 	exports.default = Plant;
 
 /***/ },
-/* 378 */
+/* 377 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -46867,7 +46801,7 @@
 	}
 
 /***/ },
-/* 379 */
+/* 378 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46887,15 +46821,15 @@
 
 	var _reactRedux = __webpack_require__(173);
 
-	var _Nav = __webpack_require__(302);
+	var _Nav = __webpack_require__(301);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
-	var _TransactionList = __webpack_require__(312);
+	var _TransactionList = __webpack_require__(311);
 
 	var _TransactionList2 = _interopRequireDefault(_TransactionList);
 
-	var _transactionActions = __webpack_require__(307);
+	var _transactionActions = __webpack_require__(306);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -47049,16 +46983,16 @@
 	exports.default = AddTransaction;
 
 /***/ },
-/* 380 */
+/* 379 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(381);
+	var content = __webpack_require__(380);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(383)(content, {});
+	var update = __webpack_require__(382)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -47075,10 +47009,10 @@
 	}
 
 /***/ },
-/* 381 */
+/* 380 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(382)();
+	exports = module.exports = __webpack_require__(381)();
 	// imports
 
 
@@ -47089,7 +47023,7 @@
 
 
 /***/ },
-/* 382 */
+/* 381 */
 /***/ function(module, exports) {
 
 	/*
@@ -47145,7 +47079,7 @@
 
 
 /***/ },
-/* 383 */
+/* 382 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -47395,6 +47329,65 @@
 			URL.revokeObjectURL(oldSrc);
 	}
 
+
+/***/ },
+/* 383 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var transaction_data = exports.transaction_data = [{
+	  name: "Pho La Jolla",
+	  amount: 12.5,
+	  date: "2016-11-30"
+	}, {
+	  name: "UCSD Paycheck",
+	  amount: -2000,
+	  date: "2016-11-14"
+	}, {
+	  name: "iPhone 7",
+	  amount: 599,
+	  date: "2016-11-20"
+	}, {
+	  name: "Samsung Refund",
+	  amount: -529,
+	  date: "2016-11-21"
+	}, {
+	  name: "Samsung Galaxy Note 7",
+	  amount: 529,
+	  date: "2016-11-23"
+	}, {
+	  name: "Brain Cell Plush",
+	  amount: 8.5,
+	  date: "2016-11-01"
+	}, {
+	  name: "Stomach Virus Plush",
+	  amount: 8.5,
+	  date: "2016-11-11"
+	}, {
+	  name: "Scissors",
+	  amount: 6.24,
+	  date: "2016-12-01"
+	}, {
+	  name: "Pay Rent",
+	  amount: 500,
+	  date: "2016-11-9"
+	}, {
+	  name: "UCSD Paycheck",
+	  amount: -200,
+	  date: "2016-11-9"
+	}, {
+	  name: "Buy Slippers",
+	  amount: 12.23,
+	  date: "2016-11-8"
+	}, {
+	  name: "UCSD Paycheck",
+	  amount: -2000,
+	  date: "2016-11-20"
+	}];
 
 /***/ }
 /******/ ]);

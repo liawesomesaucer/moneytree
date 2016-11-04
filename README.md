@@ -16,9 +16,17 @@ To get webpack to load your frontend changes as you make them, run. Note that yo
 $ webpack --watch
 ```
 ## Notes for TA
-Check `data.json` in the `app/store` directory, which will contain references to seeded data in the application.
+Check `data.js` in the `app/store` directory, which will contain references to seeded data in the application.
 
 The data is being added using Redux (check out `app/store/initialization.js`).
 
 Note that since we're using Redux with no persistent data, only a full on page refresh (ctrl+R or cmd+R) will reset the state of the app. Otherwise the data will stay as long as your session is active.
 
+To play around with the accounts linking feature (which will import additional transactions), use these sandbox API credentials for any bank:
+
+```
+Username: plaid_test
+Password: plaid_good
+Code: 1234
+Security Question Answer: tomato
+```

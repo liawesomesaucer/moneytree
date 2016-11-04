@@ -1,6 +1,8 @@
 import React from 'react';
 import rd3 from 'rd3';
 
+import { browserHistory } from 'react-router';
+
 import Nav from '../Nav';
 import TransactionList from './TransactionList';
 
@@ -24,6 +26,14 @@ export default class Transactions extends React.Component {
             innerRadius={20}
             sectorBorderColor="white"
           />
+        </div>
+        <div className="center-text">
+          <a 
+            className="btn btn-default"
+            onClick={() => browserHistory.push("/add")}
+          >
+            Add a Transaction
+          </a>
         </div>
         <TransactionList />
       </div>
