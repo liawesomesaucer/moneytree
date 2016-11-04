@@ -1,10 +1,8 @@
 import React from 'react';
 import rd3 from 'rd3';
 
-
 import Nav from '../Nav';
 import TransactionList from './TransactionList';
-
 
 export default class Transactions extends React.Component {
   constructor(props) {

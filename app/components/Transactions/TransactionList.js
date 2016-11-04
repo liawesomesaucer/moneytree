@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { transaction_data } from './TransactionData';
-
 @connect((store) => {
   return {
     transactions: store.transactions
@@ -16,7 +14,7 @@ export default class TransactionList extends React.Component {
     let transactions = [];
 
     this.props.transactions.forEach((val, index) => {
-      let cost = (val.amount <= 0) ? "$ " + val.amount.toString() : val.amount.toString().replace("-", "- $ ");
+      let cost = (val.amount > 0) ? "$ " + val.amount.toString() : val.amount.toString().replace("-", "- $ ");
 
       transactions.push(
         <li className="list--elem" key={index}>

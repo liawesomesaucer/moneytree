@@ -6,7 +6,7 @@ export const transaction_data = [
   },
   {
     name: "UCSD Paycheck",
-    amount: -180,
+    amount: -2000,
     date: "2016-11-14"
   },
   {
@@ -38,5 +38,25 @@ export const transaction_data = [
     name: "Scissors",
     amount: 6.24,
     date: "2016-12-01"
+  },
+  {
+    name: "Pay Rent",
+    amount: 500,
+    date: "2016-11-9"
+  },
+  {
+    name: "UCSD Paycheck",
+    amount: -200,
+    date: "2016-11-9"
+  },
+  {
+    name: "Buy Slippers",
+    amount: 12.23,
+    date: "2016-11-8"
+  },
+  {
+    name: "UCSD Paycheck",
+    amount: -2000,
+    date: "2016-11-20"
   },
 ];

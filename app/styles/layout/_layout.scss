@@ -13,6 +13,9 @@ body {
   &--padded {
     padding: 10px;
   }
+  // &>div>div {
+  //   position: relative;
+  // }
 }
 button:focus {
   outline: none;
@@ -23,6 +26,13 @@ button:focus {
   margin-bottom: 0;
 }
 .content-wrapper {
+  // padding: 10px;
+  max-width: 800px;
+  margin: auto;
+}
+.login--wrapper {
+  max-width: 400px;
+  margin: auto;
 }
 .tree-wrapper {
   padding: 20px 0;
@@ -92,4 +102,13 @@ button:focus {
 }
 .center-text {
   text-align: center;
+}
+.small-text {
+  font-size: 14px;
+}
+.hidden {
+  display: none;
+}
+.z10 {
+  z-index: 10;
 }

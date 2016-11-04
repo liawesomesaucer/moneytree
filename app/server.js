@@ -86,13 +86,13 @@ apiRouter.get('/accounts', function(req, res) {
   different commands and they didn't work.
   */
 
-  apiRouter.get('/transactions', function(req, res) {
+apiRouter.get('/transactions', function(req, res) {
 
-  });
+});
 
-  router.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, '/index.html'));
-  });
+router.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname, '/index.html'));
+});
 
 // define the folder that will be used for static assets
 app.use('/static', express.static(path.join(__dirname, 'static')));

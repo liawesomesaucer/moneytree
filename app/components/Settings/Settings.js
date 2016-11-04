@@ -64,7 +64,7 @@ export default class Settings extends React.Component {
               </span>
             </button>
           </div>
-
+{/*
           <div className="form--section">
             <div className="form--section-header">
               Goals
@@ -103,6 +103,7 @@ export default class Settings extends React.Component {
               </span>
             </div>
           </div>
+        */}
           </form>
         </div>
       </div>

@@ -16,8 +16,14 @@
     border-bottom: 1px solid $background-color;
   }
   &--elem-seed {
-    background-color: transparent;
     position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 35px;
+  }
+  &--elem-seed-info {
+  }
+  &--elem-seed-dropdown {
+
   }
   &--header {
     background-color: $light-gray;
@@ -50,6 +56,12 @@
   &--account-add {
     margin-right: 10px;
   }
+  &--account-right {
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    text-align: right;
+  }
 }
 .tile-list {
   @extend %list-reset;
@@ -62,12 +74,26 @@
     display: inline-block;
   }
 }
+.seed--status-bar-wrapper {
+  width: 100%;
+  position: absolute;
+  height: 25px;
+  line-height: 25px;
+  left: 0;
+  bottom: -25px;
+  font-size: 14px;
+  background-color: #eee;
+  text-align: center;
+  z-index: -2;
+}
 .seed--status-bar {
   width: 30%;
-  background-color: green;
-  display: inline-block;
+  background-color: $green;
+  height: 25px;
   position: absolute;
+  left: 0;
+  z-index: -1;
 }
-.seed-list {
+.list--elem-seed {
   background-color: $white;
 }
