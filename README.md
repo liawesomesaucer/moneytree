@@ -6,20 +6,27 @@ This is an app for COGS120/CSE170.
 ## Setup
 To set up for dev
 ```
-$ npm install
+$ npm i
+$ npm run devserver
 ```
-To set up the (static) frontend, run these two commands in separate terminals
-```
-$ # Terminal 1
-$ webpack-dev-server
+This will run the express application
 
-$ # Terminal 2
+To get webpack to load your frontend changes as you make them, run. Note that you'll need the express server too for this to work
+```
 $ webpack --watch
 ```
-Then view the app at localhost:8080
+## Notes for TA
+Check `data.js` in the `app/store` directory, which will contain references to seeded data in the application.
 
-To test with the actual express server
+The data is being added using Redux (check out `app/store/initialization.js`).
+
+Note that since we're using Redux with no persistent data, only a full on page refresh (ctrl+R or cmd+R) will reset the state of the app. Otherwise the data will stay as long as your session is active.
+
+To play around with the accounts linking feature (which will import additional transactions), use these sandbox API credentials for any bank:
+
 ```
-npm start
+Username: plaid_test
+Password: plaid_good
+Code: 1234
+Security Question Answer: tomato
 ```
-Then view the app at localhost:3000

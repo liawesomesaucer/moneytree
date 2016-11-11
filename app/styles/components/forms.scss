@@ -26,7 +26,6 @@ label {
 
 .form {
   &--section {
-    margin-bottom: 20px;
     &>div,
     &>input,
     &>button,
@@ -43,7 +42,7 @@ label {
   &--section-header {
     text-transform: uppercase;
     line-height: 30px;
-    margin-top: 10px;
+    padding-top: 20px;
     padding-left: 10px;
     border-bottom: none !important;
   }
@@ -61,7 +60,7 @@ label {
     line-height: 50px;
     padding: 0 10px;
     font-size: 18px;
-    background-color: white;
+    background-color: $white;
     font-weight: 300;
     color: $text-color;
   }
@@ -75,7 +74,7 @@ label {
     position: relative;
 
     &--std {
-      background-color: white;
+      background-color: $white;
     }
     &--primary {
       background-color: $primary-color;

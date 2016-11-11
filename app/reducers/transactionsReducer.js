@@ -1,4 +1,4 @@
-import { transaction_data } from '../components/Transactions/TransactionData';
+const transaction_data = []
 
 const transactionsReducer = (state=transaction_data, action) => {
   switch (action.type) {
@@ -7,6 +7,11 @@ const transactionsReducer = (state=transaction_data, action) => {
         ...state,
         action.payload
       ];
+    }
+    case "ADD_TRANSACTIONS": {
+      return [
+        ...state
+      ].concat(action.payload);
     }
   }
   return state;

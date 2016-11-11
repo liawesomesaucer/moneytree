@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { browserHistory } from 'react-router';
+
 import Nav from '../Nav';
 import TransactionList from './TransactionList';
 
@@ -29,6 +31,7 @@ export default class AddTransaction extends React.Component {
     this.props.dispatch(
       addTransaction(this.state.name, this.state.date, this.state.price)
     );
+    browserHistory.push('/transactions');
   }
   handleNameChange(e) {
     this.setState({name: e.target.value})

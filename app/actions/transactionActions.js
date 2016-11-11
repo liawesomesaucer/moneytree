@@ -1,10 +1,16 @@
-export function addTransaction (name, date, price) {
+export function addTransaction (name, date, amount) {
   return {
     type: "ADD_TRANSACTION",
     payload: {
       name: name,
       date: date,
-      price: price
+      amount: amount
     }
+  }
+}
+export function addTransactions (transactionList) {
+  return {
+    type: "ADD_TRANSACTIONS",
+    payload: transactionList
   }
 }

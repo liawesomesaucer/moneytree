@@ -1,18 +1,24 @@
 body {
   background-color: $background-color;
   margin: 0;
+  margin-top: 50px;
+  margin-bottom: 60px;
 }
 .no-margin {
   margin: 0;
 }
 .wrapper {
   // Because of nav
-  margin-top: 50px;
-  margin-bottom: 60px;
 
   &--padded {
     padding: 10px;
   }
+  // &>div>div {
+  //   position: relative;
+  // }
+}
+button:focus {
+  outline: none;
 }
 .reset-list {
   list-style-type: none;
@@ -20,7 +26,13 @@ body {
   margin-bottom: 0;
 }
 .content-wrapper {
-  padding: 10px;
+  // padding: 10px;
+  max-width: 800px;
+  margin: auto;
+}
+.login--wrapper {
+  max-width: 400px;
+  margin: auto;
 }
 .tree-wrapper {
   padding: 20px 0;
@@ -42,13 +54,61 @@ body {
     text-align: left;
   }
 }
+.btn:focus {
+  background-color: $primary-color;
+}
+#plaid-link {
+  display: inline;
+}
+.plaid-link-button {
+  padding: 0 10px;
+  font-size: 18px;
+  line-height: 50px;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-radius: 0;
+}
 .btn-default {
 
 }
-.btn-primary {
+.btn-back {
+  position: absolute;
+  color: white;
+  line-height: 50px;
+  top: 0;
+  left: 10px;
+  z-index: 6;
+}
+.btn-back:before {
+  content: "< ";
+  margin-right: 4px;
+}
+.btn-primary,
+.btn-primary:focus {
   background-color: $primary-color;
 }
 .btn-white {
   background-color: $white;
   color: $text-color;
+}
+.tree-wrapper img {
+  width: 58%;
+  max-width: 300px;
+  padding: 10px;
+  margin: auto;
+}
+.center-text {
+  text-align: center;
+}
+.small-text {
+  font-size: 14px;
+}
+.hidden {
+  display: none;
+}
+.z10 {
+  z-index: 10;
 }
