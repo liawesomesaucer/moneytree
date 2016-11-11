@@ -32541,8 +32541,7 @@
 	          'ul',
 	          { className: 'reset-list list seed-list' },
 	          seeds
-	        ),
-	        _react2.default.createElement(_TransactionList2.default, null)
+	        )
 	      );
 	    }
 	  }]);

@@ -136,7 +136,7 @@ export default class Home extends React.Component {
         <ul className="reset-list list seed-list">
           {seeds}
         </ul>
-        <TransactionList />
+        {/*<TransactionList />*/}
       </div>
     )
   }
