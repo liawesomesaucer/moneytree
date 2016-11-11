@@ -89,7 +89,7 @@ export default class AddTransaction extends React.Component {
               </div>
               <div className="form--group form--separated">
                 <button
-                  className="btn btn-std"
+                  className="field field--full-width field--primary"
                   type="button"
                   onClick={this.addTransaction.bind(this)}
                 >

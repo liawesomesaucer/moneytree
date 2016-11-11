@@ -9,8 +9,9 @@ import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 import routes from './App';
 import NotFound from './components/NotFound';
-
 import dotenv from 'dotenv';
+import bodyParser from 'body-parser';
+
 dotenv.config({silent: process.env.NODE_ENV !== 'development'});
 
 // initialize the server and configure support for ejs templates
@@ -18,6 +19,8 @@ const app = new express();
 const server = new Server(app);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
+app.use(bodyParser.json())
 
 // Set up Plaid instance
 const PLAID_PUBLIC_KEY = envvar.string('PLAID_PUBLIC_KEY');
@@ -30,6 +33,33 @@ new plaid.Client(PLAID_CLIENT_ID, PLAID_SECRET, plaid.environments.tartan);
 var router = express.Router();
 var apiRouter = express.Router();
 
+// Import seeded data
+const data = require('./data.json');
+var transaction_data = data.transaction_data; // List of transaction objects
+var seed_data = data.seed_data; // List of seed objects
+var account_data = {};
+
+apiRouter.get('/transactions', function(req, res) {
+  console.log("[GET] Transactions");
+  res.json(transaction_data);
+});
+
+apiRouter.post('/transactions/add', function(req, res) {
+  console.log("[POST] Transactions");
+  transaction_data.push(req.body);
+});
+
+apiRouter.get('/seeds', function(req, res) {
+  console.log("[GET] Seeds");
+  res.json(seed_data);
+});
+
+apiRouter.post('/seeds/add', function(req, res) {
+  console.log("[POST] Seeds");
+  seed_data.push(req.body);
+});
+
+// Need to figure out server-restarting persistence for this
 apiRouter.get('/accounts', function(req, res) {
   var public_token = req.query.public_token;
 
@@ -82,13 +112,6 @@ apiRouter.get('/accounts', function(req, res) {
   });
 });
 
-/* CURRENTLY - Transaction data not showing up because of api I think - tried 
-  different commands and they didn't work.
-  */
-
-apiRouter.get('/transactions', function(req, res) {
-
-});
 
 // const data = require('./data.json');
 // apiRouter.get('/staticdata', function(req, res) {
