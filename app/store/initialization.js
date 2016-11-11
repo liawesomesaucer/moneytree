@@ -33,15 +33,42 @@ store.subscribe(() => {
 // store.dispatch
 // store.dispatch({type: "ADD_TRANSACTION", payload: {name: "New Transaction", date: "Date", price: -124}});
 
-import { transaction_data, seed_data } from './data';
+// Setting up the data
+axios.get('/api/transactions')
+  .then((res) => {
+    let transaction_data = res.data;
+    initializeTransactionData(transaction_data);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+axios.get('/api/seeds')
+  .then((res)=> {
+    let seed_data = res.data;
+    initializeSeedData(seed_data);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 /* Adding the data.json data, Redux style */
-transaction_data.forEach(function(val, i) {
-  store.dispatch({type: "ADD_TRANSACTION", payload: val});
-})
+function initializeTransactionData(transaction_data) {
+  transaction_data.forEach(function(val, i) {
+    store.dispatch({type: "ADD_TRANSACTION", payload: val});
+  });
+}
+
+function initializeSeedData(seed_data) {
+  seed_data.forEach(function(val, i) {
+    store.dispatch({type: "CREATE_SEED", payload: val});
+  })
+}
+
+//  
 
 // Comment this out if you want to start with login
-// store.dispatch({type: "LOGIN"});
+store.dispatch({type: "LOGIN"});
 
 // Disabled for the purposes of this demo
 // seed_data.forEach(function(val, i) {
