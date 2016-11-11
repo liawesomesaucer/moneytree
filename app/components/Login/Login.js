@@ -28,7 +28,8 @@ export default class Login extends React.Component {
     this.handleLogin.bind(this);
     this.state = {
       email: "",
-      pass: ""
+      pass: "",
+      errormessage: ""
     }
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePassChange = this.handlePassChange.bind(this);
@@ -49,6 +50,7 @@ export default class Login extends React.Component {
         return true;
       }
     }
+    this.setState({errormessage: "Invalid Credentials"})
     return false;
   }
   handleLogin() {
@@ -70,6 +72,7 @@ export default class Login extends React.Component {
           </div>
 
           <form className="form login--form">
+            <p className="form--error">{this.state.errormessage}</p>
             <div className="form--group form--separated">
               <input 
                 type="text"
@@ -101,7 +104,7 @@ export default class Login extends React.Component {
               <button
                 type="button"
                 className="field field--full-width field--secondary"
-                onClick={() => this.handleLogin()}
+                onClick={() => browserHistory.push('/')}
               >
                 Register
               </button>

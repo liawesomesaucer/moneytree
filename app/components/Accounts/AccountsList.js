@@ -29,9 +29,12 @@ export default class AccountsList extends React.Component {
         $.get(
           "/api/accounts?public_token=" + token,
           function(data) {
-            console.log("wow");
-            console.log(data);
+            // data.transactions.forEach(function(value, i) {
+            //   reactElem.props.dispatch(addTransaction(value.name, value.date, value.amount));
+            // });
             reactElem.props.dispatch(addTransactions(data.transactions));
+            console.log("wowowow")
+            console.log(data.accounts);
             reactElem.props.dispatch(addAccount(data.accounts));
             browserHistory.push('/accounts');
           }
