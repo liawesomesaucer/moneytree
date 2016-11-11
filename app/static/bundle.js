@@ -31496,6 +31496,8 @@
 	});
 	exports.seedReducer = undefined;
 
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var _axios = __webpack_require__(265);
@@ -31544,6 +31546,23 @@
 	      {
 	        console.log("Edit seed not implemented yet");
 	        return _extends({}, state);
+	      }
+	    case "DELETE_SEED":
+	      {
+	        var _ret = function () {
+	          var res = [];
+	          state.forEach(function (val, i) {
+	            if (val.name != action.payload) {
+	              res.push(val);
+	            }
+	          });
+	          _axios2.default.get(seed_route + '/delete?name=' + action.payload);
+	          return {
+	            v: res
+	          };
+	        }();
+
+	        if ((typeof _ret === "undefined" ? "undefined" : _typeof(_ret)) === "object") return _ret.v;
 	      }
 	  }
 	  return state;
@@ -32295,6 +32314,10 @@
 
 	var _reactRedux = __webpack_require__(173);
 
+	var _reactFontawesome = __webpack_require__(304);
+
+	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
+
 	var _Nav = __webpack_require__(305);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
@@ -32302,6 +32325,8 @@
 	var _TransactionList = __webpack_require__(315);
 
 	var _TransactionList2 = _interopRequireDefault(_TransactionList);
+
+	var _seedActions = __webpack_require__(381);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -32325,10 +32350,16 @@
 	    var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this, props));
 
 	    _this.diffMoney = _this.diffMoney.bind(_this);
+	    _this.handleDelete = _this.handleDelete.bind(_this);
 	    return _this;
 	  }
 
 	  _createClass(Home, [{
+	    key: 'handleDelete',
+	    value: function handleDelete(name) {
+	      this.props.dispatch((0, _seedActions.deleteSeed)(name));
+	    }
+	  }, {
 	    key: 'diffMoney',
 	    value: function diffMoney(startTime, endTime) {
 	      var diff = 0;
@@ -32403,6 +32434,7 @@
 	        ));
 	      }
 	      this.props.seeds.forEach(function (val, i) {
+	        if (!val) return;
 	        var diff = _this2.diffMoney(val.startTime, val.endTime);
 	        var percentCompleted = Math.max(0, Math.min(diff / val.goal * 100, 100)).toString().split(".")[0];
 	        // console.log("wow")
@@ -32449,8 +32481,13 @@
 	            ),
 	            _react2.default.createElement(
 	              'span',
-	              { className: 'list--row-right list--account-right' },
-	              _react2.default.createElement('br', null)
+	              {
+	                className: 'list--row-right list--account-right',
+	                onClick: function onClick() {
+	                  return _this2.handleDelete(val.name);
+	                }
+	              },
+	              _react2.default.createElement(_reactFontawesome2.default, { name: 'times' })
 	            )
 	          ),
 	          _react2.default.createElement(
@@ -32660,7 +32697,8 @@
 	    _this.handleLogin.bind(_this);
 	    _this.state = {
 	      email: "",
-	      pass: ""
+	      pass: "",
+	      errormessage: ""
 	    };
 	    _this.handleEmailChange = _this.handleEmailChange.bind(_this);
 	    _this.handlePassChange = _this.handlePassChange.bind(_this);
@@ -32689,6 +32727,7 @@
 	          return true;
 	        }
 	      }
+	      this.setState({ errormessage: "Invalid Credentials" });
 	      return false;
 	    }
 	  }, {
@@ -32726,6 +32765,11 @@
 	          _react2.default.createElement(
 	            'form',
 	            { className: 'form login--form' },
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'form--error' },
+	              this.state.errormessage
+	            ),
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'form--group form--separated' },
@@ -32772,7 +32816,7 @@
 	                  type: 'button',
 	                  className: 'field field--full-width field--secondary',
 	                  onClick: function onClick() {
-	                    return _this2.handleLogin();
+	                    return _reactRouter.browserHistory.push('/');
 	                  }
 	                },
 	                'Register'
@@ -47164,6 +47208,7 @@
 	});
 	exports.createSeed = createSeed;
 	exports.editSeed = editSeed;
+	exports.deleteSeed = deleteSeed;
 	function createSeed(name, goal, time) {
 	  return {
 	    type: "CREATE_SEED",
@@ -47182,6 +47227,12 @@
 	      goal: goal,
 	      time: time
 	    }
+	  };
+	}
+	function deleteSeed(name) {
+	  return {
+	    type: "DELETE_SEED",
+	    payload: name
 	  };
 	}
 
@@ -47403,7 +47454,7 @@
 
 
 	// module
-	exports.push([module.id, ".mobile-nav ul, .tile-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0;\n  margin-top: 0; }\n\n@font-face {\n  font-family: GothamRounded;\n  src: url(\"/static/fonts/Gotham-Rounded.ttf\"); }\n\n@font-face {\n  font-family: GothamRoundedBold;\n  src: url(\"/static/fonts/Gotham-Rounded-Bold.ttf\"); }\n\n* {\n  font-family: GothamRounded, Roboto, Helvetica, sans-serif; }\n\n.header {\n  color: #12324D;\n  text-align: center; }\n\nbody {\n  background-color: #c8e2ec;\n  margin: 0;\n  margin-top: 50px;\n  margin-bottom: 60px; }\n\n.no-margin {\n  margin: 0; }\n\n.wrapper--padded {\n  padding: 10px; }\n\nbutton:focus {\n  outline: none; }\n\n.reset-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0; }\n\n.content-wrapper {\n  max-width: 800px;\n  margin: auto; }\n\n.login--wrapper {\n  max-width: 400px;\n  margin: auto; }\n\n.tree-wrapper {\n  padding: 20px 0;\n  text-align: center; }\n\n.btn {\n  padding: 12px 20px 8px;\n  background-color: #12324D;\n  color: white;\n  font-size: 18px;\n  border: none;\n  border-radius: 10px; }\n  .btn--fullwidth {\n    width: 100%;\n    border-radius: 0;\n    padding: 0 10px;\n    line-height: 50px;\n    text-align: left; }\n\n.btn:focus {\n  background-color: #12324D; }\n\n#plaid-link {\n  display: inline; }\n\n.plaid-link-button {\n  padding: 0 10px;\n  font-size: 18px;\n  line-height: 50px;\n  border: none;\n  border-radius: 10px;\n  width: 100%;\n  text-align: left;\n  border: none;\n  border-radius: 0; }\n\n.btn-back {\n  position: absolute;\n  color: white;\n  line-height: 50px;\n  top: 0;\n  left: 10px;\n  z-index: 6; }\n\n.btn-back:before {\n  content: \"< \";\n  margin-right: 4px; }\n\n.btn-primary,\n.btn-primary:focus {\n  background-color: #12324D; }\n\n.btn-white {\n  background-color: rgba(255, 255, 255, 0.8);\n  color: #666; }\n\n.tree-wrapper img {\n  width: 58%;\n  max-width: 300px;\n  padding: 10px;\n  margin: auto; }\n\n.center-text {\n  text-align: center; }\n\n.small-text {\n  font-size: 14px; }\n\n.hidden {\n  display: none; }\n\n.z10 {\n  z-index: 10; }\n\n.mobile-nav {\n  border-top: 1px solid #c8e2ec;\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  background-color: #fff; }\n\n.mobile-nav ul {\n  color: #12324D; }\n  .mobile-nav ul li {\n    display: inline-block;\n    padding: 10px 0 8px;\n    width: 25%;\n    text-align: center;\n    font-size: 12px; }\n    .mobile-nav ul li .fa {\n      font-size: 22px;\n      margin-bottom: 3px; }\n\n.top-nav {\n  width: 100%;\n  position: fixed;\n  height: 50px;\n  top: 0;\n  left: 0;\n  right: 0;\n  background-color: #12324D;\n  color: white;\n  text-align: center;\n  font-size: 22px;\n  line-height: 50px;\n  z-index: 5; }\n\n.graph-wrapper {\n  margin-bottom: 10px;\n  width: 100%;\n  text-align: center; }\n  .graph-wrapper img {\n    width: 100%; }\n\n.list--elem {\n  background-color: rgba(255, 255, 255, 0.8);\n  padding: 20px 10px 16px;\n  font-size: 18px;\n  border-bottom: 1px solid #c8e2ec; }\n\n.list--elem-seed {\n  position: relative;\n  padding-bottom: 10px;\n  margin-bottom: 35px; }\n\n.list--header {\n  background-color: rgba(255, 255, 255, 0.4);\n  font-weight: bold;\n  border-bottom: none; }\n\n.list--primary {\n  background-color: #12324D;\n  color: white; }\n\n.list--row-right {\n  float: right; }\n\n.list--account-elem {\n  padding-top: 16px;\n  padding-bottom: 12px;\n  min-height: 70px; }\n\n.list--account-number {\n  font-size: 14px; }\n\n.list--account-add {\n  margin-right: 10px; }\n\n.list--account-right {\n  position: absolute;\n  right: 10px;\n  top: 20px;\n  text-align: right; }\n\n.tile-list li {\n  background-color: rgba(255, 255, 255, 0.4);\n  width: 33%;\n  height: 0;\n  padding-bottom: 32%;\n  display: inline-block; }\n\n.seed--status-bar-wrapper {\n  width: 100%;\n  position: absolute;\n  height: 25px;\n  line-height: 25px;\n  left: 0;\n  bottom: -25px;\n  font-size: 14px;\n  background-color: #eee;\n  text-align: center;\n  z-index: -2; }\n\n.seed--status-bar {\n  width: 30%;\n  background-color: #92C85A;\n  height: 25px;\n  position: absolute;\n  left: 0;\n  z-index: -1; }\n\n.list--elem-seed {\n  background-color: rgba(255, 255, 255, 0.8); }\n\n.wrapper-pad-top {\n  padding-top: 20px; }\n\ninput[type=\"submit\"] {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\nselect {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\noption {\n  padding: 0;\n  white-space: normal;\n  color: #666; }\n\nlabel {\n  margin-bottom: 0; }\n\n.form--section > div,\n.form--section > input,\n.form--section > button,\n.form--section > select,\n.form--section > .form-group,\n.form--section > a {\n  border-bottom: 1px solid #c8e2ec; }\n  .form--section > div:last-child,\n  .form--section > input:last-child,\n  .form--section > button:last-child,\n  .form--section > select:last-child,\n  .form--section > .form-group:last-child,\n  .form--section > a:last-child {\n    border-bottom: none; }\n\n.form--section-header {\n  text-transform: uppercase;\n  line-height: 30px;\n  padding-top: 20px;\n  padding-left: 10px;\n  border-bottom: none !important; }\n\n.form--group {\n  position: relative; }\n  .form--group input {\n    border: none; }\n  .form--group label,\n  .form--group .field {\n    display: inline-block;\n    height: 50px;\n    line-height: 50px;\n    padding: 0 10px;\n    font-size: 18px;\n    background-color: rgba(255, 255, 255, 0.8);\n    font-weight: 300;\n    color: #666; }\n  .form--group label {\n    width: 35%; }\n  .form--group .field {\n    border: none;\n    outline: none;\n    width: 65%;\n    position: relative; }\n    .form--group .field--std {\n      background-color: rgba(255, 255, 255, 0.8); }\n    .form--group .field--primary {\n      background-color: #12324D;\n      color: white; }\n    .form--group .field--text-right {\n      text-align: right; }\n    .form--group .field--full-width {\n      width: 100%; }\n  .form--group-money label {\n    position: relative; }\n  .form--group-money label:after {\n    position: absolute;\n    content: \"$ \";\n    right: -22px;\n    top: 0;\n    z-index: 2; }\n  .form--group-money input.field {\n    padding-left: 30px; }\n\n.form--separated {\n  margin-bottom: 10px; }\n\n.row-right-overlay {\n  position: absolute;\n  right: 10px;\n  line-height: 50px; }\n", ""]);
+	exports.push([module.id, ".mobile-nav ul, .tile-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0;\n  margin-top: 0; }\n\n@font-face {\n  font-family: GothamRounded;\n  src: url(\"/static/fonts/Gotham-Rounded.ttf\"); }\n\n@font-face {\n  font-family: GothamRoundedBold;\n  src: url(\"/static/fonts/Gotham-Rounded-Bold.ttf\"); }\n\n* {\n  font-family: GothamRounded, Roboto, Helvetica, sans-serif; }\n\n.header {\n  color: #12324D;\n  text-align: center; }\n\nbody {\n  background-color: #c8e2ec;\n  margin: 0;\n  margin-top: 50px;\n  margin-bottom: 60px; }\n\n.no-margin {\n  margin: 0; }\n\n.wrapper--padded {\n  padding: 10px; }\n\nbutton:focus {\n  outline: none; }\n\n.reset-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0; }\n\n.content-wrapper {\n  max-width: 800px;\n  margin: auto; }\n\n.login--wrapper {\n  max-width: 400px;\n  margin: auto; }\n\n.tree-wrapper {\n  padding: 20px 0;\n  text-align: center; }\n\n.btn {\n  padding: 12px 20px 8px;\n  background-color: #12324D;\n  color: white;\n  font-size: 18px;\n  border: none;\n  border-radius: 10px; }\n  .btn--fullwidth {\n    width: 100%;\n    border-radius: 0;\n    padding: 0 10px;\n    line-height: 50px;\n    text-align: left; }\n\n.btn:focus {\n  background-color: #12324D; }\n\n#plaid-link {\n  display: inline; }\n\n.plaid-link-button {\n  padding: 0 10px;\n  font-size: 18px;\n  line-height: 50px;\n  border: none;\n  border-radius: 10px;\n  width: 100%;\n  text-align: left;\n  border: none;\n  border-radius: 0; }\n\n.btn-back {\n  position: absolute;\n  color: white;\n  line-height: 50px;\n  top: 0;\n  left: 10px;\n  z-index: 6; }\n\n.btn-back:before {\n  content: \"< \";\n  margin-right: 4px; }\n\n.btn-primary,\n.btn-primary:focus {\n  background-color: #12324D; }\n\n.btn-white {\n  background-color: rgba(255, 255, 255, 0.8);\n  color: #666; }\n\n.tree-wrapper img {\n  width: 58%;\n  max-width: 300px;\n  padding: 10px;\n  margin: auto; }\n\n.center-text {\n  text-align: center; }\n\n.small-text {\n  font-size: 14px; }\n\n.hidden {\n  display: none; }\n\n.z10 {\n  z-index: 10; }\n\n.mobile-nav {\n  border-top: 1px solid #c8e2ec;\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  background-color: #fff; }\n\n.mobile-nav ul {\n  color: #12324D; }\n  .mobile-nav ul li {\n    display: inline-block;\n    padding: 10px 0 8px;\n    width: 25%;\n    text-align: center;\n    font-size: 12px; }\n    .mobile-nav ul li .fa {\n      font-size: 22px;\n      margin-bottom: 3px; }\n\n.top-nav {\n  width: 100%;\n  position: fixed;\n  height: 50px;\n  top: 0;\n  left: 0;\n  right: 0;\n  background-color: #12324D;\n  color: white;\n  text-align: center;\n  font-size: 22px;\n  line-height: 50px;\n  z-index: 5; }\n\n.graph-wrapper {\n  margin-bottom: 10px;\n  width: 100%;\n  text-align: center; }\n  .graph-wrapper img {\n    width: 100%; }\n\n.list--elem {\n  background-color: rgba(255, 255, 255, 0.8);\n  padding: 20px 10px 16px;\n  font-size: 18px;\n  border-bottom: 1px solid #c8e2ec; }\n\n.list--elem-seed {\n  position: relative;\n  padding-bottom: 10px;\n  margin-bottom: 35px; }\n\n.list--header {\n  background-color: rgba(255, 255, 255, 0.4);\n  font-weight: bold;\n  border-bottom: none; }\n\n.list--primary {\n  background-color: #12324D;\n  color: white; }\n\n.list--row-right {\n  float: right; }\n\n.list--account-elem {\n  padding-top: 16px;\n  padding-bottom: 12px;\n  min-height: 70px; }\n\n.list--account-number {\n  font-size: 14px; }\n\n.list--account-add {\n  margin-right: 10px; }\n\n.list--account-right {\n  position: absolute;\n  right: 10px;\n  top: 20px;\n  text-align: right; }\n\n.tile-list li {\n  background-color: rgba(255, 255, 255, 0.4);\n  width: 33%;\n  height: 0;\n  padding-bottom: 32%;\n  display: inline-block; }\n\n.seed--status-bar-wrapper {\n  width: 100%;\n  position: absolute;\n  height: 25px;\n  line-height: 25px;\n  left: 0;\n  bottom: -25px;\n  font-size: 14px;\n  background-color: #eee;\n  text-align: center;\n  z-index: -2; }\n\n.seed--status-bar {\n  width: 30%;\n  background-color: #92C85A;\n  height: 25px;\n  position: absolute;\n  left: 0;\n  z-index: -1; }\n\n.list--elem-seed {\n  background-color: rgba(255, 255, 255, 0.8); }\n\n.wrapper-pad-top {\n  padding-top: 20px; }\n\ninput[type=\"submit\"] {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\nselect {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\noption {\n  padding: 0;\n  white-space: normal;\n  color: #666; }\n\nlabel {\n  margin-bottom: 0; }\n\n.form--section > div,\n.form--section > input,\n.form--section > button,\n.form--section > select,\n.form--section > .form-group,\n.form--section > a {\n  border-bottom: 1px solid #c8e2ec; }\n  .form--section > div:last-child,\n  .form--section > input:last-child,\n  .form--section > button:last-child,\n  .form--section > select:last-child,\n  .form--section > .form-group:last-child,\n  .form--section > a:last-child {\n    border-bottom: none; }\n\n.form--section-header {\n  text-transform: uppercase;\n  line-height: 30px;\n  padding-top: 20px;\n  padding-left: 10px;\n  border-bottom: none !important; }\n\n.form--group {\n  position: relative; }\n  .form--group input {\n    border: none; }\n  .form--group label,\n  .form--group .field {\n    display: inline-block;\n    height: 50px;\n    line-height: 50px;\n    padding: 0 10px;\n    font-size: 18px;\n    background-color: rgba(255, 255, 255, 0.8);\n    font-weight: 300;\n    color: #666; }\n  .form--group label {\n    width: 35%; }\n  .form--group .field {\n    border: none;\n    outline: none;\n    width: 65%;\n    position: relative; }\n    .form--group .field--std {\n      background-color: rgba(255, 255, 255, 0.8); }\n    .form--group .field--primary {\n      background-color: #12324D;\n      color: white; }\n    .form--group .field--text-right {\n      text-align: right; }\n    .form--group .field--full-width {\n      width: 100%; }\n  .form--group-money label {\n    position: relative; }\n  .form--group-money label:after {\n    position: absolute;\n    content: \"$ \";\n    right: -22px;\n    top: 0;\n    z-index: 2; }\n  .form--group-money input.field {\n    padding-left: 30px; }\n\n.form--separated {\n  margin-bottom: 10px; }\n\n.row-right-overlay {\n  position: absolute;\n  right: 10px;\n  line-height: 50px; }\n\n.form--error {\n  color: red; }\n", ""]);
 
 	// exports
 

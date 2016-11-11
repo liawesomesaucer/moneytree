@@ -18,3 +18,9 @@ export function editSeed(name, goal, time) {
     }
   }
 }
+export function deleteSeed(name) {
+  return {
+    type: "DELETE_SEED",
+    payload: name
+  }
+}

@@ -43,6 +43,16 @@ const seedReducer = (state=seed_data, action) => {
         ...state,
       }
     }
+    case "DELETE_SEED": {
+      let res = []
+      state.forEach(function(val, i) {
+        if (val.name != action.payload) {
+          res.push(val);
+        }
+      });
+      axios.get(seed_route + '/delete?name=' + action.payload);
+      return res;
+    }
   }
   return state;
 }

@@ -59,10 +59,22 @@ apiRouter.get('/seeds', function(req, res) {
   res.json(seed_data);
 });
 
+apiRouter.get('/seeds/delete', function(req, res) {
+  console.log("[DELETE] Seed " + req.query.name);
+  let result = [];
+  seed_data.forEach(function(val) {
+    if (val.name != req.query.name) {
+      result.push(val);
+    }
+  });
+  seed_data = result;
+})
+
 apiRouter.post('/seeds/add', function(req, res) {
   console.log("[POST] Seeds");
   seed_data.push(req.body);
 });
+
 
 apiRouter.get('/accounts/get', function(req, res) {
   console.log("[GET] Accounts");
