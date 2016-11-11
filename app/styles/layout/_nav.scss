@@ -7,9 +7,8 @@
   background-color: $white;
 }
 .mobile-nav ul {
-  list-style-type: none;
-  padding-left: 0;
-  margin-bottom: 0;
+  @extend %list-reset;
+  
   color: $primary-color;
 
   li {
@@ -37,4 +36,5 @@
   text-align: center;
   font-size: 22px;
   line-height: 50px;
+  z-index: 5;
 }

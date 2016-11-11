@@ -27,5 +27,6 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin('style.[contenthash].css', { allChunks: true })
-  ]
+  ],
+  debug: true
 }

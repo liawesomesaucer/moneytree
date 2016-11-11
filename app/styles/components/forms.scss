@@ -1,0 +1,114 @@
+.wrapper-pad-top {
+  padding-top: 20px;
+}
+input[type="submit"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0;
+  border: none;
+}
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0;
+  border: none;
+}
+option {
+  padding: 0;
+  white-space: normal;
+  color: $text-color;
+}
+label {
+  margin-bottom: 0;
+}
+
+.form {
+  &--section {
+    margin-bottom: 20px;
+    &>div,
+    &>input,
+    &>button,
+    &>select,
+    &>.form-group,
+    &>a {
+      border-bottom: 1px solid $background-color;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+  &--section-header {
+    text-transform: uppercase;
+    line-height: 30px;
+    margin-top: 10px;
+    padding-left: 10px;
+    border-bottom: none !important;
+  }
+}
+.form--group {
+  position: relative;
+
+  input {
+    border: none;
+  }
+  label,
+  .field {
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 10px;
+    font-size: 18px;
+    background-color: white;
+    font-weight: 300;
+    color: $text-color;
+  }
+  label {
+    width: 35%;
+  }
+  .field {
+    border: none;
+    outline: none;
+    width: 65%;
+    position: relative;
+
+    &--std {
+      background-color: white;
+    }
+    &--primary {
+      background-color: $primary-color;
+      color: white;
+    }
+    &--text-right {
+      text-align: right;
+    }
+    &--full-width {
+      width: 100%;
+    }
+  }
+  &-money {
+    label {
+      position: relative;
+    }
+    label:after {
+      position: absolute;
+      content: "$ ";
+      right: -22px;
+      top: 0;
+      z-index: 2;
+    }
+    input.field {
+      padding-left: 30px;
+    }
+  }
+}
+.form--separated {
+  margin-bottom: 10px;
+}
+.row-right-overlay {
+  position: absolute;
+  right: 10px;
+  line-height: 50px;
+}
