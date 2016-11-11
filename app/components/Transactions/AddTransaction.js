@@ -49,9 +49,7 @@ export default class AddTransaction extends React.Component {
         <Nav pageName="New Transaction"/>
         
         <div className="wrapper-pad-top">
-          <form 
-            className="form"
-          >
+          <form className="form">
             <div className="form--section">
               <div className="form--section-header">
                 Basic Info

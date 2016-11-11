@@ -37,7 +37,7 @@ var apiRouter = express.Router();
 const data = require('./data.json');
 var transaction_data = data.transaction_data; // List of transaction objects
 var seed_data = data.seed_data; // List of seed objects
-var account_data = {};
+var account_data = [];
 
 apiRouter.get('/transactions', function(req, res) {
   console.log("[GET] Transactions");
@@ -49,14 +49,37 @@ apiRouter.post('/transactions/add', function(req, res) {
   transaction_data.push(req.body);
 });
 
+apiRouter.post('/transactions/addList', function(req, res) {
+  console.log("[POST] Transactions List");
+  transaction_data = transaction_data.concat(req.body);
+});
+
 apiRouter.get('/seeds', function(req, res) {
   console.log("[GET] Seeds");
   res.json(seed_data);
 });
 
+apiRouter.get('/seeds/delete', function(req, res) {
+  console.log("[DELETE] Seed " + req.query.name);
+  let result = [];
+  seed_data.forEach(function(val) {
+    if (val.name != req.query.name) {
+      result.push(val);
+    }
+  });
+  seed_data = result;
+})
+
 apiRouter.post('/seeds/add', function(req, res) {
   console.log("[POST] Seeds");
   seed_data.push(req.body);
+});
+
+
+apiRouter.get('/accounts/get', function(req, res) {
+  console.log("[GET] Accounts");
+  console.log(account_data);
+  res.json(account_data);
 });
 
 // Need to figure out server-restarting persistence for this
@@ -100,7 +123,8 @@ apiRouter.get('/accounts', function(req, res) {
             // We now have accounts and transactions
             console.log('# transactions: ' + connectUserRes.transactions.length);
             console.log('access token: ' + connectUserRes.access_token);
-            console.log(connectUserRes);
+            account_data = account_data.concat(connectUserRes.accounts);
+            console.log(connectUserRes.accounts)
             res.json({
               accounts: connectUserRes.accounts,
               transactions: connectUserRes.transactions

@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
+import FontAwesome from 'react-fontawesome';
 
 import Nav from '../Nav';
 
 import TransactionList from '../Transactions/TransactionList';
+
+import { deleteSeed } from '../../actions/seedActions';
 
 @connect((store) => {
   return {
@@ -16,6 +19,10 @@ export default class Home extends React.Component {
   constructor(props) {
     super(props);
     this.diffMoney = this.diffMoney.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+  }
+  handleDelete(name) {
+    this.props.dispatch(deleteSeed(name));
   }
   diffMoney(startTime, endTime) {
     let diff = 0;
@@ -70,6 +77,7 @@ export default class Home extends React.Component {
       )
     }
     this.props.seeds.forEach((val, i) => {
+      if (!val) return;
       let diff = this.diffMoney(val.startTime, val.endTime);
       let percentCompleted = Math.max(0, Math.min((diff / val.goal * 100), 100)).toString().split(".")[0];
       // console.log("wow")
@@ -92,8 +100,11 @@ export default class Home extends React.Component {
               <div className="list--account-name">{val.name}</div>
               <div className="list--account-number">Save ${val.goal} in a {val.time}</div>
             </span>
-            <span className="list--row-right list--account-right"><br/>
-             {/* <span className="small-text">Complete</span>*/}
+            <span 
+              className="list--row-right list--account-right"
+              onClick={() => this.handleDelete(val.name)}
+            >
+              <FontAwesome name="times"/>
             </span>
           </div>
           <div className="list--elem-seed-dropdown">
@@ -125,7 +136,7 @@ export default class Home extends React.Component {
         <ul className="reset-list list seed-list">
           {seeds}
         </ul>
-        <TransactionList />
+        {/*<TransactionList />*/}
       </div>
     )
   }

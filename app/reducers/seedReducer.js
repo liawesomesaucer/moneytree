@@ -22,7 +22,6 @@ const seedReducer = (state=seed_data, action) => {
       else {
         newSeed.endTime = new Date(new Date().setYear(newSeed.startTime.getYear() + 1));
       }
-
       if (!newSeed.posted) {
         newSeed.posted = true;
         axios.post(seed_route + '/add', newSeed)
@@ -43,6 +42,16 @@ const seedReducer = (state=seed_data, action) => {
       return {
         ...state,
       }
+    }
+    case "DELETE_SEED": {
+      let res = []
+      state.forEach(function(val, i) {
+        if (val.name != action.payload) {
+          res.push(val);
+        }
+      });
+      axios.get(seed_route + '/delete?name=' + action.payload);
+      return res;
     }
   }
   return state;

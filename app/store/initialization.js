@@ -52,16 +52,32 @@ axios.get('/api/seeds')
     console.log(err);
   });
 
+axios.get('/api/accounts/get')
+  .then((res) => {
+    let accounts_data = res.data;
+    initializeAccountsData(accounts_data);
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+
 /* Adding the data.json data, Redux style */
 function initializeTransactionData(transaction_data) {
-  transaction_data.forEach(function(val, i) {
-    store.dispatch({type: "ADD_TRANSACTION", payload: val});
-  });
+  // transaction_data.forEach(function(val, i) {
+  //   store.dispatch({type: "ADD_TRANSACTION", payload: val});
+  // });
+  store.dispatch({type: "ADD_TRANSACTIONS", payload: transaction_data});
 }
 
 function initializeSeedData(seed_data) {
   seed_data.forEach(function(val, i) {
     store.dispatch({type: "CREATE_SEED", payload: val});
+  })
+}
+
+function initializeAccountsData(accounts_data) {
+  accounts_data.forEach(function(val, i) {
+    store.dispatch({type: "ADD_ACCOUNT", payload: val});
   })
 }
 
