@@ -28914,16 +28914,30 @@
 	  console.log(err);
 	});
 
+	_axios2.default.get('/api/accounts/get').then(function (res) {
+	  var accounts_data = res.data;
+	  initializeAccountsData(accounts_data);
+	}).catch(function (err) {
+	  console.log(err);
+	});
+
 	/* Adding the data.json data, Redux style */
 	function initializeTransactionData(transaction_data) {
-	  transaction_data.forEach(function (val, i) {
-	    store.dispatch({ type: "ADD_TRANSACTION", payload: val });
-	  });
+	  // transaction_data.forEach(function(val, i) {
+	  //   store.dispatch({type: "ADD_TRANSACTION", payload: val});
+	  // });
+	  store.dispatch({ type: "ADD_TRANSACTIONS", payload: transaction_data });
 	}
 
 	function initializeSeedData(seed_data) {
 	  seed_data.forEach(function (val, i) {
 	    store.dispatch({ type: "CREATE_SEED", payload: val });
+	  });
+	}
+
+	function initializeAccountsData(accounts_data) {
+	  accounts_data.forEach(function (val, i) {
+	    store.dispatch({ type: "ADD_ACCOUNT", payload: val });
 	  });
 	}
 
@@ -31310,17 +31324,27 @@
 
 /***/ },
 /* 297 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.transactionsReducer = undefined;
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+	var _axios = __webpack_require__(265);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 	var transaction_data = [];
+	var transaction_route = '/api/transactions';
 
 	var transactionsReducer = function transactionsReducer() {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : transaction_data;
@@ -31329,11 +31353,43 @@
 	  switch (action.type) {
 	    case "ADD_TRANSACTION":
 	      {
-	        return [].concat(_toConsumableArray(state), [action.payload]);
+	        var newTrans = action.payload;
+	        if (!newTrans.posted) {
+	          newTrans.posted = true;
+	          _axios2.default.post(transaction_route + '/add', newTrans).then(function (res) {
+	            console.log("Updated seed backend");
+	          }).catch(function (err) {
+	            console.log(err);
+	          });
+	        }
+	        return [].concat(_toConsumableArray(state), [newTrans]);
 	      }
 	    case "ADD_TRANSACTIONS":
 	      {
-	        return [].concat(_toConsumableArray(state)).concat(action.payload);
+	        var _ret = function () {
+	          console.log("multiple tranasaction adds called");
+	          var newTrans = action.payload;
+	          var filtered = [];
+
+	          newTrans.forEach(function (elem, i) {
+	            if (!elem.posted) {
+	              elem.posted = true;
+	              filtered.push(elem);
+	            }
+	          });
+
+	          _axios2.default.post(transaction_route + '/addList', filtered).then(function (res) {
+	            console.log("Updated seed backend");
+	          }).catch(function (err) {
+	            console.log(err);
+	          });
+
+	          return {
+	            v: [].concat(_toConsumableArray(state)).concat(newTrans)
+	          };
+	        }();
+
+	        if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
 	      }
 	  }
 	  return state;
@@ -31474,7 +31530,6 @@
 	        } else {
 	          newSeed.endTime = new Date(new Date().setYear(newSeed.startTime.getYear() + 1));
 	        }
-
 	        if (!newSeed.posted) {
 	          newSeed.posted = true;
 	          _axios2.default.post(seed_route + '/add', newSeed).then(function (res) {
@@ -31931,9 +31986,12 @@
 	        onSuccess: function onSuccess(token, metadata) {
 	          console.log('account_id is', metadata.account_id);
 	          $.get("/api/accounts?public_token=" + token, function (data) {
-	            console.log("wow");
-	            console.log(data);
+	            // data.transactions.forEach(function(value, i) {
+	            //   reactElem.props.dispatch(addTransaction(value.name, value.date, value.amount));
+	            // });
 	            reactElem.props.dispatch((0, _transactionActions.addTransactions)(data.transactions));
+	            console.log("wowowow");
+	            console.log(data.accounts);
 	            reactElem.props.dispatch((0, _accountsActions.addAccount)(data.accounts));
 	            _reactRouter.browserHistory.push('/accounts');
 	          });
@@ -47228,9 +47286,7 @@
 	          { className: 'wrapper-pad-top' },
 	          _react2.default.createElement(
 	            'form',
-	            {
-	              className: 'form'
-	            },
+	            { className: 'form' },
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'form--section' },

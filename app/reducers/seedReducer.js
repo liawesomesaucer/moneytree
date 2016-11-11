@@ -22,7 +22,6 @@ const seedReducer = (state=seed_data, action) => {
       else {
         newSeed.endTime = new Date(new Date().setYear(newSeed.startTime.getYear() + 1));
       }
-
       if (!newSeed.posted) {
         newSeed.posted = true;
         axios.post(seed_route + '/add', newSeed)
