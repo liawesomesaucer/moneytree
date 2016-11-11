@@ -1,9 +1,12 @@
+import axios from 'axios';
+
 const seed_data = []
 const time_map = {
   "Month": 30,
   "Week": 7,
   "Year": 365
 }
+const seed_route = '/api/seeds';
 
 const seedReducer = (state=seed_data, action) => {
   switch (action.type) {
@@ -18,6 +21,17 @@ const seedReducer = (state=seed_data, action) => {
       }
       else {
         newSeed.endTime = new Date(new Date().setYear(newSeed.startTime.getYear() + 1));
+      }
+
+      if (!newSeed.posted) {
+        newSeed.posted = true;
+        axios.post(seed_route + '/add', newSeed)
+        .then(function(res) {
+          console.log("Updated seed backend");
+        })
+        .catch(function(err) {
+          console.log(err);
+        });
       }
       return [
         ...state,

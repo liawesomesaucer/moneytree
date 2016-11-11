@@ -31431,15 +31431,22 @@
 
 /***/ },
 /* 301 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.seedReducer = undefined;
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _axios = __webpack_require__(265);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
@@ -31449,6 +31456,7 @@
 	  "Week": 7,
 	  "Year": 365
 	};
+	var seed_route = '/api/seeds';
 
 	var seedReducer = function seedReducer() {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : seed_data;
@@ -31465,6 +31473,15 @@
 	          newSeed.endTime = new Date(new Date().setDate(newSeed.startTime.getDate() + 7));
 	        } else {
 	          newSeed.endTime = new Date(new Date().setYear(newSeed.startTime.getYear() + 1));
+	        }
+
+	        if (!newSeed.posted) {
+	          newSeed.posted = true;
+	          _axios2.default.post(seed_route + '/add', newSeed).then(function (res) {
+	            console.log("Updated seed backend");
+	          }).catch(function (err) {
+	            console.log(err);
+	          });
 	        }
 	        return [].concat(_toConsumableArray(state), [newSeed]);
 	      }
@@ -32562,6 +32579,16 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	var accData = {
+	  "accounts": [{
+	    "email": "test1@mail.com",
+	    "password": "password1"
+	  }, {
+	    "email": "test2@mail.com",
+	    "password": "password2"
+	  }]
+	};
+
 	var Login = (_dec = (0, _reactRedux.connect)(function (store) {
 	  return {};
 	}), _dec(_class = function (_React$Component) {
@@ -32573,14 +32600,48 @@
 	    var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
 
 	    _this.handleLogin.bind(_this);
+	    _this.state = {
+	      email: "",
+	      pass: ""
+	    };
+	    _this.handleEmailChange = _this.handleEmailChange.bind(_this);
+	    _this.handlePassChange = _this.handlePassChange.bind(_this);
 	    return _this;
 	  }
 
 	  _createClass(Login, [{
+	    key: 'handleEmailChange',
+	    value: function handleEmailChange(e) {
+	      this.setState({ email: e.target.value });
+	    }
+	  }, {
+	    key: 'handlePassChange',
+	    value: function handlePassChange(e) {
+	      this.setState({ pass: e.target.value });
+	    }
+	  }, {
+	    key: 'checkCredentials',
+	    value: function checkCredentials() {
+	      for (var i = 0; i < accData.accounts.length; i++) {
+	        var acc = accData.accounts[i];
+	        var attEmail = acc.email;
+	        var attPass = acc.password;
+
+	        if (attEmail == this.state.email && attPass == this.state.pass) {
+	          return true;
+	        }
+	      }
+	      return false;
+	    }
+	  }, {
 	    key: 'handleLogin',
 	    value: function handleLogin() {
-	      this.props.dispatch((0, _authActions.loginUser)());
-	      _reactRouter.browserHistory.push('/');
+	      if (this.checkCredentials()) {
+	        this.props.dispatch((0, _authActions.loginUser)());
+	        _reactRouter.browserHistory.push('/');
+	      } else {
+	        this.state.pass.setState("");
+	      }
 	    }
 	  }, {
 	    key: 'render',
@@ -32614,7 +32675,8 @@
 	                type: 'text',
 	                name: 'email',
 	                placeholder: 'Email',
-	                className: 'field field--std field--full-width'
+	                className: 'field field--std field--full-width',
+	                onChange: this.handleEmailChange
 	              })
 	            ),
 	            _react2.default.createElement(
@@ -32624,7 +32686,8 @@
 	                type: 'password',
 	                name: 'password',
 	                placeholder: 'Password',
-	                className: 'field field--std field--full-width'
+	                className: 'field field--std field--full-width',
+	                onChange: this.handlePassChange
 	              })
 	            ),
 	            _react2.default.createElement(
@@ -47231,7 +47294,7 @@
 	                _react2.default.createElement(
 	                  'button',
 	                  {
-	                    className: 'btn btn-std',
+	                    className: 'field field--full-width field--primary',
 	                    type: 'button',
 	                    onClick: this.addTransaction.bind(this)
 	                  },
