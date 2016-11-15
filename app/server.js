@@ -7,7 +7,6 @@ import plaid from 'plaid';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
-import routes from './App';
 import NotFound from './components/NotFound';
 
 import dotenv from 'dotenv';
