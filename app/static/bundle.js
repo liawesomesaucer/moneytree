@@ -21545,6 +21545,7 @@
 	    key: 'handlePageView',
 	    value: function handlePageView() {
 	      if (window !== undefined) {
+	        console.log("Sending pageview to" + window.location.pathname);
 	        _reactGa2.default.set({ page: window.location.pathname });
 	        _reactGa2.default.pageview(window.location.pathname);
 	        window.scrollTo(0, 0);

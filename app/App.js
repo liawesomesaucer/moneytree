@@ -41,6 +41,7 @@ class App extends Component {
 
   handlePageView () {
     if (window !== undefined) {
+      console.log("Sending pageview to" + window.location.pathname)
       ReactGA.set({ page: window.location.pathname });
       ReactGA.pageview(window.location.pathname);
       window.scrollTo(0, 0);
