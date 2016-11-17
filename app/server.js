@@ -48,7 +48,7 @@ apiRouter.post('/transactions/add', function(req, res) {
   transaction_data.push(req.body);
 });
 
-apiRouter.post('/transactions/addList', function(req, res) {
+apiRouter.post('/transactions/addlist', function(req, res) {
   console.log("[POST] Transactions List");
   transaction_data = transaction_data.concat(req.body);
 });

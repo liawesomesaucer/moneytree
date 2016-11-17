@@ -34,7 +34,7 @@ const transactionsReducer = (state=transaction_data, action) => {
         }
       });
 
-      axios.post(transaction_route + '/addList', filtered)
+      axios.post(transaction_route + '/addlist', filtered)
         .then(function(res) {
           console.log("Updated seed backend");
         })
