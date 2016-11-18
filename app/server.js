@@ -67,6 +67,7 @@ apiRouter.get('/seeds/delete', function(req, res) {
     }
   });
   seed_data = result;
+  res.json(seed_data);
 })
 
 apiRouter.post('/seeds/add', function(req, res) {

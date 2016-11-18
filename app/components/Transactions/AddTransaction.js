@@ -47,7 +47,7 @@ export default class AddTransaction extends React.Component {
     return (
       <div className="wrapper">
         <Nav pageName="New Transaction"/>
-        
+        <a className="btn-back" onClick={() => browserHistory.push('/home')}>Back</a>
         <div className="wrapper-pad-top">
           <form className="form">
             <div className="form--section">

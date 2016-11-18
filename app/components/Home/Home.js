@@ -88,14 +88,7 @@ export default class Home extends React.Component {
           key={i}
         >
           <div className="list--elem-seed-info">
-            <span className="seed--status-bar-wrapper">
-              <span className="z10">{percentCompleted}% Complete</span>
-              <span 
-                className="seed--status-bar"
-                style={{width: percentCompleted + "%"}}
-              >
-              </span>
-            </span>
+            
             <span className="list--row-left">
               <div className="list--account-name">{val.name}</div>
               <div className="list--account-number">Save ${val.goal} in a {val.time}</div>
@@ -107,12 +100,21 @@ export default class Home extends React.Component {
               <FontAwesome name="times"/>
             </span>
           </div>
+
           <div className="list--elem-seed-dropdown">
             <span className="list--row-left">
               <div className="list--account-number">Current progress: ${diff.toString().split(".")[0]}</div>
               <div className="list--account-number"></div>
             </span>
             <span className="list--row-right list--account-right"><br/></span>
+          </div>
+          <div className="seed--status-bar-wrapper">
+            <div className="z10">{percentCompleted}% Complete</div>
+            <div 
+              className="seed--status-bar"
+              style={{width: percentCompleted + "%"}}
+            >
+            </div>
           </div>
         </li>
       )

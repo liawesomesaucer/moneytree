@@ -17,8 +17,9 @@
   }
   &--elem-seed {
     position: relative;
-    padding-bottom: 10px;
-    margin-bottom: 35px;
+    padding-bottom: 14px;
+    margin-bottom: 10px;
+    // box-shadow: 0 4px 8px $primary-color;
   }
   &--elem-seed-info {
   }
@@ -51,7 +52,7 @@
     min-height: 70px;
   }
   &--account-number {
-    font-size: 14px;
+    font-size: 16px;
   }
   &--account-add {
     margin-right: 10px;
@@ -61,6 +62,10 @@
     right: 10px;
     top: 20px;
     text-align: right;
+  }
+  &--account-name {
+    font-size: 20px;
+    font-weight: bold;
   }
 }
 .tile-list {
@@ -74,24 +79,32 @@
     display: inline-block;
   }
 }
+
+$seed-status-height: 30px;
+
 .seed--status-bar-wrapper {
-  width: 100%;
-  position: absolute;
-  height: 25px;
-  line-height: 25px;
-  left: 0;
-  bottom: -25px;
-  font-size: 14px;
+  margin: auto;
+  margin-top: 10px;
+  // position: absolute;
+  height: $seed-status-height;
+  line-height: $seed-status-height;
+  // left: 0;
+  // bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
   background-color: #eee;
   text-align: center;
-  z-index: -2;
+  z-index: 1;
+  border-radius: $seed-status-height / 2;
+  position: relative;
 }
 .seed--status-bar {
+  border-radius: $seed-status-height / 2;
   width: 30%;
   background-color: $green;
-  height: 25px;
+  height: $seed-status-height;
   position: absolute;
-  left: 0;
+  top: 0;
   z-index: -1;
 }
 .list--elem-seed {

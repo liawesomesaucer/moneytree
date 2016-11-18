@@ -7,6 +7,10 @@ $background-color: lighten(#AAD2E1, 8); // Temporary
 $text-color: #666;
 $bottom-nav-bgcolor: #fff;
 $green: #92C85A;
+// $nav-bgcolor: $bottom-nav-bgcolor;
+$nav-bgcolor: #fff;
+$nav-color: lighten($primary-color, 50%);
+$nav-color:$primary-color;
 
 %list-reset {
   list-style-type: none;

@@ -5,6 +5,7 @@
   bottom: 0; 
   width: 100%;
   background-color: $bottom-nav-bgcolor;
+  z-index: 20;
 }
 .mobile-nav ul {
   @extend %list-reset;
@@ -16,7 +17,7 @@
     padding: 10px 0 8px;
     width: 25%;
     text-align: center;
-    font-size: 12px;
+    font-size: 13px;
 
     .fa {
       font-size: 22px;
@@ -31,10 +32,14 @@
   top: 0;
   left: 0;
   right: 0;
-  background-color: $primary-color;
-  color: white;
+  background-color: $nav-bgcolor;
+  letter-spacing: 2px;
+  color: $nav-color;
+  font-weight: bold;
   text-align: center;
-  font-size: 22px;
+  font-size: 16px;
   line-height: 50px;
   z-index: 5;
+  box-shadow: 0 2px 2px $primary-color;
+  text-transform: uppercase;
 }
