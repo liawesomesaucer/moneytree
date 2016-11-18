@@ -13,3 +13,8 @@
   color: $primary-color;
   text-align: center;
 }
+#errormsg,
+.errormsg {
+  color: $red;
+  padding-top: 0;
+}

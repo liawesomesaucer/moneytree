@@ -92,6 +92,15 @@ button:focus {
   content: "< ";
   margin-right: 4px;
 }
+.btn-add {
+  position: absolute;
+  color: $nav-color;
+  line-height: 50px;
+  top: 0;
+  right: 10px;
+  z-index: 6;
+  font-size: 30px;
+}
 .btn-primary,
 .btn-primary:focus {
   background-color: $primary-color;

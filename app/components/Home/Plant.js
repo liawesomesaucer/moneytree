@@ -32,6 +32,10 @@ export default class Plant extends React.Component {
     this.setState({time: e.target.value});
   }
   handleSubmit(e) {
+    if (!this.state.name || !this.state.goal) {
+      document.getElementById("errormsg").innerHTML = "All fields required";
+      return;
+    }
     this.props.dispatch(createSeed(this.state.name, this.state.goal, this.state.time));
     browserHistory.push('/');
   }
@@ -39,7 +43,7 @@ export default class Plant extends React.Component {
     return (
       <div className="wrapper">
         <Nav pageName="Plant a Seed" />
-        <a className="btn-back" onClick={() => browserHistory.push('/home')}>Back</a>
+        <a className="btn-back" onClick={() => browserHistory.goBack()}>Back</a>
         <div className="plant wrapper-pad-top form--separated">
           <div className="header">
             <h1><FontAwesome name="leaf" /></h1>
@@ -47,6 +51,7 @@ export default class Plant extends React.Component {
           <div className="form--section-header">
             Seed Traits
           </div>
+          <div className="form--section-header" id="errormsg"></div>
           <div className="form--group">
             <label htmlFor="goal">Name</label>
             <input 
