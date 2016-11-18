@@ -25,7 +25,7 @@ export default class AddTransaction extends React.Component {
     this.handleDateChange = this.handleDateChange.bind(this);
   }
   todaysDate() {
-    return (new Date()).toISOString().slice(0, 10);
+    return (new Date()).toISOString();
   }
   addTransaction() {
     this.props.dispatch(
