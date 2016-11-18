@@ -29,11 +29,12 @@ export default class Home extends React.Component {
     this.props.transactions.forEach(function(value) {
       let valDate = new Date(value.date);
       // console.log(value);
-      // console.log(valDate);
-      // console.log(startTime);
-      // console.log(endTime);
+      console.log(value)
+      console.log(valDate);
+      console.log(startTime);
+      console.log(endTime);
       if (valDate >= startTime && valDate <= endTime) {
-        // console.log("yes")
+        console.log("yes")
         diff = diff - value.amount;
       }
     });
