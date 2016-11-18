@@ -32358,6 +32358,14 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	var red = "#E3655B";
+	var yellow = "#FFDE59";
+	var green = "#69CC8E";
+
+	var baby = "Small_Tree.png";
+	var medium = "Medium_Tree.png";
+	var large = "Tree.png";
+
 	var Home = (_dec = (0, _reactRedux.connect)(function (store) {
 	  return {
 	    seeds: store.seeds,
@@ -32388,12 +32396,12 @@
 	      this.props.transactions.forEach(function (value) {
 	        var valDate = new Date(value.date);
 	        // console.log(value);
-	        console.log(value);
-	        console.log(valDate);
-	        console.log(startTime);
-	        console.log(endTime);
+	        // console.log(value)
+	        // console.log(valDate);
+	        // console.log(startTime);
+	        // console.log(endTime);
 	        if (valDate >= startTime && valDate <= endTime) {
-	          console.log("yes");
+	          // console.log("yes")
 	          diff = diff - value.amount;
 	        }
 	      });
@@ -32405,24 +32413,10 @@
 	    value: function render() {
 	      var _this2 = this;
 
+	      var seedPercentages = [];
+	      var seedPercentagesSum = 0;
 	      var tree = [];
-	      if (this.props.seeds.length === 0) {
-	        tree = _react2.default.createElement(
-	          'div',
-	          { className: 'tree-wrapper' },
-	          _react2.default.createElement(
-	            'h4',
-	            { className: 'plant-message' },
-	            'Get started by setting a budget'
-	          )
-	        );
-	      } else {
-	        tree = _react2.default.createElement(
-	          'div',
-	          { className: 'tree-wrapper' },
-	          _react2.default.createElement('img', { src: 'static/images/Tree.png' })
-	        );
-	      }
+
 	      var seeds = [];
 	      if (this.props.seeds.length === 0) {
 	        seeds.push(_react2.default.createElement(
@@ -32462,6 +32456,13 @@
 	        var percentCompleted = Math.max(0, Math.min(diff / val.goal * 100, 100)).toString().split(".")[0];
 	        // console.log("wow")
 	        // console.log(percentCompleted);
+	        var color = void 0;
+
+	        if (percentCompleted <= 20) color = red;else if (percentCompleted <= 80) color = yellow;else color = green;
+
+	        seedPercentages.push(percentCompleted);
+	        seedPercentagesSum = seedPercentagesSum + parseInt(percentCompleted);
+
 	        seeds.push(_react2.default.createElement(
 	          'li',
 	          {
@@ -32530,11 +32531,37 @@
 	            ),
 	            _react2.default.createElement('div', {
 	              className: 'seed--status-bar',
-	              style: { width: percentCompleted + "%" }
+	              style: {
+	                width: percentCompleted > 0 ? Math.max(percentCompleted, 8) + "%" : 0,
+	                backgroundColor: color
+	              }
 	            })
 	          )
 	        ));
 	      });
+
+	      var avgPercent = seedPercentagesSum / seedPercentages.length;
+	      var treeSize = baby;
+	      console.log(avgPercent);
+	      if (avgPercent < 33) treeSize = baby;else if (avgPercent < 66) treeSize = medium;else treeSize = large;
+
+	      if (this.props.seeds.length === 0) {
+	        tree = _react2.default.createElement(
+	          'div',
+	          { className: 'tree-wrapper' },
+	          _react2.default.createElement(
+	            'h4',
+	            { className: 'plant-message' },
+	            'Get started by setting a budget'
+	          )
+	        );
+	      } else {
+	        tree = _react2.default.createElement(
+	          'div',
+	          { className: 'tree-wrapper' },
+	          _react2.default.createElement('img', { src: "static/images/" + treeSize })
+	        );
+	      }
 
 	      return _react2.default.createElement(
 	        'div',
@@ -32646,7 +32673,7 @@
 	          _react2.default.createElement(
 	            'span',
 	            { className: 'list--row-left list--title list--date' },
-	            val.date
+	            val.date.slice(0, 10)
 	          )
 	        ));
 	      });

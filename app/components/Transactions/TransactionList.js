@@ -26,7 +26,7 @@ export default class TransactionList extends React.Component {
             }}
           >{cost}</span>
           <span className="list--row-left list--title list--account-name">{val.name}</span><br/>
-          <span className="list--row-left list--title list--date">{val.date}</span>
+          <span className="list--row-left list--title list--date">{val.date.slice(0, 10)}</span>
         </li>
       );
     });

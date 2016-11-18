@@ -9,6 +9,14 @@ import TransactionList from '../Transactions/TransactionList';
 
 import { deleteSeed } from '../../actions/seedActions';
 
+const red = "#E3655B";
+const yellow = "#FFDE59";
+const green = "#69CC8E";
+
+const baby = "Small_Tree.png";
+const medium = "Medium_Tree.png";
+const large = "Tree.png";
+
 @connect((store) => {
   return {
     seeds: store.seeds,
@@ -29,12 +37,12 @@ export default class Home extends React.Component {
     this.props.transactions.forEach(function(value) {
       let valDate = new Date(value.date);
       // console.log(value);
-      console.log(value)
-      console.log(valDate);
-      console.log(startTime);
-      console.log(endTime);
+      // console.log(value)
+      // console.log(valDate);
+      // console.log(startTime);
+      // console.log(endTime);
       if (valDate >= startTime && valDate <= endTime) {
-        console.log("yes")
+        // console.log("yes")
         diff = diff - value.amount;
       }
     });
@@ -42,22 +50,10 @@ export default class Home extends React.Component {
     return diff;
   }
   render() {
+    let seedPercentages = [];
+    let seedPercentagesSum = 0;
     let tree = []
-    if (this.props.seeds.length === 0) {
-      tree = (
-        <div className="tree-wrapper">
-          <h4 className="plant-message">
-            Get started by setting a budget
-          </h4>
-        </div>
-      )
-    } else {
-      tree = (
-        <div className="tree-wrapper">  
-          <img src={`static/images/Tree.png`} />
-        </div>
-      )
-    }
+
     let seeds = []
     if (this.props.seeds.length === 0) {
       seeds.push(
@@ -76,13 +72,22 @@ export default class Home extends React.Component {
           </div>
         </li>
       )
-    }
+    } 
     this.props.seeds.forEach((val, i) => {
       if (!val) return;
       let diff = this.diffMoney(val.startTime, val.endTime);
       let percentCompleted = Math.max(0, Math.min((diff / val.goal * 100), 100)).toString().split(".")[0];
       // console.log("wow")
       // console.log(percentCompleted);
+      let color;
+
+      if (percentCompleted <= 20) color = red;
+      else if (percentCompleted <= 80) color = yellow;
+      else color = green;
+
+      seedPercentages.push(percentCompleted);
+      seedPercentagesSum = seedPercentagesSum + parseInt(percentCompleted);
+
       seeds.push(
         <li
           className="list--elem list--elem-seed"
@@ -113,13 +118,39 @@ export default class Home extends React.Component {
             <div className="z10">{percentCompleted}% Complete</div>
             <div 
               className="seed--status-bar"
-              style={{width: percentCompleted + "%"}}
+              style={{
+                width: (percentCompleted > 0) ? Math.max(percentCompleted, 8) + "%": 0,
+                backgroundColor: color
+              }}
             >
             </div>
           </div>
         </li>
       )
     })
+
+    let avgPercent = seedPercentagesSum / seedPercentages.length;
+    let treeSize = baby;
+    console.log(avgPercent);
+    if (avgPercent < 33) treeSize = baby;
+    else if (avgPercent < 66) treeSize = medium;
+    else treeSize = large;
+
+    if (this.props.seeds.length === 0) {
+      tree = (
+        <div className="tree-wrapper">
+          <h4 className="plant-message">
+            Get started by setting a budget
+          </h4>
+        </div>
+      )
+    } else {
+      tree = (
+        <div className="tree-wrapper">  
+          <img src={"static/images/" + treeSize} />
+        </div>
+      )
+    }
 
     return (
       <div className="">
