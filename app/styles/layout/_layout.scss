@@ -95,11 +95,18 @@ button:focus {
 .btn-add {
   position: absolute;
   color: $nav-color;
-  line-height: 50px;
   top: 0;
   right: 10px;
   z-index: 6;
   font-size: 30px;
+  text-align: center;
+  width: 30px;
+  margin-top: 10px;
+  line-height: 18px;
+
+  .btn-add-label {
+    font-size: 13px;
+  }
 }
 .btn-primary,
 .btn-primary:focus {

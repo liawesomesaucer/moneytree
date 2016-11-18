@@ -66,7 +66,8 @@ apiRouter.get('/seeds/delete', function(req, res) {
   console.log("[DELETE] Seed " + req.query.name);
   let result = [];
   seed_data.forEach(function(val) {
-    if (val.name != req.query.name) {
+    if (val.name != req.query.name || 
+        val.goal != req.query.goal) {
       result.push(val);
     }
   });

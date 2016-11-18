@@ -29,8 +29,8 @@ export default class Home extends React.Component {
     this.diffMoney = this.diffMoney.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
-  handleDelete(name) {
-    this.props.dispatch(deleteSeed(name));
+  handleDelete(name, goal) {
+    this.props.dispatch(deleteSeed(name, goal));
   }
   diffMoney(startTime, endTime) {
     let diff = 0;
@@ -101,7 +101,7 @@ export default class Home extends React.Component {
             </span>
             <span 
               className="list--row-right list--account-right"
-              onClick={() => this.handleDelete(val.name)}
+              onClick={() => this.handleDelete(val.name, val.goal)}
             >
               <FontAwesome name="times"/>
             </span>
@@ -154,8 +154,11 @@ export default class Home extends React.Component {
 
     return (
       <div className="">
-        <Nav pageName="Home"/>
-        <a className="btn-add" onClick={() => browserHistory.push('/plant')}>+</a>
+        <Nav pageName="Plant"/>
+        <a className="btn-add" onClick={() => browserHistory.push('/plant')}>
+          +
+          <div className="btn-add-label">Plant</div>
+        </a>
         {tree}
         {/*<div className="center-text">
           <a 

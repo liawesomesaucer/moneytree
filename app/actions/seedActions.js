@@ -18,9 +18,12 @@ export function editSeed(name, goal, time) {
     }
   }
 }
-export function deleteSeed(name) {
+export function deleteSeed(name, goal) {
   return {
     type: "DELETE_SEED",
-    payload: name
+    payload: {
+      name: name,
+      goal: goal
+    }
   }
 }
