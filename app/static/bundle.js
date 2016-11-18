@@ -33156,7 +33156,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: '' },
-	        _react2.default.createElement(_Nav2.default, { pageName: 'Plant' }),
+	        _react2.default.createElement(_Nav2.default, { pageName: 'Home' }),
 	        _react2.default.createElement(
 	          'a',
 	          { className: 'btn-add', onClick: function onClick() {

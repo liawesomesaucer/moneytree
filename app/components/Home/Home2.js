@@ -154,7 +154,7 @@ export default class Home extends React.Component {
 
     return (
       <div className="">
-        <Nav pageName="Plant"/>
+        <Nav pageName="Home"/>
         <a className="btn-add" onClick={() => browserHistory.push('/plant')}>
           +
           <div className="btn-add-label">Plant</div>
