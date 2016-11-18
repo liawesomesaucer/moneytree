@@ -7,7 +7,6 @@ import plaid from 'plaid';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
-import routes from './App';
 import NotFound from './components/NotFound';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
@@ -49,7 +48,7 @@ apiRouter.post('/transactions/add', function(req, res) {
   transaction_data.unshift(req.body);
 });
 
-apiRouter.post('/transactions/addList', function(req, res) {
+apiRouter.post('/transactions/addlist', function(req, res) {
   console.log("[POST] Transactions List");
   transaction_data = transaction_data.concat(req.body);
 });
