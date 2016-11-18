@@ -84,7 +84,7 @@ function initializeAccountsData(accounts_data) {
 //  
 
 // Comment this out if you want to start with login
-// store.dispatch({type: "LOGIN"});
+store.dispatch({type: "LOGIN"});
 
 // Disabled for the purposes of this demo
 // seed_data.forEach(function(val, i) {

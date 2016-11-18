@@ -25,7 +25,7 @@ export default class AddTransaction extends React.Component {
     this.handleDateChange = this.handleDateChange.bind(this);
   }
   todaysDate() {
-    return (new Date()).toISOString().slice(0, 10);
+    return (new Date()).toISOString();
   }
   addTransaction() {
     this.props.dispatch(
@@ -47,7 +47,7 @@ export default class AddTransaction extends React.Component {
     return (
       <div className="wrapper">
         <Nav pageName="New Transaction"/>
-        
+        <a className="btn-back" onClick={() => browserHistory.push('/home')}>Back</a>
         <div className="wrapper-pad-top">
           <form className="form">
             <div className="form--section">

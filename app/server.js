@@ -33,7 +33,11 @@ var router = express.Router();
 var apiRouter = express.Router();
 
 // Import seeded data
+
+// Choose this data if you want future data
 const data = require('./data.json');
+// Choose this data if you want no future data
+// const data = require('./olddata.json');
 var transaction_data = data.transaction_data; // List of transaction objects
 var seed_data = data.seed_data; // List of seed objects
 var account_data = [];
@@ -67,6 +71,7 @@ apiRouter.get('/seeds/delete', function(req, res) {
     }
   });
   seed_data = result;
+  res.json(seed_data);
 })
 
 apiRouter.post('/seeds/add', function(req, res) {

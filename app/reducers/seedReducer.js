@@ -20,7 +20,7 @@ const seedReducer = (state=seed_data, action) => {
         newSeed.endTime = new Date(new Date().setDate(newSeed.startTime.getDate() + 7));
       }
       else {
-        newSeed.endTime = new Date(new Date().setYear(newSeed.startTime.getYear() + 1));
+        newSeed.endTime = new Date(new Date().setFullYear(newSeed.startTime.getFullYear() + 1));
       }
       if (!newSeed.posted) {
         newSeed.posted = true;
