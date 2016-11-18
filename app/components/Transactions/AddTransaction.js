@@ -28,6 +28,10 @@ export default class AddTransaction extends React.Component {
     return (new Date()).toISOString();
   }
   addTransaction() {
+    if (!this.state.name || !this.state.price || !this.state.date) {
+      document.getElementById("errormsg").innerHTML = "All fields required";
+      return;
+    }
     this.props.dispatch(
       addTransaction(this.state.name, this.state.date, this.state.price)
     );
@@ -54,6 +58,7 @@ export default class AddTransaction extends React.Component {
               <div className="form--section-header">
                 Basic Info
               </div>
+              <div className="form--section-header" id="errormsg"></div>
               <div className="form--group">
                 <label htmlFor="name">Name</label>
                 <input 

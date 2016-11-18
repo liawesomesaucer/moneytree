@@ -11,6 +11,7 @@ import AddAccount from './components/Accounts/AddAccount';
 import AddChaseAccount from './components/Accounts/AddChaseAccount';
 import AddWellsAccount from './components/Accounts/AddWellsAccount';
 import Home from './components/Home/Home';
+import Home2 from './components/Home/Home2';
 import Login from './components/Login/Login';
 import Settings from './components/Settings/Settings';
 import Transactions from './components/Transactions/Transactions';
@@ -24,6 +25,7 @@ const routes = (
   <Route path='/' component={Container}>
     <IndexRoute component={Home} />
     <Route path='home' component={Home} />
+    <Route path='home2' component={Home2} />
     <Route path='accounts' component={Accounts} />
     <Route path='accounts/add' component={AddAccount} />
     <Route path='accounts/add/chase' component={AddChaseAccount} />

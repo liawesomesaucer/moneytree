@@ -21639,6 +21639,10 @@
 
 	var _Home2 = _interopRequireDefault(_Home);
 
+	var _Home3 = __webpack_require__(478);
+
+	var _Home4 = _interopRequireDefault(_Home3);
+
 	var _Login = __webpack_require__(325);
 
 	var _Login2 = _interopRequireDefault(_Login);
@@ -21678,6 +21682,7 @@
 	  { path: '/', component: _Container2.default },
 	  _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'home', component: _Home2.default }),
+	  _react2.default.createElement(_reactRouter.Route, { path: 'home2', component: _Home4.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'accounts', component: _Accounts2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'accounts/add', component: _AddAccount2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'accounts/add/chase', component: _AddChaseAccount2.default }),
@@ -62789,6 +62794,10 @@
 	  }, {
 	    key: 'handleSubmit',
 	    value: function handleSubmit(e) {
+	      if (!this.state.name || !this.state.goal) {
+	        document.getElementById("errormsg").innerHTML = "All fields required";
+	        return;
+	      }
 	      this.props.dispatch((0, _seedActions.createSeed)(this.state.name, this.state.goal, this.state.time));
 	      _reactRouter.browserHistory.push('/');
 	    }
@@ -62804,7 +62813,7 @@
 	        _react2.default.createElement(
 	          'a',
 	          { className: 'btn-back', onClick: function onClick() {
-	              return _reactRouter.browserHistory.push('/home');
+	              return _reactRouter.browserHistory.goBack();
 	            } },
 	          'Back'
 	        ),
@@ -62825,6 +62834,7 @@
 	            { className: 'form--section-header' },
 	            'Seed Traits'
 	          ),
+	          _react2.default.createElement('div', { className: 'form--section-header', id: 'errormsg' }),
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'form--group' },
@@ -62990,6 +63000,10 @@
 	  }, {
 	    key: 'addTransaction',
 	    value: function addTransaction() {
+	      if (!this.state.name || !this.state.price || !this.state.date) {
+	        document.getElementById("errormsg").innerHTML = "All fields required";
+	        return;
+	      }
 	      this.props.dispatch((0, _transactionActions.addTransaction)(this.state.name, this.state.date, this.state.price));
 	      _reactRouter.browserHistory.push('/transactions');
 	    }
@@ -63036,6 +63050,7 @@
 	                { className: 'form--section-header' },
 	                'Basic Info'
 	              ),
+	              _react2.default.createElement('div', { className: 'form--section-header', id: 'errormsg' }),
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'form--group' },
@@ -63822,7 +63837,7 @@
 
 
 	// module
-	exports.push([module.id, ".mobile-nav ul, .tile-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0;\n  margin-top: 0; }\n\n@font-face {\n  font-family: GothamRounded;\n  src: url(\"/static/fonts/Gotham-Rounded.ttf\"); }\n\n@font-face {\n  font-family: GothamRoundedBold;\n  src: url(\"/static/fonts/Gotham-Rounded-Bold.ttf\"); }\n\n* {\n  font-family: GothamRounded, Roboto, Helvetica, sans-serif; }\n\n.header {\n  color: #12324D;\n  text-align: center; }\n\nbody {\n  background-color: #c8e2ec;\n  margin: 0;\n  margin-top: 50px;\n  margin-bottom: 60px; }\n\n.no-margin {\n  margin: 0; }\n\n.wrapper--padded {\n  padding: 10px; }\n\nbutton:focus {\n  outline: none; }\n\n.reset-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0; }\n\n.content-wrapper {\n  max-width: 800px;\n  margin: auto; }\n\n.login--wrapper {\n  max-width: 400px;\n  margin: auto; }\n\n.tree-wrapper {\n  padding: 20px 0;\n  text-align: center; }\n  .tree-wrapper h1 {\n    letter-spacing: 2px;\n    font-weight: bold; }\n\n.btn {\n  padding: 12px 20px 8px;\n  background-color: #12324D;\n  color: white;\n  font-size: 18px;\n  border: none;\n  border-radius: 10px; }\n  .btn--fullwidth {\n    width: 100%;\n    border-radius: 0;\n    padding: 0 10px;\n    line-height: 50px;\n    text-align: left; }\n\n.btn:focus {\n  background-color: #12324D; }\n\n#plaid-link {\n  display: inline; }\n\n.plaid-link-button {\n  padding: 0 10px;\n  font-size: 18px;\n  line-height: 50px;\n  border: none;\n  border-radius: 10px;\n  width: 100%;\n  text-align: left;\n  border: none;\n  border-radius: 0; }\n\n.btn-back {\n  position: absolute;\n  color: #12324D;\n  line-height: 50px;\n  top: 0;\n  left: 10px;\n  z-index: 6; }\n\n.btn-back:before {\n  content: \"< \";\n  margin-right: 4px; }\n\n.btn-primary,\n.btn-primary:focus {\n  background-color: #12324D; }\n\n.btn-white {\n  background-color: white;\n  color: #666; }\n\n.tree-wrapper img {\n  width: 58%;\n  max-width: 300px;\n  padding: 10px;\n  margin: auto; }\n\n.center-text {\n  text-align: center; }\n\n.small-text {\n  font-size: 14px; }\n\n.hidden {\n  display: none; }\n\n.z10 {\n  z-index: 10; }\n\n.mobile-nav {\n  border-top: 1px solid #c8e2ec;\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  background-color: #fff;\n  z-index: 20; }\n\n.mobile-nav ul {\n  color: #12324D; }\n  .mobile-nav ul li {\n    display: inline-block;\n    padding: 10px 0 8px;\n    width: 25%;\n    text-align: center;\n    font-size: 13px; }\n    .mobile-nav ul li .fa {\n      font-size: 22px;\n      margin-bottom: 3px; }\n\n.top-nav {\n  width: 100%;\n  position: fixed;\n  height: 50px;\n  top: 0;\n  left: 0;\n  right: 0;\n  background-color: #fff;\n  letter-spacing: 2px;\n  color: #12324D;\n  font-weight: bold;\n  text-align: center;\n  font-size: 16px;\n  line-height: 50px;\n  z-index: 5;\n  box-shadow: 0 2px 2px #12324D;\n  text-transform: uppercase; }\n\n.graph-wrapper {\n  margin-bottom: 10px;\n  width: 100%;\n  text-align: center; }\n  .graph-wrapper img {\n    width: 100%; }\n\n.list--elem {\n  background-color: white;\n  padding: 20px 10px 16px;\n  font-size: 18px;\n  border-bottom: 1px solid #c8e2ec; }\n\n.list--elem-seed {\n  position: relative;\n  padding-bottom: 14px;\n  margin-bottom: 10px; }\n\n.list--header {\n  background-color: rgba(255, 255, 255, 0.4);\n  font-weight: bold;\n  border-bottom: none; }\n\n.list--primary {\n  background-color: #12324D;\n  color: white; }\n\n.list--row-right {\n  float: right; }\n\n.list--account-elem {\n  padding-top: 16px;\n  padding-bottom: 12px;\n  min-height: 70px; }\n\n.list--account-number {\n  font-size: 16px; }\n\n.list--account-add {\n  margin-right: 10px; }\n\n.list--account-right {\n  position: absolute;\n  right: 10px;\n  top: 20px;\n  text-align: right; }\n\n.list--account-name {\n  font-size: 20px;\n  font-weight: bold; }\n\n.list--transaction {\n  margin-top: 5px;\n  font-size: 16px; }\n\n.list--price {\n  font-size: 20px;\n  font-weight: bold;\n  letter-spacing: 1px;\n  margin-top: 12px; }\n\n.list--date {\n  margin-top: 4px; }\n\n.tile-list li {\n  background-color: rgba(255, 255, 255, 0.4);\n  width: 33%;\n  height: 0;\n  padding-bottom: 32%;\n  display: inline-block; }\n\n.seed--status-bar-wrapper {\n  margin: auto;\n  margin-top: 10px;\n  height: 30px;\n  line-height: 30px;\n  font-size: 18px;\n  font-weight: bold;\n  background-color: #eee;\n  text-align: center;\n  z-index: 1;\n  border-radius: 15px;\n  position: relative; }\n\n.seed--status-bar {\n  border-radius: 15px;\n  width: 30%;\n  background-color: #69CC8E;\n  height: 30px;\n  position: absolute;\n  top: 0;\n  z-index: -1; }\n\n.list--elem-seed {\n  background-color: white; }\n\n.wrapper-pad-top {\n  padding-top: 20px; }\n\ninput[type=\"submit\"] {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\nselect {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\noption {\n  padding: 0;\n  white-space: normal;\n  color: #666; }\n\nlabel {\n  margin-bottom: 0; }\n\n.form--section > div,\n.form--section > input,\n.form--section > button,\n.form--section > select,\n.form--section > .form-group,\n.form--section > a {\n  border-bottom: 1px solid #c8e2ec; }\n  .form--section > div:last-child,\n  .form--section > input:last-child,\n  .form--section > button:last-child,\n  .form--section > select:last-child,\n  .form--section > .form-group:last-child,\n  .form--section > a:last-child {\n    border-bottom: none; }\n\n.form--section-header {\n  text-transform: uppercase;\n  letter-spacing: 1px;\n  line-height: 30px;\n  padding-top: 20px;\n  padding-left: 10px;\n  border-bottom: none !important; }\n\n.form--group {\n  position: relative; }\n  .form--group input {\n    border: none; }\n  .form--group label,\n  .form--group .field {\n    display: inline-block;\n    height: 50px;\n    line-height: 50px;\n    padding: 0 10px;\n    font-size: 18px;\n    background-color: white;\n    font-weight: 300;\n    color: #666; }\n  .form--group label {\n    width: 35%; }\n  .form--group .field {\n    border: none;\n    outline: none;\n    width: 65%;\n    position: relative; }\n    .form--group .field--std {\n      background-color: white; }\n    .form--group .field--primary {\n      background-color: #12324D;\n      color: white; }\n    .form--group .field--text-right {\n      text-align: right; }\n    .form--group .field--full-width {\n      width: 100%; }\n  .form--group-money label {\n    position: relative; }\n  .form--group-money label:after {\n    position: absolute;\n    content: \"$ \";\n    right: -22px;\n    top: 0;\n    z-index: 2; }\n  .form--group-money input.field {\n    padding-left: 30px; }\n\n.form--separated {\n  margin-bottom: 10px; }\n\n.row-right-overlay {\n  position: absolute;\n  right: 10px;\n  line-height: 50px; }\n\n.form--error {\n  color: red; }\n\n.login--form .form--group > .field {\n  border-radius: 4px; }\n", ""]);
+	exports.push([module.id, ".mobile-nav ul, .tile-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0;\n  margin-top: 0; }\n\n@font-face {\n  font-family: GothamRounded;\n  src: url(\"/static/fonts/Gotham-Rounded.ttf\"); }\n\n@font-face {\n  font-family: GothamRoundedBold;\n  src: url(\"/static/fonts/Gotham-Rounded-Bold.ttf\"); }\n\n* {\n  font-family: GothamRounded, Roboto, Helvetica, sans-serif; }\n\n.header {\n  color: #12324D;\n  text-align: center; }\n\n#errormsg,\n.errormsg {\n  color: #E3655B;\n  padding-top: 0; }\n\nbody {\n  background-color: #c8e2ec;\n  margin: 0;\n  margin-top: 50px;\n  margin-bottom: 60px; }\n\n.no-margin {\n  margin: 0; }\n\n.wrapper--padded {\n  padding: 10px; }\n\nbutton:focus {\n  outline: none; }\n\n.reset-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0; }\n\n.content-wrapper {\n  max-width: 800px;\n  margin: auto; }\n\n.login--wrapper {\n  max-width: 400px;\n  margin: auto; }\n\n.tree-wrapper {\n  padding: 20px 0;\n  text-align: center; }\n  .tree-wrapper h1 {\n    letter-spacing: 2px;\n    font-weight: bold; }\n\n.btn {\n  padding: 12px 20px 8px;\n  background-color: #12324D;\n  color: white;\n  font-size: 18px;\n  border: none;\n  border-radius: 10px; }\n  .btn--fullwidth {\n    width: 100%;\n    border-radius: 0;\n    padding: 0 10px;\n    line-height: 50px;\n    text-align: left; }\n\n.btn:focus {\n  background-color: #12324D; }\n\n#plaid-link {\n  display: inline; }\n\n.plaid-link-button {\n  padding: 0 10px;\n  font-size: 18px;\n  line-height: 50px;\n  border: none;\n  border-radius: 10px;\n  width: 100%;\n  text-align: left;\n  border: none;\n  border-radius: 0; }\n\n.btn-back {\n  position: absolute;\n  color: #12324D;\n  line-height: 50px;\n  top: 0;\n  left: 10px;\n  z-index: 6; }\n\n.btn-back:before {\n  content: \"< \";\n  margin-right: 4px; }\n\n.btn-add {\n  position: absolute;\n  color: #12324D;\n  line-height: 50px;\n  top: 0;\n  right: 10px;\n  z-index: 6;\n  font-size: 30px; }\n\n.btn-primary,\n.btn-primary:focus {\n  background-color: #12324D; }\n\n.btn-white {\n  background-color: white;\n  color: #666; }\n\n.tree-wrapper img {\n  width: 58%;\n  max-width: 300px;\n  padding: 10px;\n  margin: auto; }\n\n.center-text {\n  text-align: center; }\n\n.small-text {\n  font-size: 14px; }\n\n.hidden {\n  display: none; }\n\n.z10 {\n  z-index: 10; }\n\n.mobile-nav {\n  border-top: 1px solid #c8e2ec;\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  background-color: #fff;\n  z-index: 20; }\n\n.mobile-nav ul {\n  color: #12324D; }\n  .mobile-nav ul li {\n    display: inline-block;\n    padding: 10px 0 8px;\n    width: 25%;\n    text-align: center;\n    font-size: 13px; }\n    .mobile-nav ul li .fa {\n      font-size: 22px;\n      margin-bottom: 3px; }\n\n.top-nav {\n  width: 100%;\n  position: fixed;\n  height: 50px;\n  top: 0;\n  left: 0;\n  right: 0;\n  background-color: #fff;\n  letter-spacing: 2px;\n  color: #12324D;\n  font-weight: bold;\n  text-align: center;\n  font-size: 16px;\n  line-height: 50px;\n  z-index: 5;\n  box-shadow: 0 2px 2px #12324D;\n  text-transform: uppercase; }\n\n.graph-wrapper {\n  margin-bottom: 10px;\n  width: 100%;\n  text-align: center; }\n  .graph-wrapper img {\n    width: 100%; }\n\n.list--elem {\n  background-color: white;\n  padding: 20px 10px 16px;\n  font-size: 18px;\n  border-bottom: 1px solid #c8e2ec; }\n\n.list--elem-seed {\n  position: relative;\n  padding-bottom: 14px;\n  margin-bottom: 10px; }\n\n.list--header {\n  background-color: rgba(255, 255, 255, 0.4);\n  font-weight: bold;\n  border-bottom: none; }\n\n.list--primary {\n  background-color: #12324D;\n  color: white; }\n\n.list--row-right {\n  float: right; }\n\n.list--account-elem {\n  padding-top: 16px;\n  padding-bottom: 12px;\n  min-height: 70px; }\n\n.list--account-number {\n  font-size: 16px; }\n\n.list--account-add {\n  margin-right: 10px; }\n\n.list--account-right {\n  position: absolute;\n  right: 10px;\n  top: 20px;\n  text-align: right; }\n\n.list--account-name {\n  font-size: 20px;\n  font-weight: bold; }\n\n.list--transaction {\n  margin-top: 5px;\n  font-size: 16px; }\n\n.list--price {\n  font-size: 20px;\n  font-weight: bold;\n  letter-spacing: 1px;\n  margin-top: 12px; }\n\n.list--date {\n  margin-top: 4px; }\n\n.tile-list li {\n  background-color: rgba(255, 255, 255, 0.4);\n  width: 33%;\n  height: 0;\n  padding-bottom: 32%;\n  display: inline-block; }\n\n.seed--status-bar-wrapper {\n  margin: auto;\n  margin-top: 10px;\n  height: 30px;\n  line-height: 30px;\n  font-size: 18px;\n  font-weight: bold;\n  background-color: #eee;\n  text-align: center;\n  z-index: 1;\n  border-radius: 15px;\n  position: relative; }\n\n.seed--status-bar {\n  border-radius: 15px;\n  width: 30%;\n  background-color: #69CC8E;\n  height: 30px;\n  position: absolute;\n  top: 0;\n  z-index: -1; }\n\n.list--elem-seed {\n  background-color: white; }\n\n.wrapper-pad-top {\n  padding-top: 20px; }\n\ninput[type=\"submit\"] {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\nselect {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\noption {\n  padding: 0;\n  white-space: normal;\n  color: #666; }\n\nlabel {\n  margin-bottom: 0; }\n\n.form--section > div,\n.form--section > input,\n.form--section > button,\n.form--section > select,\n.form--section > .form-group,\n.form--section > a {\n  border-bottom: 1px solid #c8e2ec; }\n  .form--section > div:last-child,\n  .form--section > input:last-child,\n  .form--section > button:last-child,\n  .form--section > select:last-child,\n  .form--section > .form-group:last-child,\n  .form--section > a:last-child {\n    border-bottom: none; }\n\n.form--section-header {\n  text-transform: uppercase;\n  letter-spacing: 1px;\n  line-height: 30px;\n  padding-top: 20px;\n  padding-left: 10px;\n  border-bottom: none !important; }\n\n.form--group {\n  position: relative; }\n  .form--group input {\n    border: none; }\n  .form--group label,\n  .form--group .field {\n    display: inline-block;\n    height: 50px;\n    line-height: 50px;\n    padding: 0 10px;\n    font-size: 18px;\n    background-color: white;\n    font-weight: 300;\n    color: #666; }\n  .form--group label {\n    width: 35%; }\n  .form--group .field {\n    border: none;\n    outline: none;\n    width: 65%;\n    position: relative; }\n    .form--group .field--std {\n      background-color: white; }\n    .form--group .field--primary {\n      background-color: #12324D;\n      color: white; }\n    .form--group .field--text-right {\n      text-align: right; }\n    .form--group .field--full-width {\n      width: 100%; }\n  .form--group-money label {\n    position: relative; }\n  .form--group-money label:after {\n    position: absolute;\n    content: \"$ \";\n    right: -22px;\n    top: 0;\n    z-index: 2; }\n  .form--group-money input.field {\n    padding-left: 30px; }\n\n.form--separated {\n  margin-bottom: 10px; }\n\n.row-right-overlay {\n  position: absolute;\n  right: 10px;\n  line-height: 50px; }\n\n.form--error {\n  color: red; }\n\n.login--form .form--group > .field {\n  border-radius: 4px; }\n", ""]);
 
 	// exports
 
@@ -64134,6 +64149,287 @@
 			URL.revokeObjectURL(oldSrc);
 	}
 
+
+/***/ },
+/* 477 */,
+/* 478 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _dec, _class;
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(211);
+
+	var _reactRedux = __webpack_require__(181);
+
+	var _reactFontawesome = __webpack_require__(312);
+
+	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
+
+	var _Nav = __webpack_require__(313);
+
+	var _Nav2 = _interopRequireDefault(_Nav);
+
+	var _TransactionList = __webpack_require__(323);
+
+	var _TransactionList2 = _interopRequireDefault(_TransactionList);
+
+	var _seedActions = __webpack_require__(324);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var red = "#E3655B";
+	var yellow = "#FFDE59";
+	var green = "#69CC8E";
+
+	var baby = "Small_Tree.png";
+	var medium = "Medium_Tree.png";
+	var large = "Tree.png";
+
+	var Home = (_dec = (0, _reactRedux.connect)(function (store) {
+	  return {
+	    seeds: store.seeds,
+	    transactions: store.transactions
+	  };
+	}), _dec(_class = function (_React$Component) {
+	  _inherits(Home, _React$Component);
+
+	  function Home(props) {
+	    _classCallCheck(this, Home);
+
+	    var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this, props));
+
+	    _this.diffMoney = _this.diffMoney.bind(_this);
+	    _this.handleDelete = _this.handleDelete.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(Home, [{
+	    key: 'handleDelete',
+	    value: function handleDelete(name) {
+	      this.props.dispatch((0, _seedActions.deleteSeed)(name));
+	    }
+	  }, {
+	    key: 'diffMoney',
+	    value: function diffMoney(startTime, endTime) {
+	      var diff = 0;
+	      this.props.transactions.forEach(function (value) {
+	        var valDate = new Date(value.date);
+	        // console.log(value);
+	        // console.log(value)
+	        // console.log(valDate);
+	        // console.log(startTime);
+	        // console.log(endTime);
+	        if (valDate >= startTime && valDate <= endTime) {
+	          // console.log("yes")
+	          diff = diff - value.amount;
+	        }
+	      });
+	      // console.log("Diff returned is: " + diff.toString())
+	      return diff;
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      var seedPercentages = [];
+	      var seedPercentagesSum = 0;
+	      var tree = [];
+
+	      var seeds = [];
+	      if (this.props.seeds.length === 0) {
+	        seeds.push(_react2.default.createElement(
+	          'li',
+	          {
+	            className: 'list--elem',
+	            key: 1
+	          },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'list--elem-seed-info' },
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'list--row-left' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'list--account-name' },
+	                'No seed goals set yet.'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'list--account-number' },
+	                'Start by planting a seed!'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'list--row-right list--account-right' },
+	              _react2.default.createElement('br', null)
+	            )
+	          )
+	        ));
+	      }
+	      this.props.seeds.forEach(function (val, i) {
+	        if (!val) return;
+	        var diff = _this2.diffMoney(val.startTime, val.endTime);
+	        var percentCompleted = Math.max(0, Math.min(diff / val.goal * 100, 100)).toString().split(".")[0];
+	        // console.log("wow")
+	        // console.log(percentCompleted);
+	        var color = void 0;
+
+	        if (percentCompleted <= 20) color = red;else if (percentCompleted <= 80) color = yellow;else color = green;
+
+	        seedPercentages.push(percentCompleted);
+	        seedPercentagesSum = seedPercentagesSum + parseInt(percentCompleted);
+
+	        seeds.push(_react2.default.createElement(
+	          'li',
+	          {
+	            className: 'list--elem list--elem-seed',
+	            key: i
+	          },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'list--elem-seed-info' },
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'list--row-left' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'list--account-name' },
+	                val.name
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'list--account-number' },
+	                'Save $',
+	                val.goal,
+	                ' in a ',
+	                val.time
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'span',
+	              {
+	                className: 'list--row-right list--account-right',
+	                onClick: function onClick() {
+	                  return _this2.handleDelete(val.name);
+	                }
+	              },
+	              _react2.default.createElement(_reactFontawesome2.default, { name: 'times' })
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'list--elem-seed-dropdown' },
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'list--row-left' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'list--account-number' },
+	                'Current progress: $',
+	                diff.toString().split(".")[0]
+	              ),
+	              _react2.default.createElement('div', { className: 'list--account-number' })
+	            ),
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'list--row-right list--account-right' },
+	              _react2.default.createElement('br', null)
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'seed--status-bar-wrapper' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'z10' },
+	              percentCompleted,
+	              '% Complete'
+	            ),
+	            _react2.default.createElement('div', {
+	              className: 'seed--status-bar',
+	              style: {
+	                width: percentCompleted > 0 ? Math.max(percentCompleted, 8) + "%" : 0,
+	                backgroundColor: color
+	              }
+	            })
+	          )
+	        ));
+	      });
+
+	      var avgPercent = seedPercentagesSum / seedPercentages.length;
+	      var treeSize = baby;
+	      console.log(avgPercent);
+	      if (avgPercent < 33) treeSize = baby;else if (avgPercent < 66) treeSize = medium;else treeSize = large;
+
+	      if (this.props.seeds.length === 0) {
+	        tree = _react2.default.createElement(
+	          'div',
+	          { className: 'tree-wrapper' },
+	          _react2.default.createElement(
+	            'h4',
+	            { className: 'plant-message' },
+	            'Get started by setting a budget'
+	          )
+	        );
+	      } else {
+	        tree = _react2.default.createElement(
+	          'div',
+	          { className: 'tree-wrapper' },
+	          _react2.default.createElement('img', { src: "static/images/" + treeSize })
+	        );
+	      }
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: '' },
+	        _react2.default.createElement(_Nav2.default, { pageName: 'Home' }),
+	        _react2.default.createElement(
+	          'a',
+	          { className: 'btn-add', onClick: function onClick() {
+	              return _reactRouter.browserHistory.push('/plant');
+	            } },
+	          '+'
+	        ),
+	        tree,
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'form--section-header' },
+	          'Current Seeds'
+	        ),
+	        _react2.default.createElement(
+	          'ul',
+	          { className: 'reset-list list seed-list' },
+	          seeds
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Home;
+	}(_react2.default.Component)) || _class);
+	exports.default = Home;
 
 /***/ }
 /******/ ]);
