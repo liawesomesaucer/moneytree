@@ -67,6 +67,19 @@
     font-size: 20px;
     font-weight: bold;
   }
+  &--transaction {
+    margin-top: 5px;
+    font-size: 16px;
+  }
+  &--price {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-top: 12px;
+  }
+  &--date {
+    margin-top: 4px;
+  }
 }
 .tile-list {
   @extend %list-reset;

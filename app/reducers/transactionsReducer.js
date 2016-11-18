@@ -17,10 +17,9 @@ const transactionsReducer = (state=transaction_data, action) => {
           console.log(err);
         });
       }
-      return [
-        ...state,
-        newTrans
-      ];
+      let res = [...state];
+      res.unshift(newTrans);
+      return res;
     }
     case "ADD_TRANSACTIONS": {
       console.log("multiple tranasaction adds called");

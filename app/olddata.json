@@ -1,0 +1,84 @@
+{
+  "transaction_data": [
+    {
+      "name": "Pho La Jolla",
+      "amount": 12.5,
+      "date": "2016-10-30",
+      "posted": true
+    },
+    {
+      "name": "UCSD Paycheck",
+      "amount": -2000,
+      "date": "2016-10-14",
+      "posted": true
+    },
+    {
+      "name": "iPhone 7",
+      "amount": 599,
+      "date": "2016-10-20",
+      "posted": true
+    },
+    {
+      "name": "Samsung Refund",
+      "amount": -529,
+      "date": "2016-10-21",
+      "posted": true
+    },
+    {
+      "name": "Samsung Galaxy Note 7",
+      "amount": 529,
+      "date": "2016-10-23",
+      "posted": true
+    },
+    {
+      "name": "Brain Cell Plush",
+      "amount": 8.5,
+      "date": "2016-10-01",
+      "posted": true
+    },
+    {
+      "name": "Stomach Virus Plush",
+      "amount": 8.5,
+      "date": "2016-10-10",
+      "posted": true
+    },
+    {
+      "name": "Scissors",
+      "amount": 6.24,
+      "date": "2016-12-01",
+      "posted": true
+    },
+    {
+      "name": "Pay Rent",
+      "amount": 500,
+      "date": "2016-10-9",
+      "posted": true
+    },
+    {
+      "name": "UCSD Paycheck",
+      "amount": -200,
+      "date": "2016-10-9",
+      "posted": true
+    },
+    {
+      "name": "Buy Slippers",
+      "amount": 12.23,
+      "date": "2016-10-8",
+      "posted": true
+    },
+    {
+      "name": "UCSD Paycheck",
+      "amount": -2000,
+      "date": "2016-10-20",
+      "posted": true
+    }
+  ],
+  "seed_data": [
+    {
+      "name": "Save Money for Cute Shiba Inu", 
+      "goal": 200, 
+      "time": "Month",
+      "posted": true
+    }
+  ]
+}
