@@ -30,7 +30,7 @@ const transactionsReducer = (state=transaction_data, action) => {
       newTrans.forEach(function(elem, i) {
         if (!elem.posted) {
           elem.posted = true;
-          filtered.push(elem);
+          filtered.unshift(elem);
         }
       });
 

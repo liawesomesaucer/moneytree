@@ -28944,7 +28944,7 @@
 	//  
 
 	// Comment this out if you want to start with login
-	store.dispatch({ type: "LOGIN" });
+	// store.dispatch({type: "LOGIN"});
 
 	// Disabled for the purposes of this demo
 	// seed_data.forEach(function(val, i) {
@@ -31374,7 +31374,7 @@
 	          newTrans.forEach(function (elem, i) {
 	            if (!elem.posted) {
 	              elem.posted = true;
-	              filtered.push(elem);
+	              filtered.unshift(elem);
 	            }
 	          });
 
