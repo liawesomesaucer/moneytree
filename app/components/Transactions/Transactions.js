@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
 import rd3 from 'rd3';
 
 import { browserHistory } from 'react-router';
@@ -6,26 +8,43 @@ import { browserHistory } from 'react-router';
 import Nav from '../Nav';
 import TransactionList from './TransactionList';
 
+import { Chart } from 'react-d3-core';
+import { LineChart } from 'react-d3-basic';
+
+let ctr = 0;
+const x = function(d) {
+  return ctr++;
+}
+
+@connect((store) => {
+  return {
+    transactions: store.transactions
+  };
+})
 export default class Transactions extends React.Component {
   constructor(props) {
     super(props);
   }
   render () {
-    let PieChart = rd3.PieChart;
-    let pieData = [{label: "Food", value: 20.0}, {label: "Housing", value: 55.0}, {label: "Tuition", value: 25.0 }];
-
+    console.log(this.props.transactions)
     return (
       <div className="">
         <Nav pageName="Transactions"/>
         <div className="graph-wrapper">
-          <PieChart
-            data={pieData}
-            width={300}
+          {/*<LineChart
+            data={this.props.transactions}
+            width={400}
             height={300} 
-            radius={110}
-            innerRadius={20}
-            sectorBorderColor="white"
-          />
+            title={"Summary"}
+            x={x}
+            chartSeries={[
+              {
+                field: "amount",
+                name: "Transaction Amount",
+                color: "#69CC8E"
+              }
+            ]}
+          />*/}<br/><br/>
         </div>
         <div className="center-text">
           <a 
