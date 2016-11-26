@@ -8,8 +8,8 @@ import { browserHistory } from 'react-router';
 import Nav from '../Nav';
 import TransactionList from './TransactionList';
 
-import { Chart } from 'react-d3-core';
-import { LineChart } from 'react-d3-basic';
+// import { Chart } from 'react-d3-core';
+// import { LineChart } from 'react-d3-basic';
 
 let ctr = 0;
 const x = function(d) {

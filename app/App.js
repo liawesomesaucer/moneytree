@@ -10,6 +10,7 @@ import Accounts from './components/Accounts/Accounts';
 import AddAccount from './components/Accounts/AddAccount';
 import AddChaseAccount from './components/Accounts/AddChaseAccount';
 import AddWellsAccount from './components/Accounts/AddWellsAccount';
+import HomeWrapper from './components/Home/HomeWrapper';
 import Home from './components/Home/Home';
 import Home2 from './components/Home/Home2';
 import Login from './components/Login/Login';
@@ -23,7 +24,7 @@ ReactGA.initialize('UA-87383176-1');
 
 const routes = (
   <Route path='/' component={Container}>
-    <IndexRoute component={Home} />
+    <IndexRoute component={HomeWrapper} />
     <Route path='home' component={Home} />
     <Route path='home2' component={Home2} />
     <Route path='accounts' component={Accounts} />
