@@ -8,14 +8,9 @@ body {
   margin: 0;
 }
 .wrapper {
-  // Because of nav
-
   &--padded {
     padding: 10px;
   }
-  // &>div>div {
-  //   position: relative;
-  // }
 }
 button:focus {
   outline: none;

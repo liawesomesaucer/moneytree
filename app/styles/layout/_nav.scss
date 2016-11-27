@@ -10,7 +10,9 @@
 .mobile-nav ul {
   @extend %list-reset;
   
-  color: $primary-color;
+  // color: $primary-color;
+  color: $bottom-nav-color;
+
 
   li {
     display: inline-block;
@@ -19,6 +21,9 @@
     text-align: center;
     font-size: 13px;
 
+    &.active {
+      color: $primary-color;
+    }
     .fa {
       font-size: 22px;
       margin-bottom: 3px;

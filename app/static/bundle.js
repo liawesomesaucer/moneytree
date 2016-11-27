@@ -58,11 +58,13 @@
 
 	var _App2 = _interopRequireDefault(_App);
 
+	var _initialization = __webpack_require__(256);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	__webpack_require__(386);
 
-	_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('root'));
+	_reactDom2.default.render(_react2.default.createElement(_App2.default, { store: _initialization.store }), document.getElementById('root'));
 
 /***/ },
 /* 1 */
@@ -21483,6 +21485,8 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+	var _dec, _class;
+
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -21508,14 +21512,6 @@
 	var _AddAccount = __webpack_require__(303);
 
 	var _AddAccount2 = _interopRequireDefault(_AddAccount);
-
-	var _AddChaseAccount = __webpack_require__(304);
-
-	var _AddChaseAccount2 = _interopRequireDefault(_AddChaseAccount);
-
-	var _AddWellsAccount = __webpack_require__(305);
-
-	var _AddWellsAccount2 = _interopRequireDefault(_AddWellsAccount);
 
 	var _HomeWrapper = __webpack_require__(306);
 
@@ -21549,6 +21545,8 @@
 
 	var _AddTransaction2 = _interopRequireDefault(_AddTransaction);
 
+	var _pathnameActions = __webpack_require__(391);
+
 	var _reactGa = __webpack_require__(307);
 
 	var _reactGa2 = _interopRequireDefault(_reactGa);
@@ -21571,8 +21569,6 @@
 	  _react2.default.createElement(_reactRouter.Route, { path: 'home2', component: _Home4.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'accounts', component: _Accounts2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'accounts/add', component: _AddAccount2.default }),
-	  _react2.default.createElement(_reactRouter.Route, { path: 'accounts/add/chase', component: _AddChaseAccount2.default }),
-	  _react2.default.createElement(_reactRouter.Route, { path: 'accounts/add/wells', component: _AddWellsAccount2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'add', component: _AddTransaction2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'login', component: _Login2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'plant', component: _Plant2.default }),
@@ -21581,7 +21577,11 @@
 	  _react2.default.createElement(_reactRouter.Route, { path: '*', component: _NotFound2.default })
 	);
 
-	var App = function (_Component) {
+	var App = (_dec = (0, _reactRedux.connect)(function (store) {
+	  return {
+	    pathname: store.pathname
+	  };
+	}), _dec(_class = function (_Component) {
 	  _inherits(App, _Component);
 
 	  function App() {
@@ -21598,6 +21598,7 @@
 	        _reactGa2.default.set({ page: window.location.pathname });
 	        _reactGa2.default.pageview(window.location.pathname);
 	        window.scrollTo(0, 0);
+	        this.props.dispatch((0, _pathnameActions.changePath)(window.location.pathname));
 	      }
 	    }
 	  }, {
@@ -21620,8 +21621,7 @@
 	  }]);
 
 	  return App;
-	}(_react.Component);
-
+	}(_react.Component)) || _class);
 	exports.default = App;
 
 /***/ },
@@ -28048,6 +28048,8 @@
 
 	var _seedReducer = __webpack_require__(293);
 
+	var _pathnameReducer = __webpack_require__(390);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var reducers = (0, _redux.combineReducers)({
@@ -28055,7 +28057,8 @@
 	  transactions: _transactionsReducer.transactionsReducer,
 	  accounts: _accountsReducer.accountsReducer,
 	  auth: _authReducer.authReducer,
-	  seeds: _seedReducer.seedReducer
+	  seeds: _seedReducer.seedReducer,
+	  pathname: _pathnameReducer.pathnameReducer
 	});
 
 	/*
@@ -30822,21 +30825,23 @@
 
 	var BottomNav = (_dec = (0, _reactRedux.connect)(function (store) {
 	  return {
-	    auth: store.auth
+	    auth: store.auth,
+	    pathname: store.pathname
 	  };
 	}), _dec(_class = function (_React$Component) {
 	  _inherits(BottomNav, _React$Component);
 
-	  function BottomNav() {
+	  function BottomNav(props) {
 	    _classCallCheck(this, BottomNav);
 
-	    return _possibleConstructorReturn(this, (BottomNav.__proto__ || Object.getPrototypeOf(BottomNav)).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (BottomNav.__proto__ || Object.getPrototypeOf(BottomNav)).call(this, props));
 	  }
 
 	  _createClass(BottomNav, [{
 	    key: 'render',
 	    value: function render() {
 	      if (this.props.auth.logged_in) {
+	        var pathname = this.props.pathname.route;
 	        return _react2.default.createElement(
 	          'div',
 	          { className: 'mobile-nav reset-list' },
@@ -30845,9 +30850,12 @@
 	            null,
 	            _react2.default.createElement(
 	              'li',
-	              { onClick: function onClick() {
+	              {
+	                onClick: function onClick() {
 	                  return _reactRouter.browserHistory.push('/');
-	                } },
+	                },
+	                className: pathname === '' ? 'active' : ''
+	              },
 	              _react2.default.createElement(_reactFontawesome2.default, { name: 'home' }),
 	              _react2.default.createElement(
 	                'p',
@@ -30857,9 +30865,12 @@
 	            ),
 	            _react2.default.createElement(
 	              'li',
-	              { onClick: function onClick() {
+	              {
+	                onClick: function onClick() {
 	                  return _reactRouter.browserHistory.push('/accounts');
-	                } },
+	                },
+	                className: pathname === 'accounts' ? 'active' : ''
+	              },
 	              _react2.default.createElement(_reactFontawesome2.default, { name: 'address-book' }),
 	              _react2.default.createElement(
 	                'p',
@@ -30869,9 +30880,12 @@
 	            ),
 	            _react2.default.createElement(
 	              'li',
-	              { onClick: function onClick() {
+	              {
+	                onClick: function onClick() {
 	                  return _reactRouter.browserHistory.push('/transactions');
-	                } },
+	                },
+	                className: pathname === 'transactions' ? 'active' : ''
+	              },
 	              _react2.default.createElement(_reactFontawesome2.default, { name: 'credit-card' }),
 	              _react2.default.createElement(
 	                'p',
@@ -30881,9 +30895,12 @@
 	            ),
 	            _react2.default.createElement(
 	              'li',
-	              { onClick: function onClick() {
+	              {
+	                onClick: function onClick() {
 	                  return _reactRouter.browserHistory.push('/settings');
-	                } },
+	                },
+	                className: pathname === 'settings' ? 'active' : ''
+	              },
 	              _react2.default.createElement(_reactFontawesome2.default, { name: 'cog' }),
 	              _react2.default.createElement(
 	                'p',
@@ -31407,82 +31424,8 @@
 	}
 
 /***/ },
-/* 304 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = AddChaseAccount;
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(203);
-
-	var _Nav = __webpack_require__(297);
-
-	var _Nav2 = _interopRequireDefault(_Nav);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function AddChaseAccount() {
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement(_Nav2.default, { pageName: 'Add Chase Account' }),
-	    _react2.default.createElement(
-	      'a',
-	      { onClick: function onClick() {
-	          return _reactRouter.browserHistory.push("accounts/add");
-	        } },
-	      'Back'
-	    )
-	  );
-	}
-
-/***/ },
-/* 305 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = AddWellsAccount;
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(203);
-
-	var _Nav = __webpack_require__(297);
-
-	var _Nav2 = _interopRequireDefault(_Nav);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function AddWellsAccount() {
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement(_Nav2.default, { pageName: 'Add Wells Account' }),
-	    _react2.default.createElement(
-	      'a',
-	      { onClick: function onClick() {
-	          return _reactRouter.browserHistory.push("/accounts/add");
-	        } },
-	      'Back'
-	    )
-	  );
-	}
-
-/***/ },
+/* 304 */,
+/* 305 */,
 /* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -47652,7 +47595,7 @@
 
 
 	// module
-	exports.push([module.id, ".mobile-nav ul, .tile-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0;\n  margin-top: 0; }\n\n@font-face {\n  font-family: GothamRounded;\n  src: url(\"/static/fonts/Gotham-Rounded.ttf\"); }\n\n@font-face {\n  font-family: GothamRoundedBold;\n  src: url(\"/static/fonts/Gotham-Rounded-Bold.ttf\"); }\n\n* {\n  font-family: GothamRounded, Roboto, Helvetica, sans-serif; }\n\n.header {\n  color: #12324D;\n  text-align: center; }\n\n#errormsg,\n.errormsg {\n  color: #E3655B;\n  padding-top: 0; }\n\nbody {\n  background-color: #c8e2ec;\n  margin: 0;\n  margin-top: 50px;\n  margin-bottom: 60px; }\n\n.no-margin {\n  margin: 0; }\n\n.wrapper--padded {\n  padding: 10px; }\n\nbutton:focus {\n  outline: none; }\n\n.reset-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0; }\n\n.content-wrapper {\n  max-width: 800px;\n  margin: auto; }\n\n.login--wrapper {\n  max-width: 400px;\n  margin: auto; }\n\n.tree-wrapper {\n  padding: 20px 0;\n  text-align: center; }\n  .tree-wrapper h1 {\n    letter-spacing: 2px;\n    font-weight: bold; }\n\n.btn {\n  padding: 12px 20px 8px;\n  background-color: #12324D;\n  color: white;\n  font-size: 18px;\n  border: none;\n  border-radius: 40px; }\n  .btn--fullwidth {\n    width: 100%;\n    border-radius: 0;\n    padding: 0 10px;\n    line-height: 50px;\n    text-align: left; }\n\n.btn:focus {\n  background-color: #12324D;\n  color: white;\n  outline: none; }\n\n#plaid-link {\n  display: inline; }\n\n.plaid-link-button {\n  padding: 0 10px;\n  font-size: 18px;\n  line-height: 50px;\n  border: none;\n  border-radius: 40px;\n  width: 100%;\n  text-align: left;\n  border: none; }\n\n.btn-transaction {\n  min-width: 150px; }\n\n.btn-back {\n  position: absolute;\n  color: #12324D;\n  line-height: 50px;\n  top: 0;\n  left: 10px;\n  z-index: 6; }\n\n.btn-back:before {\n  content: \"< \";\n  margin-right: 4px; }\n\n.btn-add {\n  position: absolute;\n  color: #12324D;\n  top: 0;\n  right: 10px;\n  z-index: 6;\n  font-size: 30px;\n  text-align: center;\n  width: 30px;\n  margin-top: 10px;\n  line-height: 18px; }\n  .btn-add .btn-add-label {\n    font-size: 13px; }\n\n.btn-primary,\n.btn-primary:focus {\n  background-color: #12324D; }\n\n.btn-white {\n  background-color: white;\n  color: #666; }\n\n.tree-wrapper img {\n  width: 58%;\n  max-width: 300px;\n  padding: 10px;\n  margin: auto; }\n\n.center-text {\n  text-align: center; }\n\n.small-text {\n  font-size: 14px; }\n\n.hidden {\n  display: none; }\n\n.z10 {\n  z-index: 10; }\n\n.mobile-nav {\n  border-top: 1px solid #c8e2ec;\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  background-color: #fff;\n  z-index: 20; }\n\n.mobile-nav ul {\n  color: #12324D; }\n  .mobile-nav ul li {\n    display: inline-block;\n    padding: 10px 0 8px;\n    width: 25%;\n    text-align: center;\n    font-size: 13px; }\n    .mobile-nav ul li .fa {\n      font-size: 22px;\n      margin-bottom: 3px; }\n\n.top-nav {\n  width: 100%;\n  position: fixed;\n  height: 50px;\n  top: 0;\n  left: 0;\n  right: 0;\n  background-color: #fff;\n  letter-spacing: 2px;\n  color: #12324D;\n  font-weight: bold;\n  text-align: center;\n  font-size: 16px;\n  line-height: 50px;\n  z-index: 5;\n  box-shadow: 0 2px 2px #12324D;\n  text-transform: uppercase; }\n\n.graph-wrapper {\n  margin-bottom: 10px;\n  width: 100%;\n  text-align: center; }\n  .graph-wrapper img {\n    width: 100%; }\n\n.list--elem {\n  background-color: white;\n  padding: 20px 10px 16px;\n  font-size: 18px;\n  border-bottom: 1px solid #c8e2ec; }\n\n.list--elem-seed {\n  position: relative;\n  padding-bottom: 14px;\n  margin-bottom: 10px; }\n\n.list--header {\n  background-color: rgba(255, 255, 255, 0.4);\n  font-weight: bold;\n  border-bottom: none; }\n\n.list--primary {\n  background-color: #12324D;\n  color: white; }\n\n.list--row-right {\n  float: right; }\n\n.list--account-elem {\n  padding-top: 16px;\n  padding-bottom: 12px;\n  min-height: 70px; }\n\n.list--account-number {\n  font-size: 16px; }\n\n.list--account-add {\n  margin-right: 10px; }\n\n.list--account-right {\n  position: absolute;\n  right: 10px;\n  top: 20px;\n  text-align: right; }\n\n.list--account-name {\n  font-size: 20px;\n  font-weight: bold; }\n\n.list--transaction {\n  margin-top: 5px;\n  font-size: 16px; }\n\n.list--price {\n  font-size: 20px;\n  font-weight: bold;\n  letter-spacing: 1px;\n  margin-top: 12px; }\n\n.list--date {\n  margin-top: 4px; }\n\n.list--delete {\n  margin-left: 10px; }\n\n.tile-list li {\n  background-color: rgba(255, 255, 255, 0.4);\n  width: 33%;\n  height: 0;\n  padding-bottom: 32%;\n  display: inline-block; }\n\n.seed--status-bar-wrapper {\n  margin: auto;\n  margin-top: 10px;\n  height: 30px;\n  line-height: 30px;\n  font-size: 18px;\n  font-weight: bold;\n  background-color: #eee;\n  text-align: center;\n  z-index: 1;\n  border-radius: 15px;\n  position: relative; }\n\n.seed--status-bar {\n  border-radius: 15px;\n  width: 30%;\n  background-color: #69CC8E;\n  height: 30px;\n  position: absolute;\n  top: 0;\n  z-index: -1; }\n\n.list--elem-seed {\n  background-color: white; }\n\n.wrapper-pad-top {\n  padding-top: 20px; }\n\ninput[type=\"submit\"] {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\nselect {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\noption {\n  padding: 0;\n  white-space: normal;\n  color: #666; }\n\nlabel {\n  margin-bottom: 0; }\n\n.form--section > div,\n.form--section > input,\n.form--section > button,\n.form--section > select,\n.form--section > .form-group,\n.form--section > a {\n  border-bottom: 1px solid #c8e2ec; }\n  .form--section > div:last-child,\n  .form--section > input:last-child,\n  .form--section > button:last-child,\n  .form--section > select:last-child,\n  .form--section > .form-group:last-child,\n  .form--section > a:last-child {\n    border-bottom: none; }\n\n.form--section-header {\n  text-transform: uppercase;\n  letter-spacing: 1px;\n  line-height: 30px;\n  padding-top: 20px;\n  padding-left: 10px;\n  border-bottom: none !important; }\n\n.form--group {\n  position: relative; }\n  .form--group input {\n    border: none; }\n  .form--group label,\n  .form--group .field {\n    display: inline-block;\n    height: 50px;\n    line-height: 50px;\n    padding: 0 10px;\n    font-size: 18px;\n    background-color: white;\n    font-weight: 300;\n    color: #666; }\n  .form--group label {\n    width: 35%; }\n  .form--group .field {\n    border: none;\n    outline: none;\n    width: 65%;\n    position: relative; }\n    .form--group .field--std {\n      background-color: white; }\n    .form--group .field--primary {\n      background-color: #12324D;\n      color: white; }\n    .form--group .field--text-right {\n      text-align: right; }\n    .form--group .field--full-width {\n      width: 100%; }\n  .form--group-money label {\n    position: relative; }\n  .form--group-money label:after {\n    position: absolute;\n    content: \"$ \";\n    right: -22px;\n    top: 0;\n    z-index: 2; }\n  .form--group-money input.field {\n    padding-left: 30px; }\n\n.form--separated {\n  margin-bottom: 10px; }\n\n.row-right-overlay {\n  position: absolute;\n  right: 10px;\n  line-height: 50px; }\n\n.form--error {\n  color: red; }\n\n.login--form .form--group > .field {\n  border-radius: 4px; }\n", ""]);
+	exports.push([module.id, ".mobile-nav ul, .tile-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0;\n  margin-top: 0; }\n\n@font-face {\n  font-family: GothamRounded;\n  src: url(\"/static/fonts/Gotham-Rounded.ttf\"); }\n\n@font-face {\n  font-family: GothamRoundedBold;\n  src: url(\"/static/fonts/Gotham-Rounded-Bold.ttf\"); }\n\n* {\n  font-family: GothamRounded, Roboto, Helvetica, sans-serif; }\n\n.header {\n  color: #12324D;\n  text-align: center; }\n\n#errormsg,\n.errormsg {\n  color: #E3655B;\n  padding-top: 0; }\n\nbody {\n  background-color: #c8e2ec;\n  margin: 0;\n  margin-top: 50px;\n  margin-bottom: 60px; }\n\n.no-margin {\n  margin: 0; }\n\n.wrapper--padded {\n  padding: 10px; }\n\nbutton:focus {\n  outline: none; }\n\n.reset-list {\n  list-style-type: none;\n  padding-left: 0;\n  margin-bottom: 0; }\n\n.content-wrapper {\n  max-width: 800px;\n  margin: auto; }\n\n.login--wrapper {\n  max-width: 400px;\n  margin: auto; }\n\n.tree-wrapper {\n  padding: 20px 0;\n  text-align: center; }\n  .tree-wrapper h1 {\n    letter-spacing: 2px;\n    font-weight: bold; }\n\n.btn {\n  padding: 12px 20px 8px;\n  background-color: #12324D;\n  color: white;\n  font-size: 18px;\n  border: none;\n  border-radius: 40px; }\n  .btn--fullwidth {\n    width: 100%;\n    border-radius: 0;\n    padding: 0 10px;\n    line-height: 50px;\n    text-align: left; }\n\n.btn:focus {\n  background-color: #12324D;\n  color: white;\n  outline: none; }\n\n#plaid-link {\n  display: inline; }\n\n.plaid-link-button {\n  padding: 0 10px;\n  font-size: 18px;\n  line-height: 50px;\n  border: none;\n  border-radius: 40px;\n  width: 100%;\n  text-align: left;\n  border: none; }\n\n.btn-transaction {\n  min-width: 150px; }\n\n.btn-back {\n  position: absolute;\n  color: #12324D;\n  line-height: 50px;\n  top: 0;\n  left: 10px;\n  z-index: 6; }\n\n.btn-back:before {\n  content: \"< \";\n  margin-right: 4px; }\n\n.btn-add {\n  position: absolute;\n  color: #12324D;\n  top: 0;\n  right: 10px;\n  z-index: 6;\n  font-size: 30px;\n  text-align: center;\n  width: 30px;\n  margin-top: 10px;\n  line-height: 18px; }\n  .btn-add .btn-add-label {\n    font-size: 13px; }\n\n.btn-primary,\n.btn-primary:focus {\n  background-color: #12324D; }\n\n.btn-white {\n  background-color: white;\n  color: #666; }\n\n.tree-wrapper img {\n  width: 58%;\n  max-width: 300px;\n  padding: 10px;\n  margin: auto; }\n\n.center-text {\n  text-align: center; }\n\n.small-text {\n  font-size: 14px; }\n\n.hidden {\n  display: none; }\n\n.z10 {\n  z-index: 10; }\n\n.mobile-nav {\n  border-top: 1px solid #c8e2ec;\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  background-color: #fff;\n  z-index: 20; }\n\n.mobile-nav ul {\n  color: #9eadba; }\n  .mobile-nav ul li {\n    display: inline-block;\n    padding: 10px 0 8px;\n    width: 25%;\n    text-align: center;\n    font-size: 13px; }\n    .mobile-nav ul li.active {\n      color: #12324D; }\n    .mobile-nav ul li .fa {\n      font-size: 22px;\n      margin-bottom: 3px; }\n\n.top-nav {\n  width: 100%;\n  position: fixed;\n  height: 50px;\n  top: 0;\n  left: 0;\n  right: 0;\n  background-color: #fff;\n  letter-spacing: 2px;\n  color: #12324D;\n  font-weight: bold;\n  text-align: center;\n  font-size: 16px;\n  line-height: 50px;\n  z-index: 5;\n  box-shadow: 0 2px 2px #12324D;\n  text-transform: uppercase; }\n\n.graph-wrapper {\n  margin-bottom: 10px;\n  width: 100%;\n  text-align: center; }\n  .graph-wrapper img {\n    width: 100%; }\n\n.list--elem {\n  background-color: white;\n  padding: 20px 10px 16px;\n  font-size: 18px;\n  border-bottom: 1px solid #c8e2ec; }\n\n.list--elem-seed {\n  position: relative;\n  padding-bottom: 14px;\n  margin-bottom: 10px; }\n\n.list--header {\n  background-color: rgba(255, 255, 255, 0.4);\n  font-weight: bold;\n  border-bottom: none; }\n\n.list--primary {\n  background-color: #12324D;\n  color: white; }\n\n.list--row-right {\n  float: right; }\n\n.list--account-elem {\n  padding-top: 16px;\n  padding-bottom: 12px;\n  min-height: 70px; }\n\n.list--account-number {\n  font-size: 16px; }\n\n.list--account-add {\n  margin-right: 10px; }\n\n.list--account-right {\n  position: absolute;\n  right: 10px;\n  top: 20px;\n  text-align: right; }\n\n.list--account-name {\n  font-size: 20px;\n  font-weight: bold; }\n\n.list--transaction {\n  margin-top: 5px;\n  font-size: 16px; }\n\n.list--price {\n  font-size: 20px;\n  font-weight: bold;\n  letter-spacing: 1px;\n  margin-top: 12px; }\n\n.list--date {\n  margin-top: 4px; }\n\n.list--delete {\n  margin-left: 10px; }\n\n.tile-list li {\n  background-color: rgba(255, 255, 255, 0.4);\n  width: 33%;\n  height: 0;\n  padding-bottom: 32%;\n  display: inline-block; }\n\n.seed--status-bar-wrapper {\n  margin: auto;\n  margin-top: 10px;\n  height: 30px;\n  line-height: 30px;\n  font-size: 18px;\n  font-weight: bold;\n  background-color: #eee;\n  text-align: center;\n  z-index: 1;\n  border-radius: 15px;\n  position: relative; }\n\n.seed--status-bar {\n  border-radius: 15px;\n  width: 30%;\n  background-color: #69CC8E;\n  height: 30px;\n  position: absolute;\n  top: 0;\n  z-index: -1; }\n\n.list--elem-seed {\n  background-color: white; }\n\n.wrapper-pad-top {\n  padding-top: 20px; }\n\ninput[type=\"submit\"] {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\nselect {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border-radius: 0;\n  border: none; }\n\noption {\n  padding: 0;\n  white-space: normal;\n  color: #666; }\n\nlabel {\n  margin-bottom: 0; }\n\n.form--section > div,\n.form--section > input,\n.form--section > button,\n.form--section > select,\n.form--section > .form-group,\n.form--section > a {\n  border-bottom: 1px solid #c8e2ec; }\n  .form--section > div:last-child,\n  .form--section > input:last-child,\n  .form--section > button:last-child,\n  .form--section > select:last-child,\n  .form--section > .form-group:last-child,\n  .form--section > a:last-child {\n    border-bottom: none; }\n\n.form--section-header {\n  text-transform: uppercase;\n  letter-spacing: 1px;\n  line-height: 30px;\n  padding-top: 20px;\n  padding-left: 10px;\n  border-bottom: none !important; }\n\n.form--group {\n  position: relative; }\n  .form--group input {\n    border: none; }\n  .form--group label,\n  .form--group .field {\n    display: inline-block;\n    height: 50px;\n    line-height: 50px;\n    padding: 0 10px;\n    font-size: 18px;\n    background-color: white;\n    font-weight: 300;\n    color: #666; }\n  .form--group label {\n    width: 35%; }\n  .form--group .field {\n    border: none;\n    outline: none;\n    width: 65%;\n    position: relative; }\n    .form--group .field--std {\n      background-color: white; }\n    .form--group .field--primary {\n      background-color: #12324D;\n      color: white; }\n    .form--group .field--text-right {\n      text-align: right; }\n    .form--group .field--full-width {\n      width: 100%; }\n  .form--group-money label {\n    position: relative; }\n  .form--group-money label:after {\n    position: absolute;\n    content: \"$ \";\n    right: -22px;\n    top: 0;\n    z-index: 2; }\n  .form--group-money input.field {\n    padding-left: 30px; }\n\n.form--separated {\n  margin-bottom: 10px; }\n\n.row-right-overlay {\n  position: absolute;\n  right: 10px;\n  line-height: 50px; }\n\n.form--error {\n  color: red; }\n\n.login--form .form--group > .field {\n  border-radius: 4px; }\n", ""]);
 
 	// exports
 
@@ -47964,6 +47907,58 @@
 			URL.revokeObjectURL(oldSrc);
 	}
 
+
+/***/ },
+/* 390 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var path_data = {
+	  route: window.location.pathname.split('/')[1]
+	};
+
+	var pathnameReducer = function pathnameReducer() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : path_data;
+	  var action = arguments[1];
+
+	  switch (action.type) {
+	    case "CHANGE_PATH":
+	      {
+	        var newpath = action.payload.split('/')[1];
+	        console.log("new path = " + newpath);
+	        return _extends({}, state, {
+	          route: newpath
+	        });
+	      }
+	  }
+	  return state;
+	};
+
+	exports.pathnameReducer = pathnameReducer;
+
+/***/ },
+/* 391 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.changePath = changePath;
+	function changePath(newpath) {
+	  return {
+	    type: "CHANGE_PATH",
+	    payload: newpath
+	  };
+	}
 
 /***/ }
 /******/ ]);
