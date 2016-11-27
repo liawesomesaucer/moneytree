@@ -30547,7 +30547,6 @@
 	    case "ADD_TRANSACTIONS":
 	      {
 	        var _ret = function () {
-	          console.log("multiple tranasaction adds called");
 	          var newTrans = action.payload;
 	          var filtered = [];
 
@@ -30570,6 +30569,32 @@
 	        }();
 
 	        if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
+	      }
+	    case "DELETE_TRANSACTION":
+	      {
+	        var _ret2 = function () {
+	          console.log("Deleting transaction");
+	          var result = [];
+	          state.forEach(function (val) {
+	            if (val.name != action.payload.name || val.date != action.payload.date || val.amount != action.payload.amount) {
+	              result.push(val);
+	            }
+	          });
+
+	          _axios2.default.post(transaction_route + '/delete', action.payload).then(function (res) {
+	            console.log("Updated seed backend");
+	          }).catch(function (err) {
+	            console.log(err);
+	          });
+
+	          console.log("newstate");
+	          return {
+	            v: result
+	          };
+	          // return newState;
+	        }();
+
+	        if ((typeof _ret2 === 'undefined' ? 'undefined' : _typeof(_ret2)) === "object") return _ret2.v;
 	      }
 	  }
 	  return state;
@@ -31346,6 +31371,7 @@
 	});
 	exports.addTransaction = addTransaction;
 	exports.addTransactions = addTransactions;
+	exports.deleteTransaction = deleteTransaction;
 	function addTransaction(name, date, amount) {
 	  return {
 	    type: "ADD_TRANSACTION",
@@ -31360,6 +31386,16 @@
 	  return {
 	    type: "ADD_TRANSACTIONS",
 	    payload: transactionList
+	  };
+	}
+	function deleteTransaction(name, date, amount) {
+	  return {
+	    type: "DELETE_TRANSACTION",
+	    payload: {
+	      name: name,
+	      date: date,
+	      amount: amount
+	    }
 	  };
 	}
 
@@ -32481,6 +32517,8 @@
 
 	var _reactRedux = __webpack_require__(179);
 
+	var _transactionActions = __webpack_require__(302);
+
 	var _reactFontawesome = __webpack_require__(296);
 
 	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
@@ -32503,12 +32541,23 @@
 	  function TransactionList(props) {
 	    _classCallCheck(this, TransactionList);
 
-	    return _possibleConstructorReturn(this, (TransactionList.__proto__ || Object.getPrototypeOf(TransactionList)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (TransactionList.__proto__ || Object.getPrototypeOf(TransactionList)).call(this, props));
+
+	    _this.deleteTransaction = _this.deleteTransaction.bind(_this);
+	    return _this;
 	  }
 
 	  _createClass(TransactionList, [{
+	    key: 'deleteTransaction',
+	    value: function deleteTransaction(name, date, amount) {
+	      console.log("delteTransaction called");
+	      this.props.dispatch((0, _transactionActions.deleteTransaction)(name, date, amount));
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
 	      var transactions = [];
 
 	      this.props.transactions.forEach(function (val, index) {
@@ -32531,7 +32580,12 @@
 	            ),
 	            _react2.default.createElement(
 	              'span',
-	              { className: 'list--delete' },
+	              {
+	                className: 'list--delete',
+	                onClick: function onClick() {
+	                  return _this2.deleteTransaction(val.name, val.date, val.amount);
+	                }
+	              },
 	              _react2.default.createElement(_reactFontawesome2.default, { name: 'times-circle-o' })
 	            )
 	          ),

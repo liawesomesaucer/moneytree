@@ -10,19 +10,18 @@ const transactionsReducer = (state=transaction_data, action) => {
       if (!newTrans.posted) {
         newTrans.posted = true;
         axios.post(transaction_route + '/add', newTrans)
-        .then(function(res) {
-          console.log("Updated seed backend");
-        })
-        .catch(function(err) {
-          console.log(err);
-        });
+          .then(function(res) {
+            console.log("Updated seed backend");
+          })
+          .catch(function(err) {
+            console.log(err);
+          });
       }
       let res = [...state];
       res.unshift(newTrans);
       return res;
     }
     case "ADD_TRANSACTIONS": {
-      console.log("multiple tranasaction adds called");
       let newTrans = action.payload;
       let filtered = [];
 
@@ -44,6 +43,29 @@ const transactionsReducer = (state=transaction_data, action) => {
       return [
         ...state
       ].concat(newTrans);
+    }
+    case "DELETE_TRANSACTION": {
+      console.log("Deleting transaction");
+      let result = [];
+      state.forEach(function(val) {
+        if (val.name != action.payload.name ||
+            val.date != action.payload.date ||
+            val.amount != action.payload.amount) {
+          result.push(val);
+        }
+      });
+
+      axios.post(transaction_route + '/delete', action.payload)
+        .then(function(res) {
+          console.log("Updated seed backend");
+        })
+        .catch(function(err) {
+          console.log(err);
+        });
+
+      console.log("newstate");
+      return result;
+      // return newState;
     }
   }
   return state;

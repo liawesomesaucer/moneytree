@@ -14,3 +14,13 @@ export function addTransactions (transactionList) {
     payload: transactionList
   }
 }
+export function deleteTransaction (name, date, amount) {
+  return {
+    type: "DELETE_TRANSACTION",
+    payload: {
+      name: name,
+      date: date,
+      amount: amount
+    }
+  }
+}

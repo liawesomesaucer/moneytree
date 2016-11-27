@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { deleteTransaction } from '../../actions/transactionActions';
 
 import FontAwesome from 'react-fontawesome';
 
@@ -11,6 +12,13 @@ import FontAwesome from 'react-fontawesome';
 export default class TransactionList extends React.Component {
   constructor(props) {
     super(props);
+    this.deleteTransaction = this.deleteTransaction.bind(this);
+  }
+  deleteTransaction(name, date, amount) {
+    console.log("delteTransaction called");
+    this.props.dispatch(
+      deleteTransaction(name, date, amount)
+    );
   }
   render () {
     let transactions = [];
@@ -28,7 +36,10 @@ export default class TransactionList extends React.Component {
             >
               {cost}
             </span>
-            <span className="list--delete">
+            <span 
+              className="list--delete"
+              onClick={() => this.deleteTransaction(val.name, val.date, val.amount)}
+            >
               <FontAwesome name="times-circle-o" />
             </span>
           </span>

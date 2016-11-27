@@ -48,9 +48,22 @@ apiRouter.get('/transactions', function(req, res) {
 });
 
 apiRouter.post('/transactions/add', function(req, res) {
-  console.log("[POST] Transactions");
+  console.log("[POST] Add Transactions");
   transaction_data.unshift(req.body);
 });
+
+apiRouter.post('/transactions/delete', function(req, res) {
+  console.log("[POST] Delete Transaction");
+  let result = [];
+  transaction_data.forEach(function(val) {
+    if (val.name != req.body.name ||
+        val.date != req.body.date ||
+        val.amount != req.body.amount) {
+      result.push(val);
+    }
+  });
+  res.json(transaction_data);
+})
 
 apiRouter.post('/transactions/addlist', function(req, res) {
   console.log("[POST] Transactions List");
