@@ -1,5 +1,5 @@
 {
-  "name": "react-router-guide",
+  "name": "MoneyTree",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -32,6 +32,7 @@
     "node-sass": "^3.10.1",
     "plaid": "^1.1.0",
     "rd3": "^0.7.2",
+    "react": "^15.4.1",
     "react-dom": "^15.4.0",
     "react-ga": "^2.1.2",
     "react-redux": "^4.4.5",

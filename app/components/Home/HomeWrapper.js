@@ -17,7 +17,6 @@ export default class HomeWrapper extends React.Component {
       selectedVariation: variations[variation]
     }
   }
-
   render () {
     console.log("Experiment active: Variant Chosen: " + 
                 this.state.selectedVariation);
