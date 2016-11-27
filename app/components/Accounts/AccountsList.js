@@ -77,19 +77,17 @@ export default class AccountsList extends React.Component {
       <div className="list-wrapper">
         <ul className="reset-list list">
           <li className="form--section-header">
+            <div className="center-text">
+              <button 
+                id="plaid-link"
+                className="btn btn-default" 
+                >
+                Link a bank
+              </button>
+            </div>
             <span>Accounts</span>
           </li>
           {accounts}
-          <button 
-            id="plaid-link"
-            className="btn-primary plaid-link-button" 
-            >
-            Link a bank
-          </button>
-          <span className="row-right-overlay btn-primary">
-            <span className="fa fa-chevron-right">
-            </span>
-          </span>  
         </ul>
       </div>
     )

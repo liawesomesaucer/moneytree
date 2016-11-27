@@ -100,10 +100,10 @@ export default class Home extends React.Component {
               <div className="list--account-number">Save ${val.goal} in a {val.time}</div>
             </span>
             <span 
-              className="list--row-right list--account-right"
+              className="list--row-right list--account-right list--delete"
               onClick={() => this.handleDelete(val.name, val.goal)}
             >
-              <FontAwesome name="times"/>
+              <FontAwesome name="times-circle-o"/>
             </span>
           </div>
 

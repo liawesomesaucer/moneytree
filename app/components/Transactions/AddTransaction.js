@@ -27,13 +27,15 @@ export default class AddTransaction extends React.Component {
   todaysDate() {
     return (new Date()).toISOString();
   }
-  addTransaction() {
-    if (!this.state.name || !this.state.price || !this.state.date) {
+  addTransaction(e) {
+    let status = e.target.id; // 'earned' or 'spent'
+    if (!this.state.name || isNaN(parseInt(this.state.price)) || !this.state.date) {
       document.getElementById("errormsg").innerHTML = "All fields required";
       return;
     }
+    let price = (status === 'earned') ? -this.state.price : this.state.price;
     this.props.dispatch(
-      addTransaction(this.state.name, this.state.date, this.state.price)
+      addTransaction(this.state.name, this.state.date, price)
     );
     browserHistory.push('/transactions');
   }
@@ -51,7 +53,7 @@ export default class AddTransaction extends React.Component {
     return (
       <div className="wrapper">
         <Nav pageName="New Transaction"/>
-        <a className="btn-back" onClick={() => browserHistory.push('/home')}>Back</a>
+        <a className="btn-back" onClick={() => browserHistory.goBack()}>Back</a>
         <div className="wrapper-pad-top">
           <form className="form">
             <div className="form--section">
@@ -70,7 +72,7 @@ export default class AddTransaction extends React.Component {
                 />
               </div>
               <div className="form--group form--group-money">
-                <label htmlFor="price">Price</label>
+                <label htmlFor="price">Amount</label>
                 <input 
                   type="text"
                   name="price"
@@ -90,13 +92,24 @@ export default class AddTransaction extends React.Component {
                   value={this.state.date}
                 />
               </div>
-              <div className="form--group form--separated">
+              <div className="form--group form--separated center-text">
                 <button
-                  className="field field--full-width field--primary"
+                  className="btn btn-default btn-transaction"
                   type="button"
+                  id="earned"
                   onClick={this.addTransaction.bind(this)}
                 >
-                  Add
+                  I Earned ${this.state.price}!
+                </button>
+              </div>
+              <div className="form--group form--separated center-text">
+                <button
+                  className="btn btn-default btn-transaction"
+                  type="button"
+                  id="spent"
+                  onClick={this.addTransaction.bind(this)}
+                >
+                  I Spent ${this.state.price}!
                 </button>
               </div>
             </div>

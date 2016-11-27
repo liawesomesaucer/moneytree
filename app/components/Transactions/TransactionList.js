@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import FontAwesome from 'react-fontawesome';
+
 @connect((store) => {
   return {
     transactions: store.transactions
@@ -19,12 +21,17 @@ export default class TransactionList extends React.Component {
 
       transactions.push(
         <li className="list--elem list--transaction" key={index}>
-          <span 
-            className="list--row-right list--price"
-            style={{
-              color: color
-            }}
-          >{cost}</span>
+          <span className="list--row-right list--price">
+            <span style={{
+                color: color
+              }}
+            >
+              {cost}
+            </span>
+            <span className="list--delete">
+              <FontAwesome name="times-circle-o" />
+            </span>
+          </span>
           <span className="list--row-left list--title list--account-name">{val.name}</span><br/>
           <span className="list--row-left list--title list--date">{val.date.slice(0, 10)}</span>
         </li>
