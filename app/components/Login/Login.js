@@ -8,12 +8,12 @@ import Nav from '../Nav';
 var accData = {
   "accounts": [
     {
-      "email": "test1@mail.com",
-      "password": "password1"
+      "email": "admin",
+      "password": "password"
     },
     {
-      "email": "test2@mail.com",
-      "password": "password2"
+      "email": "vincent",
+      "password": "password"
     }
   ]
 }
