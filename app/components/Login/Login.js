@@ -33,6 +33,7 @@ export default class Login extends React.Component {
     }
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePassChange = this.handlePassChange.bind(this);
+    this.props.dispatch(logoutUser());
   }
   handleEmailChange(e) {
     this.setState({email: e.target.value})
