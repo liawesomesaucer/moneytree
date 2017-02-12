@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
-import { loginUser } from '../../actions/authActions';
+import { loginUser, logoutUser } from '../../actions/authActions';
 
 import Nav from '../Nav';
 
@@ -59,7 +59,7 @@ export default class Login extends React.Component {
       this.props.dispatch(loginUser());
       browserHistory.push('/');
     } else {
-      this.state.pass.setState("");
+      this.setState({pass: ''});
     }
   }
   render () {
