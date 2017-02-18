@@ -105,7 +105,10 @@ export default class Login extends React.Component {
               <button
                 type="button"
                 className="field field--full-width field--secondary"
-                onClick={() => browserHistory.push('/')}
+                onClick={() => {
+                  this.props.dispatch(loginUser());
+                  browserHistory.push('/');
+                }}
               >
                 Register
               </button>
